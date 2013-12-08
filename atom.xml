@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Logging Experiences]]></title>
+  <link href="http://sinairv.github.io/atom.xml" rel="self"/>
+  <link href="http://sinairv.github.io/"/>
+  <updated>2013-12-09T02:42:32+10:00</updated>
+  <id>http://sinairv.github.io/</id>
+  <author>
+    <name><![CDATA[Sina Iravanian]]></name>
+    <email><![CDATA[sina.iravanian@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[My First Blog Post in Octopress]]></title>
+    <link href="http://sinairv.github.io/blog/2013/12/09/my-first-blog-post-in-octopress/"/>
+    <updated>2013-12-09T01:22:25+10:00</updated>
+    <id>http://sinairv.github.io/blog/2013/12/09/my-first-blog-post-in-octopress</id>
+    <content type="html"><![CDATA[<h1>Hello World.</h1>
+
+<p>This is my first blog post in <em>Octopress</em>, if you know what I mean.</p>
+
+<p>Let&rsquo;s go ahead.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="m">10</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This is the end.</p>
+]]></content>
+  </entry>
+  
+</feed>

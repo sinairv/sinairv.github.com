@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Cat1 | Logging Experiences]]></title>
+  <link href="http://sinairv.github.io/blog/categories/cat1/atom.xml" rel="self"/>
+  <link href="http://sinairv.github.io/"/>
+  <updated>2013-12-09T02:42:32+10:00</updated>
+  <id>http://sinairv.github.io/</id>
+  <author>
+    <name><![CDATA[Sina Iravanian]]></name>
+    <email><![CDATA[sina.iravanian@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[My First Blog Post in Octopress]]></title>
+    <link href="http://sinairv.github.io/blog/2013/12/09/my-first-blog-post-in-octopress/"/>
+    <updated>2013-12-09T01:22:25+10:00</updated>
+    <id>http://sinairv.github.io/blog/2013/12/09/my-first-blog-post-in-octopress</id>
+    <content type="html"><![CDATA[<h1>Hello World.</h1>
+
+<p>This is my first blog post in <em>Octopress</em>, if you know what I mean.</p>
+
+<p>Let&rsquo;s go ahead.</p>
+
+<p>```csharp
+for(int i = 0; i &lt; 10; i++)
+{</p>
+
+<pre><code>Console.WriteLine(i);
+</code></pre>
+
+<p>}
+```</p>
+
+<p>This is the end.</p>
+]]></content>
+  </entry>
+  
+</feed>

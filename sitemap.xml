@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
+    <url>
+        <loc>http://sinairv.github.io/blog/2013/12/09/my-first-blog-post-in-octopress/</loc>
+        <lastmod>2013-12-09T01:26:12+10:00</lastmod>
+    </url>
+    <url>
+        <loc>http://sinairv.github.io/about/</loc>
+        <lastmod>2013-12-09T01:54:41+10:00</lastmod>
+    </url>
+    <url>
+        <loc>http://sinairv.github.io/blog/archives/</loc>
+        <lastmod>2013-12-09T01:26:12+10:00</lastmod>
+    </url>
+    <url>
+        <loc>http://sinairv.github.io/</loc>
+        <lastmod>2013-12-09T01:26:12+10:00</lastmod>
+    </url>
+    <url>
+        <loc>http://sinairv.github.io/robots.txt</loc>
+        <lastmod>2013-12-08T19:51:41+10:00</lastmod>
+    </url>
+    <url>
+        <loc>http://sinairv.github.io/works/page.html</loc>
+        <lastmod>2013-12-09T01:54:10+10:00</lastmod>
+    </url>
+</urlset>

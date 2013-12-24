@@ -1,47 +1,47 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://blog.sinairv.com/blog/2013/12/09/my-first-blog-post-in-octopress/</loc>
+        <loc>http://www.sinairv.com/blog/2013/12/09/my-first-blog-post-in-octopress/</loc>
         <lastmod>2013-12-15T20:20:35+10:00</lastmod>
     </url>
     <url>
-        <loc>http://blog.sinairv.com/about/</loc>
-        <lastmod>2013-12-09T01:54:41+10:00</lastmod>
+        <loc>http://www.sinairv.com/about/</loc>
+        <lastmod>2013-12-17T01:47:52+10:00</lastmod>
     </url>
     <url>
-        <loc>http://blog.sinairv.com/blog/archives/</loc>
+        <loc>http://www.sinairv.com/blog/archives/</loc>
         <lastmod>2013-12-15T20:20:35+10:00</lastmod>
     </url>
     <url>
-        <loc>http://blog.sinairv.com/</loc>
+        <loc>http://www.sinairv.com/</loc>
         <lastmod>2013-12-15T20:20:35+10:00</lastmod>
     </url>
     <url>
-        <loc>http://blog.sinairv.com/matlabplotwithmarkers/</loc>
+        <loc>http://www.sinairv.com/matlabplotwithmarkers/</loc>
         <lastmod>2013-12-09T02:53:19+10:00</lastmod>
     </url>
     <url>
-        <loc>http://blog.sinairv.com/mschartwrapper/</loc>
+        <loc>http://www.sinairv.com/mschartwrapper/</loc>
         <lastmod>2013-12-09T02:58:28+10:00</lastmod>
     </url>
     <url>
-        <loc>http://blog.sinairv.com/pdfrenamer/</loc>
+        <loc>http://www.sinairv.com/pdfrenamer/</loc>
         <lastmod>2013-12-09T02:59:31+10:00</lastmod>
     </url>
     <url>
-        <loc>http://blog.sinairv.com/robots.txt</loc>
+        <loc>http://www.sinairv.com/robots.txt</loc>
         <lastmod>2013-12-08T19:51:41+10:00</lastmod>
     </url>
     <url>
-        <loc>http://blog.sinairv.com/temporal-difference-learning/</loc>
+        <loc>http://www.sinairv.com/temporal-difference-learning/</loc>
         <lastmod>2013-12-09T03:00:09+10:00</lastmod>
     </url>
     <url>
-        <loc>http://blog.sinairv.com/tools/</loc>
+        <loc>http://www.sinairv.com/tools/</loc>
         <lastmod>2013-12-09T03:00:42+10:00</lastmod>
     </url>
     <url>
-        <loc>http://blog.sinairv.com/works/page.html</loc>
-        <lastmod>2013-12-09T01:54:10+10:00</lastmod>
+        <loc>http://www.sinairv.com/works/</loc>
+        <lastmod>2013-12-17T22:49:02+10:00</lastmod>
     </url>
 </urlset>

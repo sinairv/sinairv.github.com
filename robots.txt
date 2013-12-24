@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://blog.sinairv.com/sitemap.xml 
+Sitemap: http://www.sinairv.com/sitemap.xml 

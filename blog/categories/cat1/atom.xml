@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Cat1 | Sina Iravanian]]></title>
-  <link href="http://blog.sinairv.com/blog/categories/cat1/atom.xml" rel="self"/>
-  <link href="http://blog.sinairv.com/"/>
-  <updated>2013-12-17T00:54:24+10:00</updated>
-  <id>http://blog.sinairv.com/</id>
+  <link href="http://www.sinairv.com/blog/categories/cat1/atom.xml" rel="self"/>
+  <link href="http://www.sinairv.com/"/>
+  <updated>2013-12-24T20:33:19+10:00</updated>
+  <id>http://www.sinairv.com/</id>
   <author>
     <name><![CDATA[Sina Iravanian]]></name>
     <email><![CDATA[sina.iravanian@gmail.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[My First Blog Post in Octopress]]></title>
-    <link href="http://blog.sinairv.com/blog/2013/12/09/my-first-blog-post-in-octopress/"/>
+    <link href="http://www.sinairv.com/blog/2013/12/09/my-first-blog-post-in-octopress/"/>
     <updated>2013-12-09T01:22:25+10:00</updated>
-    <id>http://blog.sinairv.com/blog/2013/12/09/my-first-blog-post-in-octopress</id>
+    <id>http://www.sinairv.com/blog/2013/12/09/my-first-blog-post-in-octopress</id>
     <content type="html"><![CDATA[<h3>Hello World.</h3>
 
 <p>This is my first blog post in <em>Octopress</em>, if you know what I mean.</p>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Cat2 | Sina Iravanian]]></title>
   <link href="http://www.sinairv.com/blog/categories/cat2/atom.xml" rel="self"/>
   <link href="http://www.sinairv.com/"/>
-  <updated>2014-01-07T02:15:17+10:00</updated>
+  <updated>2014-01-07T04:00:59+10:00</updated>
   <id>http://www.sinairv.com/</id>
   <author>
     <name><![CDATA[Sina Iravanian]]></name>
@@ -39,6 +39,10 @@ for(int i = 0; i &lt; 10; i++)
 {</p>
 
 <pre><code>Console.WriteLine(i);
+string str = "asdasdasd";
+double d = 233.323;
+char c = 'a';
+char ch = '\n';
 </code></pre>
 
 <p>}

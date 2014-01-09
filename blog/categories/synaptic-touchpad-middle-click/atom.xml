@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Synaptic Touchpad Middle Click | Sina Iravanian]]></title>
+  <link href="http://www.sinairv.com/blog/categories/synaptic-touchpad-middle-click/atom.xml" rel="self"/>
+  <link href="http://www.sinairv.com/"/>
+  <updated>2014-01-10T00:48:07+10:00</updated>
+  <id>http://www.sinairv.com/</id>
+  <author>
+    <name><![CDATA[Sina Iravanian]]></name>
+    <email><![CDATA[sina.iravanian@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Enabling Middle Click in Synaptics Touchpad Drivers]]></title>
+    <link href="http://www.sinairv.com/blog/2011/04/16/enabling-middle-click-in-synaptics-touchpad-drivers/"/>
+    <updated>2011-04-16T00:25:53+10:00</updated>
+    <id>http://www.sinairv.com/blog/2011/04/16/enabling-middle-click-in-synaptics-touchpad-drivers</id>
+    <content type="html"><![CDATA[<p>Recently I upgraded my currently installed Synaptics touchpad driver to version 15.x, and I found that I cannot emulate the middle-click effect by pressing both right and left click buttons. I found no options in the settings to enable that functionality. Finally after searching the web I found a workaround here [<a href="http://forum.notebookreview.com/hp-compaq/205207-those-synaptics-touchstyk-trackpoint-any-way-enable-middle-button-scrolling.html">+</a>]:</p>
+
+<ol>
+<li>Run the registry editor (<code>regedit</code>)</li>
+<li>Go to key: <code>HKEY_LOCAL_MACHINE\Software\Synaptics\SynTP\Defaults\</code></li>
+<li>Here create a new key as a <code>DWORD</code> and name it <code>HasBothButtonFeature</code> and set the value to 1.</li>
+<li>Log off and Log on again</li>
+</ol>
+
+
+<p>It worked fine for me.</p>
+]]></content>
+  </entry>
+  
+</feed>

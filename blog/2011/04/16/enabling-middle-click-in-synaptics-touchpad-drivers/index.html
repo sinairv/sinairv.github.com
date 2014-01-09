@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>A List of Selected Works - Sina Iravanian</title>
+  <title>Enabling Middle Click in Synaptics Touchpad Drivers - Sina Iravanian</title>
   <meta name="author" content="Sina Iravanian">
 
   
-  <meta name="description" content="A List of Selected Works YAXLib: Yet Another XML Serialization Library for the .NET Framework An XML serialization library which lets developers &hellip;">
+  <meta name="description" content="Recently I upgraded my currently installed Synaptics touchpad driver to version 15.x, and I found that I cannot emulate the middle-click effect by &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://www.sinairv.com/works">
+  <link rel="canonical" href="http://www.sinairv.com/blog/2011/04/16/enabling-middle-click-in-synaptics-touchpad-drivers">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Sina Iravanian" type="application/atom+xml">
@@ -78,72 +78,84 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">A List of Selected Works</h1>
+    
+      <h1 class="entry-title">Enabling Middle Click in Synaptics Touchpad Drivers</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-16T00:25:53+10:00" pubdate data-updated="true">Apr 16<span>th</span>, 2011</time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://www.sinairv.com">Comments</a>
+        
+      </p>
     
   </header>
-  
-  <h3>YAXLib: Yet Another XML Serialization Library for the .NET Framework</h3>
 
-<p>An XML serialization library which lets developers design the XML file structure, and select the exception handling policy. This library also supports serializing most of the collection classes such as the Dictionary generic class.</p>
 
-<p>YAXLib is hosted on <a href="https://github.com/sinairv/YAXLib">GitHub</a> and <a href="https://yaxlib.codeplex.com/">CodePlex</a>, and is released under the <a href="https://github.com/sinairv/YAXLib/blob/master/Copying.txt">MIT License</a>.</p>
+<div class="entry-content"><p>Recently I upgraded my currently installed Synaptics touchpad driver to version 15.x, and I found that I cannot emulate the middle-click effect by pressing both right and left click buttons. I found no options in the settings to enable that functionality. Finally after searching the web I found a workaround here [<a href="http://forum.notebookreview.com/hp-compaq/205207-those-synaptics-touchstyk-trackpoint-any-way-enable-middle-button-scrolling.html">+</a>]:</p>
 
-<p>For more details please refer to this <a href="http://www.codeproject.com/KB/XML/yaxlib.aspx">CodeProject article</a>.</p>
+<ol>
+<li>Run the registry editor (<code>regedit</code>)</li>
+<li>Go to key: <code>HKEY_LOCAL_MACHINE\Software\Synaptics\SynTP\Defaults\</code></li>
+<li>Here create a new key as a <code>DWORD</code> and name it <code>HasBothButtonFeature</code> and set the value to 1.</li>
+<li>Log off and Log on again</li>
+</ol>
 
-<h3>Grid-Soccer Simulator</h3>
 
-<p>Grid-Soccer Simulator is a multi-agent soccer simulator in a grid-world environment. The environment provides a test-bed for machine-learning, and control algorithms, especially multi-agent reinforcement learning.</p>
+<p>It worked fine for me.</p>
+</div>
 
-<p>Grid-Soccer Simulator is open-source software, hosted on <a href="http://gridsoccer.codeplex.com">CodePlex</a>, and released under the <a href="https://gridsoccer.codeplex.com/license">MIT License</a>.</p>
 
-<p>The project is developed in C#, so you will need <a href="http://www.mono-project.com/">Mono</a> (available for all platforms) or .NET Framework (available for Microsoft Windows only) to run the simulator and the sample clients. The communication between players and the simulator is performed using a human-readable, plain text, network protocol; hence one can create a player in virtually any programming language that supports networking.</p>
-
-<h3>Master&rsquo;s Thesis</h3>
-
-<p>Grid-Soccer simulator (above) has been implemented as part of my Master&rsquo;s thesis entitled: <em>Evaluation of NeuroEvolution of Augmenting Topologies in Cooperative Multi-agent Learning</em></p>
-
-<p><a href="https://drive.google.com/file/d/0B9FZAJLJr0EdT2NQa2s5WFZyMTg/edit?usp=sharing">Here</a> you can view or download my Master&rsquo;s thesis in Persian.</p>
-
-<h3>RCSSCoachable</h3>
-
-<p><em>RCSSCoachable</em> stands for <a href="http://www.robocup.org/">RoboCup</a> <a href="http://sserver.sourceforge.net/">Soccer Simulation</a> Coachable Players. Coachable players are special types of RoboCup 2D players that can be given advice from an agent called the coach. Coach uses the coach language (CLang for short) to communicate with the players. Coachable players receive the coach&rsquo;s advice and behave accordingly.</p>
-
-<p>RCSSCoachable agents were the standard coachable players for the RoboCup coach competitions 2005 and 2006. Coach competition is not held any more in RoboCup, but one might find these agents useful for their research.</p>
-
-<p>RCSSCoachable is hosted on SourceForge. Here&rsquo;s the <a href="http://rcsscoachable.sourceforge.net/">home page</a>, and here you will find the <a href="http://sourceforge.net/projects/rcsscoachable">project summary page</a>.</p>
-
-<h3>Coach Assistant</h3>
-
-<p><em>Coach Assistant</em> is a GUI tool that helps creating strategies for the coachable players.
-You can get Coach Assistant including source and binary from its <a href="https://github.com/sinairv/CoachAssistant">GitHub page</a>. Note that you need Java 1.5 or higher to make and run the application.
-The source code is released under GNU GPL.</p>
-
-<p>Also, <a href="http://www.sinairv.com/coachassistant/catut.html">here</a> you will find a short tutorial on Coach Assistant.</p>
-
-<h3>Temporal Difference Methods: Article, Slides, and Demo Application</h3>
-
-<p><em>Introduction to Reinforcement Learning &ndash; R. S. Sutton, and A. G. Barto</em> <a href="http://www.cs.ualberta.ca/~sutton/book/ebook/node60.html">[+]</a>:</p>
-
-<blockquote><p>If one had to identify one idea as central and novel to reinforcement learning, it would undoubtedly be temporal-difference (TD) learning.</p></blockquote>
-
-<p>Due to my interest in Reinforcement Learning, I chose temporal difference learning methods as my research topic for one of my courses (advanced mathematical software).</p>
-
-<p><a href="https://drive.google.com/file/d/0B9FZAJLJr0Edb2NnNGRVR2ctd1k/edit?usp=sharing">Here</a> you can view or download the report in Persian.</p>
-
-<p><a href="http://www.slideshare.net/sinairv/temporal-difference-methods-persian">Here</a> is the presentation slides in Persian.</p>
-
-<p>The Matlab source files for the demo application are hosted on <a href="https://github.com/sinairv/Temporal-Difference-Learning">GitHub</a>.</p>
-
-  
-    <footer>
+  <footer>
+    <p class="meta">
       
-      
-        <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.sinairv.com/works/index.html" data-via="sinairv" data-counturl="http://www.sinairv.com/works/index.html" >Tweet</a>
+
+<span class="byline author vcard">Posted by <span class="fn">Sina Iravanian</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-16T00:25:53+10:00" pubdate data-updated="true">Apr 16<span>th</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/synaptic-touchpad-middle-click/'>Synaptic Touchpad Middle Click</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.sinairv.com/blog/2011/04/16/enabling-middle-click-in-synaptics-touchpad-drivers/" data-via="sinairv" data-counturl="http://www.sinairv.com/blog/2011/04/16/enabling-middle-click-in-synaptics-touchpad-drivers/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -153,10 +165,23 @@ The source code is released under GNU GPL.</p>
   
 </div>
 
+    
+    <p class="meta">
       
-    </footer>
-  
+        <a class="basic-alignment left" href="/blog/2011/03/02/code-snippet-for-trimming-strings-of-white-space-and-control-characters/" title="Previous Post: Code Snippet for Trimming Strings of White-space and Control Characters">&laquo; Code Snippet for Trimming Strings of White-space and Control Characters</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/05/09/code-snippet-for-dealing-with-windows-forms-listview-control-in-details-mode/" title="Next Post: Code Snippet for Dealing with Windows Forms ListView control in details mode">Code Snippet for Dealing with Windows Forms ListView control in details mode &raquo;</a>
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -257,6 +282,22 @@ The source code is released under GNU GPL.</p>
 
 </footer>
   
+
+<script type="text/javascript">
+      var disqus_shortname = 'sinairv';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://www.sinairv.com/blog/2011/04/16/enabling-middle-click-in-synaptics-touchpad-drivers/';
+        var disqus_url = 'http://www.sinairv.com/blog/2011/04/16/enabling-middle-click-in-synaptics-touchpad-drivers/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
 
 
 

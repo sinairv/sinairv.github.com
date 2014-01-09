@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Strings | Sina Iravanian]]></title>
+  <link href="http://www.sinairv.com/blog/categories/strings/atom.xml" rel="self"/>
+  <link href="http://www.sinairv.com/"/>
+  <updated>2014-01-10T00:48:07+10:00</updated>
+  <id>http://www.sinairv.com/</id>
+  <author>
+    <name><![CDATA[Sina Iravanian]]></name>
+    <email><![CDATA[sina.iravanian@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Code Snippet for Representing Strings With All Their Characters Visible]]></title>
+    <link href="http://www.sinairv.com/blog/2010/08/08/code-snippet-for-representing-strings-with-all-their-characters-visible/"/>
+    <updated>2010-08-08T23:55:20+10:00</updated>
+    <id>http://www.sinairv.com/blog/2010/08/08/code-snippet-for-representing-strings-with-all-their-characters-visible</id>
+    <content type="html"><![CDATA[<p>This piece of code is useful for debugging purposes or working on string processing algorithms. There are times, that you need to see all the characters of a string including invisible characters. This little method may help:</p>
+
+<script src="https://gist.github.com/sinairv/2694034.js"></script>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[A Code Snippet for Searching and Highlighting a Token or String in a RichTextBox]]></title>
+    <link href="http://www.sinairv.com/blog/2010/08/08/a-code-snippet-for-searching-and-highlighting-a-token-or-string-in-a-richtextbox/"/>
+    <updated>2010-08-08T21:28:07+10:00</updated>
+    <id>http://www.sinairv.com/blog/2010/08/08/a-code-snippet-for-searching-and-highlighting-a-token-or-string-in-a-richtextbox</id>
+    <content type="html"><![CDATA[<p>Suppose that you intend to find a string or a token (i.e., whole word, instead of a substring) and change their color in some Windows Forms <code>RichTextBox</code>. The following code snippets will help. The <code>FindStringAndSetColor</code> method looks for instances of an arbitrary string in the contents of the <code>RichTextBox</code>, while the <code>FindTokenAndSetColor</code> method looks for whole words (tokens).</p>
+
+<script src="https://gist.github.com/sinairv/2694067.js"></script>
+
+]]></content>
+  </entry>
+  
+</feed>

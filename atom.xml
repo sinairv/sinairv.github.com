@@ -4,7 +4,7 @@
   <title><![CDATA[Sina Iravanian]]></title>
   <link href="http://www.sinairv.com/atom.xml" rel="self"/>
   <link href="http://www.sinairv.com/"/>
-  <updated>2014-01-07T04:00:59+10:00</updated>
+  <updated>2014-01-10T00:48:07+10:00</updated>
   <id>http://www.sinairv.com/</id>
   <author>
     <name><![CDATA[Sina Iravanian]]></name>
@@ -14,25 +14,175 @@
 
   
   <entry>
-    <title type="html"><![CDATA[My First Blog Post in Octopress]]></title>
-    <link href="http://www.sinairv.com/blog/2013/12/09/my-first-blog-post-in-octopress/"/>
-    <updated>2013-12-09T01:22:25+10:00</updated>
-    <id>http://www.sinairv.com/blog/2013/12/09/my-first-blog-post-in-octopress</id>
-    <content type="html"><![CDATA[<h3>Hello World.</h3>
+    <title type="html"><![CDATA[Moved My Blog to Octopress]]></title>
+    <link href="http://www.sinairv.com/blog/2014/01/10/moved-my-blog-to-octopress/"/>
+    <updated>2014-01-10T01:22:25+10:00</updated>
+    <id>http://www.sinairv.com/blog/2014/01/10/moved-my-blog-to-octopress</id>
+    <content type="html"><![CDATA[<p>I have moved my blog from Wordpress to Octopress, which is based on Jekyll, and is a static site generator. The blog is now accessible through my homepage domain, but it is hosted on GitHub pages.</p>
 
-<p>This is my first blog post in <em>Octopress</em>, if you know what I mean.</p>
+<p>The great benefit of this stack of tools is that I can easily edit my posts in Markdown, re-generate the blog through command line, and make use of rake to perform various tasks ranging from post creation to deployment to GitHub pages.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Code Snippet for Dealing With Windows Forms ListView Control in Details Mode]]></title>
+    <link href="http://www.sinairv.com/blog/2011/05/09/code-snippet-for-dealing-with-windows-forms-listview-control-in-details-mode/"/>
+    <updated>2011-05-09T00:39:37+10:00</updated>
+    <id>http://www.sinairv.com/blog/2011/05/09/code-snippet-for-dealing-with-windows-forms-listview-control-in-details-mode</id>
+    <content type="html"><![CDATA[<p>I needed a piece of code to manage list-view controllers. I needed to use <code>ListView</code> controls in the details mode, which automatically sort its contents when I click on the header, and also pastes the content in a tabular format when I press <code>Ctrl</code>+<code>C</code> or <code>Ctrl</code>+<code>Insert</code> on it. So I created the following classes. The code that carries out the sorting stuff when the header is clicked is taken from <a href="http://msdn.microsoft.com/en-us/library/ms996467.aspx">this</a> following MSDN article.</p>
 
-<p>This is a <code>variable_name</code>.</p>
+<p>So these are the contributions of these pieces of code: 1) Sort <code>ListView</code> items when the column header is clicked, 2) Paste the contents of the <code>ListView</code> control to clipboard in a tabular format, and 3) Provide an easy to use API to append data to a <code>ListView</code> control.</p>
 
-<p>This is code with no lang specified:</p>
+<p>The following gist contains the code to accomplish this. It consists of 3 files. The <code>ListViewColumnSorter.cs</code> file is responsible for the sorting stuff. The <code>ListViewUtils.cs</code> file provides the utility methods for a ListView control. The main methods that perform the job are located in the <code>ListViewUtils</code> class. The two needed methods are <code>InitListView</code> and <code>AppendToListView</code>. And finally the <code>Usage.cs</code> file provides a small demo of the utility methods.</p>
 
-<pre><code>for(int i = 0; i &lt; 10; i++)
-{
-    Console.WriteLine(i);
-}
-</code></pre>
+<script src="https://gist.github.com/sinairv/2693729.js"></script>
 
-<p>and a code in C#.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Enabling Middle Click in Synaptics Touchpad Drivers]]></title>
+    <link href="http://www.sinairv.com/blog/2011/04/16/enabling-middle-click-in-synaptics-touchpad-drivers/"/>
+    <updated>2011-04-16T00:25:53+10:00</updated>
+    <id>http://www.sinairv.com/blog/2011/04/16/enabling-middle-click-in-synaptics-touchpad-drivers</id>
+    <content type="html"><![CDATA[<p>Recently I upgraded my currently installed Synaptics touchpad driver to version 15.x, and I found that I cannot emulate the middle-click effect by pressing both right and left click buttons. I found no options in the settings to enable that functionality. Finally after searching the web I found a workaround here [<a href="http://forum.notebookreview.com/hp-compaq/205207-those-synaptics-touchstyk-trackpoint-any-way-enable-middle-button-scrolling.html">+</a>]:</p>
+
+<ol>
+<li>Run the registry editor (<code>regedit</code>)</li>
+<li>Go to key: <code>HKEY_LOCAL_MACHINE\Software\Synaptics\SynTP\Defaults\</code></li>
+<li>Here create a new key as a <code>DWORD</code> and name it <code>HasBothButtonFeature</code> and set the value to 1.</li>
+<li>Log off and Log on again</li>
+</ol>
+
+
+<p>It worked fine for me.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Code Snippet for Trimming Strings of White-space and Control Characters]]></title>
+    <link href="http://www.sinairv.com/blog/2011/03/02/code-snippet-for-trimming-strings-of-white-space-and-control-characters/"/>
+    <updated>2011-03-02T00:07:00+10:00</updated>
+    <id>http://www.sinairv.com/blog/2011/03/02/code-snippet-for-trimming-strings-of-white-space-and-control-characters</id>
+    <content type="html"><![CDATA[<p>The following method trims the given string of both white-space characters and control characters, and its rather fast!</p>
+
+<script src="https://gist.github.com/sinairv/2693951.js"></script>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Code Snippet for Determining How Two Intervals Overlap]]></title>
+    <link href="http://www.sinairv.com/blog/2010/08/09/code-snippet-for-determining-how-two-intervals-overlap/"/>
+    <updated>2010-08-09T23:45:00+10:00</updated>
+    <id>http://www.sinairv.com/blog/2010/08/09/code-snippet-for-determining-how-two-intervals-overlap</id>
+    <content type="html"><![CDATA[<p>The following pieces of code help figure out how two intervals overlap, and provides helper methods to represent them in a way that is useful for debugging purposes. This job is quite easy to accomplish, but since I&rsquo;ve written it too many times from scratch, I put them in the following gist.</p>
+
+<p>The <code>IntervalOverlapKinds.cs</code> file defines the <code>IntervalOverlapKinds</code> enumeration. The interval detection is carried out in the static methods of the <code>IntervalOverlap</code> class.</p>
+
+<script src="https://gist.github.com/sinairv/2693975.js"></script>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Code Snippet for Representing Strings With All Their Characters Visible]]></title>
+    <link href="http://www.sinairv.com/blog/2010/08/08/code-snippet-for-representing-strings-with-all-their-characters-visible/"/>
+    <updated>2010-08-08T23:55:20+10:00</updated>
+    <id>http://www.sinairv.com/blog/2010/08/08/code-snippet-for-representing-strings-with-all-their-characters-visible</id>
+    <content type="html"><![CDATA[<p>This piece of code is useful for debugging purposes or working on string processing algorithms. There are times, that you need to see all the characters of a string including invisible characters. This little method may help:</p>
+
+<script src="https://gist.github.com/sinairv/2694034.js"></script>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[A Code Snippet for Searching and Highlighting a Token or String in a RichTextBox]]></title>
+    <link href="http://www.sinairv.com/blog/2010/08/08/a-code-snippet-for-searching-and-highlighting-a-token-or-string-in-a-richtextbox/"/>
+    <updated>2010-08-08T21:28:07+10:00</updated>
+    <id>http://www.sinairv.com/blog/2010/08/08/a-code-snippet-for-searching-and-highlighting-a-token-or-string-in-a-richtextbox</id>
+    <content type="html"><![CDATA[<p>Suppose that you intend to find a string or a token (i.e., whole word, instead of a substring) and change their color in some Windows Forms <code>RichTextBox</code>. The following code snippets will help. The <code>FindStringAndSetColor</code> method looks for instances of an arbitrary string in the contents of the <code>RichTextBox</code>, while the <code>FindTokenAndSetColor</code> method looks for whole words (tokens).</p>
+
+<script src="https://gist.github.com/sinairv/2694067.js"></script>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How to Explore Special Folders (Like GAC) in Windows Explorer]]></title>
+    <link href="http://www.sinairv.com/blog/2010/05/15/how-to-explore-special-folders-in-windows-explorer/"/>
+    <updated>2010-05-15T21:09:33+10:00</updated>
+    <id>http://www.sinairv.com/blog/2010/05/15/how-to-explore-special-folders-in-windows-explorer</id>
+    <content type="html"><![CDATA[<p>In normal situations you cannot view the content of special folders, such as <code>Windows/assembly</code> or <code>Windows/fonts</code>, and so on. The way these folders are shown are set through the <code>desktop.ini</code> file in each of these folders, which is normally hidden and protected. One trick that I learned from here [<a href="http://blogs.msdn.com/cumgranosalis/archive/2005/10/03/476275.aspx">+</a>] is described below. Open a command prompt and type:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd /d %windows%\assembly
+</span><span class='line'>attrib -r -h -s desktop.ini
+</span><span class='line'>ren desktop.ini desktop.bak</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Using the above commands, we kill the <code>desktop.ini</code> file, which will cause Windows Explorer to successfully open and explore the real contents of the folder.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[One Reason to Prefer Readonly to Const in C#]]></title>
+    <link href="http://www.sinairv.com/blog/2010/04/21/one-reason-to-prefer-readonly-to-const-in-c-number/"/>
+    <updated>2010-04-21T14:19:38+10:00</updated>
+    <id>http://www.sinairv.com/blog/2010/04/21/one-reason-to-prefer-readonly-to-const-in-c-number</id>
+    <content type="html"><![CDATA[<p>First off, let&rsquo;s talk about what&rsquo;s going on in C# compiler when you use <code>const</code> or <code>readonly</code> in your field definitions. The <code>const</code> qualifier can be used with primitive data types, and strings only. When used, the value assigned to a <code>const</code> field, is inserted directly in all its references in the generated IL code. This is true about other assemblies too. Other assemblies that refer to that <code>const</code> field, are compiled as if they have used directly the value itself. This can be the source of problem that I&rsquo;m going to talk about soon. <code>readonly</code> fields are run-time constants. They occupy some space in memory, and references to them are resolved at run-time, as if we have referred to an ordinary variable. Actually they are variables that resemble constants.</p>
+
+<p>Imagine that you have created and released a project to public. Your project contains several assemblies in form of <code>.dll</code> files. They make use of some constant value in one of the <code>.dll</code> files, e.g., <code>SomeLibrary.dll</code> stores a constant value in one of its classes, e.g.,</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">Options</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>   <span class="p">...</span>
+</span><span class='line'>   <span class="k">public</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">NetworkTimeout</span> <span class="p">=</span> <span class="m">2000</span><span class="p">;</span>
+</span><span class='line'>   <span class="p">...</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You realize that the value assigned to <code>NetworkTimeout</code> is less than expected, so you decide to update <code>SomeLibrary.dll</code> files in all your customer machines with a new one in which <code>NetworkTimeout</code> is set to 3000. But it will not work. Because all references to <code>NetworkTimeout</code> in other assemblies have been replaced with the constant 2000, and the new value will not be fetched any more. In this case the problem will be solved only when all other assemblies are rebuilt. No other update scenarios will do.</p>
+
+<p>But if we have used <code>readonly</code> instead of <code>const</code> the problem would have been solved with updating <code>SomeLibrary.dll</code> only.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">Options</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="p">...</span>
+</span><span class='line'>    <span class="k">public</span> <span class="k">static</span> <span class="k">readonly</span> <span class="kt">int</span> <span class="n">NetworkTimeout</span> <span class="p">=</span> <span class="m">2000</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">...</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The <code>static</code> modifier has been added only to make the two codes above compatible. Note that all <code>const</code> fields are also static, but <code>readonly</code> fields can be either <code>static</code> or an instance field.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Assigning Values to Private Fields Using Reflection]]></title>
+    <link href="http://www.sinairv.com/blog/2010/03/06/assigning-values-to-private-fields-using-reflection/"/>
+    <updated>2010-03-06T14:19:38+10:00</updated>
+    <id>http://www.sinairv.com/blog/2010/03/06/assigning-values-to-private-fields-using-reflection</id>
+    <content type="html"><![CDATA[<p>Suppose that you have a class with various non-public fields, e.g., the class named <code>ClassToTest</code> below servers as a good example.</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -42,18 +192,65 @@
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="m">10</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">ClassToTest</span>
 </span><span class='line'><span class="p">{</span>
-</span><span class='line'>    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
-</span><span class='line'>    <span class="kt">string</span> <span class="n">str</span> <span class="p">=</span> <span class="s">&quot;asdasdasd&quot;</span><span class="p">;</span>
-</span><span class='line'>    <span class="kt">double</span> <span class="n">d</span> <span class="p">=</span> <span class="m">233.323</span><span class="p">;</span>
-</span><span class='line'>    <span class="kt">char</span> <span class="n">c</span> <span class="p">=</span> <span class="sc">&#39;a&#39;</span><span class="p">;</span>
-</span><span class='line'>    <span class="kt">char</span> <span class="n">ch</span> <span class="p">=</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">int</span> <span class="n">SomeNumber</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">private</span> <span class="kt">int</span> <span class="n">m_somePrivateProperty</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>    <span class="k">private</span> <span class="kt">int</span> <span class="n">m_somePrivateVar</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">private</span> <span class="k">static</span> <span class="kt">int</span> <span class="n">s_someStaticNumber</span><span class="p">;</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>This is the end.</p>
+<p>And suppose that we desire to assign some value to the private variable <code>m_somePrivateVar</code>, and the private property <code>m_somePrivateProperty</code>. The approach is to iterate through the fields of the <code>ClassToTest</code> type to find the desired field. If it is a variable we should type-cast it to <code>FieldInfo</code>, and if it is a property we should type-cast it to <code>PropertyInfo</code>. Then we should call the <code>SetValue</code> method appropriately. This is shown below:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="n">ClassToTest</span> <span class="n">c</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ClassToTest</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">Type</span> <span class="n">t</span> <span class="p">=</span> <span class="k">typeof</span><span class="p">(</span><span class="n">ClassToTest</span><span class="p">);</span>
+</span><span class='line'><span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">member</span> <span class="k">in</span> <span class="n">t</span><span class="p">.</span><span class="n">GetMembers</span><span class="p">(</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">Instance</span> <span class="p">|</span>
+</span><span class='line'>                                    <span class="n">BindingFlags</span><span class="p">.</span><span class="n">NonPublic</span> <span class="p">|</span>
+</span><span class='line'>                                    <span class="n">BindingFlags</span><span class="p">.</span><span class="n">Public</span><span class="p">))</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="n">member</span><span class="p">.</span><span class="n">Name</span> <span class="p">==</span> <span class="s">&quot;m_somePrivateVar&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="c1">// changing the variable</span>
+</span><span class='line'>        <span class="n">FieldInfo</span> <span class="n">fi</span> <span class="p">=</span> <span class="p">(</span><span class="n">FieldInfo</span><span class="p">)</span><span class="n">member</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">fi</span><span class="p">.</span><span class="n">SetValue</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="m">18</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">member</span><span class="p">.</span><span class="n">Name</span> <span class="p">==</span> <span class="s">&quot;m_somePrivateProperty&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="c1">// changing the property</span>
+</span><span class='line'>        <span class="n">PropertyInfo</span> <span class="n">pi</span> <span class="p">=</span> <span class="p">(</span><span class="n">PropertyInfo</span><span class="p">)</span><span class="n">member</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">pi</span><span class="p">.</span><span class="n">SetValue</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="m">13</span><span class="p">,</span> <span class="k">null</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Here we have successfully assigned values to selected private fields of our class.</p>
 ]]></content>
   </entry>
   

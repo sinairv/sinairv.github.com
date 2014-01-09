@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: String | Sina Iravanian]]></title>
+  <link href="http://www.sinairv.com/blog/categories/string/atom.xml" rel="self"/>
+  <link href="http://www.sinairv.com/"/>
+  <updated>2014-01-10T00:48:07+10:00</updated>
+  <id>http://www.sinairv.com/</id>
+  <author>
+    <name><![CDATA[Sina Iravanian]]></name>
+    <email><![CDATA[sina.iravanian@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Code Snippet for Trimming Strings of White-space and Control Characters]]></title>
+    <link href="http://www.sinairv.com/blog/2011/03/02/code-snippet-for-trimming-strings-of-white-space-and-control-characters/"/>
+    <updated>2011-03-02T00:07:00+10:00</updated>
+    <id>http://www.sinairv.com/blog/2011/03/02/code-snippet-for-trimming-strings-of-white-space-and-control-characters</id>
+    <content type="html"><![CDATA[<p>The following method trims the given string of both white-space characters and control characters, and its rather fast!</p>
+
+<script src="https://gist.github.com/sinairv/2693951.js"></script>
+
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: GAC | Sina Iravanian]]></title>
+  <link href="http://www.sinairv.com/blog/categories/gac/atom.xml" rel="self"/>
+  <link href="http://www.sinairv.com/"/>
+  <updated>2014-01-10T00:48:07+10:00</updated>
+  <id>http://www.sinairv.com/</id>
+  <author>
+    <name><![CDATA[Sina Iravanian]]></name>
+    <email><![CDATA[sina.iravanian@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[How to Explore Special Folders (Like GAC) in Windows Explorer]]></title>
+    <link href="http://www.sinairv.com/blog/2010/05/15/how-to-explore-special-folders-in-windows-explorer/"/>
+    <updated>2010-05-15T21:09:33+10:00</updated>
+    <id>http://www.sinairv.com/blog/2010/05/15/how-to-explore-special-folders-in-windows-explorer</id>
+    <content type="html"><![CDATA[<p>In normal situations you cannot view the content of special folders, such as <code>Windows/assembly</code> or <code>Windows/fonts</code>, and so on. The way these folders are shown are set through the <code>desktop.ini</code> file in each of these folders, which is normally hidden and protected. One trick that I learned from here [<a href="http://blogs.msdn.com/cumgranosalis/archive/2005/10/03/476275.aspx">+</a>] is described below. Open a command prompt and type:</p>
+
+<p><code>
+cd /d %windows%\assembly
+attrib -r -h -s desktop.ini
+ren desktop.ini desktop.bak
+</code></p>
+
+<p>Using the above commands, we kill the <code>desktop.ini</code> file, which will cause Windows Explorer to successfully open and explore the real contents of the folder.</p>
+]]></content>
+  </entry>
+  
+</feed>

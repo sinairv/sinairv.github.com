@@ -5,11 +5,19 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Mschartwrapper - Sina Iravanian</title>
+  <title>Assigning Values to Private Fields Using Reflection - Sina Iravanian</title>
   <meta name="author" content="Sina Iravanian">
 
   
-  <meta name="description" content="Mschartwrapper Dec 9th, 2013 Dec 9th, 2013 Tweet Comments Please enable JavaScript to view the comments powered by Disqus. Recent Posts Moved My &hellip;">
+  <meta name="description" content="Suppose that you have a class with various non-public fields, e.g., the class named ClassToTest below servers as a good example. 1
+2
+3
+4
+5
+6
+7
+8
+9 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +26,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://www.sinairv.com/mschartwrapper">
+  <link rel="canonical" href="http://www.sinairv.com/blog/2010/03/06/assigning-values-to-private-fields-using-reflection">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Sina Iravanian" type="application/atom+xml">
@@ -78,32 +86,15 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Mschartwrapper</h1>
-    <p class="meta">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-12-09T02:58:00+10:00" pubdate data-updated="true">Dec 9<span>th</span>, 2013</time></p>
-  </header>
-  
-  
-
-  
-    <footer>
+    
+      <h1 class="entry-title">Assigning Values to Private Fields Using Reflection</h1>
+    
+    
       <p class="meta">
         
-        
 
 
 
@@ -115,13 +106,122 @@
   
 
 
-<time datetime="2013-12-09T02:58:00+10:00" pubdate data-updated="true">Dec 9<span>th</span>, 2013</time>
+<time datetime="2010-03-06T14:19:38+10:00" pubdate data-updated="true">Mar 6<span>th</span>, 2010</time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://www.sinairv.com">Comments</a>
         
       </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Suppose that you have a class with various non-public fields, e.g., the class named <code>ClassToTest</code> below servers as a good example.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">ClassToTest</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">int</span> <span class="n">SomeNumber</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">private</span> <span class="kt">int</span> <span class="n">m_somePrivateProperty</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>    <span class="k">private</span> <span class="kt">int</span> <span class="n">m_somePrivateVar</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">private</span> <span class="k">static</span> <span class="kt">int</span> <span class="n">s_someStaticNumber</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And suppose that we desire to assign some value to the private variable <code>m_somePrivateVar</code>, and the private property <code>m_somePrivateProperty</code>. The approach is to iterate through the fields of the <code>ClassToTest</code> type to find the desired field. If it is a variable we should type-cast it to <code>FieldInfo</code>, and if it is a property we should type-cast it to <code>PropertyInfo</code>. Then we should call the <code>SetValue</code> method appropriately. This is shown below:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="n">ClassToTest</span> <span class="n">c</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ClassToTest</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">Type</span> <span class="n">t</span> <span class="p">=</span> <span class="k">typeof</span><span class="p">(</span><span class="n">ClassToTest</span><span class="p">);</span>
+</span><span class='line'><span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">member</span> <span class="k">in</span> <span class="n">t</span><span class="p">.</span><span class="n">GetMembers</span><span class="p">(</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">Instance</span> <span class="p">|</span>
+</span><span class='line'>                                    <span class="n">BindingFlags</span><span class="p">.</span><span class="n">NonPublic</span> <span class="p">|</span>
+</span><span class='line'>                                    <span class="n">BindingFlags</span><span class="p">.</span><span class="n">Public</span><span class="p">))</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="n">member</span><span class="p">.</span><span class="n">Name</span> <span class="p">==</span> <span class="s">&quot;m_somePrivateVar&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="c1">// changing the variable</span>
+</span><span class='line'>        <span class="n">FieldInfo</span> <span class="n">fi</span> <span class="p">=</span> <span class="p">(</span><span class="n">FieldInfo</span><span class="p">)</span><span class="n">member</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">fi</span><span class="p">.</span><span class="n">SetValue</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="m">18</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">member</span><span class="p">.</span><span class="n">Name</span> <span class="p">==</span> <span class="s">&quot;m_somePrivateProperty&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="c1">// changing the property</span>
+</span><span class='line'>        <span class="n">PropertyInfo</span> <span class="n">pi</span> <span class="p">=</span> <span class="p">(</span><span class="n">PropertyInfo</span><span class="p">)</span><span class="n">member</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">pi</span><span class="p">.</span><span class="n">SetValue</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="m">13</span><span class="p">,</span> <span class="k">null</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Here we have successfully assigned values to selected private fields of our class.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
       
-        <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.sinairv.com/mschartwrapper/index.html" data-via="sinairv" data-counturl="http://www.sinairv.com/mschartwrapper/index.html" >Tweet</a>
+
+<span class="byline author vcard">Posted by <span class="fn">Sina Iravanian</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-06T14:19:38+10:00" pubdate data-updated="true">Mar 6<span>th</span>, 2010</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/c-number/'>C#</a>, <a class='category' href='/blog/categories/reflection/'>Reflection</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.sinairv.com/blog/2010/03/06/assigning-values-to-private-fields-using-reflection/" data-via="sinairv" data-counturl="http://www.sinairv.com/blog/2010/03/06/assigning-values-to-private-fields-using-reflection/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -131,9 +231,14 @@
   
 </div>
 
+    
+    <p class="meta">
       
-    </footer>
-  
+      
+        <a class="basic-alignment right" href="/blog/2010/04/21/one-reason-to-prefer-readonly-to-const-in-c-number/" title="Next Post: One reason to prefer readonly to const in C#">One reason to prefer readonly to const in C# &raquo;</a>
+      
+    </p>
+  </footer>
 </article>
 
   <section>
@@ -247,8 +352,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://www.sinairv.com/mschartwrapper/index.html';
-        var disqus_url = 'http://www.sinairv.com/mschartwrapper/index.html';
+        var disqus_identifier = 'http://www.sinairv.com/blog/2010/03/06/assigning-values-to-private-fields-using-reflection/';
+        var disqus_url = 'http://www.sinairv.com/blog/2010/03/06/assigning-values-to-private-fields-using-reflection/';
         var disqus_script = 'embed.js';
       
     (function () {

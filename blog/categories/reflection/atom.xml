@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Reflection | Sina Iravanian]]></title>
+  <link href="http://www.sinairv.com/blog/categories/reflection/atom.xml" rel="self"/>
+  <link href="http://www.sinairv.com/"/>
+  <updated>2014-01-10T00:48:07+10:00</updated>
+  <id>http://www.sinairv.com/</id>
+  <author>
+    <name><![CDATA[Sina Iravanian]]></name>
+    <email><![CDATA[sina.iravanian@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Assigning Values to Private Fields Using Reflection]]></title>
+    <link href="http://www.sinairv.com/blog/2010/03/06/assigning-values-to-private-fields-using-reflection/"/>
+    <updated>2010-03-06T14:19:38+10:00</updated>
+    <id>http://www.sinairv.com/blog/2010/03/06/assigning-values-to-private-fields-using-reflection</id>
+    <content type="html"><![CDATA[<p>Suppose that you have a class with various non-public fields, e.g., the class named <code>ClassToTest</code> below servers as a good example.</p>
+
+<p>```csharp
+public class ClassToTest
+{</p>
+
+<pre><code>public int SomeNumber { get; set; }
+
+private int m_somePrivateProperty { get; set; }
+private int m_somePrivateVar;
+
+private static int s_someStaticNumber;
+</code></pre>
+
+<p>}
+```</p>
+
+<p>And suppose that we desire to assign some value to the private variable <code>m_somePrivateVar</code>, and the private property <code>m_somePrivateProperty</code>. The approach is to iterate through the fields of the <code>ClassToTest</code> type to find the desired field. If it is a variable we should type-cast it to <code>FieldInfo</code>, and if it is a property we should type-cast it to <code>PropertyInfo</code>. Then we should call the <code>SetValue</code> method appropriately. This is shown below:</p>
+
+<p>```csharp
+ClassToTest c = new ClassToTest();</p>
+
+<p>Type t = typeof(ClassToTest);
+foreach (var member in t.GetMembers(BindingFlags.Instance |</p>
+
+<pre><code>                                BindingFlags.NonPublic | 
+                                BindingFlags.Public))
+</code></pre>
+
+<p>{</p>
+
+<pre><code>if (member.Name == "m_somePrivateVar")
+{
+    // changing the variable
+    FieldInfo fi = (FieldInfo)member;
+    fi.SetValue(c, 18);
+}
+else if (member.Name == "m_somePrivateProperty")
+{
+    // changing the property
+    PropertyInfo pi = (PropertyInfo)member;
+    pi.SetValue(c, 13, null);
+}
+</code></pre>
+
+<p>}
+```</p>
+
+<p>Here we have successfully assigned values to selected private fields of our class.</p>
+]]></content>
+  </entry>
+  
+</feed>

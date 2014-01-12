@@ -9,7 +9,7 @@
   <meta name="author" content="Sina Iravanian">
 
   
-  <meta name="description" content="I have moved my blog from Wordpress to Octopress, which is based on Jekyll, and is a static site generator. The blog is now accessible through my &hellip;">
+  <meta name="description" content="I&rsquo;ve moved my blog from Wordpress to my homepage domain. It makes use of Octopress, which is based on Jekyll, and is a static site generator. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -111,9 +111,9 @@
   </header>
 
 
-  <div class="entry-content"><p>I have moved my blog from Wordpress to Octopress, which is based on Jekyll, and is a static site generator. The blog is now accessible through my homepage domain, but it is hosted on GitHub pages.</p>
+  <div class="entry-content"><p>I&rsquo;ve moved my blog from <a href="http://sinairv.wordpress.com">Wordpress</a> to my <a href="http://www.sinairv.com">homepage domain</a>. It makes use of <a href="http://octopress.org/">Octopress</a>, which is based on <a href="http://jekyllrb.com/">Jekyll</a>, and is a static site generator. The blog is hosted on GitHub pages, and is <a href="https://github.com/sinairv/sinairv.github.com">open source</a>.</p>
 
-<p>The great benefit of this stack of tools is that I can easily edit my posts in Markdown, re-generate the blog through command line, and make use of rake to perform various tasks ranging from post creation to deployment to GitHub pages.</p>
+<p>The great benefit of this stack of tools is that I can easily create and edit my posts in <a href="http://en.wikipedia.org/wiki/Markdown">Markdown</a>, re-generate the blog <a href="http://octopress.org/docs/blogging/">through command line</a>, and make use of <a href="http://rake.rubyforge.org/">rake</a> (Ruby&rsquo;s make tools) to perform various tasks ranging from post creation to deployment to GitHub pages. It&rsquo;s awesome.</p>
 </div>
   
   
@@ -126,7 +126,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2011/05/09/code-snippet-for-dealing-with-windows-forms-listview-control-in-details-mode/">Code Snippet for Dealing With Windows Forms ListView Control in Details Mode</a></h1>
+      <h1 class="entry-title"><a href="/blog/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c-number-5/">How to Make More Refactoring Friendly Data-bindings With C# 5</a></h1>
     
     
       <p class="meta">
@@ -142,433 +142,17 @@
   
 
 
-<time datetime="2011-05-09T00:39:37+10:00" pubdate data-updated="true">May 9<span>th</span>, 2011</time>
+<time datetime="2012-11-01T19:46:29+10:00" pubdate data-updated="true">Nov 1<span>st</span>, 2012</time>
         
-           | <a href="/blog/2011/05/09/code-snippet-for-dealing-with-windows-forms-listview-control-in-details-mode/#disqus_thread"
-             data-disqus-identifier="http://www.sinairv.com/blog/2011/05/09/code-snippet-for-dealing-with-windows-forms-listview-control-in-details-mode/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I needed a piece of code to manage list-view controllers. I needed to use <code>ListView</code> controls in the details mode, which automatically sort its contents when I click on the header, and also pastes the content in a tabular format when I press <code>Ctrl</code>+<code>C</code> or <code>Ctrl</code>+<code>Insert</code> on it. So I created the following classes. The code that carries out the sorting stuff when the header is clicked is taken from <a href="http://msdn.microsoft.com/en-us/library/ms996467.aspx">this</a> following MSDN article.</p>
-
-<p>So these are the contributions of these pieces of code: 1) Sort <code>ListView</code> items when the column header is clicked, 2) Paste the contents of the <code>ListView</code> control to clipboard in a tabular format, and 3) Provide an easy to use API to append data to a <code>ListView</code> control.</p>
-
-<p>The following gist contains the code to accomplish this. It consists of 3 files. The <code>ListViewColumnSorter.cs</code> file is responsible for the sorting stuff. The <code>ListViewUtils.cs</code> file provides the utility methods for a ListView control. The main methods that perform the job are located in the <code>ListViewUtils</code> class. The two needed methods are <code>InitListView</code> and <code>AppendToListView</code>. And finally the <code>Usage.cs</code> file provides a small demo of the utility methods.</p>
-
-<script src="https://gist.github.com/sinairv/2693729.js"></script>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/04/16/enabling-middle-click-in-synaptics-touchpad-drivers/">Enabling Middle Click in Synaptics Touchpad Drivers</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-16T00:25:53+10:00" pubdate data-updated="true">Apr 16<span>th</span>, 2011</time>
-        
-           | <a href="/blog/2011/04/16/enabling-middle-click-in-synaptics-touchpad-drivers/#disqus_thread"
-             data-disqus-identifier="http://www.sinairv.com/blog/2011/04/16/enabling-middle-click-in-synaptics-touchpad-drivers/">Comments</a>
+           | <a href="/blog/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c-number-5/#disqus_thread"
+             data-disqus-identifier="http://www.sinairv.com/blog/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c-number-5/">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>Recently I upgraded my currently installed Synaptics touchpad driver to version 15.x, and I found that I cannot emulate the middle-click effect by pressing both right and left click buttons. I found no options in the settings to enable that functionality. Finally after searching the web I found a workaround here [<a href="http://forum.notebookreview.com/hp-compaq/205207-those-synaptics-touchstyk-trackpoint-any-way-enable-middle-button-scrolling.html">+</a>]:</p>
-
-<ol>
-<li>Run the registry editor (<code>regedit</code>)</li>
-<li>Go to key: <code>HKEY_LOCAL_MACHINE\Software\Synaptics\SynTP\Defaults\</code></li>
-<li>Here create a new key as a <code>DWORD</code> and name it <code>HasBothButtonFeature</code> and set the value to 1.</li>
-<li>Log off and Log on again</li>
-</ol>
-
-
-<p>It worked fine for me.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/03/02/code-snippet-for-trimming-strings-of-white-space-and-control-characters/">Code Snippet for Trimming Strings of White-space and Control Characters</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-03-02T00:07:00+10:00" pubdate data-updated="true">Mar 2<span>nd</span>, 2011</time>
-        
-           | <a href="/blog/2011/03/02/code-snippet-for-trimming-strings-of-white-space-and-control-characters/#disqus_thread"
-             data-disqus-identifier="http://www.sinairv.com/blog/2011/03/02/code-snippet-for-trimming-strings-of-white-space-and-control-characters/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The following method trims the given string of both white-space characters and control characters, and its rather fast!</p>
-
-<script src="https://gist.github.com/sinairv/2693951.js"></script>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/08/09/code-snippet-for-determining-how-two-intervals-overlap/">Code Snippet for Determining How Two Intervals Overlap</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-08-09T23:45:00+10:00" pubdate data-updated="true">Aug 9<span>th</span>, 2010</time>
-        
-           | <a href="/blog/2010/08/09/code-snippet-for-determining-how-two-intervals-overlap/#disqus_thread"
-             data-disqus-identifier="http://www.sinairv.com/blog/2010/08/09/code-snippet-for-determining-how-two-intervals-overlap/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The following pieces of code help figure out how two intervals overlap, and provides helper methods to represent them in a way that is useful for debugging purposes. This job is quite easy to accomplish, but since I&rsquo;ve written it too many times from scratch, I put them in the following gist.</p>
-
-<p>The <code>IntervalOverlapKinds.cs</code> file defines the <code>IntervalOverlapKinds</code> enumeration. The interval detection is carried out in the static methods of the <code>IntervalOverlap</code> class.</p>
-
-<script src="https://gist.github.com/sinairv/2693975.js"></script>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/08/08/code-snippet-for-representing-strings-with-all-their-characters-visible/">Code Snippet for Representing Strings With All Their Characters Visible</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-08-08T23:55:20+10:00" pubdate data-updated="true">Aug 8<span>th</span>, 2010</time>
-        
-           | <a href="/blog/2010/08/08/code-snippet-for-representing-strings-with-all-their-characters-visible/#disqus_thread"
-             data-disqus-identifier="http://www.sinairv.com/blog/2010/08/08/code-snippet-for-representing-strings-with-all-their-characters-visible/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This piece of code is useful for debugging purposes or working on string processing algorithms. There are times, that you need to see all the characters of a string including invisible characters. This little method may help:</p>
-
-<script src="https://gist.github.com/sinairv/2694034.js"></script>
-
-
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/08/08/a-code-snippet-for-searching-and-highlighting-a-token-or-string-in-a-richtextbox/">A Code Snippet for Searching and Highlighting a Token or String in a RichTextBox</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-08-08T21:28:07+10:00" pubdate data-updated="true">Aug 8<span>th</span>, 2010</time>
-        
-           | <a href="/blog/2010/08/08/a-code-snippet-for-searching-and-highlighting-a-token-or-string-in-a-richtextbox/#disqus_thread"
-             data-disqus-identifier="http://www.sinairv.com/blog/2010/08/08/a-code-snippet-for-searching-and-highlighting-a-token-or-string-in-a-richtextbox/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Suppose that you intend to find a string or a token (i.e., whole word, instead of a substring) and change their color in some Windows Forms <code>RichTextBox</code>. The following code snippets will help. The <code>FindStringAndSetColor</code> method looks for instances of an arbitrary string in the contents of the <code>RichTextBox</code>, while the <code>FindTokenAndSetColor</code> method looks for whole words (tokens).</p>
-
-<script src="https://gist.github.com/sinairv/2694067.js"></script>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/05/15/how-to-explore-special-folders-in-windows-explorer/">How to Explore Special Folders (Like GAC) in Windows Explorer</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-05-15T21:09:33+10:00" pubdate data-updated="true">May 15<span>th</span>, 2010</time>
-        
-           | <a href="/blog/2010/05/15/how-to-explore-special-folders-in-windows-explorer/#disqus_thread"
-             data-disqus-identifier="http://www.sinairv.com/blog/2010/05/15/how-to-explore-special-folders-in-windows-explorer/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>In normal situations you cannot view the content of special folders, such as <code>Windows/assembly</code> or <code>Windows/fonts</code>, and so on. The way these folders are shown are set through the <code>desktop.ini</code> file in each of these folders, which is normally hidden and protected. One trick that I learned from here [<a href="http://blogs.msdn.com/cumgranosalis/archive/2005/10/03/476275.aspx">+</a>] is described below. Open a command prompt and type:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>cd /d %windows%\assembly
-</span><span class='line'>attrib -r -h -s desktop.ini
-</span><span class='line'>ren desktop.ini desktop.bak</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Using the above commands, we kill the <code>desktop.ini</code> file, which will cause Windows Explorer to successfully open and explore the real contents of the folder.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/04/21/one-reason-to-prefer-readonly-to-const-in-c-number/">One Reason to Prefer Readonly to Const in C#</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-04-21T14:19:38+10:00" pubdate data-updated="true">Apr 21<span>st</span>, 2010</time>
-        
-           | <a href="/blog/2010/04/21/one-reason-to-prefer-readonly-to-const-in-c-number/#disqus_thread"
-             data-disqus-identifier="http://www.sinairv.com/blog/2010/04/21/one-reason-to-prefer-readonly-to-const-in-c-number/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>First off, let&rsquo;s talk about what&rsquo;s going on in C# compiler when you use <code>const</code> or <code>readonly</code> in your field definitions. The <code>const</code> qualifier can be used with primitive data types, and strings only. When used, the value assigned to a <code>const</code> field, is inserted directly in all its references in the generated IL code. This is true about other assemblies too. Other assemblies that refer to that <code>const</code> field, are compiled as if they have used directly the value itself. This can be the source of problem that I&rsquo;m going to talk about soon. <code>readonly</code> fields are run-time constants. They occupy some space in memory, and references to them are resolved at run-time, as if we have referred to an ordinary variable. Actually they are variables that resemble constants.</p>
-
-<p>Imagine that you have created and released a project to public. Your project contains several assemblies in form of <code>.dll</code> files. They make use of some constant value in one of the <code>.dll</code> files, e.g., <code>SomeLibrary.dll</code> stores a constant value in one of its classes, e.g.,</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">Options</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>   <span class="p">...</span>
-</span><span class='line'>   <span class="k">public</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">NetworkTimeout</span> <span class="p">=</span> <span class="m">2000</span><span class="p">;</span>
-</span><span class='line'>   <span class="p">...</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>You realize that the value assigned to <code>NetworkTimeout</code> is less than expected, so you decide to update <code>SomeLibrary.dll</code> files in all your customer machines with a new one in which <code>NetworkTimeout</code> is set to 3000. But it will not work. Because all references to <code>NetworkTimeout</code> in other assemblies have been replaced with the constant 2000, and the new value will not be fetched any more. In this case the problem will be solved only when all other assemblies are rebuilt. No other update scenarios will do.</p>
-
-<p>But if we have used <code>readonly</code> instead of <code>const</code> the problem would have been solved with updating <code>SomeLibrary.dll</code> only.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">Options</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>    <span class="p">...</span>
-</span><span class='line'>    <span class="k">public</span> <span class="k">static</span> <span class="k">readonly</span> <span class="kt">int</span> <span class="n">NetworkTimeout</span> <span class="p">=</span> <span class="m">2000</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">...</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>The <code>static</code> modifier has been added only to make the two codes above compatible. Note that all <code>const</code> fields are also static, but <code>readonly</code> fields can be either <code>static</code> or an instance field.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/03/06/assigning-values-to-private-fields-using-reflection/">Assigning Values to Private Fields Using Reflection</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-03-06T14:19:38+10:00" pubdate data-updated="true">Mar 6<span>th</span>, 2010</time>
-        
-           | <a href="/blog/2010/03/06/assigning-values-to-private-fields-using-reflection/#disqus_thread"
-             data-disqus-identifier="http://www.sinairv.com/blog/2010/03/06/assigning-values-to-private-fields-using-reflection/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Suppose that you have a class with various non-public fields, e.g., the class named <code>ClassToTest</code> below servers as a good example.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">ClassToTest</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>    <span class="k">public</span> <span class="kt">int</span> <span class="n">SomeNumber</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">private</span> <span class="kt">int</span> <span class="n">m_somePrivateProperty</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-</span><span class='line'>    <span class="k">private</span> <span class="kt">int</span> <span class="n">m_somePrivateVar</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">private</span> <span class="k">static</span> <span class="kt">int</span> <span class="n">s_someStaticNumber</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>And suppose that we desire to assign some value to the private variable <code>m_somePrivateVar</code>, and the private property <code>m_somePrivateProperty</code>. The approach is to iterate through the fields of the <code>ClassToTest</code> type to find the desired field. If it is a variable we should type-cast it to <code>FieldInfo</code>, and if it is a property we should type-cast it to <code>PropertyInfo</code>. Then we should call the <code>SetValue</code> method appropriately. This is shown below:</p>
+  <div class="entry-content"><p>Imagine that we want to create a <code>Person</code> business object for whose properties we desire a two-way data binding. The source-to-target data-binding can be triggered by implementing <code>INotifyPropertyChanged</code> interface, like this:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -590,30 +174,708 @@
 <span class='line-number'>18</span>
 <span class='line-number'>19</span>
 <span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="n">ClassToTest</span> <span class="n">c</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ClassToTest</span><span class="p">();</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">Type</span> <span class="n">t</span> <span class="p">=</span> <span class="k">typeof</span><span class="p">(</span><span class="n">ClassToTest</span><span class="p">);</span>
-</span><span class='line'><span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">member</span> <span class="k">in</span> <span class="n">t</span><span class="p">.</span><span class="n">GetMembers</span><span class="p">(</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">Instance</span> <span class="p">|</span>
-</span><span class='line'>                                    <span class="n">BindingFlags</span><span class="p">.</span><span class="n">NonPublic</span> <span class="p">|</span>
-</span><span class='line'>                                    <span class="n">BindingFlags</span><span class="p">.</span><span class="n">Public</span><span class="p">))</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">Person</span> <span class="p">:</span> <span class="n">INotifyPropertyChanged</span>
 </span><span class='line'><span class="p">{</span>
-</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="n">member</span><span class="p">.</span><span class="n">Name</span> <span class="p">==</span> <span class="s">&quot;m_somePrivateVar&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">private</span> <span class="kt">string</span> <span class="n">_name</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">private</span> <span class="kt">double</span> <span class="n">_age</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span>
 </span><span class='line'>    <span class="p">{</span>
-</span><span class='line'>        <span class="c1">// changing the variable</span>
-</span><span class='line'>        <span class="n">FieldInfo</span> <span class="n">fi</span> <span class="p">=</span> <span class="p">(</span><span class="n">FieldInfo</span><span class="p">)</span><span class="n">member</span><span class="p">;</span>
-</span><span class='line'>        <span class="n">fi</span><span class="p">.</span><span class="n">SetValue</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="m">18</span><span class="p">);</span>
+</span><span class='line'>        <span class="k">get</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="k">return</span> <span class="n">_name</span><span class="p">;</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">set</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="k">if</span> <span class="p">(</span><span class="k">value</span> <span class="p">!=</span> <span class="n">_name</span><span class="p">)</span>
+</span><span class='line'>            <span class="p">{</span>
+</span><span class='line'>                <span class="n">_name</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span>
+</span><span class='line'>                <span class="n">OnPropertyChanged</span><span class="p">(</span><span class="s">&quot;Name&quot;</span><span class="p">);</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>        <span class="p">}</span>
 </span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>    <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">member</span><span class="p">.</span><span class="n">Name</span> <span class="p">==</span> <span class="s">&quot;m_somePrivateProperty&quot;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">double</span> <span class="n">Age</span>
 </span><span class='line'>    <span class="p">{</span>
-</span><span class='line'>        <span class="c1">// changing the property</span>
-</span><span class='line'>        <span class="n">PropertyInfo</span> <span class="n">pi</span> <span class="p">=</span> <span class="p">(</span><span class="n">PropertyInfo</span><span class="p">)</span><span class="n">member</span><span class="p">;</span>
-</span><span class='line'>        <span class="n">pi</span><span class="p">.</span><span class="n">SetValue</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="m">13</span><span class="p">,</span> <span class="k">null</span><span class="p">);</span>
+</span><span class='line'>        <span class="k">get</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="k">return</span> <span class="n">_age</span><span class="p">;</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">set</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="k">if</span> <span class="p">(</span><span class="n">_age</span> <span class="p">!=</span> <span class="k">value</span><span class="p">)</span>
+</span><span class='line'>            <span class="p">{</span>
+</span><span class='line'>                <span class="n">_age</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span>
+</span><span class='line'>                <span class="n">OnPropertyChanged</span><span class="p">(</span><span class="s">&quot;Age&quot;</span><span class="p">);</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">public</span> <span class="k">event</span> <span class="n">PropertyChangedEventHandler</span> <span class="n">PropertyChanged</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">private</span> <span class="k">void</span> <span class="nf">OnPropertyChanged</span><span class="p">(</span><span class="kt">string</span> <span class="n">propertyName</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">if</span> <span class="p">(</span><span class="n">PropertyChanged</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="n">PropertyChanged</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="k">new</span> <span class="n">PropertyChangedEventArgs</span><span class="p">(</span><span class="n">propertyName</span><span class="p">));</span>
+</span><span class='line'>        <span class="p">}</span>
 </span><span class='line'>    <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Here we have successfully assigned values to selected private fields of our class.</p>
+<p>See how the setters pass the property name in a <code>string</code>. This is not nice, because whenever we change the property name through refactoring tools, the string value remains untouched and we have to manually change them as well (if we are lucky enough to get notified before run-time). Anyway we had to tolerate them for years&hellip;</p>
+
+<p>C# 5 comes with a nice feature, which is addition of two attributes <code>[CallerFilePath]</code> and <code>[CallerMemberName]</code> in the <code>System.Runtime.CompilerServices</code> namespace. If you decorate an <strong>optional</strong> string parameter of a method with one of these attributes, then the value of that parameter will be replaced with the caller&rsquo;s file name or the caller&rsquo;s member name at runtime, if no explicit value is passed for the optional parameter. They come very handy in logging scenarios, but we can use the latter for making our data-binding code nicer. This is how:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">Person</span> <span class="p">:</span> <span class="n">INotifyPropertyChanged</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">private</span> <span class="kt">string</span> <span class="n">_name</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">private</span> <span class="kt">double</span> <span class="n">_age</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">get</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="k">return</span> <span class="n">_name</span><span class="p">;</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">set</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="k">if</span> <span class="p">(</span><span class="k">value</span> <span class="p">!=</span> <span class="n">_name</span><span class="p">)</span>
+</span><span class='line'>            <span class="p">{</span>
+</span><span class='line'>                <span class="n">_name</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span>
+</span><span class='line'>                <span class="n">OnPropertyChanged</span><span class="p">();</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">double</span> <span class="n">Age</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">get</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="k">return</span> <span class="n">_age</span><span class="p">;</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">set</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="k">if</span> <span class="p">(</span><span class="n">_age</span> <span class="p">!=</span> <span class="k">value</span><span class="p">)</span>
+</span><span class='line'>            <span class="p">{</span>
+</span><span class='line'>                <span class="n">_age</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span>
+</span><span class='line'>                <span class="n">OnPropertyChanged</span><span class="p">();</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">public</span> <span class="k">event</span> <span class="n">PropertyChangedEventHandler</span> <span class="n">PropertyChanged</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">private</span> <span class="k">void</span> <span class="nf">OnPropertyChanged</span><span class="p">([</span><span class="n">CallerMemberName</span><span class="p">]</span><span class="kt">string</span> <span class="n">propertyName</span> <span class="p">=</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">if</span> <span class="p">(</span><span class="n">PropertyChanged</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="n">PropertyChanged</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="k">new</span> <span class="n">PropertyChangedEventArgs</span><span class="p">(</span><span class="n">propertyName</span><span class="p">));</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now that string constants are removed from the setters we can more freely refactor our code. After being spoiled by automatic properties, this is still a very verbose way of defining properties; however it is much better than before.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/09/22/different-ways-of-generating-new-guids/">Different Ways of Generating New GUIDs</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-22T17:49:59+10:00" pubdate data-updated="true">Sep 22<span>nd</span>, 2012</time>
+        
+           | <a href="/blog/2012/09/22/different-ways-of-generating-new-guids/#disqus_thread"
+             data-disqus-identifier="http://www.sinairv.com/blog/2012/09/22/different-ways-of-generating-new-guids/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>In C# Code</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="kt">var</span> <span class="n">newGuid</span> <span class="p">=</span> <span class="n">Guid</span><span class="p">.</span><span class="n">NewGuid</span><span class="p">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>In Visual Studio</h3>
+
+<p>Go to: <code>Tools &gt; Create GUID</code></p>
+
+<h3>In SQL Server Management Studio</h3>
+
+<p>Execute either of the following queries:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">SELECT</span> <span class="n">NEWID</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>or</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="n">PRINT</span> <span class="n">NEWID</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>None of the above</h3>
+
+<p>Go to <a href="http://newguid.com/">newguid.com</a>, and refresh the page as many times as you want.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/07/23/an-example-for-c-number-dynamic-in-action/">An Example for C# Dynamic in Action</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-07-23T17:20:53+10:00" pubdate data-updated="true">Jul 23<span>rd</span>, 2012</time>
+        
+           | <a href="/blog/2012/07/23/an-example-for-c-number-dynamic-in-action/#disqus_thread"
+             data-disqus-identifier="http://www.sinairv.com/blog/2012/07/23/an-example-for-c-number-dynamic-in-action/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Recently I was involved with enabling validation for a Windows Forms form containing several pages shown through a tree view. There were one user control defined for each page, therefore whenever a node in tree-view got activated, an instance of that user-control were shown. The user-controls did not have a common user-defined parent base-class or interface. The author of the existing code had defined a <code>Save</code> method in each control separately which performed updating data with values entered in the forms.</p>
+
+<p>First, I changed all <code>void Save()</code> methods to <code>bool Save()</code>, and performed the validation stuff in each control separately. Then in the parent form, I created an array of <code>Control</code>s, so that I could loop through them, and call their <code>Save</code> method. But wait, <code>Save</code> is not inherited from any base-class or interface, so there&rsquo;s no polymorphism at hand. How can I call them through references of type <code>Control</code>?</p>
+
+<p>Well honestly, the best solution would be adding a new interface to the project, say <code>ISavableControl</code> or something, add the <code>Save</code> method to it, and let the controls implement that interface. But I wanted to make a quick fix to the problem without adding new files and types to the code. Here C#&lsquo;s <code>dynamic</code> comes into action.</p>
+
+<p>Using <code>dynamic</code> keyword, one postpones binding methods, properties, and fields to run-time. In our scenario we know that the user-controls each have a method called <code>Save</code>, which is not derived from a parent. Without <code>dynamic</code>, I would need to have a reference explicitly from each user control&rsquo;s type, and I would have to call them one by one, as in:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="kt">bool</span> <span class="n">succeeded</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+</span><span class='line'><span class="n">succeeded</span> <span class="p">=</span> <span class="n">userControl1</span><span class="p">.</span><span class="n">Save</span><span class="p">();</span>
+</span><span class='line'><span class="n">succeeded</span> <span class="p">=</span> <span class="n">succeeded</span> <span class="p">||</span> <span class="n">userControl2</span><span class="p">.</span><span class="n">Save</span><span class="p">();</span>
+</span><span class='line'><span class="n">succeeded</span> <span class="p">=</span> <span class="n">succeeded</span> <span class="p">||</span> <span class="n">userControl3</span><span class="p">.</span><span class="n">Save</span><span class="p">();</span>
+</span><span class='line'><span class="c1">// ...</span>
+</span><span class='line'><span class="n">succeeded</span> <span class="p">=</span> <span class="n">succeeded</span> <span class="p">||</span> <span class="n">userControln</span><span class="p">.</span><span class="n">Save</span><span class="p">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>However using <code>dynamic</code> keyword, life gets a lot easier:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="c1">// objects are not inherited from a base class or interface,</span>
+</span><span class='line'><span class="c1">// therefore we cannot call Save using polymorphism</span>
+</span><span class='line'><span class="kt">bool</span> <span class="n">succeeded</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+</span><span class='line'><span class="k">foreach</span><span class="p">(</span><span class="kt">var</span> <span class="n">ctrl</span> <span class="k">in</span> <span class="n">controlsArray</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="kt">dynamic</span> <span class="n">dynCtrl</span> <span class="p">=</span> <span class="n">ctrl</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">succeeded</span> <span class="p">=</span> <span class="n">succeeded</span> <span class="p">||</span> <span class="n">dynCtrl</span><span class="p">.</span><span class="n">Save</span><span class="p">();</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// do something with the value of succeeded</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Take care that binding the <code>Save</code> methods to controls happen at runtime. Therefore if a control does not implement a <code>Save</code> method, or if another one misspells <code>Save</code>, as say <code>Svae</code>, you will get no hints at compile time. So, try to avoid this style of coding, unless you have good reasons for doing so.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/05/27/programming-koans-one-of-the-best-ways-to-learn-a-new-language-or-framework/">Programming Koans: One of the Best Ways to Learn a New Language or Framework</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-27T16:46:35+10:00" pubdate data-updated="true">May 27<span>th</span>, 2012</time>
+        
+           | <a href="/blog/2012/05/27/programming-koans-one-of-the-best-ways-to-learn-a-new-language-or-framework/#disqus_thread"
+             data-disqus-identifier="http://www.sinairv.com/blog/2012/05/27/programming-koans-one-of-the-best-ways-to-learn-a-new-language-or-framework/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Based on Wikipedia, originally a <a href="http://en.wikipedia.org/wiki/K%C5%8Dan">Koan in Zen-practice</a> is a paradoxical question that provokes doubt and tests a student&rsquo;s progress. On the other hand, programming Koans are a set of failing unit-tests, for which the learner is required to fix the code or fill the required fields with proper values in order to make each test pass. Probably one of the earliest and most popular Koans were <a href="http://rubykoans.com/">Ruby Koans</a>. Now there are several Koans implemented for different languages and frameworks. Search the word &ldquo;Koan&rdquo; in <a href="https://github.com/">GitHub</a> or <a href="https://bitbucket.org/">BitBucket</a> and you will find the gems.</p>
+
+<p>My first experience of Koans was <a href="https://github.com/rally25rs/MoqKoans">MoqKoans</a>, a great set of Koans for learning <a href="http://code.google.com/p/moq/">Moq</a>, a mocking library for the .NET framework. That was really a wonderful learning experience. These days I&rsquo;m trying to strengthen my web programming skills, and as one of the early steps I decided to remaster JavaScript. I found two JavaScript Koans on GitHub; both of them are great. However, I suggest that one should start with the <a href="https://github.com/liammclennan/JavaScript-Koans">JavaScript Koans by Liam McLennan</a>, which is easier to begin with. after finishing this step, I highly recommend proceeding with the<a href="https://github.com/mrdavidlaing/javascript-koans">JavaScript Koans by David Laing</a>. This one is a smaller set of Koans, but gets more advanced, and contains an introduction to <a href="http://underscorejs.org/">Underscore.js</a> as well.</p>
+
+<p>Experience the joy of learning with Koans, and having all the reds going green in the end.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/05/05/using-git-with-github-on-windows/">Using Git With GitHub on Windows</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-05T16:25:00+10:00" pubdate data-updated="true">May 5<span>th</span>, 2012</time>
+        
+           | <a href="/blog/2012/05/05/using-git-with-github-on-windows/#disqus_thread"
+             data-disqus-identifier="http://www.sinairv.com/blog/2012/05/05/using-git-with-github-on-windows/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>If you&rsquo;re new to Git and don&rsquo;t know how to install Git on Windows, read my earlier post: <a href="/blog/2012/05/01/how-to-setup-git-for-windows/">How to Setup Git for Windows</a></p>
+
+<p>In an earlier <a href="/blog/2012/05/02/using-git-with-codeplex-on-windows/">post</a>, I described the preliminary steps required to work with git on CodePlex. However using git with<a href="https://github.com/">GitHub</a> requires more initial steps.</p>
+
+<p><strong>Generating SSH Keys.</strong> Before proceeding to Git operations we need to create SSH public and private keys, and register the public key on the GitHub site. In order to generate the keys we can use PuTTY Key Generator, which is already bundled with TortoiseGit fortunately. This program is called &ldquo;Puttygen&rdquo; and can be found in start-menu under TortoiseGit:</p>
+
+<p><img src="/images/posts/tortoisegit-puttygen.png" alt="puttygen under TortoiseGit in Windows start-menu" /></p>
+
+<p>After running Puttygen you need to press &ldquo;Generate&rdquo;, and make some crazy mouse movements in the spotted area to provide some random data for the program (wow, what a brilliant idea). When finished you will have the public key generated. It is recommended that you provide a passphrase so that you would have a more secure private key. After that save your public and private keys using the 2 save buttons near the bottom of the window. But these are not all that you need to save! The public key format that GitHub and some other applications require you to provide is not the one that this program has saved for you. The topmost field which is labelled &ldquo;Public key for passing into OpenSSH authorized_keys file&rdquo; is the one that GitHub needs. It should be in one line (i.e., with no line-breaks), therefore we would refer to it later as the one-line-public-key. Please save the contents of this field and the next &ldquo;key fingerprint&rdquo; field somewhere for future references.</p>
+
+<p><img src="/images/posts/puttygenfields.png" alt="Puttygen fields" /></p>
+
+<p><strong>Registering SSH Keys in GitHub.</strong> Browse to GitHub, and go to your Account Seetings, and select SSH Keystherein. Press the Add SSH key button on the right. Provide a name for the key (I chose TortoiseGit), and paste the one-line-public-key in the Key field. Press Add Key. You may be prompted for your GitHub account password next. When finished, GitHub adds this key to its list of keys and provides a fingerprint. Make sure this fingerprint matches the key fingerprint that Puttygen created for you.</p>
+
+<p><strong>Creating a Repository in GitHub.</strong> Browse to the GitHub page and press the &ldquo;Create a New Repo&rdquo; button at the top of the page.</p>
+
+<p><img src="/images/posts/githubnewrepo.png" alt="GitHub Create New Repo" /></p>
+
+<p>In the new form that appears, enter desired values for your project&rsquo;s name and description. Currently there&rsquo;s an option to add a README file or an appropriate <code>.gitignore</code> file to the repository. While making use of these options are recommended, in this tutorial I intend to start from a completely empty repository; therefore I unchecked those options. When finished press the &ldquo;Create repository&rdquo; button. With these steps I created a project called &ldquo;PdfRenamer&rdquo;.</p>
+
+<p><strong>Setting up TortoiseGit for the new project.</strong> After creating the repository, GitHub introduces some helpful basic commands to start working with the repository. We don&rsquo;t intend to use the command-line, however this page contains useful information such as user-name and email with which GitHub recognizes you, and the git repository address, as highlighted below:</p>
+
+<p><img src="/images/posts/githubnewprojectaddressandusername1.png" alt="GitHub New Project Address And User-Name" /></p>
+
+<p>We need to do the following steps next:</p>
+
+<ol>
+<li>Right click somewhere in the Windows explorer window, and from the context-menu go to: TortoiseGit > Settings >> Git branch; and fill the user-name and email fields with the ones suggested by GitHub, and press OK.</li>
+<li>Create a folder preferably with the same name as your project (in my case PdfRenamer), and browse into it with Windows explorer.</li>
+<li>Right click somewhere in the folder and from the context menu select &ldquo;Git Create repository here&hellip;&rdquo;. A window pops-up. Make sure that &ldquo;Make it Bare&rdquo; is not checked; and press OK.</li>
+<li>Right click somewhere in the folder and from the context menu go to: TortoiseGit > Settings >> Git branch >> Remote sub-branch. In the &ldquo;Remote&rdquo; field enter &ldquo;origin&rdquo;, in the URL field enter the git repository address which was highlighted above and is in the form of <code>git@github.com:[username]/[projectname].git</code>; and finally in front of &ldquo;putty key&rdquo; provide the address to the SSH private key which we saved earlier in this tutorial, and has the <code>.ppk</code> extension. When finished press the &ldquo;Add New/Save&rdquo; button. After that origin should be added to the list of Remotes.</li>
+</ol>
+
+
+<p><img src="/images/posts/tortoisegitremotesetting.png" alt="TortoiseGit Remote Setting" /></p>
+
+<p><strong>Add files to the project structure.</strong> With git, adding a file to a project structure and having it reflected in the remote repository requires 3 operations: add, commit, and push. The first 2 operations are required for adding the file to the local repository, and the third one reflects the changes to the remote repository. This last operation can be postponed to a later time when you want to push a bundle of changes all at once.</p>
+
+<p>To start, create a <code>Readme.txt</code> file in the root folder. Right click on the newly added file, from the context menu select: TortoiseGit > add; check the files to be added, and press OK. This was the first operation: add. In the new window press &ldquo;commit &hellip;&rdquo;, provide a meaningful commit message in the new window, and press OK when finished. This was the second operation: commit which reflects the changes to your local repository, the one in your hard-drive. You can push the changes in the next window if you want, however it&rsquo;s not a good idea to push every local commit to the remote repository (that&rsquo;s why we are using a DVCS after all).</p>
+
+<p>Before continuing to the push command, let&rsquo;s talk about some naming conventions in the Git world. With DVCSs such as git you can have different remote repositories which you may choose from to push your changes to. By convention, the default name for the remote repository is &ldquo;origin&rdquo;. In our case origin is the remote repository at the GitHub server, for which we manually added the link before. On the other hand, each project may have several branches. Conceptually a branch is another copy of the same project where other features are developed and tested. For example imagine that at a certain stage of development you may decide to add a new feature to your project. You may create a new branch called &ldquo;test&rdquo;, develop and test the feature there, and finally merge the changes with the code at the main branch. By convention, the main branch is called &ldquo;master&rdquo;.</p>
+
+<p>When it comes to push, you need to know which branch of the code you want to push to which remote repository. In our simple case we want to push the master branch to the origin repository. For this purpose, right click somewhere on the Windows explorer that shows the project root folder, and select: TortoiseGit > Push&hellip;. Make sure the name of the branches for local and remote repositories and the name of the remote repository are selected correctly. More importantly make sure that the &ldquo;Autoload Putty Key&rdquo; check-box is also checked, and press OK. Next, the TortoiseGit will prompt you for the private-key passphrase. Note that this is not your GitHub account password, this is the passphrase that you chose when creating the private key with Puttygen. After finishing the push operation, check the sources in the project&rsquo;s GitHub page to make sure the changes have been reflected there. Note that after the first push, the PuTTY authentication agent (Pageant) gets run in the background, so that you won&rsquo;t need to enter the passphrase any time you want to push to GitHub.</p>
+
+<p><strong>Updating the local repository with the latest changes made by other team members to the remote repository.</strong> Well, there are two solutions. The one that I prefer is using git pull. You can easily find this command in the TortoiseGit&rsquo;s context menu. The pull command, preserves the history of changes made by different people and makes a final merge afterwards. The other solution is git fetch and rebase. The fetch command only receives the latest changes from the remote repository but does not apply them. The rebase command first applies the remote changes to the repository, then applies your changes. Therefore it always seems that you have made the recent changes, while it may not be true. See this <a href="http://stackoverflow.com/questions/3357122/git-pull-vs-git-fetch-git-rebase">stackoverflow question</a> for a better explanation.</p>
+
+<p><strong>Note:</strong> At any stage, if git complains about connecting through a null proxy, then you will have to remove proxy settings from the global <code>.gitconfig</code> file. For more information see tip 7 on my earlier <a href="/blog/2012/05/01/how-to-setup-git-for-windows/">post</a></p>
+
+<p>You may also want to see my earlier <a href="/blog/2012/05/02/using-git-with-codeplex-on-windows/">post</a> that describes using git with <a href="http://www.codeplex.com/">CodePlex</a> on Windows.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/05/02/using-git-with-codeplex-on-windows/">Using Git With CodePlex on Windows</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-02T10:50:41+10:00" pubdate data-updated="true">May 2<span>nd</span>, 2012</time>
+        
+           | <a href="/blog/2012/05/02/using-git-with-codeplex-on-windows/#disqus_thread"
+             data-disqus-identifier="http://www.sinairv.com/blog/2012/05/02/using-git-with-codeplex-on-windows/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>If you&rsquo;re new to Git and don&rsquo;t know how to install Git on Windows, read my earlier post: <a href="/blog/2012/05/01/how-to-setup-git-for-windows/">How to Setup Git for Windows</a></p>
+
+<p>On 21 March 2012, the <a href="http://www.codeplex.com/">CodePlex</a> team <a href="http://blogs.msdn.com/b/codeplex/archive/2012/03/21/git-commit-m-codeplex-now-supports-git.aspx">announced</a> their support for Git.</p>
+
+<p>Creating a project with Git as source control is very easy in CodePlex and is done with a few clicks at no time. Suppose the project name is <code>CodePlexGitTest</code>. In order to make any changes to the project structure you need to clone the project first. This way you will have your own copy of the repository on your hard disk. To do this, the path to the git repository is needed. This can be obtained from the <em>Source Code</em> tab of the project&rsquo;s CodePlex page, by pressing the <em>Git</em> link/button under <em>&ldquo;Source Control&rdquo;</em> section on the right pane, as seen below:</p>
+
+<p><img src="/images/posts/codeplexgit.png" alt="CodePlex Git settings" /></p>
+
+<p>In order to clone the project, move to the folder that is going to host the project directory. Right click somewhere in the Windows explorer window and choose <em>Git Clone</em>. In the opened window set the <em>&ldquo;Url&rdquo;</em> field to the <em>&ldquo;Clone URL&rdquo;</em> value above, leave other options unchanged, and press OK. After prompting for your CodePlex user-name and password, it should now create the folder structure for your empty repository (<strong>Note</strong>: in case that git complains about connecting through a <em>null</em> proxy, then you will have to remove proxy settings from the global <code>.gitconfig</code> file. For more information see tip 7 on my earlier <a href="/blog/2012/05/01/how-to-setup-git-for-windows/">post</a>).</p>
+
+<p>Now that you have the currently empty project structure at your hard-drive, it&rsquo;s time to add some files to it. Using git, adding a file to a project structure and having it reflected in the remote repository requires 3 operations: <em>add</em>, <em>commit</em>, and <em>push</em>. The first 2 operations are required for adding the file to the local repository, and the third one reflects the changes to the remote repository. This last operation can be postponed to a later time when you want to push a bundle of changes all at once.</p>
+
+<p>To start, create a <code>Readme.txt</code> file in the root folder. Right click on the newly added file, from the context menu select: <em>TortoiseGit > add</em>; check the files to be added, and press OK. This was the first operation: <em>add</em>. In the new window press <em>&ldquo;commit &hellip;&rdquo;</em>, provide a meaningful commit message in the new window, and press OK when finished. This was the second operation: <em>commit</em> which reflects the changes to your local repository, the one in your hard-drive. You can push the changes in the next window if you want, however it&rsquo;s not a good idea to push every local commit to the remote repository (that&rsquo;s why we are using a DVCS after all).</p>
+
+<p>Before continuing to the <em>push</em> command, let&rsquo;s talk about some naming conventions in the git world. With DVCSs such as git you can have different remote repositories which you may choose from to push your changes to. By convention, the default name for the remote repository is <em>&ldquo;origin&rdquo;</em>. In our case origin is the remote repository at the CodePlex server. On the other hand, each project may have several branches. Conceptually a branch is another copy of the same project where other features are developed and tested. For example imagine that at a certain stage of development you may decide to add a new feature to your project. You may create a new branch called <em>&ldquo;test&rdquo;</em>, develop and test the feature there, and finally merge the changes with the code at the main branch. By convention, the main branch is called <em>&ldquo;master&rdquo;</em>.</p>
+
+<p>When it comes to <em>push</em>, you need to know which branch of the code you want to push to which remote repository. In our simple case we want to push the <em>master</em> branch to the <em>origin</em> repository. For this purpose, right click somewhere on the Windows explorer that shows the project root folder, and select: <em>TortoiseGit > Push&hellip;</em>. Make sure the name of the branches for local and remote repositories and the name of the remote repository are selected correctly, and press OK. Enter CodePlex user-name and passwords which are prompted. Now check the sources in the project&rsquo;s CodePlex site to make sure the changes have been reflected there.</p>
+
+<p>How to update the local repository with the latest changes made by other team members to the remote repository? Well, there are two solutions. The one that I prefer is to use git <em>pull</em>. You can easily find this command in the TortoiseGit&rsquo;s context menu. The <em>pull</em> command, preserves the history of changes made by different people and makes a final merge afterwards. The other solution is git <em>fetch</em> and <em>rebase</em>. The <em>fetch</em> command only receives the latest changes from the remote repository but does not apply them. The <em>rebase</em> command first applies the remote changes to the repository, then applies your changes. Therefore it always seems that you have made the recent changes, while it may not be true. See this <a href="http://stackoverflow.com/questions/3357122/git-pull-vs-git-fetch-git-rebase">stackoverflow question</a> for a better explanation.</p>
+
+<p>See also:  <br/>
+<a href="/blog/2012/05/01/how-to-setup-git-for-windows/">How to Setup Git for Windows</a>  <br/>
+<a href="/blog/2012/05/05/using-git-with-github-on-windows/">Using Git With GitHub on Windows</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/05/01/how-to-setup-git-for-windows/">How to Setup Git for Windows</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-01T23:27:40+10:00" pubdate data-updated="true">May 1<span>st</span>, 2012</time>
+        
+           | <a href="/blog/2012/05/01/how-to-setup-git-for-windows/#disqus_thread"
+             data-disqus-identifier="http://www.sinairv.com/blog/2012/05/01/how-to-setup-git-for-windows/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>These are some easy steps required to setup Git for Windows:</p>
+
+<ol>
+<li><p>Download msysGit from: <a href="http://code.google.com/p/msysgit">http://code.google.com/p/msysgit</a>  <br/>
+I prefer to use the portable version. At the time of this writing there&rsquo;s no difference between 32 bit and 64 bit versions and the filename for the portable version is: <code>PortableGit-1.7.10-preview20120409.7z</code>. Currently it seems that the development of the project has been moved to <a href="http://github.com/msysgit">GitHub</a>, but the releases are still located in Google Code.</p></li>
+<li><p>Extract the contents in a proper location. I made them into:  <br/>
+<code>D:\PortableProgs\msysGit</code></p></li>
+<li><p>If you intend to use the git command-line for every git operation simply run <code>git-bash.bat</code> in the root folder of <em>msysGit</em>. This is the old lovely <em>Cygwin</em> command-line.</p></li>
+<li><p>If you don&rsquo;t intend to use command-line (like me) install <em>TortoiseGit</em>. It is hosted on Google Code:  <br/>
+<a href="http://code.google.com/p/tortoisegit/">http://code.google.com/p/tortoisegit/</a>  <br/>
+Note that it comes with different releases for 32-bit and 64-bit systems. At the time of this writing the latest version is 1.7.8.0. After installing <em>TortoiseGit</em> you may need to restart Windows, or the Windows explorer process, or none.</p></li>
+<li><p>Right click somewhere on a Windows Explorer window, and from the context menu select: <em>TortoiseGit > Settings</em>. There will be a message-box appearing begging for adjusting the path to <em>msysGit</em>. Click on &ldquo;Set MSysGit path&rdquo; button (If you have ever missed this window, or want to change the path to an already existing <em>msysGit</em>, simply go to: <em>TortoiseGit > Settings >> the General branch</em>).  <br/>
+In the field titled as <em>&ldquo;Git.exe path:&rdquo;</em> enter the path to the <em>bin</em> folder of the <em>msysGit</em> installation/copy.</p></li>
+<li><p>You don&rsquo;t have to, but it is highly recommended that before starting any git operations you set some global settings such as your name, email, and AutoCrlf. To this aim in the Windows explorer&rsquo;s context menu go to: <em>TortoiseGit > Settings >> the Git branch</em>. Fill in the fields labelled <em>Name</em> and <em>Email</em> with proper values. Then make sure that <em>AutoCrlf</em> check-box is unchecked, so that you don&rsquo;t touch every file in order to change their line-endings. Read more about this kind of problem <a href="http://code52.org/line-endings.html">here</a>, and see <a href="http://stackoverflow.com/questions/4181870/git-on-windows-what-do-the-crlf-settings-mean">here</a> to know more what AutoCrlf and SafeCrlf options do for you.</p></li>
+<li><p><strong>[UPDATED on 3 May 2012]</strong> When performing some git operations, git may complain that it cannot connect through a <em>null</em> proxy. It may happen for some versions if in git settings the value for proxy is assigned to an empty string. If this is the case for you, simply remove proxy settings in the global <code>.gitconfig</code> file. To do this, right click somewhere in Windows explorer, go to: <em>TortoiseGit > Settings >> The Git Branch >> Edit Global .gitconfig button</em>. From there remove the line that assigns proxy, or the whole <code>[http]</code> section if it only contains proxy settings.</p></li>
+</ol>
+
+
+<p>See also:  <br/>
+<a href="/blog/2012/05/02/using-git-with-codeplex-on-windows/">Using Git With CodePlex on Windows</a>  <br/>
+<a href="/blog/2012/05/05/using-git-with-github-on-windows/">Using Git With GitHub on Windows</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/07/04/how-i-built-my-first-qt-application-in-visual-studio-2010/">How I Built My First Qt Application in Visual Studio 2010</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-04T23:10:54+10:00" pubdate data-updated="true">Jul 4<span>th</span>, 2011</time>
+        
+           | <a href="/blog/2011/07/04/how-i-built-my-first-qt-application-in-visual-studio-2010/#disqus_thread"
+             data-disqus-identifier="http://www.sinairv.com/blog/2011/07/04/how-i-built-my-first-qt-application-in-visual-studio-2010/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I downloaded the Qt SDK (offline installer version which was 1.7 GB) from:
+<a href="http://qt.nokia.com/downloads">http://qt.nokia.com/downloads</a></p>
+
+<p>At the time of this writing, the Qt libraries version was 4.7.3.</p>
+
+<p>Then I downloaded the VS-Addin, using the link at the bottom of the downloads page, titled &ldquo;Qt Visual Studio Add-in&rdquo;.</p>
+
+<p>After installing both SDK, and the VS-Addin on my system, I started Visual Studio 2010. I tried to create a sample project by selecting: File > New > Project&hellip; > Qt4 Projects > Qt Application, and specified proper values for Name and Location. After going through the Qt wizard to the end, I encountered the following error message:</p>
+
+<pre><code>unable to find Qt Build!
+To solve this problem specify Qt Build!
+</code></pre>
+
+<p>By going to the Qt setup directory, one sees that there are Qt SDKs available for different target platforms. For example I installed Qt in &ldquo;D:\QtSDK\&rdquo; and in that directory I see some folders which correspond to different target platforms such as Desktop, Madde, Symbian, and others. An appropriate platform directory should contain a bin folder inside. This is true about Madde, and Symbian, but the Desktop folder is a root for subdirectories related to different Qt versions and C++ compilers. Since I wanted to develop Qt applications with Microsoft Visual C++ for the Windows Desktop platform I went to the following directory which contains the required bin folder:
+D:\QtSDK\Desktop\Qt\4.7.3\msvc2008</p>
+
+<p>For the next step, I had to introduce this directory for the Qt VS-addin. From the main menu, I selected Qt > Qt Options > Qt Versions. I pressed the Add button, and entered &ldquo;Win 4.7.3&rdquo; in the  &ldquo;Version name&rdquo; field, and entered the above path in the &ldquo;Path&rdquo; field, and pressed OK. The path that I specified was added to the gird. Then I made sure that in the Default Qt/Win version, the version that I have just specified (i.e., Win 4.7.3) is selected. I pressed OK, and tried once more with the Qt New Project wizard. This time everything went OK, and I succeeded to create and build my first Qt Application in the VS 2010 environment.</p>
+
+<p>Note: In fact the current Qt binaries are targeted for Visual Studio 2008. I was able to use the binaries (i.e., libs and dlls) because I had also Visual Studio 2008 and the corresponding C++ compiler installed on my machine. Otherwise, I presume that I would need to recompile the sources with the VS-2010 C++ compiler.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/05/26/how-to-disable-hibernate-and-free-some-disk-space-in-windows-7/">How to Disable Hibernate and Free Some Disk Space in Windows 7</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-26T23:07:00+10:00" pubdate data-updated="true">May 26<span>th</span>, 2011</time>
+        
+           | <a href="/blog/2011/05/26/how-to-disable-hibernate-and-free-some-disk-space-in-windows-7/#disqus_thread"
+             data-disqus-identifier="http://www.sinairv.com/blog/2011/05/26/how-to-disable-hibernate-and-free-some-disk-space-in-windows-7/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Run a command prompt as administrator.</p>
+
+<p>Run the following command:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>powercfg.exe -h off</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The disk space is freed immediately. To turn it back on run:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>powercfg.exe -h on</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Reference: [<a href="http://helpdeskgeek.com/windows-7/windows-7-delete-hibernation-file-hiberfil-sys/">+</a>]</p>
 </div>
   
   
@@ -622,6 +884,8 @@
     </article>
   
   <div class="pagination">
+    
+      <a class="prev" href="/blog/page/2/">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -650,19 +914,19 @@
       </li>
     
       <li class="post">
-        <a href="/blog/2011/05/09/code-snippet-for-dealing-with-windows-forms-listview-control-in-details-mode/">Code Snippet for Dealing With Windows Forms ListView Control in Details Mode</a>
+        <a href="/blog/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c-number-5/">How to Make More Refactoring Friendly Data-bindings With C# 5</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2011/04/16/enabling-middle-click-in-synaptics-touchpad-drivers/">Enabling Middle Click in Synaptics Touchpad Drivers</a>
+        <a href="/blog/2012/09/22/different-ways-of-generating-new-guids/">Different Ways of Generating New GUIDs</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2011/03/02/code-snippet-for-trimming-strings-of-white-space-and-control-characters/">Code Snippet for Trimming Strings of White-space and Control Characters</a>
+        <a href="/blog/2012/07/23/an-example-for-c-number-dynamic-in-action/">An Example for C# Dynamic in Action</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2010/08/09/code-snippet-for-determining-how-two-intervals-overlap/">Code Snippet for Determining How Two Intervals Overlap</a>
+        <a href="/blog/2012/05/27/programming-koans-one-of-the-best-ways-to-learn-a-new-language-or-framework/">Programming Koans: One of the Best Ways to Learn a New Language or Framework</a>
       </li>
     
   </ul>

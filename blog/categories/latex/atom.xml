@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: LaTeX | Sina Iravanian]]></title>
+  <link href="http://www.sinairv.com/blog/categories/latex/atom.xml" rel="self"/>
+  <link href="http://www.sinairv.com/"/>
+  <updated>2014-01-12T20:02:11+10:00</updated>
+  <id>http://www.sinairv.com/</id>
+  <author>
+    <name><![CDATA[Sina Iravanian]]></name>
+    <email><![CDATA[sina.iravanian@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[How to Include .eps Images With Pdflatex]]></title>
+    <link href="http://www.sinairv.com/blog/2011/05/21/how-to-include-eps-images-with-pdflatex/"/>
+    <updated>2011-05-21T23:03:15+10:00</updated>
+    <id>http://www.sinairv.com/blog/2011/05/21/how-to-include-eps-images-with-pdflatex</id>
+    <content type="html"><![CDATA[<p>PdfLaTeX does not support <code>eps</code> files by default. Add the following imports in the beginning:</p>
+
+<p><code>latex
+\usepackage{graphicx} % already added
+\usepackage{epstopdf}
+</code></p>
+
+<p>After that the <code>includegraphics</code> commands with <code>eps</code> arguments should produce no problems.</p>
+
+<p>Reference: [<a href="http://mactex-wiki.tug.org/wiki/index.php?title=Graphics_inclusion">+</a>]</p>
+]]></content>
+  </entry>
+  
+</feed>

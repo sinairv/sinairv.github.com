@@ -4,7 +4,7 @@
   <title><![CDATA[Category: C# | Sina Iravanian]]></title>
   <link href="http://www.sinairv.com/blog/categories/c-number/atom.xml" rel="self"/>
   <link href="http://www.sinairv.com/"/>
-  <updated>2014-01-10T00:48:07+10:00</updated>
+  <updated>2014-01-12T20:02:11+10:00</updated>
   <id>http://www.sinairv.com/</id>
   <author>
     <name><![CDATA[Sina Iravanian]]></name>
@@ -12,6 +12,199 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[How to Make More Refactoring Friendly Data-bindings With C# 5]]></title>
+    <link href="http://www.sinairv.com/blog/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c-number-5/"/>
+    <updated>2012-11-01T19:46:29+10:00</updated>
+    <id>http://www.sinairv.com/blog/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c-number-5</id>
+    <content type="html"><![CDATA[<p>Imagine that we want to create a <code>Person</code> business object for whose properties we desire a two-way data binding. The source-to-target data-binding can be triggered by implementing <code>INotifyPropertyChanged</code> interface, like this:</p>
+
+<p>```csharp
+public class Person : INotifyPropertyChanged
+{</p>
+
+<pre><code>private string _name;
+private double _age;
+
+public string Name 
+{
+    get
+    {
+        return _name;
+    }
+
+    set
+    {
+        if (value != _name)
+        {
+            _name = value;
+            OnPropertyChanged("Name");
+        }
+    }
+}
+
+public double Age 
+{
+    get
+    {
+        return _age;
+    }
+
+    set
+    {
+        if (_age != value)
+        {
+            _age = value;
+            OnPropertyChanged("Age");
+        }
+    }
+}
+
+public event PropertyChangedEventHandler PropertyChanged;
+
+private void OnPropertyChanged(string propertyName)
+{
+    if (PropertyChanged != null)
+    {
+        PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+    }
+}
+</code></pre>
+
+<p>}
+```</p>
+
+<p>See how the setters pass the property name in a <code>string</code>. This is not nice, because whenever we change the property name through refactoring tools, the string value remains untouched and we have to manually change them as well (if we are lucky enough to get notified before run-time). Anyway we had to tolerate them for years&hellip;</p>
+
+<p>C# 5 comes with a nice feature, which is addition of two attributes <code>[CallerFilePath]</code> and <code>[CallerMemberName]</code> in the <code>System.Runtime.CompilerServices</code> namespace. If you decorate an <strong>optional</strong> string parameter of a method with one of these attributes, then the value of that parameter will be replaced with the caller&rsquo;s file name or the caller&rsquo;s member name at runtime, if no explicit value is passed for the optional parameter. They come very handy in logging scenarios, but we can use the latter for making our data-binding code nicer. This is how:</p>
+
+<p>```csharp
+public class Person : INotifyPropertyChanged
+{</p>
+
+<pre><code>private string _name;
+private double _age;
+
+public string Name 
+{
+    get
+    {
+        return _name;
+    }
+
+    set
+    {
+        if (value != _name)
+        {
+            _name = value;
+            OnPropertyChanged();
+        }
+    }
+}
+
+public double Age 
+{
+    get
+    {
+        return _age;
+    }
+
+    set
+    {
+        if (_age != value)
+        {
+            _age = value;
+            OnPropertyChanged();
+        }
+    }
+}
+
+public event PropertyChangedEventHandler PropertyChanged;
+
+private void OnPropertyChanged([CallerMemberName]string propertyName = "")
+{
+    if (PropertyChanged != null)
+    {
+        PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+    }
+}
+</code></pre>
+
+<p>}
+```</p>
+
+<p>Now that string constants are removed from the setters we can more freely refactor our code. After being spoiled by automatic properties, this is still a very verbose way of defining properties; however it is much better than before.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[An Example for C# Dynamic in Action]]></title>
+    <link href="http://www.sinairv.com/blog/2012/07/23/an-example-for-c-number-dynamic-in-action/"/>
+    <updated>2012-07-23T17:20:53+10:00</updated>
+    <id>http://www.sinairv.com/blog/2012/07/23/an-example-for-c-number-dynamic-in-action</id>
+    <content type="html"><![CDATA[<p>Recently I was involved with enabling validation for a Windows Forms form containing several pages shown through a tree view. There were one user control defined for each page, therefore whenever a node in tree-view got activated, an instance of that user-control were shown. The user-controls did not have a common user-defined parent base-class or interface. The author of the existing code had defined a <code>Save</code> method in each control separately which performed updating data with values entered in the forms.</p>
+
+<p>First, I changed all <code>void Save()</code> methods to <code>bool Save()</code>, and performed the validation stuff in each control separately. Then in the parent form, I created an array of <code>Control</code>s, so that I could loop through them, and call their <code>Save</code> method. But wait, <code>Save</code> is not inherited from any base-class or interface, so there&rsquo;s no polymorphism at hand. How can I call them through references of type <code>Control</code>?</p>
+
+<p>Well honestly, the best solution would be adding a new interface to the project, say <code>ISavableControl</code> or something, add the <code>Save</code> method to it, and let the controls implement that interface. But I wanted to make a quick fix to the problem without adding new files and types to the code. Here C#&lsquo;s <code>dynamic</code> comes into action.</p>
+
+<p>Using <code>dynamic</code> keyword, one postpones binding methods, properties, and fields to run-time. In our scenario we know that the user-controls each have a method called <code>Save</code>, which is not derived from a parent. Without <code>dynamic</code>, I would need to have a reference explicitly from each user control&rsquo;s type, and I would have to call them one by one, as in:</p>
+
+<p><code>csharp
+bool succeeded = false;
+succeeded = userControl1.Save();
+succeeded = succeeded || userControl2.Save();
+succeeded = succeeded || userControl3.Save();
+// ...
+succeeded = succeeded || userControln.Save();
+</code></p>
+
+<p>However using <code>dynamic</code> keyword, life gets a lot easier:</p>
+
+<p>```csharp
+// objects are not inherited from a base class or interface,
+// therefore we cannot call Save using polymorphism
+bool succeeded = false;
+foreach(var ctrl in controlsArray)
+{</p>
+
+<pre><code>dynamic dynCtrl = ctrl;
+succeeded = succeeded || dynCtrl.Save();
+</code></pre>
+
+<p>}</p>
+
+<p>// do something with the value of succeeded
+```</p>
+
+<p>Take care that binding the <code>Save</code> methods to controls happen at runtime. Therefore if a control does not implement a <code>Save</code> method, or if another one misspells <code>Save</code>, as say <code>Svae</code>, you will get no hints at compile time. So, try to avoid this style of coding, unless you have good reasons for doing so.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Code Snippet for Calculating Mean, Variance, and Standard Deviation]]></title>
+    <link href="http://www.sinairv.com/blog/2011/05/15/code-snippet-for-calculating-mean/"/>
+    <updated>2011-05-15T22:58:36+10:00</updated>
+    <id>http://www.sinairv.com/blog/2011/05/15/code-snippet-for-calculating-mean</id>
+    <content type="html"><![CDATA[<p>Here are the methods to calculate mean, variance, and standard deviation of a vector of values. These are put here for easy reference, so that I do not need to rewrite them again (and again (and again)).</p>
+
+<script src="https://gist.github.com/sinairv/2693528.js"></script>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[A Helper Method for Performing K-Fold Cross Validation]]></title>
+    <link href="http://www.sinairv.com/blog/2011/05/15/a-helper-method-for-performing-k-fold-cross-validation/"/>
+    <updated>2011-05-15T22:41:05+10:00</updated>
+    <id>http://www.sinairv.com/blog/2011/05/15/a-helper-method-for-performing-k-fold-cross-validation</id>
+    <content type="html"><![CDATA[<p>The following method is a utility method for creating the <em>K</em> divisions upon which one is going to perform the <em>K</em>-fold cross validation operation. The input of the method is the length of the training data, and the number <em>K</em>. The output conveys which indices of the training-data is to be put in each division.</p>
+
+<script src="https://gist.github.com/sinairv/2693647.js"></script>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Code Snippet for Dealing With Windows Forms ListView Control in Details Mode]]></title>
@@ -25,58 +218,6 @@
 <p>The following gist contains the code to accomplish this. It consists of 3 files. The <code>ListViewColumnSorter.cs</code> file is responsible for the sorting stuff. The <code>ListViewUtils.cs</code> file provides the utility methods for a ListView control. The main methods that perform the job are located in the <code>ListViewUtils</code> class. The two needed methods are <code>InitListView</code> and <code>AppendToListView</code>. And finally the <code>Usage.cs</code> file provides a small demo of the utility methods.</p>
 
 <script src="https://gist.github.com/sinairv/2693729.js"></script>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Code Snippet for Trimming Strings of White-space and Control Characters]]></title>
-    <link href="http://www.sinairv.com/blog/2011/03/02/code-snippet-for-trimming-strings-of-white-space-and-control-characters/"/>
-    <updated>2011-03-02T00:07:00+10:00</updated>
-    <id>http://www.sinairv.com/blog/2011/03/02/code-snippet-for-trimming-strings-of-white-space-and-control-characters</id>
-    <content type="html"><![CDATA[<p>The following method trims the given string of both white-space characters and control characters, and its rather fast!</p>
-
-<script src="https://gist.github.com/sinairv/2693951.js"></script>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Code Snippet for Determining How Two Intervals Overlap]]></title>
-    <link href="http://www.sinairv.com/blog/2010/08/09/code-snippet-for-determining-how-two-intervals-overlap/"/>
-    <updated>2010-08-09T23:45:00+10:00</updated>
-    <id>http://www.sinairv.com/blog/2010/08/09/code-snippet-for-determining-how-two-intervals-overlap</id>
-    <content type="html"><![CDATA[<p>The following pieces of code help figure out how two intervals overlap, and provides helper methods to represent them in a way that is useful for debugging purposes. This job is quite easy to accomplish, but since I&rsquo;ve written it too many times from scratch, I put them in the following gist.</p>
-
-<p>The <code>IntervalOverlapKinds.cs</code> file defines the <code>IntervalOverlapKinds</code> enumeration. The interval detection is carried out in the static methods of the <code>IntervalOverlap</code> class.</p>
-
-<script src="https://gist.github.com/sinairv/2693975.js"></script>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Code Snippet for Representing Strings With All Their Characters Visible]]></title>
-    <link href="http://www.sinairv.com/blog/2010/08/08/code-snippet-for-representing-strings-with-all-their-characters-visible/"/>
-    <updated>2010-08-08T23:55:20+10:00</updated>
-    <id>http://www.sinairv.com/blog/2010/08/08/code-snippet-for-representing-strings-with-all-their-characters-visible</id>
-    <content type="html"><![CDATA[<p>This piece of code is useful for debugging purposes or working on string processing algorithms. There are times, that you need to see all the characters of a string including invisible characters. This little method may help:</p>
-
-<script src="https://gist.github.com/sinairv/2694034.js"></script>
-
-
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[A Code Snippet for Searching and Highlighting a Token or String in a RichTextBox]]></title>
-    <link href="http://www.sinairv.com/blog/2010/08/08/a-code-snippet-for-searching-and-highlighting-a-token-or-string-in-a-richtextbox/"/>
-    <updated>2010-08-08T21:28:07+10:00</updated>
-    <id>http://www.sinairv.com/blog/2010/08/08/a-code-snippet-for-searching-and-highlighting-a-token-or-string-in-a-richtextbox</id>
-    <content type="html"><![CDATA[<p>Suppose that you intend to find a string or a token (i.e., whole word, instead of a substring) and change their color in some Windows Forms <code>RichTextBox</code>. The following code snippets will help. The <code>FindStringAndSetColor</code> method looks for instances of an arbitrary string in the contents of the <code>RichTextBox</code>, while the <code>FindTokenAndSetColor</code> method looks for whole words (tokens).</p>
-
-<script src="https://gist.github.com/sinairv/2694067.js"></script>
 
 ]]></content>
   </entry>

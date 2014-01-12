@@ -55,20 +55,86 @@
         <lastmod>2014-01-10T00:47:56+10:00</lastmod>
     </url>
     <url>
+        <loc>
+            http://www.sinairv.com/blog/2011/05/10/problem-with-finding-local-resources-in-intellij-idea/
+        </loc>
+        <lastmod>2014-01-11T22:38:12+10:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://www.sinairv.com/blog/2011/05/15/a-helper-method-for-performing-k-fold-cross-validation/
+        </loc>
+        <lastmod>2014-01-11T22:43:38+10:00</lastmod>
+    </url>
+    <url>
+        <loc>http://www.sinairv.com/blog/2011/05/15/code-snippet-for-calculating-mean/</loc>
+        <lastmod>2014-01-11T23:01:44+10:00</lastmod>
+    </url>
+    <url>
+        <loc>http://www.sinairv.com/blog/2011/05/21/how-to-include-eps-images-with-pdflatex/</loc>
+        <lastmod>2014-01-11T23:04:52+10:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://www.sinairv.com/blog/2011/05/26/how-to-disable-hibernate-and-free-some-disk-space-in-windows-7/
+        </loc>
+        <lastmod>2014-01-11T23:08:26+10:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://www.sinairv.com/blog/2011/07/04/how-i-built-my-first-qt-application-in-visual-studio-2010/
+        </loc>
+        <lastmod>2014-01-11T23:16:04+10:00</lastmod>
+    </url>
+    <url>
+        <loc>http://www.sinairv.com/blog/2012/05/01/how-to-setup-git-for-windows/</loc>
+        <lastmod>2014-01-12T16:44:18+10:00</lastmod>
+    </url>
+    <url>
+        <loc>http://www.sinairv.com/blog/2012/05/02/using-git-with-codeplex-on-windows/</loc>
+        <lastmod>2014-01-12T16:42:06+10:00</lastmod>
+    </url>
+    <url>
+        <loc>http://www.sinairv.com/blog/2012/05/05/using-git-with-github-on-windows/</loc>
+        <lastmod>2014-01-12T16:40:42+10:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://www.sinairv.com/blog/2012/05/27/programming-koans-one-of-the-best-ways-to-learn-a-new-language-or-framework/
+        </loc>
+        <lastmod>2014-01-12T16:49:28+10:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://www.sinairv.com/blog/2012/07/23/an-example-for-c-number-dynamic-in-action/
+        </loc>
+        <lastmod>2014-01-12T17:30:39+10:00</lastmod>
+    </url>
+    <url>
+        <loc>http://www.sinairv.com/blog/2012/09/22/different-ways-of-generating-new-guids/</loc>
+        <lastmod>2014-01-12T17:52:22+10:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://www.sinairv.com/blog/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c-number-5/
+        </loc>
+        <lastmod>2014-01-12T19:50:31+10:00</lastmod>
+    </url>
+    <url>
         <loc>http://www.sinairv.com/blog/2014/01/10/moved-my-blog-to-octopress/</loc>
-        <lastmod>2014-01-10T00:22:36+10:00</lastmod>
+        <lastmod>2014-01-12T20:01:59+10:00</lastmod>
     </url>
     <url>
         <loc>http://www.sinairv.com/about/</loc>
-        <lastmod>2013-12-17T01:47:52+10:00</lastmod>
+        <lastmod>2014-01-12T16:01:08+10:00</lastmod>
     </url>
     <url>
         <loc>http://www.sinairv.com/blog/archives/</loc>
-        <lastmod>2014-01-10T00:47:56+10:00</lastmod>
+        <lastmod>2014-01-12T20:01:59+10:00</lastmod>
     </url>
     <url>
         <loc>http://www.sinairv.com/</loc>
-        <lastmod>2014-01-10T00:47:56+10:00</lastmod>
+        <lastmod>2014-01-12T20:01:59+10:00</lastmod>
     </url>
     <url>
         <loc>http://www.sinairv.com/matlabplotwithmarkers/</loc>

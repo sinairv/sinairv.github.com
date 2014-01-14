@@ -28,7 +28,7 @@ figure.code, .gist-file, pre {
 }
 
 .gist .highlight, figure.code .highlight {
-  @include selection(adjust-color($base03, $lightness: 23%, $saturation: -65%), $text-shadow: $base03 0 1px);
+  @include selection($solar_selback, $text-shadow: $solar_selshadow 0 1px, $color: $solar_selfore);
 }
 html .gist .gist-file {
   margin-bottom: 1.8em;
@@ -127,10 +127,10 @@ p, li {
   span { color: $base1 !important; }
   span { font-style: normal !important; font-weight: normal !important; }
 
-  .c      { color: $base01 !important; font-style: italic !important; }                     /* Comment */
-  .cm     { color: $base01 !important; font-style: italic !important; }                     /* Comment.Multiline */
-  .cp     { color: $base01 !important; font-style: italic !important;  }                     /* Comment.Preproc */
-  .c1     { color: $base01 !important; font-style: italic !important; }                     /* Comment.Single */
+  .c      { color: $base01 !important;  }                     /* Comment */
+  .cm     { color: $base01 !important;  }                     /* Comment.Multiline */
+  .cp     { color: $base01 !important;  }                     /* Comment.Preproc */
+  .c1     { color: $base01 !important;  }                     /* Comment.Single */
   .cs     { color: $base01 !important; font-weight: bold !important; font-style: italic !important; }   /* Comment.Special */
   .err    { color: $solar-red !important; background: none !important; }                                            /* Error */
   .k      { color: $solar-orange !important; font-weight: bold !important;}                       /* Keyword */

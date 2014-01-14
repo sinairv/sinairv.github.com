@@ -5,7 +5,7 @@ comments: false
 sharing: true
 footer: true
 ---
-![Sina Iravanian](http://sinairv.com/images/Sina-Gravatar.jpeg)
+![Sina Iravanian](/images/Sina-Gravatar.jpeg)
 
 My name is Sina Iravanian (pronounced `/si:'na: i:r@va:ni:'a:n/` and spelled in Persian as سینا ایروانیان). I was born in Tehran, Iran in June 1983.
 

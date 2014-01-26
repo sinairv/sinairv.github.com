@@ -122,7 +122,7 @@
     </url>
     <url>
         <loc>http://www.sinairv.com/blog/2014/01/10/moved-my-blog-to-octopress/</loc>
-        <lastmod>2014-01-12T20:01:59+10:00</lastmod>
+        <lastmod>2014-01-12T23:06:07+10:00</lastmod>
     </url>
     <url>
         <loc>http://www.sinairv.com/about/</loc>
@@ -130,11 +130,11 @@
     </url>
     <url>
         <loc>http://www.sinairv.com/blog/archives/</loc>
-        <lastmod>2014-01-12T20:01:59+10:00</lastmod>
+        <lastmod>2014-01-14T23:04:07+10:00</lastmod>
     </url>
     <url>
         <loc>http://www.sinairv.com/</loc>
-        <lastmod>2014-01-12T20:01:59+10:00</lastmod>
+        <lastmod>2014-01-12T23:06:07+10:00</lastmod>
     </url>
     <url>
         <loc>http://www.sinairv.com/matlabplotwithmarkers/</loc>
@@ -143,6 +143,70 @@
     <url>
         <loc>http://www.sinairv.com/mschartwrapper/</loc>
         <lastmod>2013-12-09T02:58:28+10:00</lastmod>
+    </url>
+    <url>
+        <loc>http://www.sinairv.com/notebook/AndroidNotes.html</loc>
+        <lastmod>2014-01-26T20:37:52+10:00</lastmod>
+    </url>
+    <url>
+        <loc>http://www.sinairv.com/notebook/AspNetMvcNotes.html</loc>
+        <lastmod>2014-01-26T20:38:34+10:00</lastmod>
+    </url>
+    <url>
+        <loc>http://www.sinairv.com/notebook/Entity Framework Notes.html</loc>
+        <lastmod>2014-01-26T20:38:21+10:00</lastmod>
+    </url>
+    <url>
+        <loc>http://www.sinairv.com/notebook/</loc>
+        <lastmod>2014-01-26T20:58:36+10:00</lastmod>
+    </url>
+    <url>
+        <loc>http://www.sinairv.com/notebook/JavaScriptNotes.html</loc>
+        <lastmod>2014-01-26T20:44:23+10:00</lastmod>
+    </url>
+    <url>
+        <loc>http://www.sinairv.com/notebook/JavaScriptPrimer.html</loc>
+        <lastmod>2014-01-26T20:54:11+10:00</lastmod>
+    </url>
+    <url>
+        <loc>http://www.sinairv.com/notebook/jQueryNotes.html</loc>
+        <lastmod>2014-01-26T20:44:12+10:00</lastmod>
+    </url>
+    <url>
+        <loc>http://www.sinairv.com/notebook/MVVM-PRISM-XAML.html</loc>
+        <lastmod>2014-01-26T20:49:46+10:00</lastmod>
+    </url>
+    <url>
+        <loc>http://www.sinairv.com/notebook/NHibernateNotes.html</loc>
+        <lastmod>2014-01-26T20:43:20+10:00</lastmod>
+    </url>
+    <url>
+        <loc>http://www.sinairv.com/notebook/RegexRecipes.html</loc>
+        <lastmod>2014-01-26T20:42:53+10:00</lastmod>
+    </url>
+    <url>
+        <loc>http://www.sinairv.com/notebook/SQLTips.html</loc>
+        <lastmod>2014-01-26T20:51:40+10:00</lastmod>
+    </url>
+    <url>
+        <loc>http://www.sinairv.com/notebook/TriggerExists.html</loc>
+        <lastmod>2014-01-26T20:42:21+10:00</lastmod>
+    </url>
+    <url>
+        <loc>http://www.sinairv.com/notebook/Unity.html</loc>
+        <lastmod>2014-01-26T20:11:30+10:00</lastmod>
+    </url>
+    <url>
+        <loc>http://www.sinairv.com/notebook/WCFNotes.html</loc>
+        <lastmod>2014-01-26T20:41:57+10:00</lastmod>
+    </url>
+    <url>
+        <loc>http://www.sinairv.com/notebook/WinFormsRedBorder.html</loc>
+        <lastmod>2014-01-26T20:41:31+10:00</lastmod>
+    </url>
+    <url>
+        <loc>http://www.sinairv.com/notebook/WPFNotes.html</loc>
+        <lastmod>2014-01-26T20:44:38+10:00</lastmod>
     </url>
     <url>
         <loc>http://www.sinairv.com/pdfrenamer/</loc>

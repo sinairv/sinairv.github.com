@@ -1,0 +1,958 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>A JavaScript Primer - Sina Iravanian</title>
+  <meta name="author" content="Sina Iravanian">
+
+  
+  <meta name="description" content="A JavaScript Primer These are lessons learned when I tried to strengthen my JavaScript skills, by learning from these Koans: JavaScript Koans by &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.sinairv.com/notebook/JavaScriptPrimer.html">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Sina Iravanian" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-46467071-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Sina Iravanian</a></h1>
+  
+    <h2>I blog about software development</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:www.sinairv.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About</a></li>
+  <li><a href="/works">Works</a></li>
+  <li><a href="/notebook">Notebook</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article role="article">
+  
+  <header>
+    <h1 class="entry-title">A JavaScript Primer</h1>
+    
+  </header>
+  
+  <p>These are lessons learned when I tried to strengthen my JavaScript skills, by learning from these <a href="http://sinairv.wordpress.com/2012/05/27/programming-koans-one-of-the-best-ways-to-learn-a-new-language-or-framework/">Koans</a>:</p>
+
+<ol>
+<li>JavaScript Koans by Liam McLennan, hosted on <a href="https://github.com/liammclennan/JavaScript-Koans">GitHub</a></li>
+<li>JavaScript Koans by David Laing, again hosted on <a href="https://github.com/mrdavidlaing/javascript-koans">GitHub</a></li>
+</ol>
+
+
+<p>I highly recommend learning from both of these Koans in the same order as specified above. The first one is easier to start with. While the second one is a smaller set of Koans, but gets more advanced, and contains an introduction to <a href="http://underscorejs.org/">Underscore.js</a> as well.</p>
+
+<p>I come from a C#, Java, and C++ background, so that it’s probable that my terminology is not consistent with those used by the JavaScript community; particularly when it comes to object oriented concepts.</p>
+
+<p>To test the code snippets here, you will need to host the JavaScript code within an html page, and open that page into your browser. A simple way is using the following template:</p>
+
+<pre><code>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+    &lt;head&gt;
+        &lt;script language="javascript" type="text/javascript"&gt;
+            // TODO: put other JavaScript codes here
+            console.log("Hi");
+        &lt;/script&gt;
+        &lt;title&gt;JavaScript Testing...&lt;/title&gt;
+    &lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Let's See...&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>The examples in this post make use of <code>console.log</code> function to print to the output. To view the results on the browser console do the following in each browser:</p>
+
+<ul>
+<li>Google Chrome (19.x and most probably others): Press F12, and go to the Console tab</li>
+<li>Mozilla Firefox (12.0 and most probably others): go to Firefox main menu > Web Developer > Web Console (Ctrl + Shift + K)</li>
+<li>Microsoft Internet Explorer (9): Press F12, and go to the Console tab</li>
+</ul>
+
+
+<h3>Basic Concepts</h3>
+
+<p><strong>Comparison and Equality.</strong> Comparison via <code>==</code> Considers equality, regardless of type.</p>
+
+<p>Comparison via <code>===</code> checks identity, and types must match. Always use this syntax, if possible.</p>
+
+<p>Corresponding inequality operators are: <code>!==</code> and <code>!===</code> . These are some examples of the behaviour of the equality operator:</p>
+
+<pre><code>console.log(3 == "3");  // true: equality with type correction
+console.log(3 === "3"); // false: equality without type correction
+console.log(3 === 3);   // true
+console.log(3 === 2+1); // true
+</code></pre>
+
+<p>More examples for odd behaviours of <code>==</code> operator. The result to all the examples below would be <code>false</code> if we use<code>===</code> instead of <code>==</code>:</p>
+
+<pre><code>console.log(0 == false);  // true
+console.log(true == 1);   // true
+console.log(true == 5);   // *false*
+console.log("" == false); // true
+console.log("" == 0);     // true
+</code></pre>
+
+<p>Note that <code>NaN</code> (short for not a number) is never equal to itself! It must always be checked using the function <code>isNaN</code>.</p>
+
+<p>Strings enclosed in single-quotes and double-quotes are the same. Note that in JavaScript there’s no such thing as character data-types.</p>
+
+<pre><code>console.log("something" === 'something'); // true
+</code></pre>
+
+<p><strong>Global variables</strong> are assigned to the <code>window</code> object:</p>
+
+<pre><code>function() {
+    temp = 1; // note that it does not start with `var`
+    equals(temp, window.temp, 'global variables are assigned to the window object');
+}
+</code></pre>
+
+<p><strong>Creating objects from anonymous types</strong>:</p>
+
+<pre><code>var person = {
+        name: "John Doe",
+        age: 27
+    };
+</code></pre>
+
+<p><strong>Enumerating properties of an object with the <code>for in</code> loop</strong>:</p>
+
+<pre><code>var person = {
+    name: "John Doe",
+    age: 27
+};
+
+var result = "";
+// for in enumerates the property names of an object
+for (property_name in person) {
+    result = result + property_name + " ";
+};
+console.log(result); // name age
+</code></pre>
+
+<p><strong>Null coalescing operator</strong>: The same as C#’s <code>??</code> operator, is logical OR <code>||</code> in Javascript. If the first argument (the one at left-hand-side of <code>||</code>) is null, it chooses the second argument (the one at the right-hand-side of <code>||</code>):</p>
+
+<pre><code>var result = null || "a value";
+console.log(result); // a value
+</code></pre>
+
+<p>See this wondoerful explanation <a href="http://stackoverflow.com/a/476445/836432">here</a>.</p>
+
+<p><strong>Sinagle vs Double quoted strings.</strong> They are the same and of the same type.</p>
+
+<pre><code>console.log("str1" === 'str1'); // true
+</code></pre>
+
+<p><strong>tyepof</strong>. It receives an object as an argument and returns its type (as opposed to C#, it does not need the type-name as the argument).</p>
+
+<pre><code>typeof(2) -&gt; number
+typeof(2.0) -&gt; number
+typeof("Hi") -&gt; string
+typeof('Hi') -&gt; string
+typeof('H') -&gt; string
+typeof("Hi".charAt(0)) -&gt; string
+typeof(false)-&gt; boolean
+typeof(null) -&gt; object
+</code></pre>
+
+<p>As you see, there’s no such thing as character type, they’re all strings.</p>
+
+<p>The type informations are also strings:</p>
+
+<pre><code>typeof(typeof(2.0)) -&gt; string
+</code></pre>
+
+<p><strong>How to include unicode chars in a string.</strong></p>
+
+<pre><code>var stringWithAnEscapedCharacter  = "\u0041pple";
+</code></pre>
+
+<p><strong>The string <code>slice</code> method.</strong> returns a substring of the given string. This is the syntax of the method [<a href="http://www.w3schools.com/jsref/jsref_slice_string.asp">+</a>]:<code>string.slice(start,end)</code>.</p>
+
+<ul>
+<li><code>start</code>: Required. The index where to begin the extraction.</li>
+<li><code>end</code>: Optional. The index (up to, but not including) where to end the extraction, If omitted, slice() selects all characters from the start-position to the end of the string.</li>
+</ul>
+
+
+<p><strong>NaN</strong> (short for not a number) is the result of failed arithmatic operations. Two NaN objects are not equal to each other, always use the <code>isNaN</code> function to check.</p>
+
+<pre><code>var resultOfFailedOperations = 7/'apple';
+console.log(isNaN(resultOfFailedOperations)); // true
+console.log(resultOfFailedOperations == NaN); // false
+</code></pre>
+
+<h3>Objects</h3>
+
+<p>Empty objects (no properties, no methods): <code>var empty_obj = {};</code></p>
+
+<p>Objects can have properties in definition:</p>
+
+<pre><code>var myObject = {
+    name: "John Doe",
+    age: 28
+}; 
+</code></pre>
+
+<p>Or properties can be added later:</p>
+
+<pre><code>var myObject = {};
+myObject.name = "John Doe";
+myObject.age = 29;
+</code></pre>
+
+<p>Properties can be added from strings dynamically:</p>
+
+<pre><code>var myObject = {};
+myObject["name"] = "John Doe";
+myObject["age"] = 28;
+</code></pre>
+
+<p>Objects can have methods, and fields can be accessed via the <code>this</code> qualifier:</p>
+
+<pre><code>var myObject = {
+    name: "John Doe",
+    age: 28,
+    toString: function() {
+        return "I'm " + this.name + ".";
+    }
+}
+</code></pre>
+
+<p>Properties can be accessed by their name in the code, as in: <code>myObject.name</code> or accessed from a string at run-time, as in: <code>myObject["name"]</code>.</p>
+
+<h3>Arrays</h3>
+
+<p>Arrays can contain objects from different types:</p>
+
+<pre><code>var favouriteThings = ["cellar door", 42, true]; 
+// array elements do not have to be of the same type
+// elements are referenced by [] indexer
+// favouriteThings[1] -&gt; 42
+// array type is "object"
+// typeof(favouriteThings) -&gt; "object"
+// the length is accessed via `.length` property
+</code></pre>
+
+<p>Creating arrays with a predefined length:</p>
+
+<pre><code>var arr = new Array(10);
+console.log(arr.length); // 10
+console.log(arr); // [undefined × 10]
+</code></pre>
+
+<p>Or one can explicitly assign to the <code>array.length</code> property. Note that if the new value is less than the original array size, the trailing elements will be removed:</p>
+
+<pre><code>var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+arr.length = 5;
+console.log(arr.length); // 5
+console.log(arr); // [1, 2, 3, 4, 5] 
+</code></pre>
+
+<p><strong>Note:</strong> The <code>for in</code> loop in arrays, iterates through the indices only, not the values.</p>
+
+<p><strong>Arrays are passed to functions by reference.</strong> Therefore any change to the passed array in the body of the function will modify the original array too. Also when assignments are done, the reference to tha array is assigned, hence this also has the risk of modifying the original array:</p>
+
+<pre><code>var arr = [0, 1, 2, 3, 4, 5];
+function changeArray(someArray) {
+    someArray[1] = 10;
+}
+changeArray(arr);
+console.log(arr.toString()); // [0, 10, 2, 3, 4, 5]
+var anotherArr = arr;
+anotherArr[4] = 40;
+console.log(arr.toString()); // [0, 10, 2, 3, 40, 5]
+</code></pre>
+
+<p>You can create a copy of an array using <code>arr.slice()</code>.</p>
+
+<p><strong>Array <code>join</code> method</strong> creates a string by concatenating all array members using the provided separator:</p>
+
+<pre><code>var arr = [1, 2, false, 4.5, "hi"];
+console.log(arr.join(","));
+// 1,2,false,4.5,hi
+</code></pre>
+
+<p><strong>Array <code>slice</code> method.</strong> Returns the sub-array of a given array, from the first index inclusive, to the second index exclusive; or returns an empty array if the provided indices do not match a valid range within the provided array:</p>
+
+<pre><code>var arr = [0, 1, 2, 3, 4, 5];
+var sub = arr.slice(2, 4);
+// [2, 3]
+</code></pre>
+
+<p>The <code>slice</code> function, when called without arguments creates a copy of the array. Changing the copied arrays elements will not affect the original array’s contents.</p>
+
+<pre><code>var copyOfArr = arr.slice();
+</code></pre>
+
+<p><strong>Array <code>splice</code> method.</strong> The <code>splice</code> method adds/removes items to/from an array, and returns the removed item(s) if any [<a href="http://www.w3schools.com/jsref/jsref_splice.asp">+</a>].</p>
+
+<p>Syntax: <code>array.splice(index,howmany,item1,.....,itemX)</code></p>
+
+<p>Parameter Values:</p>
+
+<ul>
+<li><code>index</code>: Required. An integer that specifies at what position to add/remove items, Use negative values to specify the position from the end of the array</li>
+<li><code>howmany</code>: Required. The number of items to be removed. If set to 0, no items will be removed</li>
+<li><code>item1, ..., itemX</code>: Optional. The new item(s) to be added to the array</li>
+</ul>
+
+
+<p>Return Value:</p>
+
+<p>Type: Array; A new array containing the removed items, if any</p>
+
+<p>This is a demo of <code>splice</code>. Note that, only when we remove items from an array, the method returns the removed items.</p>
+
+<pre><code>var array1 = [];
+console.log("Empty Array:\n" + array1.toString());
+
+var array2 = [1, 2, 3, 4];
+console.log("Array2:\n" + array2.toString());
+
+var array3 = array2.splice(2, 0, 2.25, 2.5, 2.75);
+console.log("array2 after additive splice():\n" + array2.toString());
+console.log("returned array from additive splice():\n" + array3.toString());
+
+var array4 = array2.splice(2, 3);
+console.log("array2 after deductive splice()\n" + array2);
+console.log("returned array from deductive splice()\n" + array4);
+
+//Empty Array:
+// 
+//Array2:
+//1,2,3,4 
+//array2 after additive splice():
+//1,2,2.25,2.5,2.75,3,4 
+//returned array from additive splice():
+// 
+//array2 after deductive splice()
+//1,2,3,4 
+//returned array from deductive splice()
+//2.25,2.5,2.75
+</code></pre>
+
+<p><strong>Array stack methods: <code>push</code> and <code>pop</code>.</strong> Javascript arrays have <code>push</code> and <code>pop</code> methods. <code>push</code> inserts at the end of an array, and <code>pop</code> removes from the end of an array. The <code>push</code> function can receive more than 1 argument to add to the end of an array.</p>
+
+<p><strong>Array <code>unshift</code> and <code>shift</code> methods.</strong> The <code>unshift</code> method inserts one or more items at the beginning of an array, while <code>shift</code> removes one item from the beginning of an array [<a href="http://www.w3schools.com/jsref/jsref_unshift.asp">+</a>, <a href="http://www.w3schools.com/jsref/jsref_shift.asp">+</a>].</p>
+
+<h3>Functions</h3>
+
+<p>This is the way a named function can be defined in JavaScript:</p>
+
+<pre><code>function fname() {
+    // body
+}
+</code></pre>
+
+<p>But the following syntax, is assigning a variable to an anonymous function:</p>
+
+<pre><code>var fn = function() {
+    // body
+};
+</code></pre>
+
+<p>and as seen above we receive a warning if we don’t put a semicolon after the closing brace. That’s because it is just an assignment statement, but a little bit fatter.</p>
+
+<p>Invokation of both is the same: <code>fn()</code>, and <code>fname()</code>.</p>
+
+<pre><code>typeof(fn) -&gt; "function"
+typeof(fname) -&gt; "function"
+</code></pre>
+
+<p>The <code>toString</code> method of each function returns the signature and the body of a function as well as its comments. See the result of <code>fn.toString()</code> or <code>fname.toString()</code> to get amazed.</p>
+
+<p><strong>The <code>Function</code> object.</strong> An alternative way to defining functions is creating an object from <code>Function</code>, and providing all the details in arguments as strings, e.g.:</p>
+
+<pre><code>var add = new Function("a", "b", "return a + b;");
+console.log(add(1, 2)); // 3
+</code></pre>
+
+<p><strong>Functions can return functions.</strong> See this nice example from <a href="https://github.com/mrdavidlaing/javascript-koans">JavaScript Koans by David Laing</a>:</p>
+
+<pre><code>function makeIncreaseByFunction(increaseByAmount) {
+    var increaseByFunction = function increaseBy(numberToIncrease) {
+        return numberToIncrease + increaseByAmount;
+    };
+    return increaseByFunction;
+}
+var increaseBy3 = makeIncreaseByFunction(3);
+var increaseBy5 = makeIncreaseByFunction(5);
+console.log(increaseBy3(10) + increaseBy5(10)); // 28;
+</code></pre>
+
+<h3>Reflection</h3>
+
+<p>Properties of an object can be accessed at run-time via the <code>for in</code> loop. This function, prints the properties of an object as well as their values:</p>
+
+<pre><code>function printProps(obj) {
+    console.log("{");
+    for (var propName in obj) {
+        console.log(propName + ": " + obj[propName]);
+    }
+    console.log("}");
+}
+</code></pre>
+
+<p>The <code>in</code> keyword, when not used along with the <code>for</code> loop, can be used to check whether an object has a specific property with the given name:</p>
+
+<pre><code>var obj = { name: "John", age: 29 };
+var hasName = "name" in obj;     // true
+var hasFamily = "family" in obj; // false
+</code></pre>
+
+<p><strong>Object Constructor functions</strong>: A function with a typical signature, but used for initializing objects. These functions usually assign fields using the <code>this</code> qualifier. Note that after each assignment, the specified field will be created, it doesn’t need to be declared beforehand:</p>
+
+<pre><code>function fnObject() {
+    this.name = "John";
+    this.age = 23;
+}
+</code></pre>
+
+<p>The above code can be regarded as the constructor of an object, with 2 fields namely <code>name</code>, and <code>age</code>. This is how we can instantiate this object with the <code>new</code> keyword:</p>
+
+<pre><code>var obj = new fnObject();
+</code></pre>
+
+<p>You can add properties at runtime to an instantiated object, not the class/prototype, via this syntax:<code>obj["newprop"] = "newvalue";</code></p>
+
+<p><strong>How to add properties to a class/object prototype?</strong> Via the <code>prototype</code> chain. E.g., to add a property to the<code>fnObject</code> statically (namely <code>weight</code>) use the following syntax. The property will be added to all instances of the class:</p>
+
+<pre><code>fnObject.prototype.weight = 75.0;
+</code></pre>
+
+<p>To do the same job dynamically use the following syntax:</p>
+
+<pre><code>fnObject.prototype["weight"] = 75.0;
+</code></pre>
+
+<p>To add a set of properties which currently exist in another class, simply set the <code>prototype</code> property with a new instance of that class. For example:</p>
+
+<pre><code>function fnObj2() {
+    this.salary = 20.0;
+    this.eyeColor = "Brown";
+}
+
+fnObject.prototype = new fnObj2();
+</code></pre>
+
+<p>Then objects from <code>fnObject</code> will have the following properties: <code>{name, age, salary, eyeColor}</code>. This reminds us of inheritance.</p>
+
+<p>As another example, take a look at this piece of code from <a href="https://github.com/mrdavidlaing/javascript-koans">JavaScript Koans by David Laing</a>, that demonstrates attaching a function to an object vs to a class (or object prototype):</p>
+
+<pre><code>function Circle(radius)
+{
+    this.radius = radius;
+}
+var simpleCircle = new Circle(10);
+var colouredCircle = new Circle(5);
+colouredCircle.colour = "red";
+console.log(simpleCircle.colour); //undefined
+console.log(colouredCircle.colour); // red
+Circle.prototype.describe = function () {
+    return "This circle has a radius of: " + this.radius;
+};
+console.log(simpleCircle.describe());
+// This circle has a radius of: 10
+console.log(colouredCircle.describe()); 
+// This circle has a radius of: 5
+</code></pre>
+
+<p><strong>How to tell which property belongs to the orignial class of the object, and which one has been added through the prototype chain?</strong> This can be checked with the <code>hasOwnProperty</code> method of the object. For example:</p>
+
+<pre><code>var obj2 = new fnObj2(); // as defined above
+obj2.hasOwnProperty("name") // -&gt; true
+obj2.hasOwnProperty("salary") // -&gt; false
+</code></pre>
+
+<p><strong>The <code>eval()</code> method.</strong> Runs the JavaScript code, that is stored in a string:</p>
+
+<pre><code>var result = "";
+eval("result = 'apple' + ' ' + 'pie'");
+// result equals "apple pie" after eval
+</code></pre>
+
+<h3>Inheritance and Prototype Chain</h3>
+
+<p>Many of the materials in this section are taken form [<a href="https://developer.mozilla.org/en/JavaScript/Guide/Inheritance_and_the_prototype_chain">+</a>] (a must read):</p>
+
+<blockquote><p>A “constructor” in JavaScript is “just” a function that happens to be called with the new operator.</p></blockquote>
+
+<p><strong><code>Object.create</code> method.</strong> Calling this method creates a new object. The prototype of this object is the first argument of the function.</p>
+
+<p>This is an example:</p>
+
+<pre><code>var father = {
+  b: 3,
+  c: 4
+};
+
+var child = Object.create(father);
+child.a = 1;
+child.b = 2;
+
+// child has properties "a", and "b" as its own
+// child.prototype &lt;- father
+// child has properties "c", and (shadowed) "b"
+// from its prototype i.e., not its own
+</code></pre>
+
+<p><strong>Property Shadowing.</strong> Is something like method overriding. For example in the code above, property <code>b</code> from object <code>child</code>, hides the effect of property <code>b</code> from object <code>father</code>. This is called shadowing.</p>
+
+<p><strong>Removing a property from an object</strong> can be achieved by calling <code>delete</code>. For example removing property <code>b</code>from object <code>child</code> is accomplished by calling:</p>
+
+<pre><code>delete child.b;
+</code></pre>
+
+<p>Doing this would neutralize the shadowing effect, and the <code>child.b</code> property would be that of its prototype, not of its own.</p>
+
+<p><strong>The <code>call</code> method</strong> calls a method from an object, but with a different <code>this</code> provided. This is the syntax (many parts taken from [<a href="https://developer.mozilla.org/en/JavaScript/Guide/Inheritance_Revisited">+</a>]):</p>
+
+<pre><code>FuncToCall.call(theNewThis, arg1, arg2, ...);
+</code></pre>
+
+<p>Consider this example (adapted from reference above):</p>
+
+<pre><code>var animals = [
+  {species: 'Lion', name: 'King'},
+  {species: 'Whale', name: 'Fail'}
+];
+
+for (var i = 0; i &lt; animals.length; i++) {
+  (function(i) {
+      console.log('#' + i + ' ' + this.species + ': ' + this.name);
+  }).call(animals[i], i);
+}
+</code></pre>
+
+<p>It defines a dynamic function which prints information from <code>this.species</code> and <code>this.name</code>. It then calls the function replacing <code>this</code> with each array item.</p>
+
+<p>Another usage for <code>call</code> is chaining constructors (as in <code>C#</code> or <code>Java</code> we can call other constructors to do the initialization and then we do the rest). This is an example (again taken from reference above):</p>
+
+<pre><code>function Product(name, price) {
+  this.name = name;
+  this.price = price;
+
+  if (price &lt; 0)
+    throw RangeError('Cannot create product "' + name +
+         '" with a negative price');
+  return this;
+}
+
+function Food(name, price) {
+  Product.call(this, name, price);
+  this.category = 'food';
+}
+</code></pre>
+
+<p>In the above example we reused construction logic of <code>Product</code> for <code>Food</code> and continued further. However this technique emulates inheritance too. To make it look like a real inheritance we set <code>Product</code> as the prototype for<code>Food</code>:</p>
+
+<pre><code>Food.prototype = new Product();
+</code></pre>
+
+<p>Since functions such as <code>call</code> and <code>apply</code>, allow you to set the callers <code>this</code> context, you should not expect any more that <code>this</code> is a user-defined type; <code>this</code> can be anything, a <code>string</code>, or even a <code>numeric</code>:</p>
+
+<pre><code>var invokee = function( message ){
+    return this + message;    
+};
+
+var result = invokee.call("I am this! ", "Where did it come from?");
+console.log(result);
+// "I am this! Where did it come from?
+</code></pre>
+
+<p>See also this nice example taken from <a href="https://github.com/liammclennan/JavaScript-Koans">JavaScript Koans by Liam McLennan</a>:</p>
+
+<pre><code>var person = {
+    handle: 'bob',
+    intro: function () {
+        return "Hello, my name is " + this.handle;
+    } 
+}
+
+// calling a function with 'call' lets us assign 'this' explicitly
+var message = person.intro.call({handle: "Frank"});
+</code></pre>
+
+<p><strong>The <code>apply</code> method</strong> operates just like <code>call</code>, except that it sends the arguments to the invokee function through an array:</p>
+
+<pre><code>var invokeeFunc = function( a, b ) {
+    return this + a + b;
+};
+// using apply
+var sum1 = invokeeFunc.apply(1, [2, 3]);
+// using call
+var sum2 = invokeeFunc.call(1, 2, 3);
+// sum1 == sum2 == 6
+</code></pre>
+
+<h3>Emulating maps with objects</h3>
+
+<p>One can define objects to have a map functionality, e.g.,</p>
+
+<pre><code>var map1 = { 0: "Zero", 2: "Two" };
+console.log(map1[0]); // zero
+console.log(map1[2]); // two
+console.log(map1[1]); // undefined
+
+var map2 = { "zero": 0, "two": 2 };
+console.log(map2["zero"]); // 0
+console.log(map2["two"]); // 2
+console.log(map2["one"]); // undefined
+</code></pre>
+
+<h3>Self-invoking functions</h3>
+
+<p>This is how we can define and call a function in one statement:</p>
+
+<pre><code>//(func_definition)(func_arguments);
+var theMessage = "Hello World!";
+(
+    function(msg) { console.log(msg); }
+)(theMessage);
+</code></pre>
+
+<h3>The <code>arguments</code> map</h3>
+
+<p>Every function, whether having defined a set of arguments or not, will have access to the arguments passed to it, through the <code>arguments</code> map. The <code>arguments</code> map, maps the argument index to its value, and has a <code>length</code>property:</p>
+
+<pre><code>var add = function() {
+    var total = 0;
+    for(var i = 0; i &lt; arguments.length; i++) {
+        total += arguments[i];
+    }
+    return total;
+};
+</code></pre>
+
+<p>In JavaScript, you can pass any arguments of any type, and any number, to any function (no need to match the number of arguments with the parameters list). You can always access them through the <code>arguments</code> map.</p>
+
+<h3>Regular Expressions</h3>
+
+<p>In JavaScript, regular expressions are objects instantiated from <code>RegExp</code>. However, one can create regular expression objects easily with syntactic sugars integrated into the language. Using them, regular expression objects are a special kind of string which are delimited within two slashes <code>/pattern/</code> instead of quotation marks, reminding unix style regular expression search programs and commands.</p>
+
+<pre><code>var regex = /\d+/;
+</code></pre>
+
+<p>This has the benefit that the programmer does not need to escape the backslash characters in the pattern (something like at-quoted strings in C#). For example the equivalant object for the above pattern is:</p>
+
+<pre><code>var regex = new Regexp("\\d+");
+</code></pre>
+
+<p>Besides the pattern, one can make use of flags or modifiers which modify the behaviour of the regular expression engine [<a href="http://www.w3schools.com/jsref/jsref_obj_regexp.asp">+</a>]:</p>
+
+<ul>
+<li><code>i</code>: Perform case-insensitive matching</li>
+<li><code>g</code>: Perform a global match (find all matches rather than stopping after the first match)</li>
+<li><code>m</code>: Perform multiline matching</li>
+</ul>
+
+
+<p>These flags can come after the closing slash of the pattern, or inside a string as the second argument to the <code>RegExp</code>constructor. For example the following defines a regular expression pattern that is going to find all of its mateches within a given string case-insensitively:</p>
+
+<pre><code>// words beginning and ending in "a" or "A"
+var regex = /a\w*a/gi;
+// ... or ...
+var regex = new Regexp("a\\w*a", "gi");
+</code></pre>
+
+<p><strong>The <code>exec</code> method</strong> returns the matches of the whole regular expression as well as its groups. For example the following regular expression for matching words starting and ending with the character “a” returns also the “a” characters themselves, because they have been defined within a group (i.e., inside parantheses). Note that upon calling it returns only the first match, if any:</p>
+
+<pre><code>var regexp = /(a)\w*(a)/;
+var results = regexp.exec("1. ABA 2. aba 3. aca!");
+if(results != null) {
+    console.log("index: " + results.index + " found [" + results + "]");
+} else {
+    console.log("Not found!");
+}
+// index: 10 found [aba,a,a] 
+</code></pre>
+
+<p>To find all the matches, we have to carry out these two steps: 1) add the <code>g</code> (global) flag to the regular expression pattern. 2) call <code>exec</code> iteratively until it returns null. Note that without adding the <code>g</code> flag, the second step will be trapped within an infinite loop. The following example looks for all words (hence the <code>g</code> flag) beginning and ending in the letter “a”, case-insensitively (hence the <code>i</code> flag):</p>
+
+<pre><code>var regexp = /(a)\w*(a)/ig;
+var input = "1. ABA 2. aba 3. aca!";
+var results = regexp.exec(input);
+while(results != null) {
+    console.log("index: " + results.index + " found [" + results + "]");
+    results = regexp.exec(input);
+} 
+// index: 3 found [ABA,A,A]
+// index: 10 found [aba,a,a]
+// index: 17 found [aca,a,a] 
+</code></pre>
+
+<p><strong>The <code>test</code> method</strong> tests whether a string contains a pattern:</p>
+
+<pre><code>var doesItContain = /ye(s|ah)/.test("He said: yeah!");
+console.log(doesItContain); // true
+</code></pre>
+
+<p><strong>The string <code>match</code> method</strong> returns the match(es) of the specified regular expression within the caller string:</p>
+
+<pre><code>var matches = "1. ABA 2. aba 3. aca!".match(/(a)\w*(a)/ig);
+console.log(matches);
+//["ABA", "aba", "aca"] 
+</code></pre>
+
+<p><strong>The string <code>replace</code> method</strong> replaces the instances of the found pattern within the given input string and returns the new string:</p>
+
+<pre><code>var result = "1. ABA 2. aba 3. aca!".replace(/(a)\w*(a)/, "oops");
+console.log(result); // 1. ABA 2. oops 3. aca! 
+// add "ig" flags -&gt; case-insensitive global replace
+result = "1. ABA 2. aba 3. aca!".replace(/(a)\w*(a)/ig, "oops");
+console.log(result); // 1. oops 2. oops 3. oops! 
+</code></pre>
+
+<p>One of the beauties of the <code>replace</code> method is that it can receive a function as the second argument, so that we can decide dynamically on what to replace with each single instance of the found pattern:</p>
+
+<pre><code>var result = "1. ABA 2. aba 3. aca!".replace(/(a)\w*(a)/ig, function (found) {
+    if (found[0] == "A") {
+        return "OOOPSS";
+    } else if (found[1] == "b") {
+        return "oobs";
+    } else {
+        return "oocs";
+    }
+});
+console.log(result); // 1. OOOPSS 2. oobs 3. oocs!
+</code></pre>
+
+  
+    <footer>
+      
+      
+        <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.sinairv.com/notebook/JavaScriptPrimer.html" data-via="sinairv" data-counturl="http://www.sinairv.com/notebook/JavaScriptPrimer.html" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+      
+    </footer>
+  
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <a href="http://stackoverflow.com/users/836432/sina-iravanian">
+<img src="http://stackoverflow.com/users/flair/836432.png?theme=dark" width="208" height="58" alt="profile for Sina Iravanian at Stack Overflow, Q&A for professional and enthusiast programmers" title="profile for Sina Iravanian at Stack Overflow, Q&A for professional and enthusiast programmers">
+</a><a href="https://flattr.com/submit/auto?user_id=sinairv&url=http%3A%2F%2Fblog.sinairv.com" target="_blank"><img src="//api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0"></a><a href='https://www.ohloh.net/accounts/143041?ref=Detailed'>
+<img alt='Ohloh profile for Sina Iravanian' src='https://www.ohloh.net/accounts/143041/widgets/account_detailed.gif' />
+</a>
+<a href="https://github.com/sinairv"><img src="/images/github.png" alt="GitHub" title="GitHub" /></a>
+<a href="http://www.linkedin.com/in/sinairv"><img src="/images/linkedin.png" alt="LinkedIn" title="LinkedIn" /></a>
+<a href="https://twitter.com/sinairv"><img src="/images/twitter.png" alt="Twitter" title="Twitter" /></a>
+<a href="http://nuget.org/profiles/sinairv"><img src="/images/nuget.png" alt="Nuget" title="Nuget" /></a>
+<a href="http://www.codeplex.com/site/users/view/sina_iravanian"><img src="/images/codeplex.png" alt="CodePlex" title="CodePlex" /></a>
+<a href="http://www.codeproject.com/Articles/Sina-Iravanian"><img src="/images/codeproject.png" alt="CodeProject" title="CodeProject" /></a>
+<a href="http://sourceforge.net/users/sina_iravanian"><img src="/images/sourceforge.png" alt="Sourceforge" title="Sourceforge" /></a>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/01/10/moved-my-blog-to-octopress/">Moved My Blog to Octopress</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c-number-5/">How to Make More Refactoring Friendly Data-bindings With C# 5</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/22/different-ways-of-generating-new-guids/">Different Ways of Generating New GUIDs</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/07/23/an-example-for-c-number-dynamic-in-action/">An Example for C# Dynamic in Action</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/05/27/programming-koans-one-of-the-best-ways-to-learn-a-new-language-or-framework/">Programming Koans: One of the Best Ways to Learn a New Language or Framework</a>
+      </li>
+    
+  </ul>
+</section>
+<a class="twitter-timeline" href="https://twitter.com/sinairv" data-widget-id="412581503571214336">Tweets by @sinairv</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/sinairv">@sinairv</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'sinairv',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section class="googleplus googleplus-hidden">
+  <h1>
+    <a href="https://plus.google.com/+SinaIravanian?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Sina Iravanian -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'sinairv';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://www.sinairv.com/notebook/JavaScriptPrimer.html';
+        var disqus_url = 'http://www.sinairv.com/notebook/JavaScriptPrimer.html';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

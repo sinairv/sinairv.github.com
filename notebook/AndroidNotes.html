@@ -1,0 +1,436 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Android Notes - Sina Iravanian</title>
+  <meta name="author" content="Sina Iravanian">
+
+  
+  <meta name="description" content="Android Notes Android Notes Activity corresponds to Form View corresponds to Control ViewGroup corresponds to Container controls Fragment &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.sinairv.com/notebook/AndroidNotes.html">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Sina Iravanian" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-46467071-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Sina Iravanian</a></h1>
+  
+    <h2>I blog about software development</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:www.sinairv.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About</a></li>
+  <li><a href="/works">Works</a></li>
+  <li><a href="/notebook">Notebook</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article role="article">
+  
+  <header>
+    <h1 class="entry-title">Android Notes</h1>
+    
+  </header>
+  
+  <h1>Android Notes</h1>
+
+<p><code>Activity</code> corresponds to <code>Form</code></p>
+
+<p><code>View</code> corresponds to <code>Control</code></p>
+
+<p><code>ViewGroup</code> corresponds to <code>Container</code> controls</p>
+
+<p><code>Fragment</code> corresponds to User Controls.</p>
+
+<h2>Create a fragment</h2>
+
+<p>API level >= 11: create a class and inherit it from <code>android.app.Fragment</code>.</p>
+
+<p>API lvels 4 &ndash; 10: create a class and inherit it from <code>android.support.v4.app.Fragment</code> and fragments should go into <code>Fragment Activity</code> (? needs more investigation)</p>
+
+<p>Then override <code>onCreate</code> and <code>onCreateView</code> methods. Do the initializations in <code>onCreate</code>, things like reading from resources and storing them in local variables. Use <code>onCreateView</code> to inflate your UI from its XML definition:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="nd">@Override</span>
+</span><span class='line'><span class="kd">public</span> <span class="n">View</span> <span class="nf">onCreateView</span><span class="o">(</span><span class="n">LayoutInflater</span> <span class="n">inflater</span><span class="o">,</span> <span class="n">ViewGroup</span> <span class="n">container</span><span class="o">,</span> <span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>  <span class="n">View</span> <span class="n">theView</span> <span class="o">=</span> <span class="n">inflater</span><span class="o">.</span><span class="na">inflate</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">my_fragment</span><span class="o">,</span> <span class="n">container</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
+</span><span class='line'>  <span class="c1">// the third argument should be false, the framework will later attach the inflated fragment</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">theView</span><span class="o">;</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Note that <code>Fragment</code> is not a <code>View</code>. However, in <code>onCreateView</code> method we use <code>inflater</code> to create a <code>View</code> corresponding to the <code>Fragment</code>.</p>
+
+<p>You can also override <code>onActivityCreated</code> method which is called after the containing activity is created.</p>
+
+<p><code>getActivity()</code> returns a reference to the <code>FragmentActivity</code> instance containing the fragment.</p>
+
+<h2>How to find a (child) view from another (parent) view, by its ID?</h2>
+
+<p>Imagine that our child <code>View</code> is a <code>TextView</code>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">TextView</span> <span class="n">txt</span> <span class="o">=</span> <span class="o">(</span><span class="n">TextView</span><span class="o">)</span> <span class="n">theParentView</span><span class="o">.</span><span class="na">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">childTextView</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Note that <code>Fragment</code> is not a <code>View</code> so inside a <code>Fragment</code> one cannot call <code>this.findViewById</code>. However, in <code>onCreateView</code> method we used <code>inflater</code> to create a <code>View</code> corresponding to the <code>Fragment</code>. One can use that instance for this purpose.</p>
+
+<h2>SrollView</h2>
+
+<p><a href="http://developer.android.com/reference/android/widget/ScrollView.html"><code>ScrollView</code></a> must have one child, usually another container such as <code>LinearLayout</code>. Do not use <code>TextView</code> and <code>ListView</code> as its only child. They will take care of their own scrolling and also it will neutralize their internal performance optimizations.</p>
+
+<p><code>ScrollView</code> is a <code>FrameLayout</code> (containers with usually 1 child), which is in turn a <code>ViewGroup</code> (i.e., container control).</p>
+
+<h2>Value Resources</h2>
+
+<p>Under project structure there&rsquo;s a folder structure <code>res/values</code> which contains XML files. The name of the XML files does not seem to matter (TODO: make sure). They must be standard XML files with root element named <code>resources</code>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+</span><span class='line'><span class="nt">&lt;resources&gt;</span>
+</span><span class='line'>...
+</span><span class='line'><span class="nt">&lt;/resources&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>It seems one can have as many files in this folder as they wish, with arbitrary names. Each file can contain any mixture of resources, although it seems to be a good practice that each file contain one type of resources. IntelliJ Idea&rsquo;s code completion helps to find out possible resource types, which seem to be:
+<code>item</code>, <code>array</code>, <code>attr</code>, <code>bool</code>, <code>color</code>, <code>declare-stylable</code>, <code>dimen</code>, <code>drawable</code>, <code>eat-comment</code>, <code>fraction</code>, <code>integer</code>, <code>interger-array</code>, <code>plurals</code>, <code>string</code>, <code>string-array</code>, and <code>style</code>.</p>
+
+<p><code>string</code> resources, must have an attribute called <code>name</code>, and a value, and that&rsquo;s it:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">&quot;person1&quot;</span><span class="nt">&gt;</span>Tom Cruise<span class="nt">&lt;/string&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The value of the resource can be retrieved in code like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">String</span> <span class="n">person1Name</span> <span class="o">=</span> <span class="n">getResources</span><span class="o">().</span><span class="na">getString</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">string</span><span class="o">.</span><span class="na">person1</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>R.string.person1</code> is an auto-generated unique integer, that behaves like ID of the resource. It is NOT the value of the resource.</p>
+
+<p>A string array resource, is an element named <code>string-array</code>, has an attribute called <code>name</code>, and child elements called <code>item</code>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;string-array</span> <span class="na">name=</span><span class="s">&quot;countries&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;item&gt;</span>Australia<span class="nt">&lt;/item&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;item&gt;</span>Iran<span class="nt">&lt;/item&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;item&gt;</span>US<span class="nt">&lt;/item&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;item&gt;</span>Canada<span class="nt">&lt;/item&gt;</span>
+</span><span class='line'><span class="nt">&lt;/string-array&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>It can contain references to other resources. The syntax for referring to another resource is <code>@[resourcetype]/[resourcename]</code>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">&quot;person1&quot;</span><span class="nt">&gt;</span>Tom Cruise<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'><span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">&quot;person2&quot;</span><span class="nt">&gt;</span>Jodie Foster<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'><span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">&quot;person3&quot;</span><span class="nt">&gt;</span>Steven Hopkins<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'><span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">&quot;person4&quot;</span><span class="nt">&gt;</span>Lana Del Rey<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;string-array</span> <span class="na">name=</span><span class="s">&quot;people&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;item&gt;</span>@string/person1<span class="nt">&lt;/item&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;item&gt;</span>@string/person2<span class="nt">&lt;/item&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;item&gt;</span>@string/person3<span class="nt">&lt;/item&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;item&gt;</span>@string/person4<span class="nt">&lt;/item&gt;</span>
+</span><span class='line'><span class="nt">&lt;/string-array&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>It can be retrieved in code as in:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">String</span><span class="o">[]</span> <span class="n">people</span> <span class="o">=</span> <span class="n">getResources</span><span class="o">().</span><span class="na">getStringArray</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">array</span><span class="o">.</span><span class="na">people</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>These are possible identifiers after <code>R.</code>, as shown by IntelliJ Idea&rsquo;s code completion: <code>array</code>, <code>drawable</code>, <code>id</code>, <code>layout</code>, <code>string</code></p>
+
+<h2>Add a fragment to an activity</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;fragment</span> <span class="na">android:layout_width=</span><span class="s">&quot;fill_parent&quot;</span>
+</span><span class='line'>          <span class="na">android:layout_height=</span><span class="s">&quot;wrap_content&quot;</span>
+</span><span class='line'>          <span class="na">android:name=</span><span class="s">&quot;com.sinairv.FragmentsTest01.MyFragment&quot;</span>
+</span><span class='line'>          <span class="na">android:id=</span><span class="s">&quot;@+id/fragment&quot;</span><span class="nt">/&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I had to use <code>fragment</code> with small f, for the element name while my <code>Fragment</code> class is an Android support fragment. I&rsquo;m not sure if this is true for the Android built-in fragments or not.</p>
+
+<p>Also in order to be able to add an instance of the fragment to the activity, I had to change the activity base class from <code>Activity</code> to <code>FragmentActivity</code> from Android support library.</p>
+
+<h2>How to add support libraries to your project in IntelliJ Idea</h2>
+
+<p>You&rsquo;ll need to copy the jar files locally to your project structure.</p>
+
+<p>See: <a href="http://www.in-nomine.org/2012/02/26/adding-android-support-v4-to-your-android-application-in-intellij-idea/">http://www.in-nomine.org/2012/02/26/adding-android-support-v4-to-your-android-application-in-intellij-idea/</a></p>
+
+  
+    <footer>
+      
+      
+        <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.sinairv.com/notebook/AndroidNotes.html" data-via="sinairv" data-counturl="http://www.sinairv.com/notebook/AndroidNotes.html" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+      
+    </footer>
+  
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <a href="http://stackoverflow.com/users/836432/sina-iravanian">
+<img src="http://stackoverflow.com/users/flair/836432.png?theme=dark" width="208" height="58" alt="profile for Sina Iravanian at Stack Overflow, Q&A for professional and enthusiast programmers" title="profile for Sina Iravanian at Stack Overflow, Q&A for professional and enthusiast programmers">
+</a><a href="https://flattr.com/submit/auto?user_id=sinairv&url=http%3A%2F%2Fblog.sinairv.com" target="_blank"><img src="//api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0"></a><a href='https://www.ohloh.net/accounts/143041?ref=Detailed'>
+<img alt='Ohloh profile for Sina Iravanian' src='https://www.ohloh.net/accounts/143041/widgets/account_detailed.gif' />
+</a>
+<a href="https://github.com/sinairv"><img src="/images/github.png" alt="GitHub" title="GitHub" /></a>
+<a href="http://www.linkedin.com/in/sinairv"><img src="/images/linkedin.png" alt="LinkedIn" title="LinkedIn" /></a>
+<a href="https://twitter.com/sinairv"><img src="/images/twitter.png" alt="Twitter" title="Twitter" /></a>
+<a href="http://nuget.org/profiles/sinairv"><img src="/images/nuget.png" alt="Nuget" title="Nuget" /></a>
+<a href="http://www.codeplex.com/site/users/view/sina_iravanian"><img src="/images/codeplex.png" alt="CodePlex" title="CodePlex" /></a>
+<a href="http://www.codeproject.com/Articles/Sina-Iravanian"><img src="/images/codeproject.png" alt="CodeProject" title="CodeProject" /></a>
+<a href="http://sourceforge.net/users/sina_iravanian"><img src="/images/sourceforge.png" alt="Sourceforge" title="Sourceforge" /></a>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/01/10/moved-my-blog-to-octopress/">Moved My Blog to Octopress</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c-number-5/">How to Make More Refactoring Friendly Data-bindings With C# 5</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/22/different-ways-of-generating-new-guids/">Different Ways of Generating New GUIDs</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/07/23/an-example-for-c-number-dynamic-in-action/">An Example for C# Dynamic in Action</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/05/27/programming-koans-one-of-the-best-ways-to-learn-a-new-language-or-framework/">Programming Koans: One of the Best Ways to Learn a New Language or Framework</a>
+      </li>
+    
+  </ul>
+</section>
+<a class="twitter-timeline" href="https://twitter.com/sinairv" data-widget-id="412581503571214336">Tweets by @sinairv</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/sinairv">@sinairv</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'sinairv',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section class="googleplus googleplus-hidden">
+  <h1>
+    <a href="https://plus.google.com/+SinaIravanian?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Sina Iravanian -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'sinairv';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://www.sinairv.com/notebook/AndroidNotes.html';
+        var disqus_url = 'http://www.sinairv.com/notebook/AndroidNotes.html';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

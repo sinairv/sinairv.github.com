@@ -1,0 +1,494 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>WPF Notes - Sina Iravanian</title>
+  <meta name="author" content="Sina Iravanian">
+
+  
+  <meta name="description" content="WPF Notes Data Binding General form of data-binding 1
+&lt;TextBox Text=&quot;{Binding Path=Property}&quot;/&gt; TextBox.Text is the target, while &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.sinairv.com/notebook/WPFNotes.html">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Sina Iravanian" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-46467071-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Sina Iravanian</a></h1>
+  
+    <h2>I blog about software development</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:www.sinairv.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About</a></li>
+  <li><a href="/works">Works</a></li>
+  <li><a href="/notebook">Notebook</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article role="article">
+  
+  <header>
+    <h1 class="entry-title">WPF Notes</h1>
+    
+  </header>
+  
+  <h3>Data Binding</h3>
+
+<p>General form of data-binding</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;TextBox</span> <span class="na">Text=</span><span class="s">&quot;{Binding Path=Property}&quot;</span><span class="nt">/&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>TextBox.Text</code> is the target, while <code>Property</code> is the source of binding.</p>
+
+<p><em>Target class</em>: any <code>FrameworkElement</code> (e.g., <code>TextBox</code>) <br/>
+<em>Target property</em>: any dependency property (DP) (e.g., <code>TextBox.Text</code>) <br/>
+<code>Binding</code> Properties:
+* <code>Path</code>: source object&rsquo;s <em>property</em>
+* <code>XPath</code> ( <strong>TODO</strong> ),
+* <code>Source</code>: source <em>object</em>. This is required, but can be implicitly concluded
+* <code>Mode</code>: if not specified, the element chooses the default (e.g., <code>TextBlock</code> &ndash;> <code>OneWay</code> whereas <code>TextBox</code> &ndash;> <code>TwoWay</code>)</p>
+
+<pre><code>* `OneTime`: use the value for initializing, and do not watch for changes
+* `OneWay`: from source to target (useful for readonly elements like `TextBlock`
+* `OneWayToSource`: from target to source
+* `TwoWay`
+</code></pre>
+
+<h4>Example</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;Window</span> <span class="na">x:Class=</span><span class="s">&quot;DataBinding.MainWindow&quot;</span>
+</span><span class='line'>        <span class="na">xmlns=</span><span class="s">&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;</span>
+</span><span class='line'>        <span class="na">xmlns:x=</span><span class="s">&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;</span>
+</span><span class='line'>        <span class="na">xmlns:s=</span><span class="s">&quot;clr-namespace:System;assembly=mscorlib&quot;</span>
+</span><span class='line'>        <span class="na">Title=</span><span class="s">&quot;MainWindow&quot;</span> <span class="na">Height=</span><span class="s">&quot;350&quot;</span> <span class="na">Width=</span><span class="s">&quot;525&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;Window.Resources&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;s:String</span> <span class="na">x:Key=</span><span class="s">&quot;TheString&quot;</span><span class="nt">&gt;</span>OnWindow<span class="nt">&lt;/s:String&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/Window.Resources&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;Grid&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;Grid.Resources&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;s:String</span> <span class="na">x:Key=</span><span class="s">&quot;TheString&quot;</span><span class="nt">&gt;</span>OnGrid<span class="nt">&lt;/s:String&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/Grid.Resources&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;StackPanel&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">&quot;{Binding Source={StaticResource ResourceKey=TheString}}&quot;</span><span class="nt">&gt;&lt;/TextBlock&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">&quot;{Binding Source={StaticResource ResourceKey=&#39;TheString&#39;}, Path=Length}&quot;</span><span class="nt">&gt;&lt;/TextBlock&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/StackPanel&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/Grid&gt;</span>
+</span><span class='line'><span class="nt">&lt;/Window&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The above code shows that:
+* <code>FrameworkElement</code>s can have <code>Resources</code>.
+* Each resource statically defined in XAML, must have a key defined through <code>x:key</code>.
+* Binding to two resources with identical names is resolved in favour of the closest parent (here the <code>Grid</code>).
+* The curly braces syntax is like object initializers of C#, except that the type name is moved inside the braces. Different properties are separated with commas.
+* Assigning to <code>ResourceKey</code> (and similar assignments) do not require quotes, but single quotes can be used anyway.
+* <code>StaticResource</code> is mapped to class <code>StaticResourceExtension</code>, and this class accepts <code>ResourceKey</code> as an argument to its constructor. Hence we can use it simply like <code>{StaticResource TheString}</code> (this is different from C# object initializers syntax).
+* <code>Binding</code> class also accepts a constructor receiving the path, hence we can rewrite the second binding as follows:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">&quot;{Binding Length,Source={StaticResource TheString}}&quot;</span><span class="nt">&gt;&lt;/TextBlock&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Binding to a static property of an object (e.g., <code>Environment.OSVersion.Platform</code>) can be accomplished by <code>x:Static</code> (Note that it is different from <code>StaticResource</code>):</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">&quot;{Binding Platform,Source={x:Static s:Environment.OSVersion}}&quot;</span><span class="nt">&gt;&lt;/TextBlock&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Binding String Format</h3>
+
+<p>Lets you format the displayed value of the bound data. Does not work for some target data-types such as <code>Content</code> of a <code>Button</code>. But works for the <code>Text</code> of a <code>TextBlock</code>. An example for integer:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;TextBox</span> <span class="na">Text=</span><span class="s">&quot;{Binding Path=TheNumber,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">&quot;{Binding Path=TheNumber,StringFormat=&#39;{}Hooy {0:C} Hi Hey&#39;}&quot;</span><span class="nt">/&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Note that the format string is enclosed inside a pair of single quotes. Note that XAML parser treats braces for special purposes inside string literals. We can neutralize this effect by putting an empty pair of braces in the beginning, so that XMAL parser ignores the next brace and passes it to the string formatting method.</p>
+
+<h4>DataContext</h4>
+
+<ul>
+<li>A property of <code>FrameworkElement</code></li>
+<li>Setting <code>DataContext</code> to a <code>FrameworkElement</code> flows down to the child elements (they call it <em>inherited property</em>, but it is not inheritance by object types. It is inheritance by visual elements hierarchy).</li>
+<li>When <code>DataContext</code> does not have a value, the binding source must be explicitly specified; otherwise it is default to <code>DataContext</code>.</li>
+</ul>
+
+
+<h3>Dependency Properties</h3>
+
+<ul>
+<li>Can be used on <code>DependencyObject</code>s.</li>
+<li>A public static instance of <code>DependencyProperty</code> per each dependency property in the class. This instance is created through the call to <code>DependencyProperty.Register</code> method.</li>
+<li>The <code>Register</code> method above recieves an instance of <code>PropertyMetadata</code> which can be used to define property-changed event-handlers or coerce-value-delegats.</li>
+<li>The coerce-value-delegate is called upon every value assigned to the property, and can be used to filter or change those values.</li>
+<li>The property-changed-deleate is called upon every <strong>new</strong> value assigned to the property. See the sample below:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">Person</span> <span class="p">:</span> <span class="n">DependencyObject</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">public</span> <span class="k">static</span> <span class="k">readonly</span> <span class="n">DependencyProperty</span> <span class="n">PersonNameProperty</span> <span class="p">=</span>
+</span><span class='line'>        <span class="n">DependencyProperty</span><span class="p">.</span><span class="n">Register</span><span class="p">(</span>
+</span><span class='line'>            <span class="s">&quot;PersonName&quot;</span><span class="p">,</span>                <span class="c1">// the property name</span>
+</span><span class='line'>            <span class="k">typeof</span><span class="p">(</span><span class="kt">string</span><span class="p">),</span>              <span class="c1">// the property type</span>
+</span><span class='line'>            <span class="k">typeof</span><span class="p">(</span><span class="n">Person</span><span class="p">),</span>              <span class="c1">// the property parent type</span>
+</span><span class='line'>            <span class="k">new</span> <span class="nf">PropertyMetadata</span><span class="p">(</span>        <span class="c1">// instance of property meta-data</span>
+</span><span class='line'>                    <span class="k">default</span><span class="p">(</span><span class="kt">string</span><span class="p">),</span>     <span class="c1">// default value for the property</span>
+</span><span class='line'>                    <span class="n">OnPersonNameChanged</span><span class="p">,</span> <span class="c1">// delegate called when property changes</span>
+</span><span class='line'>                    <span class="n">CoerceValue</span><span class="p">));</span>       <span class="c1">// delegate to coerce (modify) each value assigned to property </span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">private</span> <span class="k">static</span> <span class="kt">object</span> <span class="nf">CoerceValue</span><span class="p">(</span><span class="n">DependencyObject</span> <span class="n">o</span><span class="p">,</span> <span class="kt">object</span> <span class="n">e</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Coerce called with {0}&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">);</span>
+</span><span class='line'>        <span class="k">return</span> <span class="p">((</span><span class="n">e</span> <span class="k">as</span> <span class="kt">string</span><span class="p">)</span> <span class="p">??</span> <span class="s">&quot;&quot;</span><span class="p">)</span> <span class="p">+</span>  <span class="s">&quot;!&quot;</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">public</span> <span class="k">void</span> <span class="nf">PerformCoerce</span><span class="p">()</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="n">CoerceValue</span><span class="p">(</span><span class="n">PersonNameProperty</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">private</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">OnPersonNameChanged</span><span class="p">(</span>
+</span><span class='line'>        <span class="n">DependencyObject</span> <span class="n">o</span><span class="p">,</span> <span class="n">DependencyPropertyChangedEventArgs</span> <span class="n">e</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;[{2}] Changed from {0} to {1}&quot;</span><span class="p">,</span>
+</span><span class='line'>            <span class="n">e</span><span class="p">.</span><span class="n">OldValue</span> <span class="p">??</span> <span class="s">&quot;null&quot;</span><span class="p">,</span>
+</span><span class='line'>            <span class="n">e</span><span class="p">.</span><span class="n">NewValue</span> <span class="p">??</span> <span class="s">&quot;null&quot;</span><span class="p">,</span>
+</span><span class='line'>            <span class="n">e</span><span class="p">.</span><span class="n">Property</span><span class="p">.</span><span class="n">Name</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">string</span> <span class="n">PersonName</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="kt">string</span><span class="p">)</span> <span class="n">GetValue</span><span class="p">(</span><span class="n">PersonNameProperty</span><span class="p">);</span> <span class="p">}</span>
+</span><span class='line'>        <span class="k">set</span> <span class="p">{</span> <span class="n">SetValue</span><span class="p">(</span><span class="n">PersonNameProperty</span><span class="p">,</span> <span class="k">value</span><span class="p">);</span> <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And the driver application:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="kt">var</span> <span class="n">sample</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Person</span><span class="p">();</span>
+</span><span class='line'><span class="n">sample</span><span class="p">.</span><span class="n">PersonName</span> <span class="p">=</span> <span class="s">&quot;John&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="n">sample</span><span class="p">.</span><span class="n">PersonName</span> <span class="p">=</span> <span class="s">&quot;Jack&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="n">sample</span><span class="p">.</span><span class="n">PersonName</span> <span class="p">=</span> <span class="s">&quot;Jack&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="n">sample</span><span class="p">.</span><span class="n">PersonName</span> <span class="p">=</span> <span class="s">&quot;Tom&quot;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">sample</span><span class="p">.</span><span class="n">PerformCoerce</span><span class="p">();</span>
+</span><span class='line'><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;At last name is {0}&quot;</span><span class="p">,</span> <span class="n">sample</span><span class="p">.</span><span class="n">PersonName</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+  
+    <footer>
+      
+      
+        <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.sinairv.com/notebook/WPFNotes.html" data-via="sinairv" data-counturl="http://www.sinairv.com/notebook/WPFNotes.html" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+      
+    </footer>
+  
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <a href="http://stackoverflow.com/users/836432/sina-iravanian">
+<img src="http://stackoverflow.com/users/flair/836432.png?theme=dark" width="208" height="58" alt="profile for Sina Iravanian at Stack Overflow, Q&A for professional and enthusiast programmers" title="profile for Sina Iravanian at Stack Overflow, Q&A for professional and enthusiast programmers">
+</a><a href="https://flattr.com/submit/auto?user_id=sinairv&url=http%3A%2F%2Fblog.sinairv.com" target="_blank"><img src="//api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0"></a><a href='https://www.ohloh.net/accounts/143041?ref=Detailed'>
+<img alt='Ohloh profile for Sina Iravanian' src='https://www.ohloh.net/accounts/143041/widgets/account_detailed.gif' />
+</a>
+<a href="https://github.com/sinairv"><img src="/images/github.png" alt="GitHub" title="GitHub" /></a>
+<a href="http://www.linkedin.com/in/sinairv"><img src="/images/linkedin.png" alt="LinkedIn" title="LinkedIn" /></a>
+<a href="https://twitter.com/sinairv"><img src="/images/twitter.png" alt="Twitter" title="Twitter" /></a>
+<a href="http://nuget.org/profiles/sinairv"><img src="/images/nuget.png" alt="Nuget" title="Nuget" /></a>
+<a href="http://www.codeplex.com/site/users/view/sina_iravanian"><img src="/images/codeplex.png" alt="CodePlex" title="CodePlex" /></a>
+<a href="http://www.codeproject.com/Articles/Sina-Iravanian"><img src="/images/codeproject.png" alt="CodeProject" title="CodeProject" /></a>
+<a href="http://sourceforge.net/users/sina_iravanian"><img src="/images/sourceforge.png" alt="Sourceforge" title="Sourceforge" /></a>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/01/10/moved-my-blog-to-octopress/">Moved My Blog to Octopress</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c-number-5/">How to Make More Refactoring Friendly Data-bindings With C# 5</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/22/different-ways-of-generating-new-guids/">Different Ways of Generating New GUIDs</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/07/23/an-example-for-c-number-dynamic-in-action/">An Example for C# Dynamic in Action</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/05/27/programming-koans-one-of-the-best-ways-to-learn-a-new-language-or-framework/">Programming Koans: One of the Best Ways to Learn a New Language or Framework</a>
+      </li>
+    
+  </ul>
+</section>
+<a class="twitter-timeline" href="https://twitter.com/sinairv" data-widget-id="412581503571214336">Tweets by @sinairv</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/sinairv">@sinairv</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'sinairv',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section class="googleplus googleplus-hidden">
+  <h1>
+    <a href="https://plus.google.com/+SinaIravanian?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Sina Iravanian -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'sinairv';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://www.sinairv.com/notebook/WPFNotes.html';
+        var disqus_url = 'http://www.sinairv.com/notebook/WPFNotes.html';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

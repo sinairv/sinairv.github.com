@@ -1,0 +1,542 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Unity Notes - Sina Iravanian</title>
+  <meta name="author" content="Sina Iravanian">
+
+  
+  <meta name="description" content="Unity Notes Unity does not need a [Dependency] attribute on constructor parameters. properties that are not marked with [Dependency] are NOT &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.sinairv.com/notebook/Unity.html">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Sina Iravanian" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-46467071-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Sina Iravanian</a></h1>
+  
+    <h2>I blog about software development</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:www.sinairv.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About</a></li>
+  <li><a href="/works">Works</a></li>
+  <li><a href="/notebook">Notebook</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article role="article">
+  
+  <header>
+    <h1 class="entry-title">Unity Notes</h1>
+    
+  </header>
+  
+  <p>Unity does not need a <code>[Dependency]</code> attribute on constructor parameters.</p>
+
+<p>properties that are not marked with <code>[Dependency]</code> are NOT resolved.</p>
+
+<p>Q: when there are more than 1 ctor, how to force it to use a specific one?</p>
+
+<p>A: decorate the one you want with <code>[InjectionConstructor]</code>. TODO: there&rsquo;s another way to OVERRIDE injection.</p>
+
+<p>From <a href="http://vincenthomedev.wordpress.com/2010/02/01/a-schematic-view-of-dependency-injection-in-unity-ioc/">here</a>:</p>
+
+<blockquote><p>When a target class contains more than one constructor, Unity will use the one that has the InjectionConstructor attribute applied. If there is more than one constructor, and none carries the InjectionConstructor attribute, Unity will use the constructor with the most parameters. If there is more than one such constructor (more than one of the “longest” with the same number of parameters), Unity will raise an exception.</p></blockquote>
+
+<p>Q: What does <code>BuildUp</code> do?</p>
+
+<p>A: It resolves dependencies in the properties (and methods?) for the given instance. Good if you have the instance at hand (e.g., when it was created with the <code>new</code> operator or through <code>Activator</code>) but need to resolve other dependencies of the object.</p>
+
+<p>Key methods are <code>RegisterType</code> and <code>RegisterInstance</code>.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="n">UnityContainer</span> <span class="n">container</span> <span class="p">=</span> <span class="k">new</span> <span class="n">UnityContainer</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">container</span><span class="p">.</span><span class="n">RegisterType</span><span class="p">&lt;</span><span class="n">ISomeInterface</span><span class="p">,</span><span class="n">SomeConcreteClass</span><span class="p">&gt;();</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">var</span> <span class="n">requiredObj</span> <span class="p">=</span> <span class="n">container</span><span class="p">.</span><span class="n">Resolve</span><span class="p">(</span><span class="n">ISomeInterface</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Read it as: when someone wants an  <code>ISomeInterface</code> give them a <code>SomeConcreteClass</code>.</p>
+
+<p>Register instance will always resolve the requested object with the given instance. So:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="n">Calculator</span> <span class="n">calc</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Calculator</span><span class="p">();</span>
+</span><span class='line'><span class="n">container</span><span class="p">.</span><span class="n">RegisterInstance</span><span class="p">&lt;</span><span class="n">ICalculator</span><span class="p">&gt;(</span><span class="n">calc</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>whoever needs an <code>ICalculator</code> will be given the very <code>Calculator</code> instance created above.</p>
+
+<p>Likewise ctor params can be moved to properties, but to have them resolved they must be decorated with <code>[Dependency]</code> attribute for automatic resolution.</p>
+
+<p>To configure a property that is not marked as <code>[Dependency]</code> use <code>InjectionProperty</code> instance.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="n">container</span><span class="p">.</span><span class="n">RegisterType</span><span class="p">&lt;</span><span class="n">IStockQuoteService</span><span class="p">,</span> <span class="n">RandomStockQuoteService</span><span class="p">&gt;(</span><span class="k">new</span> <span class="n">InjectionProperty</span><span class="p">(</span><span class="s">&quot;Logger&quot;</span><span class="p">));</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>which means <code>RandomStockQuoteService</code> has a property called <code>Logger</code> which needs to be injected.</p>
+
+<p>Also the resolution can be specified (e.g., when there are more than one options available):</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="n">container</span>
+</span><span class='line'>    <span class="p">.</span><span class="n">RegisterType</span><span class="p">&lt;</span><span class="n">ILogger</span><span class="p">,</span> <span class="n">ConsoleLogger</span><span class="p">&gt;()</span>
+</span><span class='line'>    <span class="p">.</span><span class="n">RegisterType</span><span class="p">&lt;</span><span class="n">ILogger</span><span class="p">,</span> <span class="n">TraceSourceLogger</span><span class="p">&gt;(</span><span class="s">&quot;UI&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">.</span><span class="n">RegisterInstance</span><span class="p">(</span><span class="k">new</span> <span class="n">TraceSource</span><span class="p">(</span><span class="s">&quot;UI&quot;</span><span class="p">,</span> <span class="n">SourceLevels</span><span class="p">.</span><span class="n">All</span><span class="p">))</span>
+</span><span class='line'>    <span class="p">.</span><span class="n">RegisterType</span><span class="p">&lt;</span><span class="n">StocksTickerPresenter</span><span class="p">&gt;(</span>
+</span><span class='line'>        <span class="k">new</span> <span class="nf">InjectionProperty</span><span class="p">(</span><span class="s">&quot;Logger&quot;</span><span class="p">,</span>
+</span><span class='line'>            <span class="k">new</span> <span class="n">ResolvedParameter</span><span class="p">&lt;</span><span class="n">ILogger</span><span class="p">&gt;(</span><span class="s">&quot;UI&quot;</span><span class="p">)));</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Here <code>ILogger</code> had 2 candidates for resolution.</p>
+
+<p>Moving configs to XML, or app config makes assemblies less dependent. Because when in code, you&rsquo;ll need the ref to assembly to resolve type name.
+[think: Also it may help lazy assembly load]</p>
+
+<p>If you want to register an interface with more than one classes, you must specify a name for each registration, so that unity can distinguish between them when one is required.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="n">container</span><span class="p">.</span><span class="n">RegisterType</span><span class="p">&lt;</span><span class="n">ILogger</span><span class="p">,</span> <span class="n">ConsoleLogger</span><span class="p">&gt;();</span>
+</span><span class='line'><span class="n">container</span><span class="p">.</span><span class="n">RegisterType</span><span class="p">&lt;</span><span class="n">ILogger</span><span class="p">,</span> <span class="n">TraceSourceLogger</span><span class="p">&gt;(</span><span class="s">&quot;UI&quot;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>We could also give the first registration a name.</p>
+
+<p>To get a sequence of all the instances registered (not only one of them with the given name), use <code>ResolveAll</code>.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="kt">var</span> <span class="n">loggers</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">ILogger</span><span class="p">&gt;(</span>
+</span><span class='line'>  <span class="n">container</span><span class="p">.</span><span class="n">ResolveAll</span><span class="p">&lt;</span><span class="n">ILogger</span><span class="p">&gt;());</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>In above, <code>loggers</code> will contain instances from both <code>ConsoleLogger</code> and <code>TraceSourceLogger</code> classes.</p>
+
+<p>You can also inject the container itself (use <code>IUnityContainer</code> as the interface) (e.g., as the argument to ctor). I think no registration will be needed and unity will automatically resolve that.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">SomeClass</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">public</span> <span class="nf">SomeClass</span><span class="p">(</span><span class="n">IUnityContainer</span> <span class="n">container</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="p">...</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If you may want to change <code>IUnityContainer</code> with another type of container (e.g., Ninject), use service locator instead of <code>IUnityContainer</code>. The interface is <code>IServiceLocator</code>. The ctor will be:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">SomeClass</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">public</span> <span class="nf">SomeClass</span><span class="p">(</span><span class="n">IServiceLocator</span> <span class="n">serviceLocator</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="p">...</span>
+</span><span class='line'>    <span class="c1">// instead of Resolve use</span>
+</span><span class='line'>    <span class="n">locator</span><span class="p">.</span><span class="n">GetInstance</span><span class="p">&lt;</span><span class="n">ISomething</span><span class="p">&gt;();</span>
+</span><span class='line'>    <span class="c1">// or instead of ResolveAll use</span>
+</span><span class='line'>    <span class="n">locator</span><span class="p">.</span><span class="n">GetAllInstances</span><span class="p">&lt;</span><span class="n">ISomething</span><span class="p">&gt;();</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>We need to register <code>IServiceLocator</code> after unity container has been created.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="n">UnityContainer</span> <span class="n">container</span> <span class="p">=</span> <span class="k">new</span> <span class="n">UnityContainer</span><span class="p">();</span>
+</span><span class='line'><span class="n">container</span><span class="p">.</span><span class="n">RegisterInstance</span><span class="p">&lt;</span><span class="n">IServiceLocator</span><span class="p">&gt;(</span>
+</span><span class='line'>    <span class="n">UnityServiceLocatorAdapter</span><span class="p">(</span><span class="n">container</span><span class="p">));</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The adapter wrapper is because <code>UnityContainer</code> does not implement <code>IServiceLocator</code>.</p>
+
+<h3>Singleton (container controlled life-time manager)</h3>
+
+<p><code>unityContainer.RegisterType&lt;TheType&gt;(new ContainerControlledLifetimeManager());</code> means that the injected object will be created once and will be disposed of with the container, hence it&rsquo;ll be a singleton.</p>
+
+<h3>Semi-singleton (per-resolve life-time manager)</h3>
+
+<p>Taken from <a href="http://www.sharpfellows.com/post/Unity-IoC-Container-.aspx">here</a> > section: Injecting the same object in multiple places in the object graph (semi-singleton)</p>
+
+<p><code>PerResolveLifetimeManager</code> within a single call to <code>Resolve&lt;T&gt;()</code> will create an instance of particular type and reuse it wherever required as the next sample illustrates:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="na">[TestFixture]</span>
+</span><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">PerResolutionLifetimeTests</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'><span class="na">    [Test]</span>
+</span><span class='line'>    <span class="k">public</span> <span class="k">void</span> <span class="nf">Regiser_WithPerResolveLifetimeManager_ContainerInjectsSameInstance</span><span class="p">()</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="kt">var</span> <span class="n">container</span> <span class="p">=</span> <span class="k">new</span> <span class="n">UnityContainer</span><span class="p">();</span>
+</span><span class='line'>        <span class="n">container</span><span class="p">.</span><span class="n">RegisterType</span><span class="p">&lt;</span><span class="n">IService</span><span class="p">,</span> <span class="n">AService</span><span class="p">&gt;(</span><span class="k">new</span> <span class="n">PerResolveLifetimeManager</span><span class="p">());</span>
+</span><span class='line'>        <span class="n">container</span><span class="p">.</span><span class="n">RegisterType</span><span class="p">&lt;</span><span class="n">IParent</span><span class="p">,</span> <span class="n">Parent</span><span class="p">&gt;();</span>
+</span><span class='line'>        <span class="n">container</span><span class="p">.</span><span class="n">RegisterType</span><span class="p">&lt;</span><span class="n">IChild</span><span class="p">,</span> <span class="n">Child</span><span class="p">&gt;();</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="kt">var</span> <span class="n">parent</span> <span class="p">=</span> <span class="n">container</span><span class="p">.</span><span class="n">Resolve</span><span class="p">&lt;</span><span class="n">IParent</span><span class="p">&gt;();</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">Assert</span><span class="p">.</span><span class="n">AreSame</span><span class="p">(</span><span class="n">parent</span><span class="p">.</span><span class="n">Service</span><span class="p">,</span> <span class="n">parent</span><span class="p">.</span><span class="n">Child</span><span class="p">.</span><span class="n">Service</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">public</span> <span class="k">interface</span> <span class="n">IService</span> <span class="p">{}</span>
+</span><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">AService</span> <span class="p">:</span> <span class="n">IService</span> <span class="p">{}</span>
+</span><span class='line'><span class="k">public</span> <span class="k">interface</span> <span class="n">IChild</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="n">IService</span> <span class="n">Service</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">Child</span> <span class="p">:</span> <span class="n">IChild</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">public</span> <span class="n">IService</span> <span class="n">Service</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">public</span> <span class="nf">Child</span><span class="p">(</span><span class="n">IService</span> <span class="n">service</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="n">Service</span> <span class="p">=</span> <span class="n">service</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">public</span> <span class="k">interface</span> <span class="n">IParent</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="n">IChild</span> <span class="n">Child</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>    <span class="n">IService</span> <span class="n">Service</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">Parent</span> <span class="p">:</span> <span class="n">IParent</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">public</span> <span class="n">IChild</span> <span class="n">Child</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>    <span class="k">public</span> <span class="n">IService</span> <span class="n">Service</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">public</span> <span class="nf">Parent</span><span class="p">(</span><span class="n">IChild</span> <span class="n">child</span><span class="p">,</span> <span class="n">IService</span> <span class="n">service</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="n">Child</span> <span class="p">=</span> <span class="n">child</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">Service</span> <span class="p">=</span> <span class="n">service</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<hr />
+
+<p>Great awesome video:
+<a href="http://channel9.msdn.com/blogs/mtaulty/prism--silverlight-part-2-dependency-injection-with-unity">http://channel9.msdn.com/blogs/mtaulty/prism&#8211;silverlight-part-2-dependency-injection-with-unity</a></p>
+
+  
+    <footer>
+      
+      
+        <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.sinairv.com/notebook/Unity.html" data-via="sinairv" data-counturl="http://www.sinairv.com/notebook/Unity.html" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+      
+    </footer>
+  
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <a href="http://stackoverflow.com/users/836432/sina-iravanian">
+<img src="http://stackoverflow.com/users/flair/836432.png?theme=dark" width="208" height="58" alt="profile for Sina Iravanian at Stack Overflow, Q&A for professional and enthusiast programmers" title="profile for Sina Iravanian at Stack Overflow, Q&A for professional and enthusiast programmers">
+</a><a href="https://flattr.com/submit/auto?user_id=sinairv&url=http%3A%2F%2Fblog.sinairv.com" target="_blank"><img src="//api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0"></a><a href='https://www.ohloh.net/accounts/143041?ref=Detailed'>
+<img alt='Ohloh profile for Sina Iravanian' src='https://www.ohloh.net/accounts/143041/widgets/account_detailed.gif' />
+</a>
+<a href="https://github.com/sinairv"><img src="/images/github.png" alt="GitHub" title="GitHub" /></a>
+<a href="http://www.linkedin.com/in/sinairv"><img src="/images/linkedin.png" alt="LinkedIn" title="LinkedIn" /></a>
+<a href="https://twitter.com/sinairv"><img src="/images/twitter.png" alt="Twitter" title="Twitter" /></a>
+<a href="http://nuget.org/profiles/sinairv"><img src="/images/nuget.png" alt="Nuget" title="Nuget" /></a>
+<a href="http://www.codeplex.com/site/users/view/sina_iravanian"><img src="/images/codeplex.png" alt="CodePlex" title="CodePlex" /></a>
+<a href="http://www.codeproject.com/Articles/Sina-Iravanian"><img src="/images/codeproject.png" alt="CodeProject" title="CodeProject" /></a>
+<a href="http://sourceforge.net/users/sina_iravanian"><img src="/images/sourceforge.png" alt="Sourceforge" title="Sourceforge" /></a>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/01/10/moved-my-blog-to-octopress/">Moved My Blog to Octopress</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c-number-5/">How to Make More Refactoring Friendly Data-bindings With C# 5</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/22/different-ways-of-generating-new-guids/">Different Ways of Generating New GUIDs</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/07/23/an-example-for-c-number-dynamic-in-action/">An Example for C# Dynamic in Action</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/05/27/programming-koans-one-of-the-best-ways-to-learn-a-new-language-or-framework/">Programming Koans: One of the Best Ways to Learn a New Language or Framework</a>
+      </li>
+    
+  </ul>
+</section>
+<a class="twitter-timeline" href="https://twitter.com/sinairv" data-widget-id="412581503571214336">Tweets by @sinairv</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/sinairv">@sinairv</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'sinairv',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section class="googleplus googleplus-hidden">
+  <h1>
+    <a href="https://plus.google.com/+SinaIravanian?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Sina Iravanian -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'sinairv';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://www.sinairv.com/notebook/Unity.html';
+        var disqus_url = 'http://www.sinairv.com/notebook/Unity.html';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

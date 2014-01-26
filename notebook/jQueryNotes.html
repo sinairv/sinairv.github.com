@@ -1,0 +1,576 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>jQuery Tips - Sina Iravanian</title>
+  <meta name="author" content="Sina Iravanian">
+
+  
+  <meta name="description" content="jQuery Tips Ready event 1
+2
+3
+4
+5
+6
+7
+8
+$(document).ready(function { // code here will execute after DOM is ready
+})
+// ... or ... // this is short &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.sinairv.com/notebook/jQueryNotes.html">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Sina Iravanian" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-46467071-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Sina Iravanian</a></h1>
+  
+    <h2>I blog about software development</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:www.sinairv.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About</a></li>
+  <li><a href="/works">Works</a></li>
+  <li><a href="/notebook">Notebook</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article role="article">
+  
+  <header>
+    <h1 class="entry-title">jQuery Tips</h1>
+    
+  </header>
+  
+  <h3>Ready event</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">// code here will execute after DOM is ready</span>
+</span><span class='line'><span class="p">})</span>
+</span><span class='line'><span class="c1">// ... or ... </span>
+</span><span class='line'><span class="c1">// this is short for `ready` function</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">// code here will execute after DOM is ready</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong><code>ready</code> vs <code>window.onload</code></strong>: The ready event occurs after the HTML document has been loaded, while the onload event occurs later, when all content (e.g. images) also has been loaded.</p>
+
+<p>The onload event is a standard event in the DOM, while the ready event is specific to jQuery. The purpose of the ready event is that it should occur as early as possible after the document has loaded, so that code that adds funcionality to the elements in the page doesn&rsquo;t have to wait for all content to load [<a href="http://stackoverflow.com/a/3698214/836432">+</a>].</p>
+
+<h3>Attribute selectors</h3>
+
+<p>Taken from [<a href="http://www.slideshare.net/apnerve/jquery-essentials-selectors">+</a>]: Selecting an <code>input</code> element which has a <code>name</code> attribute with value of <code>funny</code>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;input[name=&#39;funny&#39;]&quot;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This is what is selected:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">&quot;funny&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">value=</span><span class="s">&quot;alarm&quot;</span> <span class="nt">/&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Each</h3>
+
+<p>jQuery&rsquo;s each method</p>
+
+<p>jQuery provides a generic each-function to iterate over properties of objects, as well as elements of arrays:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">jQuery</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;key&quot;</span><span class="p">,</span> <span class="nx">key</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="nx">value</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This is my demo:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">];</span>
+</span><span class='line'><span class="nx">iter</span><span class="p">(</span><span class="nx">arr</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">o</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="nx">value</span><span class="o">:</span> <span class="s2">&quot;Doe&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="o">:</span> <span class="mi">127</span><span class="p">,</span>
+</span><span class='line'>  <span class="nx">doSth</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Sth&quot;</span><span class="p">);</span> <span class="p">}</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'><span class="nx">iter</span><span class="p">(</span><span class="nx">o</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">function</span> <span class="nx">iter</span><span class="p">(</span><span class="nx">obj</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">k</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">k</span> <span class="o">+</span> <span class="s2">&quot; -&gt; &quot;</span> <span class="o">+</span> <span class="nx">v</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Note:</strong> In jQuery we have Array<String> or these kinds of generics.</p>
+
+<h3>Misc</h3>
+
+<p>The following searches even-indexed table rows within the table with the given id:</p>
+
+<pre><code>var $table = $('#CustomersTable');
+$('tr:even', $table).doSomething();
+</code></pre>
+
+<p>On the other hand the following:</p>
+
+<pre><code>$("&lt;li /&gt;", { "text": "Hi" }).appendTo($("#sth"));​​​​​​
+</code></pre>
+
+<p>creates <code>&lt;li&gt;Hi&lt;/li&gt;</code> and appends to an element with id of <code>sth</code>. It seems that one can pass the properties to be set in a separate object as the second argument.</p>
+
+<p>If we want to look for several items we have to separate them with comma <em>inside</em> the string:</p>
+
+<pre><code>$("#sth, #anotherthing, .someClass");
+</code></pre>
+
+<p>The existence of comma and the placement of selectors in string is very important, for example the following selects all <code>li</code>s which are descendants to <code>ul</code>s, not both of them:</p>
+
+<pre><code>$("ul li");
+</code></pre>
+
+<p>See these examples from [<a href="http://www.slideshare.net/apnerve/jquery-essentials-selectors">+</a>] and [<a href="http://api.jquery.com/category/selectors/">+</a>]:</p>
+
+<pre><code>$("*"); // all selector: selects all elements
+$("prev next"); // descendant selector
+$("prev &gt; next"); // child selector
+// Selects all next elements matching "next"
+// that are immediately preceded by a sibling "prev"
+$("prev + next"); // next adjacent selector
+$("prev ~ next"); // next sibling selector
+// Selects all sibling elements that follow 
+// after the "prev" element, have the same parent, 
+// and match the filtering "siblings" selector.
+</code></pre>
+
+<p>The notable difference between <code>(prev + next)</code> and <code>(prev ~ siblings)</code> is their respective reach. While the former reaches only to the immediately following sibling element, the latter extends that reach to all following sibling elements.</p>
+
+<pre><code>$("prev next:first"); // first element in a result-set
+$("prev next:first-child"); // first child of a parent
+// returns one per parent
+</code></pre>
+
+<p>While <code>:first</code> matches only a single element, the <code>:first-child</code> selector can match more than one: one for each parent. <code>:first</code> is equivalent to <code>:nth-child(1).</code></p>
+
+<pre><code>&lt;prev&gt;
+    &lt;next&gt;...&lt;/next&gt; // :first and :first-child
+    &lt;next&gt;...&lt;/next&gt;
+    &lt;next&gt;...&lt;/next&gt;
+&lt;/prev&gt;
+&lt;prev&gt;
+    &lt;next&gt;...&lt;/next&gt; // :first-child only (not :first)
+    &lt;next&gt;...&lt;/next&gt;
+    &lt;next&gt;...&lt;/next&gt;
+&lt;/prev&gt;
+
+$("prev next:last"); // last element in a result-set
+$("prev next:last-child"); // last element of a parent, 
+// returns 1 per parnet
+</code></pre>
+
+<p><code>:contains</code> selector, works on values:</p>
+
+<pre><code>$("li:contains('sth')");
+// selects ...
+&lt;li class="someClass"&gt;sth&lt;/li&gt;
+</code></pre>
+
+<p><code>:has()</code> selector:</p>
+
+<pre><code>$("div:has(p)") // selects all `div`s which have `p`s inside
+</code></pre>
+
+<p>There&rsquo;s a <code>hover</code> event in jQuery which seems to be fired on both <code>mouseenter</code> and <code>mouseleave</code>, therefore one must have a same code for the handler.</p>
+
+<p>For <code>fadeIn</code> and <code>fadeOut</code> and other animations which might happen sequentally, one can stop previous animations whith <code>.stop</code> function:</p>
+
+<pre><code>$("#sth").stop();
+$("#sth).fadeOut(500);
+</code></pre>
+
+<p>One can chin stop and next functions; however they don&rsquo;t seem to lead to same results. Therefore I recommend them in separate statements as above. See this fiddler for an example: <a href="http://jsfiddle.net/sinairv/SEwfG/29/">http://jsfiddle.net/sinairv/SEwfG/29/</a></p>
+
+<p><code>PrependTo</code> adds some text or html at the beginning of an element, and returns the thing which is being prepended [<a href="http://api.jquery.com/prependTo/">+</a>]:</p>
+
+<pre><code>var result = $("&lt;strong&gt;I'm bold!&lt;/strong&gt;").prependTo($("p#par1"));
+// result: ["&lt;strong&gt;I'm bold!&lt;/strong&gt;"]
+</code></pre>
+
+<p><code>find</code> Get the descendants of each element in the current set of matched elements, filtered by a selector, jQuery object, or element. [<a href="http://api.jquery.com/find/">+</a>]</p>
+
+<p><code>empty</code> Remove all child nodes of the set of matched elements from the DOM: [<a href="http://api.jquery.com/empty/">+</a>]</p>
+
+<p><code>serializeArray</code>  Encode a set of form elements as an array of names and values [<a href="http://api.jquery.com/serializeArray/">+</a>]</p>
+
+<p><code>jQuery.fn === jQuery.prototype</code></p>
+
+<p><code>jQuery.extend( target [, object1] [, objectN] )</code> Returns: Object <br/>
+Description: Merge the contents of two or more objects together into the first object [<a href="http://api.jquery.com/jQuery.extend/">+</a>].</p>
+
+<p>Multiple handlers for a single event:</p>
+
+<pre><code>$("#datarows").on("click", ".drow", function() {
+    alert($(this).text());                    
+});
+
+$("#datarows").on("click", ".drow", function() {
+    alert("This is just some dummy row added to test jQuery event delegation!");
+});
+</code></pre>
+
+<p>There are two <code>onClick</code> event handlers added to the childs of an element with id <code>datarows</code> which have css class <code>drow</code>. When clicking on them two subsequent message-boxes will be shown.</p>
+
+<p>Good example of <code>mouseenter</code> and <code>mouseleave</code> events:</p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;style&gt;
+.test { color: #000; padding: .5em; border: 1px solid #444; }
+.active { color: #900;}
+.inside { background-color: aqua; }
+&lt;/style&gt;
+  &lt;script src="http://code.jquery.com/jquery-latest.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class="test"&gt;test div&lt;/div&gt;
+&lt;script&gt;$("div.test").on({
+  click: function(){
+    $(this).toggleClass("active");
+  },
+  mouseenter: function(){
+    $(this).addClass("inside");
+  },
+  mouseleave: function(){
+    $(this).removeClass("inside");
+  }
+});&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>Want to define an event for elements which may be added dynamically later? Do it through delegating events, e.g., you want to assign a <code>click</code> event on every paragraph which might be added later, do this [<a href="http://api.jquery.com/on/">+</a>]:</p>
+
+<pre><code>$("body").on("click", "p", function(){
+  // do something
+});
+</code></pre>
+
+<p>This will be bound to any <code>p</code> inside <code>body</code>, regardless of the time it is created, because:</p>
+
+<blockquote><p>the event is handled by the ever-present body element after it bubbles to there.</p></blockquote>
+
+<p>Example: Cancel a link&rsquo;s default action using the preventDefault method.</p>
+
+<pre><code>$("body").on("click", "a", function(event){
+  event.preventDefault();
+});
+</code></pre>
+
+<p>The <code>blur</code> event is sent to an element when it loses focus.</p>
+
+<p><code>stop</code>: Stop the currently-running animation on the matched elements.</p>
+
+<p><code>fadein</code>: Display the matched elements by fading them to opaque.</p>
+
+<p><code>fadeout</code>: Hide the matched elements by fading them to transparent.</p>
+
+<p>Check for a check-box&rsquo;s <code>checked</code> property not its attribute
+[<a href="http://jsfiddle.net/johnpapa/kPL8w/light/">+</a>]:</p>
+
+<pre><code>$("#chk").prop('checked');
+</code></pre>
+
+<h2>Refs</h2>
+
+<p>[1] <a href="http://docs.jquery.com/Types">http://docs.jquery.com/Types</a></p>
+
+<h3>JS</h3>
+
+<p><code>location.href</code>: address to the current location</p>
+
+<h3>HTML</h3>
+
+<h4><code>fieldset</code> and <code>legend</code>:</h4>
+
+<p>The <code>&lt;fieldset&gt;</code> tag is used to group related elements in a form.<br/>
+The <code>&lt;fieldset&gt;</code> tag draws a box around the related elements.<br/>
+Tip: The <code>&lt;legend&gt;</code> tag defines a caption for the <code>&lt;fieldset&gt;</code> element.</p>
+
+<h4><code>name</code> vs <code>id</code></h4>
+
+<p>See here [<a href="http://stackoverflow.com/q/1397592/836432">+</a>]:
+The name is used when sending data in a form submission. Different controls respond differently. For example, you may have several radio buttons with different ids, but the same name. When submitted, there is just the one value in the response &ndash; the radio button you selected. Of course, there&rsquo;s more to it than that, but it will definitely get you thinking in the right direction.</p>
+
+<p>Use name attributes for <code>&lt;form&gt;</code> elements, as that&rsquo;s the identifier used in the POST or GET call that happens on form submission.</p>
+
+<p>Use id attributes whenever you need to address a particular element with CSS or JavaScript. It&rsquo;s possible to look up elements by name, too, but it&rsquo;s more efficient to look them up by ID.</p>
+
+<h4>Label&rsquo;s <code>for</code> attribute [<a href="http://www.w3schools.com/tags/att_label_for.asp">+</a>]</h4>
+
+<h4>Span&rsquo;s <code>title</code> attribute, makes a tooltip for that span</h4>
+
+  
+    <footer>
+      
+      
+        <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.sinairv.com/notebook/jQueryNotes.html" data-via="sinairv" data-counturl="http://www.sinairv.com/notebook/jQueryNotes.html" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+      
+    </footer>
+  
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <a href="http://stackoverflow.com/users/836432/sina-iravanian">
+<img src="http://stackoverflow.com/users/flair/836432.png?theme=dark" width="208" height="58" alt="profile for Sina Iravanian at Stack Overflow, Q&A for professional and enthusiast programmers" title="profile for Sina Iravanian at Stack Overflow, Q&A for professional and enthusiast programmers">
+</a><a href="https://flattr.com/submit/auto?user_id=sinairv&url=http%3A%2F%2Fblog.sinairv.com" target="_blank"><img src="//api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0"></a><a href='https://www.ohloh.net/accounts/143041?ref=Detailed'>
+<img alt='Ohloh profile for Sina Iravanian' src='https://www.ohloh.net/accounts/143041/widgets/account_detailed.gif' />
+</a>
+<a href="https://github.com/sinairv"><img src="/images/github.png" alt="GitHub" title="GitHub" /></a>
+<a href="http://www.linkedin.com/in/sinairv"><img src="/images/linkedin.png" alt="LinkedIn" title="LinkedIn" /></a>
+<a href="https://twitter.com/sinairv"><img src="/images/twitter.png" alt="Twitter" title="Twitter" /></a>
+<a href="http://nuget.org/profiles/sinairv"><img src="/images/nuget.png" alt="Nuget" title="Nuget" /></a>
+<a href="http://www.codeplex.com/site/users/view/sina_iravanian"><img src="/images/codeplex.png" alt="CodePlex" title="CodePlex" /></a>
+<a href="http://www.codeproject.com/Articles/Sina-Iravanian"><img src="/images/codeproject.png" alt="CodeProject" title="CodeProject" /></a>
+<a href="http://sourceforge.net/users/sina_iravanian"><img src="/images/sourceforge.png" alt="Sourceforge" title="Sourceforge" /></a>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/01/10/moved-my-blog-to-octopress/">Moved My Blog to Octopress</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c-number-5/">How to Make More Refactoring Friendly Data-bindings With C# 5</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/22/different-ways-of-generating-new-guids/">Different Ways of Generating New GUIDs</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/07/23/an-example-for-c-number-dynamic-in-action/">An Example for C# Dynamic in Action</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/05/27/programming-koans-one-of-the-best-ways-to-learn-a-new-language-or-framework/">Programming Koans: One of the Best Ways to Learn a New Language or Framework</a>
+      </li>
+    
+  </ul>
+</section>
+<a class="twitter-timeline" href="https://twitter.com/sinairv" data-widget-id="412581503571214336">Tweets by @sinairv</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/sinairv">@sinairv</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'sinairv',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section class="googleplus googleplus-hidden">
+  <h1>
+    <a href="https://plus.google.com/+SinaIravanian?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Sina Iravanian -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'sinairv';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://www.sinairv.com/notebook/jQueryNotes.html';
+        var disqus_url = 'http://www.sinairv.com/notebook/jQueryNotes.html';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -113,49 +113,47 @@
 
 <p>First, I changed all <code>void Save()</code> methods to <code>bool Save()</code>, and performed the validation stuff in each control separately. Then in the parent form, I created an array of <code>Control</code>s, so that I could loop through them, and call their <code>Save</code> method. But wait, <code>Save</code> is not inherited from any base-class or interface, so there&rsquo;s no polymorphism at hand. How can I call them through references of type <code>Control</code>?</p>
 
-<p>Well honestly, the best solution would be adding a new interface to the project, say <code>ISavableControl</code> or something, add the <code>Save</code> method to it, and let the controls implement that interface. But I wanted to make a quick fix to the problem without adding new files and types to the code. Here C#&lsquo;s <code>dynamic</code> comes into action.</p>
+<p>Well honestly, the best solution would be adding a new interface to the project, say <code>ISavableControl</code> or something, add the <code>Save</code> method to it, and let the controls implement that interface. But I wanted to make a quick fix to the problem without adding new files and types to the code. Here C#&rsquo;s <code>dynamic</code> comes into action.</p>
 
 <p>Using <code>dynamic</code> keyword, one postpones binding methods, properties, and fields to run-time. In our scenario we know that the user-controls each have a method called <code>Save</code>, which is not derived from a parent. Without <code>dynamic</code>, I would need to have a reference explicitly from each user control&rsquo;s type, and I would have to call them one by one, as in:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="kt">bool</span> <span class="n">succeeded</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
-</span><span class='line'><span class="n">succeeded</span> <span class="p">=</span> <span class="n">userControl1</span><span class="p">.</span><span class="n">Save</span><span class="p">();</span>
-</span><span class='line'><span class="n">succeeded</span> <span class="p">=</span> <span class="n">succeeded</span> <span class="p">||</span> <span class="n">userControl2</span><span class="p">.</span><span class="n">Save</span><span class="p">();</span>
-</span><span class='line'><span class="n">succeeded</span> <span class="p">=</span> <span class="n">succeeded</span> <span class="p">||</span> <span class="n">userControl3</span><span class="p">.</span><span class="n">Save</span><span class="p">();</span>
-</span><span class='line'><span class="c1">// ...</span>
-</span><span class='line'><span class="n">succeeded</span> <span class="p">=</span> <span class="n">succeeded</span> <span class="p">||</span> <span class="n">userControln</span><span class="p">.</span><span class="n">Save</span><span class="p">();</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="kt">bool</span> <span class="n">succeeded</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+</span><span class="line"><span class="n">succeeded</span> <span class="p">=</span> <span class="n">userControl1</span><span class="p">.</span><span class="n">Save</span><span class="p">();</span>
+</span><span class="line"><span class="n">succeeded</span> <span class="p">=</span> <span class="n">succeeded</span> <span class="p">||</span> <span class="n">userControl2</span><span class="p">.</span><span class="n">Save</span><span class="p">();</span>
+</span><span class="line"><span class="n">succeeded</span> <span class="p">=</span> <span class="n">succeeded</span> <span class="p">||</span> <span class="n">userControl3</span><span class="p">.</span><span class="n">Save</span><span class="p">();</span>
+</span><span class="line"><span class="c1">// ...</span>
+</span><span class="line"><span class="n">succeeded</span> <span class="p">=</span> <span class="n">succeeded</span> <span class="p">||</span> <span class="n">userControln</span><span class="p">.</span><span class="n">Save</span><span class="p">();</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>However using <code>dynamic</code> keyword, life gets a lot easier:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="c1">// objects are not inherited from a base class or interface,</span>
-</span><span class='line'><span class="c1">// therefore we cannot call Save using polymorphism</span>
-</span><span class='line'><span class="kt">bool</span> <span class="n">succeeded</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
-</span><span class='line'><span class="k">foreach</span><span class="p">(</span><span class="kt">var</span> <span class="n">ctrl</span> <span class="k">in</span> <span class="n">controlsArray</span><span class="p">)</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>    <span class="kt">dynamic</span> <span class="n">dynCtrl</span> <span class="p">=</span> <span class="n">ctrl</span><span class="p">;</span>
-</span><span class='line'>    <span class="n">succeeded</span> <span class="p">=</span> <span class="n">succeeded</span> <span class="p">||</span> <span class="n">dynCtrl</span><span class="p">.</span><span class="n">Save</span><span class="p">();</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">// do something with the value of succeeded</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="c1">// objects are not inherited from a base class or interface,</span>
+</span><span class="line"><span class="c1">// therefore we cannot call Save using polymorphism</span>
+</span><span class="line"><span class="kt">bool</span> <span class="n">succeeded</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+</span><span class="line"><span class="k">foreach</span><span class="p">(</span><span class="kt">var</span> <span class="n">ctrl</span> <span class="k">in</span> <span class="n">controlsArray</span><span class="p">)</span>
+</span><span class="line"><span class="p">{</span>
+</span><span class="line">    <span class="kt">dynamic</span> <span class="n">dynCtrl</span> <span class="p">=</span> <span class="n">ctrl</span><span class="p">;</span>
+</span><span class="line">    <span class="n">succeeded</span> <span class="p">=</span> <span class="n">succeeded</span> <span class="p">||</span> <span class="n">dynCtrl</span><span class="p">.</span><span class="n">Save</span><span class="p">();</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">// do something with the value of succeeded</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>Take care that binding the <code>Save</code> methods to controls happen at runtime. Therefore if a control does not implement a <code>Save</code> method, or if another one misspells <code>Save</code>, as say <code>Svae</code>, you will get no hints at compile time. So, try to avoid this style of coding, unless you have good reasons for doing so.</p>
 </div>

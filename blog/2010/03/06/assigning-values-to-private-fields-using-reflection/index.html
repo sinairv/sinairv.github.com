@@ -119,71 +119,69 @@
 
 <div class="entry-content"><p>Suppose that you have a class with various non-public fields, e.g., the class named <code>ClassToTest</code> below servers as a good example.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">ClassToTest</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>    <span class="k">public</span> <span class="kt">int</span> <span class="n">SomeNumber</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">private</span> <span class="kt">int</span> <span class="n">m_somePrivateProperty</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-</span><span class='line'>    <span class="k">private</span> <span class="kt">int</span> <span class="n">m_somePrivateVar</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">private</span> <span class="k">static</span> <span class="kt">int</span> <span class="n">s_someStaticNumber</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="k">public</span> <span class="k">class</span> <span class="nc">ClassToTest</span>
+</span><span class="line"><span class="p">{</span>
+</span><span class="line">    <span class="k">public</span> <span class="kt">int</span> <span class="n">SomeNumber</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">private</span> <span class="kt">int</span> <span class="n">m_somePrivateProperty</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="line">    <span class="k">private</span> <span class="kt">int</span> <span class="n">m_somePrivateVar</span><span class="p">;</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">private</span> <span class="k">static</span> <span class="kt">int</span> <span class="n">s_someStaticNumber</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>And suppose that we desire to assign some value to the private variable <code>m_somePrivateVar</code>, and the private property <code>m_somePrivateProperty</code>. The approach is to iterate through the fields of the <code>ClassToTest</code> type to find the desired field. If it is a variable we should type-cast it to <code>FieldInfo</code>, and if it is a property we should type-cast it to <code>PropertyInfo</code>. Then we should call the <code>SetValue</code> method appropriately. This is shown below:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="n">ClassToTest</span> <span class="n">c</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ClassToTest</span><span class="p">();</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">Type</span> <span class="n">t</span> <span class="p">=</span> <span class="k">typeof</span><span class="p">(</span><span class="n">ClassToTest</span><span class="p">);</span>
-</span><span class='line'><span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">member</span> <span class="k">in</span> <span class="n">t</span><span class="p">.</span><span class="n">GetMembers</span><span class="p">(</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">Instance</span> <span class="p">|</span>
-</span><span class='line'>                                    <span class="n">BindingFlags</span><span class="p">.</span><span class="n">NonPublic</span> <span class="p">|</span>
-</span><span class='line'>                                    <span class="n">BindingFlags</span><span class="p">.</span><span class="n">Public</span><span class="p">))</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="n">member</span><span class="p">.</span><span class="n">Name</span> <span class="p">==</span> <span class="s">&quot;m_somePrivateVar&quot;</span><span class="p">)</span>
-</span><span class='line'>    <span class="p">{</span>
-</span><span class='line'>        <span class="c1">// changing the variable</span>
-</span><span class='line'>        <span class="n">FieldInfo</span> <span class="n">fi</span> <span class="p">=</span> <span class="p">(</span><span class="n">FieldInfo</span><span class="p">)</span><span class="n">member</span><span class="p">;</span>
-</span><span class='line'>        <span class="n">fi</span><span class="p">.</span><span class="n">SetValue</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="m">18</span><span class="p">);</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>    <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">member</span><span class="p">.</span><span class="n">Name</span> <span class="p">==</span> <span class="s">&quot;m_somePrivateProperty&quot;</span><span class="p">)</span>
-</span><span class='line'>    <span class="p">{</span>
-</span><span class='line'>        <span class="c1">// changing the property</span>
-</span><span class='line'>        <span class="n">PropertyInfo</span> <span class="n">pi</span> <span class="p">=</span> <span class="p">(</span><span class="n">PropertyInfo</span><span class="p">)</span><span class="n">member</span><span class="p">;</span>
-</span><span class='line'>        <span class="n">pi</span><span class="p">.</span><span class="n">SetValue</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="m">13</span><span class="p">,</span> <span class="k">null</span><span class="p">);</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="n">ClassToTest</span> <span class="n">c</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ClassToTest</span><span class="p">();</span>
+</span><span class="line">
+</span><span class="line"><span class="n">Type</span> <span class="n">t</span> <span class="p">=</span> <span class="k">typeof</span><span class="p">(</span><span class="n">ClassToTest</span><span class="p">);</span>
+</span><span class="line"><span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">member</span> <span class="k">in</span> <span class="n">t</span><span class="p">.</span><span class="n">GetMembers</span><span class="p">(</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">Instance</span> <span class="p">|</span>
+</span><span class="line">                                    <span class="n">BindingFlags</span><span class="p">.</span><span class="n">NonPublic</span> <span class="p">|</span>
+</span><span class="line">                                    <span class="n">BindingFlags</span><span class="p">.</span><span class="n">Public</span><span class="p">))</span>
+</span><span class="line"><span class="p">{</span>
+</span><span class="line">    <span class="k">if</span> <span class="p">(</span><span class="n">member</span><span class="p">.</span><span class="n">Name</span> <span class="p">==</span> <span class="s">&quot;m_somePrivateVar&quot;</span><span class="p">)</span>
+</span><span class="line">    <span class="p">{</span>
+</span><span class="line">        <span class="c1">// changing the variable</span>
+</span><span class="line">        <span class="n">FieldInfo</span> <span class="n">fi</span> <span class="p">=</span> <span class="p">(</span><span class="n">FieldInfo</span><span class="p">)</span><span class="n">member</span><span class="p">;</span>
+</span><span class="line">        <span class="n">fi</span><span class="p">.</span><span class="n">SetValue</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="m">18</span><span class="p">);</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">    <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">member</span><span class="p">.</span><span class="n">Name</span> <span class="p">==</span> <span class="s">&quot;m_somePrivateProperty&quot;</span><span class="p">)</span>
+</span><span class="line">    <span class="p">{</span>
+</span><span class="line">        <span class="c1">// changing the property</span>
+</span><span class="line">        <span class="n">PropertyInfo</span> <span class="n">pi</span> <span class="p">=</span> <span class="p">(</span><span class="n">PropertyInfo</span><span class="p">)</span><span class="n">member</span><span class="p">;</span>
+</span><span class="line">        <span class="n">pi</span><span class="p">.</span><span class="n">SetValue</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="m">13</span><span class="p">,</span> <span class="k">null</span><span class="p">);</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>Here we have successfully assigned values to selected private fields of our class.</p>
 </div>

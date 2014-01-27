@@ -86,7 +86,7 @@
     
   </header>
   
-  <h1>Android Notes</h1>
+  <h1 id="android-notes">Android Notes</h1>
 
 <p><code>Activity</code> corresponds to <code>Form</code></p>
 
@@ -96,161 +96,153 @@
 
 <p><code>Fragment</code> corresponds to User Controls.</p>
 
-<h2>Create a fragment</h2>
+<h2 id="create-a-fragment">Create a fragment</h2>
 
-<p>API level >= 11: create a class and inherit it from <code>android.app.Fragment</code>.</p>
+<p>API level &gt;= 11: create a class and inherit it from <code>android.app.Fragment</code>.</p>
 
-<p>API lvels 4 &ndash; 10: create a class and inherit it from <code>android.support.v4.app.Fragment</code> and fragments should go into <code>Fragment Activity</code> (? needs more investigation)</p>
+<p>API lvels 4 - 10: create a class and inherit it from <code>android.support.v4.app.Fragment</code> and fragments should go into <code>Fragment Activity</code> (? needs more investigation)</p>
 
 <p>Then override <code>onCreate</code> and <code>onCreateView</code> methods. Do the initializations in <code>onCreate</code>, things like reading from resources and storing them in local variables. Use <code>onCreateView</code> to inflate your UI from its XML definition:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="nd">@Override</span>
-</span><span class='line'><span class="kd">public</span> <span class="n">View</span> <span class="nf">onCreateView</span><span class="o">(</span><span class="n">LayoutInflater</span> <span class="n">inflater</span><span class="o">,</span> <span class="n">ViewGroup</span> <span class="n">container</span><span class="o">,</span> <span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>  <span class="n">View</span> <span class="n">theView</span> <span class="o">=</span> <span class="n">inflater</span><span class="o">.</span><span class="na">inflate</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">my_fragment</span><span class="o">,</span> <span class="n">container</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
-</span><span class='line'>  <span class="c1">// the third argument should be false, the framework will later attach the inflated fragment</span>
-</span><span class='line'>  <span class="k">return</span> <span class="n">theView</span><span class="o">;</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="nd">@Override</span>
+</span><span class="line"><span class="kd">public</span> <span class="n">View</span> <span class="nf">onCreateView</span><span class="o">(</span><span class="n">LayoutInflater</span> <span class="n">inflater</span><span class="o">,</span> <span class="n">ViewGroup</span> <span class="n">container</span><span class="o">,</span> <span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">  <span class="n">View</span> <span class="n">theView</span> <span class="o">=</span> <span class="n">inflater</span><span class="o">.</span><span class="na">inflate</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">my_fragment</span><span class="o">,</span> <span class="n">container</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
+</span><span class="line">  <span class="c1">// the third argument should be false, the framework will later attach the inflated fragment</span>
+</span><span class="line">  <span class="k">return</span> <span class="n">theView</span><span class="o">;</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<p>Note that <code>Fragment</code> is not a <code>View</code>. However, in <code>onCreateView</code> method we use <code>inflater</code> to create a <code>View</code> corresponding to the <code>Fragment</code>.</p>
+<p>Note that <code>Fragment</code> is not a <code>View</code>. However, in <code>onCreateView</code> method we use <code>inflater</code> to create a <code>View</code> corresponding to the <code>Fragment</code>. </p>
 
 <p>You can also override <code>onActivityCreated</code> method which is called after the containing activity is created.</p>
 
 <p><code>getActivity()</code> returns a reference to the <code>FragmentActivity</code> instance containing the fragment.</p>
 
-<h2>How to find a (child) view from another (parent) view, by its ID?</h2>
+<h2 id="how-to-find-a-child-view-from-another-parent-view-by-its-id">How to find a (child) view from another (parent) view, by its ID?</h2>
 
 <p>Imagine that our child <code>View</code> is a <code>TextView</code>:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">TextView</span> <span class="n">txt</span> <span class="o">=</span> <span class="o">(</span><span class="n">TextView</span><span class="o">)</span> <span class="n">theParentView</span><span class="o">.</span><span class="na">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">childTextView</span><span class="o">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="n">TextView</span> <span class="n">txt</span> <span class="o">=</span> <span class="o">(</span><span class="n">TextView</span><span class="o">)</span> <span class="n">theParentView</span><span class="o">.</span><span class="na">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">childTextView</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>Note that <code>Fragment</code> is not a <code>View</code> so inside a <code>Fragment</code> one cannot call <code>this.findViewById</code>. However, in <code>onCreateView</code> method we used <code>inflater</code> to create a <code>View</code> corresponding to the <code>Fragment</code>. One can use that instance for this purpose.</p>
 
-<h2>SrollView</h2>
+<h2 id="srollview">SrollView</h2>
 
 <p><a href="http://developer.android.com/reference/android/widget/ScrollView.html"><code>ScrollView</code></a> must have one child, usually another container such as <code>LinearLayout</code>. Do not use <code>TextView</code> and <code>ListView</code> as its only child. They will take care of their own scrolling and also it will neutralize their internal performance optimizations.</p>
 
 <p><code>ScrollView</code> is a <code>FrameLayout</code> (containers with usually 1 child), which is in turn a <code>ViewGroup</code> (i.e., container control).</p>
 
-<h2>Value Resources</h2>
+<h2 id="value-resources">Value Resources</h2>
 
 <p>Under project structure there&rsquo;s a folder structure <code>res/values</code> which contains XML files. The name of the XML files does not seem to matter (TODO: make sure). They must be standard XML files with root element named <code>resources</code>:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
-</span><span class='line'><span class="nt">&lt;resources&gt;</span>
-</span><span class='line'>...
-</span><span class='line'><span class="nt">&lt;/resources&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="xml"><span class="line"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+</span><span class="line"><span class="nt">&lt;resources&gt;</span>
+</span><span class="line">...
+</span><span class="line"><span class="nt">&lt;/resources&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>It seems one can have as many files in this folder as they wish, with arbitrary names. Each file can contain any mixture of resources, although it seems to be a good practice that each file contain one type of resources. IntelliJ Idea&rsquo;s code completion helps to find out possible resource types, which seem to be:
 <code>item</code>, <code>array</code>, <code>attr</code>, <code>bool</code>, <code>color</code>, <code>declare-stylable</code>, <code>dimen</code>, <code>drawable</code>, <code>eat-comment</code>, <code>fraction</code>, <code>integer</code>, <code>interger-array</code>, <code>plurals</code>, <code>string</code>, <code>string-array</code>, and <code>style</code>.</p>
 
 <p><code>string</code> resources, must have an attribute called <code>name</code>, and a value, and that&rsquo;s it:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">&quot;person1&quot;</span><span class="nt">&gt;</span>Tom Cruise<span class="nt">&lt;/string&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="xml"><span class="line"><span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">&quot;person1&quot;</span><span class="nt">&gt;</span>Tom Cruise<span class="nt">&lt;/string&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>The value of the resource can be retrieved in code like this:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">String</span> <span class="n">person1Name</span> <span class="o">=</span> <span class="n">getResources</span><span class="o">().</span><span class="na">getString</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">string</span><span class="o">.</span><span class="na">person1</span><span class="o">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="n">String</span> <span class="n">person1Name</span> <span class="o">=</span> <span class="n">getResources</span><span class="o">().</span><span class="na">getString</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">string</span><span class="o">.</span><span class="na">person1</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p><code>R.string.person1</code> is an auto-generated unique integer, that behaves like ID of the resource. It is NOT the value of the resource.</p>
 
 <p>A string array resource, is an element named <code>string-array</code>, has an attribute called <code>name</code>, and child elements called <code>item</code>:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;string-array</span> <span class="na">name=</span><span class="s">&quot;countries&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;item&gt;</span>Australia<span class="nt">&lt;/item&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;item&gt;</span>Iran<span class="nt">&lt;/item&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;item&gt;</span>US<span class="nt">&lt;/item&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;item&gt;</span>Canada<span class="nt">&lt;/item&gt;</span>
-</span><span class='line'><span class="nt">&lt;/string-array&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="xml"><span class="line"><span class="nt">&lt;string-array</span> <span class="na">name=</span><span class="s">&quot;countries&quot;</span><span class="nt">&gt;</span>
+</span><span class="line">  <span class="nt">&lt;item&gt;</span>Australia<span class="nt">&lt;/item&gt;</span>
+</span><span class="line">  <span class="nt">&lt;item&gt;</span>Iran<span class="nt">&lt;/item&gt;</span>
+</span><span class="line">  <span class="nt">&lt;item&gt;</span>US<span class="nt">&lt;/item&gt;</span>
+</span><span class="line">  <span class="nt">&lt;item&gt;</span>Canada<span class="nt">&lt;/item&gt;</span>
+</span><span class="line"><span class="nt">&lt;/string-array&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>It can contain references to other resources. The syntax for referring to another resource is <code>@[resourcetype]/[resourcename]</code>:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">&quot;person1&quot;</span><span class="nt">&gt;</span>Tom Cruise<span class="nt">&lt;/string&gt;</span>
-</span><span class='line'><span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">&quot;person2&quot;</span><span class="nt">&gt;</span>Jodie Foster<span class="nt">&lt;/string&gt;</span>
-</span><span class='line'><span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">&quot;person3&quot;</span><span class="nt">&gt;</span>Steven Hopkins<span class="nt">&lt;/string&gt;</span>
-</span><span class='line'><span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">&quot;person4&quot;</span><span class="nt">&gt;</span>Lana Del Rey<span class="nt">&lt;/string&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;string-array</span> <span class="na">name=</span><span class="s">&quot;people&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;item&gt;</span>@string/person1<span class="nt">&lt;/item&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;item&gt;</span>@string/person2<span class="nt">&lt;/item&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;item&gt;</span>@string/person3<span class="nt">&lt;/item&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;item&gt;</span>@string/person4<span class="nt">&lt;/item&gt;</span>
-</span><span class='line'><span class="nt">&lt;/string-array&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td><td class="code"><pre><code class="xml"><span class="line"><span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">&quot;person1&quot;</span><span class="nt">&gt;</span>Tom Cruise<span class="nt">&lt;/string&gt;</span>
+</span><span class="line"><span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">&quot;person2&quot;</span><span class="nt">&gt;</span>Jodie Foster<span class="nt">&lt;/string&gt;</span>
+</span><span class="line"><span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">&quot;person3&quot;</span><span class="nt">&gt;</span>Steven Hopkins<span class="nt">&lt;/string&gt;</span>
+</span><span class="line"><span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">&quot;person4&quot;</span><span class="nt">&gt;</span>Lana Del Rey<span class="nt">&lt;/string&gt;</span>
+</span><span class="line">
+</span><span class="line"><span class="nt">&lt;string-array</span> <span class="na">name=</span><span class="s">&quot;people&quot;</span><span class="nt">&gt;</span>
+</span><span class="line">  <span class="nt">&lt;item&gt;</span>@string/person1<span class="nt">&lt;/item&gt;</span>
+</span><span class="line">  <span class="nt">&lt;item&gt;</span>@string/person2<span class="nt">&lt;/item&gt;</span>
+</span><span class="line">  <span class="nt">&lt;item&gt;</span>@string/person3<span class="nt">&lt;/item&gt;</span>
+</span><span class="line">  <span class="nt">&lt;item&gt;</span>@string/person4<span class="nt">&lt;/item&gt;</span>
+</span><span class="line"><span class="nt">&lt;/string-array&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>It can be retrieved in code as in:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">String</span><span class="o">[]</span> <span class="n">people</span> <span class="o">=</span> <span class="n">getResources</span><span class="o">().</span><span class="na">getStringArray</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">array</span><span class="o">.</span><span class="na">people</span><span class="o">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="n">String</span><span class="o">[]</span> <span class="n">people</span> <span class="o">=</span> <span class="n">getResources</span><span class="o">().</span><span class="na">getStringArray</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">array</span><span class="o">.</span><span class="na">people</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>These are possible identifiers after <code>R.</code>, as shown by IntelliJ Idea&rsquo;s code completion: <code>array</code>, <code>drawable</code>, <code>id</code>, <code>layout</code>, <code>string</code></p>
 
-<h2>Add a fragment to an activity</h2>
+<h2 id="add-a-fragment-to-an-activity">Add a fragment to an activity</h2>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;fragment</span> <span class="na">android:layout_width=</span><span class="s">&quot;fill_parent&quot;</span>
-</span><span class='line'>          <span class="na">android:layout_height=</span><span class="s">&quot;wrap_content&quot;</span>
-</span><span class='line'>          <span class="na">android:name=</span><span class="s">&quot;com.sinairv.FragmentsTest01.MyFragment&quot;</span>
-</span><span class='line'>          <span class="na">android:id=</span><span class="s">&quot;@+id/fragment&quot;</span><span class="nt">/&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="xml"><span class="line"><span class="nt">&lt;fragment</span> <span class="na">android:layout_width=</span><span class="s">&quot;fill_parent&quot;</span>
+</span><span class="line">          <span class="na">android:layout_height=</span><span class="s">&quot;wrap_content&quot;</span>
+</span><span class="line">          <span class="na">android:name=</span><span class="s">&quot;com.sinairv.FragmentsTest01.MyFragment&quot;</span>
+</span><span class="line">          <span class="na">android:id=</span><span class="s">&quot;@+id/fragment&quot;</span><span class="nt">/&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>I had to use <code>fragment</code> with small f, for the element name while my <code>Fragment</code> class is an Android support fragment. I&rsquo;m not sure if this is true for the Android built-in fragments or not.</p>
 
 <p>Also in order to be able to add an instance of the fragment to the activity, I had to change the activity base class from <code>Activity</code> to <code>FragmentActivity</code> from Android support library.</p>
 
-<h2>How to add support libraries to your project in IntelliJ Idea</h2>
+<h2 id="how-to-add-support-libraries-to-your-project-in-intellij-idea">How to add support libraries to your project in IntelliJ Idea</h2>
 
 <p>You&rsquo;ll need to copy the jar files locally to your project structure.</p>
 
-<p>See: <a href="http://www.in-nomine.org/2012/02/26/adding-android-support-v4-to-your-android-application-in-intellij-idea/">http://www.in-nomine.org/2012/02/26/adding-android-support-v4-to-your-android-application-in-intellij-idea/</a></p>
+<p>See: http://www.in-nomine.org/2012/02/26/adding-android-support-v4-to-your-android-application-in-intellij-idea/</p>
+
 
   
     <footer>

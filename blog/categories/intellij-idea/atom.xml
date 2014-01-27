@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Intellij Idea | Sina Iravanian]]></title>
   <link href="http://www.sinairv.com/blog/categories/intellij-idea/atom.xml" rel="self"/>
   <link href="http://www.sinairv.com/"/>
-  <updated>2014-01-26T20:58:44+10:00</updated>
+  <updated>2014-01-27T19:14:54+10:00</updated>
   <id>http://www.sinairv.com/</id>
   <author>
     <name><![CDATA[Sina Iravanian]]></name>
@@ -28,15 +28,14 @@ System.out.println(theURL.toString());
 <p>I tested this piece of code in <em>NetBeans</em> and it works fine. But not in <em>Intellij IDEA</em>! To solve this (annoying) problem, I needed to add the path of the source directory to <code>classpath</code>. For this purpose I did the following steps in Intellij IDEA 10.0.3 Community Edition:</p>
 
 <ol>
-<li>Right click on the module name and select &ldquo;Open Module Settings&rdquo;</li>
-<li>Select &ldquo;Modules&rdquo; from the leftmost pane</li>
-<li>Select &ldquo;Dependencies&rdquo; tab</li>
-<li>Press &ldquo;Add&hellip;&rdquo; button and select &ldquo;1 Single-Entry Module Library…&rdquo; from the popup menu</li>
-<li>Find and select the &ldquo;src&rdquo; folder of your sources.</li>
-<li>Under the &ldquo;Scope&rdquo; column, change the scope to &ldquo;Runtime&rdquo;</li>
-<li>Press Apply and OK</li>
+  <li>Right click on the module name and select &ldquo;Open Module Settings&rdquo;</li>
+  <li>Select &ldquo;Modules&rdquo; from the leftmost pane</li>
+  <li>Select &ldquo;Dependencies&rdquo; tab</li>
+  <li>Press &ldquo;Add&hellip;&rdquo; button and select &ldquo;1 Single-Entry Module Library…&rdquo; from the popup menu</li>
+  <li>Find and select the &ldquo;src&rdquo; folder of your sources.</li>
+  <li>Under the &ldquo;Scope&rdquo; column, change the scope to &ldquo;Runtime&rdquo;</li>
+  <li>Press Apply and OK</li>
 </ol>
-
 ]]></content>
   </entry>
   

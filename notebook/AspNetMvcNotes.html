@@ -86,88 +86,80 @@
     
   </header>
   
-  <h3>Helpers vs functions</h3>
+  <h3 id="helpers-vs-functions">Helpers vs functions</h3>
 
 <p>helpers are not free to return anything and can be used inline. (Not sure).</p>
 
-<h1>ASP.NET Notes</h1>
+<h1 id="aspnet-notes">ASP.NET Notes</h1>
 
-<h3>aspx vs ashx files</h3>
-
+<h3 id="aspx-vs-ashx-files">aspx vs ashx files</h3>
 <p>See <a href="http://stackoverflow.com/questions/5469491/aspx-vs-ashx-main-difference">this</a></p>
 
 <p>TL;DR. <code>.aspx</code> is a rendered page. If you need a view, use an <code>.aspx</code>. If all you need is backend functionality but staying on the same view, use an <code>.ashx</code>.</p>
 
-<h3>Embedded Code</h3>
+<h3 id="embedded-code">Embedded Code</h3>
 
 <p>From <a href="http://stackoverflow.com/a/3812341/836432">here</a></p>
 
 <p><code>&lt;%%&gt;</code> is short hand for:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;script </span><span class="na">runat=</span><span class="s">&quot;server&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'><span class="nt">&lt;/script&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;script </span><span class="na">runat=</span><span class="s">&quot;server&quot;</span><span class="nt">&gt;</span>
+</span><span class="line"><span class="nt">&lt;/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>Anyting inside the <code>&lt;%</code> and <code>%&gt;</code> is server side code.</p>
 
 <p>The other variants are also shortcuts:</p>
 
 <ul>
-<li><code>&lt;%@ %&gt;</code> is a page directrive</li>
-<li><code>&lt;%= %&gt;</code> is short for Response.Write</li>
-<li><code>&lt;%: %&gt;</code> is short for Response.Write, adding html encoding (introduced with .NET 4.0)</li>
-<li><code>&lt;%# %&gt;</code> is a binding expression</li>
+  <li><code>&lt;%@ %&gt;</code> is a page directrive</li>
+  <li><code>&lt;%= %&gt;</code> is short for Response.Write</li>
+  <li><code>&lt;%: %&gt;</code> is short for Response.Write, adding html encoding (introduced with .NET 4.0)</li>
+  <li><code>&lt;%# %&gt;</code> is a binding expression</li>
 </ul>
 
-
 <p>There are more than these. See this awesome article and attached code:
-<a href="http://weblogs.asp.net/ahmedmoosa/archive/2010/10/06/embedded-code-and-inline-server-tags.aspx">Embedded Code and Inline Server Tags &ndash; Ahmed Moosa</a></p>
+<a href="http://weblogs.asp.net/ahmedmoosa/archive/2010/10/06/embedded-code-and-inline-server-tags.aspx">Embedded Code and Inline Server Tags - Ahmed Moosa</a></p>
 
-<h3>Page event handling</h3>
-
+<h3 id="page-event-handling">Page event handling</h3>
 <p>With <code>AutoEventWireup</code> which is turned on by default on a page you can just add methods prepended with <code>Page_event</code> and have ASP.NET connect to the events for you.</p>
 
 <p>In the case of <code>Unload</code> the method signature is:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">protected</span> <span class="k">void</span> <span class="nf">Page_Unload</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>See: <a href="http://stackoverflow.com/a/7708993/836432">http://stackoverflow.com/a/7708993/836432</a></p>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="k">protected</span> <span class="k">void</span> <span class="nf">Page_Unload</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+<p>See: http://stackoverflow.com/a/7708993/836432</p>
 
 <p>It can be done through overloading as well:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnUnload</span><span class="p">(</span><span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>   <span class="k">base</span><span class="p">.</span><span class="n">OnUnload</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
-</span><span class='line'>   <span class="c1">// your code</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnUnload</span><span class="p">(</span><span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+</span><span class="line"><span class="p">{</span>
+</span><span class="line">   <span class="k">base</span><span class="p">.</span><span class="n">OnUnload</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+</span><span class="line">   <span class="c1">// your code</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
+<h3 id="storing-in-viewstate-vs-session">storing in ViewState vs Session</h3>
 
-<h3>storing in ViewState vs Session</h3>
+<p>Sessions run out, Viewstate does not - you can go back an hour later and your viewstate will still be available. Viewstate is also consistently available when you go back/forward on the website, Session changes.
+From: http://stackoverflow.com/a/575592/836432</p>
 
-<p>Sessions run out, Viewstate does not &ndash; you can go back an hour later and your viewstate will still be available. Viewstate is also consistently available when you go back/forward on the website, Session changes.
-From: <a href="http://stackoverflow.com/a/575592/836432">http://stackoverflow.com/a/575592/836432</a></p>
+<h3 id="user-controls-must-be-introduced-in-webconfig">User controls must be introduced in web.config</h3>
+<p>See: http://stackoverflow.com/a/243493/836432</p>
 
-<h3>User controls must be introduced in web.config</h3>
-
-<p>See: <a href="http://stackoverflow.com/a/243493/836432">http://stackoverflow.com/a/243493/836432</a></p>
-
-<h3>Lifecycles</h3>
-
-<p>See this: <a href="http://www.codeproject.com/Articles/73728/ASP-NET-Application-and-Page-Life-Cycle">http://www.codeproject.com/Articles/73728/ASP-NET-Application-and-Page-Life-Cycle</a>
+<h3 id="lifecycles">Lifecycles</h3>
+<p>See this: http://www.codeproject.com/Articles/73728/ASP-NET-Application-and-Page-Life-Cycle
 Specially this:
 <img src="http://www.codeproject.com/KB/aspnet/ASPDOTNETPageLifecycle/7.jpg" alt="Page life cycle" /></p>
+
 
   
     <footer>

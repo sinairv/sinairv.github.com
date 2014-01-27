@@ -87,71 +87,67 @@
     
   </header>
   
-  <h3>Data Binding</h3>
+  <h3 id="data-binding">Data Binding</h3>
 
 <p>General form of data-binding</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;TextBox</span> <span class="na">Text=</span><span class="s">&quot;{Binding Path=Property}&quot;</span><span class="nt">/&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="xml"><span class="line"><span class="nt">&lt;TextBox</span> <span class="na">Text=</span><span class="s">&quot;{Binding Path=Property}&quot;</span><span class="nt">/&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p><code>TextBox.Text</code> is the target, while <code>Property</code> is the source of binding.</p>
 
-<p><em>Target class</em>: any <code>FrameworkElement</code> (e.g., <code>TextBox</code>) <br/>
-<em>Target property</em>: any dependency property (DP) (e.g., <code>TextBox.Text</code>) <br/>
-<code>Binding</code> Properties:
+<p><em>Target class</em>: any <code>FrameworkElement</code> (e.g., <code>TextBox</code>) <br />
+<em>Target property</em>: any dependency property (DP) (e.g., <code>TextBox.Text</code>) <br />
+<code>Binding</code> Properties: 
 * <code>Path</code>: source object&rsquo;s <em>property</em>
-* <code>XPath</code> ( <strong>TODO</strong> ),
+* <code>XPath</code> ( <strong>TODO</strong> ), 
 * <code>Source</code>: source <em>object</em>. This is required, but can be implicitly concluded
-* <code>Mode</code>: if not specified, the element chooses the default (e.g., <code>TextBlock</code> &ndash;> <code>OneWay</code> whereas <code>TextBox</code> &ndash;> <code>TwoWay</code>)</p>
+* <code>Mode</code>: if not specified, the element chooses the default (e.g., <code>TextBlock</code> -&gt; <code>OneWay</code> whereas <code>TextBox</code> -&gt; <code>TwoWay</code>)
+    * <code>OneTime</code>: use the value for initializing, and do not watch for changes
+    * <code>OneWay</code>: from source to target (useful for readonly elements like <code>TextBlock</code>
+    * <code>OneWayToSource</code>: from target to source
+    * <code>TwoWay</code></p>
 
-<pre><code>* `OneTime`: use the value for initializing, and do not watch for changes
-* `OneWay`: from source to target (useful for readonly elements like `TextBlock`
-* `OneWayToSource`: from target to source
-* `TwoWay`
-</code></pre>
+<h4 id="example">Example</h4>
 
-<h4>Example</h4>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;Window</span> <span class="na">x:Class=</span><span class="s">&quot;DataBinding.MainWindow&quot;</span>
-</span><span class='line'>        <span class="na">xmlns=</span><span class="s">&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;</span>
-</span><span class='line'>        <span class="na">xmlns:x=</span><span class="s">&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;</span>
-</span><span class='line'>        <span class="na">xmlns:s=</span><span class="s">&quot;clr-namespace:System;assembly=mscorlib&quot;</span>
-</span><span class='line'>        <span class="na">Title=</span><span class="s">&quot;MainWindow&quot;</span> <span class="na">Height=</span><span class="s">&quot;350&quot;</span> <span class="na">Width=</span><span class="s">&quot;525&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;Window.Resources&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;s:String</span> <span class="na">x:Key=</span><span class="s">&quot;TheString&quot;</span><span class="nt">&gt;</span>OnWindow<span class="nt">&lt;/s:String&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;/Window.Resources&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;Grid&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;Grid.Resources&gt;</span>
-</span><span class='line'>            <span class="nt">&lt;s:String</span> <span class="na">x:Key=</span><span class="s">&quot;TheString&quot;</span><span class="nt">&gt;</span>OnGrid<span class="nt">&lt;/s:String&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;/Grid.Resources&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;StackPanel&gt;</span>
-</span><span class='line'>            <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">&quot;{Binding Source={StaticResource ResourceKey=TheString}}&quot;</span><span class="nt">&gt;&lt;/TextBlock&gt;</span>
-</span><span class='line'>            <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">&quot;{Binding Source={StaticResource ResourceKey=&#39;TheString&#39;}, Path=Length}&quot;</span><span class="nt">&gt;&lt;/TextBlock&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;/StackPanel&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;/Grid&gt;</span>
-</span><span class='line'><span class="nt">&lt;/Window&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+</pre></td><td class="code"><pre><code class="xml"><span class="line"><span class="nt">&lt;Window</span> <span class="na">x:Class=</span><span class="s">&quot;DataBinding.MainWindow&quot;</span>
+</span><span class="line">        <span class="na">xmlns=</span><span class="s">&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;</span>
+</span><span class="line">        <span class="na">xmlns:x=</span><span class="s">&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;</span>
+</span><span class="line">        <span class="na">xmlns:s=</span><span class="s">&quot;clr-namespace:System;assembly=mscorlib&quot;</span>
+</span><span class="line">        <span class="na">Title=</span><span class="s">&quot;MainWindow&quot;</span> <span class="na">Height=</span><span class="s">&quot;350&quot;</span> <span class="na">Width=</span><span class="s">&quot;525&quot;</span><span class="nt">&gt;</span>
+</span><span class="line">    <span class="nt">&lt;Window.Resources&gt;</span>
+</span><span class="line">        <span class="nt">&lt;s:String</span> <span class="na">x:Key=</span><span class="s">&quot;TheString&quot;</span><span class="nt">&gt;</span>OnWindow<span class="nt">&lt;/s:String&gt;</span>
+</span><span class="line">    <span class="nt">&lt;/Window.Resources&gt;</span>
+</span><span class="line">    <span class="nt">&lt;Grid&gt;</span>
+</span><span class="line">        <span class="nt">&lt;Grid.Resources&gt;</span>
+</span><span class="line">            <span class="nt">&lt;s:String</span> <span class="na">x:Key=</span><span class="s">&quot;TheString&quot;</span><span class="nt">&gt;</span>OnGrid<span class="nt">&lt;/s:String&gt;</span>
+</span><span class="line">        <span class="nt">&lt;/Grid.Resources&gt;</span>
+</span><span class="line">        <span class="nt">&lt;StackPanel&gt;</span>
+</span><span class="line">            <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">&quot;{Binding Source={StaticResource ResourceKey=TheString}}&quot;</span><span class="nt">&gt;&lt;/TextBlock&gt;</span>
+</span><span class="line">            <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">&quot;{Binding Source={StaticResource ResourceKey=&#39;TheString&#39;}, Path=Length}&quot;</span><span class="nt">&gt;&lt;/TextBlock&gt;</span>
+</span><span class="line">        <span class="nt">&lt;/StackPanel&gt;</span>
+</span><span class="line">    <span class="nt">&lt;/Grid&gt;</span>
+</span><span class="line"><span class="nt">&lt;/Window&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>The above code shows that:
 * <code>FrameworkElement</code>s can have <code>Resources</code>.
@@ -162,153 +158,143 @@
 * <code>StaticResource</code> is mapped to class <code>StaticResourceExtension</code>, and this class accepts <code>ResourceKey</code> as an argument to its constructor. Hence we can use it simply like <code>{StaticResource TheString}</code> (this is different from C# object initializers syntax).
 * <code>Binding</code> class also accepts a constructor receiving the path, hence we can rewrite the second binding as follows:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">&quot;{Binding Length,Source={StaticResource TheString}}&quot;</span><span class="nt">&gt;&lt;/TextBlock&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="xml"><span class="line"><span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">&quot;{Binding Length,Source={StaticResource TheString}}&quot;</span><span class="nt">&gt;&lt;/TextBlock&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 <ul>
-<li>Binding to a static property of an object (e.g., <code>Environment.OSVersion.Platform</code>) can be accomplished by <code>x:Static</code> (Note that it is different from <code>StaticResource</code>):</li>
+  <li>Binding to a static property of an object (e.g., <code>Environment.OSVersion.Platform</code>) can be accomplished by <code>x:Static</code> (Note that it is different from <code>StaticResource</code>):</li>
 </ul>
 
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">&quot;{Binding Platform,Source={x:Static s:Environment.OSVersion}}&quot;</span><span class="nt">&gt;&lt;/TextBlock&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Binding String Format</h3>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="xml"><span class="line"><span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">&quot;{Binding Platform,Source={x:Static s:Environment.OSVersion}}&quot;</span><span class="nt">&gt;&lt;/TextBlock&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+<p>### Binding String Format</p>
 
 <p>Lets you format the displayed value of the bound data. Does not work for some target data-types such as <code>Content</code> of a <code>Button</code>. But works for the <code>Text</code> of a <code>TextBlock</code>. An example for integer:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;TextBox</span> <span class="na">Text=</span><span class="s">&quot;{Binding Path=TheNumber,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}&quot;</span><span class="nt">/&gt;</span>
-</span><span class='line'><span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">&quot;{Binding Path=TheNumber,StringFormat=&#39;{}Hooy {0:C} Hi Hey&#39;}&quot;</span><span class="nt">/&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="xml"><span class="line"><span class="nt">&lt;TextBox</span> <span class="na">Text=</span><span class="s">&quot;{Binding Path=TheNumber,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}&quot;</span><span class="nt">/&gt;</span>
+</span><span class="line"><span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">&quot;{Binding Path=TheNumber,StringFormat=&#39;{}Hooy {0:C} Hi Hey&#39;}&quot;</span><span class="nt">/&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>Note that the format string is enclosed inside a pair of single quotes. Note that XAML parser treats braces for special purposes inside string literals. We can neutralize this effect by putting an empty pair of braces in the beginning, so that XMAL parser ignores the next brace and passes it to the string formatting method.</p>
 
-<h4>DataContext</h4>
+<h4 id="datacontext">DataContext</h4>
 
 <ul>
-<li>A property of <code>FrameworkElement</code></li>
-<li>Setting <code>DataContext</code> to a <code>FrameworkElement</code> flows down to the child elements (they call it <em>inherited property</em>, but it is not inheritance by object types. It is inheritance by visual elements hierarchy).</li>
-<li>When <code>DataContext</code> does not have a value, the binding source must be explicitly specified; otherwise it is default to <code>DataContext</code>.</li>
+  <li>A property of <code>FrameworkElement</code></li>
+  <li>Setting <code>DataContext</code> to a <code>FrameworkElement</code> flows down to the child elements (they call it <em>inherited property</em>, but it is not inheritance by object types. It is inheritance by visual elements hierarchy).</li>
+  <li>When <code>DataContext</code> does not have a value, the binding source must be explicitly specified; otherwise it is default to <code>DataContext</code>.</li>
 </ul>
 
-
-<h3>Dependency Properties</h3>
+<h3 id="dependency-properties">Dependency Properties</h3>
 
 <ul>
-<li>Can be used on <code>DependencyObject</code>s.</li>
-<li>A public static instance of <code>DependencyProperty</code> per each dependency property in the class. This instance is created through the call to <code>DependencyProperty.Register</code> method.</li>
-<li>The <code>Register</code> method above recieves an instance of <code>PropertyMetadata</code> which can be used to define property-changed event-handlers or coerce-value-delegats.</li>
-<li>The coerce-value-delegate is called upon every value assigned to the property, and can be used to filter or change those values.</li>
-<li>The property-changed-deleate is called upon every <strong>new</strong> value assigned to the property. See the sample below:</li>
+  <li>Can be used on <code>DependencyObject</code>s. </li>
+  <li>A public static instance of <code>DependencyProperty</code> per each dependency property in the class. This instance is created through the call to <code>DependencyProperty.Register</code> method.</li>
+  <li>The <code>Register</code> method above recieves an instance of <code>PropertyMetadata</code> which can be used to define property-changed event-handlers or coerce-value-delegats.</li>
+  <li>The coerce-value-delegate is called upon every value assigned to the property, and can be used to filter or change those values.</li>
+  <li>The property-changed-deleate is called upon every <strong>new</strong> value assigned to the property. See the sample below:</li>
 </ul>
 
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">Person</span> <span class="p">:</span> <span class="n">DependencyObject</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>    <span class="k">public</span> <span class="k">static</span> <span class="k">readonly</span> <span class="n">DependencyProperty</span> <span class="n">PersonNameProperty</span> <span class="p">=</span>
-</span><span class='line'>        <span class="n">DependencyProperty</span><span class="p">.</span><span class="n">Register</span><span class="p">(</span>
-</span><span class='line'>            <span class="s">&quot;PersonName&quot;</span><span class="p">,</span>                <span class="c1">// the property name</span>
-</span><span class='line'>            <span class="k">typeof</span><span class="p">(</span><span class="kt">string</span><span class="p">),</span>              <span class="c1">// the property type</span>
-</span><span class='line'>            <span class="k">typeof</span><span class="p">(</span><span class="n">Person</span><span class="p">),</span>              <span class="c1">// the property parent type</span>
-</span><span class='line'>            <span class="k">new</span> <span class="nf">PropertyMetadata</span><span class="p">(</span>        <span class="c1">// instance of property meta-data</span>
-</span><span class='line'>                    <span class="k">default</span><span class="p">(</span><span class="kt">string</span><span class="p">),</span>     <span class="c1">// default value for the property</span>
-</span><span class='line'>                    <span class="n">OnPersonNameChanged</span><span class="p">,</span> <span class="c1">// delegate called when property changes</span>
-</span><span class='line'>                    <span class="n">CoerceValue</span><span class="p">));</span>       <span class="c1">// delegate to coerce (modify) each value assigned to property </span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">private</span> <span class="k">static</span> <span class="kt">object</span> <span class="nf">CoerceValue</span><span class="p">(</span><span class="n">DependencyObject</span> <span class="n">o</span><span class="p">,</span> <span class="kt">object</span> <span class="n">e</span><span class="p">)</span>
-</span><span class='line'>    <span class="p">{</span>
-</span><span class='line'>        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Coerce called with {0}&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">);</span>
-</span><span class='line'>        <span class="k">return</span> <span class="p">((</span><span class="n">e</span> <span class="k">as</span> <span class="kt">string</span><span class="p">)</span> <span class="p">??</span> <span class="s">&quot;&quot;</span><span class="p">)</span> <span class="p">+</span>  <span class="s">&quot;!&quot;</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">public</span> <span class="k">void</span> <span class="nf">PerformCoerce</span><span class="p">()</span>
-</span><span class='line'>    <span class="p">{</span>
-</span><span class='line'>        <span class="n">CoerceValue</span><span class="p">(</span><span class="n">PersonNameProperty</span><span class="p">);</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">private</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">OnPersonNameChanged</span><span class="p">(</span>
-</span><span class='line'>        <span class="n">DependencyObject</span> <span class="n">o</span><span class="p">,</span> <span class="n">DependencyPropertyChangedEventArgs</span> <span class="n">e</span><span class="p">)</span>
-</span><span class='line'>    <span class="p">{</span>
-</span><span class='line'>        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;[{2}] Changed from {0} to {1}&quot;</span><span class="p">,</span>
-</span><span class='line'>            <span class="n">e</span><span class="p">.</span><span class="n">OldValue</span> <span class="p">??</span> <span class="s">&quot;null&quot;</span><span class="p">,</span>
-</span><span class='line'>            <span class="n">e</span><span class="p">.</span><span class="n">NewValue</span> <span class="p">??</span> <span class="s">&quot;null&quot;</span><span class="p">,</span>
-</span><span class='line'>            <span class="n">e</span><span class="p">.</span><span class="n">Property</span><span class="p">.</span><span class="n">Name</span><span class="p">);</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">public</span> <span class="kt">string</span> <span class="n">PersonName</span>
-</span><span class='line'>    <span class="p">{</span>
-</span><span class='line'>        <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="kt">string</span><span class="p">)</span> <span class="n">GetValue</span><span class="p">(</span><span class="n">PersonNameProperty</span><span class="p">);</span> <span class="p">}</span>
-</span><span class='line'>        <span class="k">set</span> <span class="p">{</span> <span class="n">SetValue</span><span class="p">(</span><span class="n">PersonNameProperty</span><span class="p">,</span> <span class="k">value</span><span class="p">);</span> <span class="p">}</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+<span class="line-number">37</span>
+<span class="line-number">38</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="k">public</span> <span class="k">class</span> <span class="nc">Person</span> <span class="p">:</span> <span class="n">DependencyObject</span>
+</span><span class="line"><span class="p">{</span>
+</span><span class="line">    <span class="k">public</span> <span class="k">static</span> <span class="k">readonly</span> <span class="n">DependencyProperty</span> <span class="n">PersonNameProperty</span> <span class="p">=</span>
+</span><span class="line">        <span class="n">DependencyProperty</span><span class="p">.</span><span class="n">Register</span><span class="p">(</span>
+</span><span class="line">            <span class="s">&quot;PersonName&quot;</span><span class="p">,</span>                <span class="c1">// the property name</span>
+</span><span class="line">            <span class="k">typeof</span><span class="p">(</span><span class="kt">string</span><span class="p">),</span>              <span class="c1">// the property type</span>
+</span><span class="line">            <span class="k">typeof</span><span class="p">(</span><span class="n">Person</span><span class="p">),</span>              <span class="c1">// the property parent type</span>
+</span><span class="line">            <span class="k">new</span> <span class="nf">PropertyMetadata</span><span class="p">(</span>        <span class="c1">// instance of property meta-data</span>
+</span><span class="line">                    <span class="k">default</span><span class="p">(</span><span class="kt">string</span><span class="p">),</span>     <span class="c1">// default value for the property</span>
+</span><span class="line">                    <span class="n">OnPersonNameChanged</span><span class="p">,</span> <span class="c1">// delegate called when property changes</span>
+</span><span class="line">                    <span class="n">CoerceValue</span><span class="p">));</span>       <span class="c1">// delegate to coerce (modify) each value assigned to property </span>
+</span><span class="line">
+</span><span class="line">    <span class="k">private</span> <span class="k">static</span> <span class="kt">object</span> <span class="nf">CoerceValue</span><span class="p">(</span><span class="n">DependencyObject</span> <span class="n">o</span><span class="p">,</span> <span class="kt">object</span> <span class="n">e</span><span class="p">)</span>
+</span><span class="line">    <span class="p">{</span>
+</span><span class="line">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Coerce called with {0}&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">);</span>
+</span><span class="line">        <span class="k">return</span> <span class="p">((</span><span class="n">e</span> <span class="k">as</span> <span class="kt">string</span><span class="p">)</span> <span class="p">??</span> <span class="s">&quot;&quot;</span><span class="p">)</span> <span class="p">+</span>  <span class="s">&quot;!&quot;</span><span class="p">;</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">public</span> <span class="k">void</span> <span class="nf">PerformCoerce</span><span class="p">()</span>
+</span><span class="line">    <span class="p">{</span>
+</span><span class="line">        <span class="n">CoerceValue</span><span class="p">(</span><span class="n">PersonNameProperty</span><span class="p">);</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">private</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">OnPersonNameChanged</span><span class="p">(</span>
+</span><span class="line">        <span class="n">DependencyObject</span> <span class="n">o</span><span class="p">,</span> <span class="n">DependencyPropertyChangedEventArgs</span> <span class="n">e</span><span class="p">)</span>
+</span><span class="line">    <span class="p">{</span>
+</span><span class="line">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;[{2}] Changed from {0} to {1}&quot;</span><span class="p">,</span>
+</span><span class="line">            <span class="n">e</span><span class="p">.</span><span class="n">OldValue</span> <span class="p">??</span> <span class="s">&quot;null&quot;</span><span class="p">,</span>
+</span><span class="line">            <span class="n">e</span><span class="p">.</span><span class="n">NewValue</span> <span class="p">??</span> <span class="s">&quot;null&quot;</span><span class="p">,</span>
+</span><span class="line">            <span class="n">e</span><span class="p">.</span><span class="n">Property</span><span class="p">.</span><span class="n">Name</span><span class="p">);</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">public</span> <span class="kt">string</span> <span class="n">PersonName</span>
+</span><span class="line">    <span class="p">{</span>
+</span><span class="line">        <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="kt">string</span><span class="p">)</span> <span class="n">GetValue</span><span class="p">(</span><span class="n">PersonNameProperty</span><span class="p">);</span> <span class="p">}</span>
+</span><span class="line">        <span class="k">set</span> <span class="p">{</span> <span class="n">SetValue</span><span class="p">(</span><span class="n">PersonNameProperty</span><span class="p">,</span> <span class="k">value</span><span class="p">);</span> <span class="p">}</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>And the driver application:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="kt">var</span> <span class="n">sample</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Person</span><span class="p">();</span>
-</span><span class='line'><span class="n">sample</span><span class="p">.</span><span class="n">PersonName</span> <span class="p">=</span> <span class="s">&quot;John&quot;</span><span class="p">;</span>
-</span><span class='line'><span class="n">sample</span><span class="p">.</span><span class="n">PersonName</span> <span class="p">=</span> <span class="s">&quot;Jack&quot;</span><span class="p">;</span>
-</span><span class='line'><span class="n">sample</span><span class="p">.</span><span class="n">PersonName</span> <span class="p">=</span> <span class="s">&quot;Jack&quot;</span><span class="p">;</span>
-</span><span class='line'><span class="n">sample</span><span class="p">.</span><span class="n">PersonName</span> <span class="p">=</span> <span class="s">&quot;Tom&quot;</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">sample</span><span class="p">.</span><span class="n">PerformCoerce</span><span class="p">();</span>
-</span><span class='line'><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;At last name is {0}&quot;</span><span class="p">,</span> <span class="n">sample</span><span class="p">.</span><span class="n">PersonName</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="kt">var</span> <span class="n">sample</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Person</span><span class="p">();</span>
+</span><span class="line"><span class="n">sample</span><span class="p">.</span><span class="n">PersonName</span> <span class="p">=</span> <span class="s">&quot;John&quot;</span><span class="p">;</span>
+</span><span class="line"><span class="n">sample</span><span class="p">.</span><span class="n">PersonName</span> <span class="p">=</span> <span class="s">&quot;Jack&quot;</span><span class="p">;</span>
+</span><span class="line"><span class="n">sample</span><span class="p">.</span><span class="n">PersonName</span> <span class="p">=</span> <span class="s">&quot;Jack&quot;</span><span class="p">;</span>
+</span><span class="line"><span class="n">sample</span><span class="p">.</span><span class="n">PersonName</span> <span class="p">=</span> <span class="s">&quot;Tom&quot;</span><span class="p">;</span>
+</span><span class="line">
+</span><span class="line"><span class="n">sample</span><span class="p">.</span><span class="n">PerformCoerce</span><span class="p">();</span>
+</span><span class="line"><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;At last name is {0}&quot;</span><span class="p">,</span> <span class="n">sample</span><span class="p">.</span><span class="n">PersonName</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
   
     <footer>

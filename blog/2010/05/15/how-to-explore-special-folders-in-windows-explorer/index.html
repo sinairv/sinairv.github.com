@@ -111,13 +111,12 @@
 
 <div class="entry-content"><p>In normal situations you cannot view the content of special folders, such as <code>Windows/assembly</code> or <code>Windows/fonts</code>, and so on. The way these folders are shown are set through the <code>desktop.ini</code> file in each of these folders, which is normally hidden and protected. One trick that I learned from here [<a href="http://blogs.msdn.com/cumgranosalis/archive/2005/10/03/476275.aspx">+</a>] is described below. Open a command prompt and type:</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>cd /d %windows%\assembly
-</span><span class='line'>attrib -r -h -s desktop.ini
-</span><span class='line'>ren desktop.ini desktop.bak</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">cd /d %windows%\assembly
+</span><span class="line">attrib -r -h -s desktop.ini
+</span><span class="line">ren desktop.ini desktop.bak</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>Using the above commands, we kill the <code>desktop.ini</code> file, which will cause Windows Explorer to successfully open and explore the real contents of the folder.</p>
 </div>

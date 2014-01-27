@@ -112,7 +112,7 @@
   </header>
 
 
-  <div class="entry-content"><p>I&rsquo;ve moved my blog from <a href="http://sinairv.wordpress.com">Wordpress</a> to my <a href="http://www.sinairv.com">homepage domain</a>. It makes use of <a href="http://octopress.org/">Octopress</a>, which is based on <a href="http://jekyllrb.com/">Jekyll</a>, and is a static site generator. The blog is hosted on GitHub pages, and is <a href="https://github.com/sinairv/sinairv.github.com">open source</a>.</p>
+  <div class="entry-content"><p>I&rsquo;ve moved my blog from <a href="http://sinairv.wordpress.com">Wordpress</a> to my <a href="http://www.sinairv.com">homepage domain</a>. It makes use of <a href="http://octopress.org/">Octopress</a>, which is based on <a href="http://jekyllrb.com/">Jekyll</a>, and is a static site generator. The blog is hosted on GitHub pages, and is <a href="https://github.com/sinairv/sinairv.github.com">open source</a>. </p>
 
 <p>The great benefit of this stack of tools is that I can easily create and edit my posts in <a href="http://en.wikipedia.org/wiki/Markdown">Markdown</a>, re-generate the blog <a href="http://octopress.org/docs/blogging/">through command line</a>, and make use of <a href="http://rake.rubyforge.org/">Rake</a> (Ruby&rsquo;s make tools) to perform various tasks ranging from post creation to deployment to GitHub pages. It&rsquo;s awesome.</p>
 </div>
@@ -155,211 +155,209 @@
 
   <div class="entry-content"><p>Imagine that we want to create a <code>Person</code> business object for whose properties we desire a two-way data binding. The source-to-target data-binding can be triggered by implementing <code>INotifyPropertyChanged</code> interface, like this:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">Person</span> <span class="p">:</span> <span class="n">INotifyPropertyChanged</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>    <span class="k">private</span> <span class="kt">string</span> <span class="n">_name</span><span class="p">;</span>
-</span><span class='line'>    <span class="k">private</span> <span class="kt">double</span> <span class="n">_age</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span>
-</span><span class='line'>    <span class="p">{</span>
-</span><span class='line'>        <span class="k">get</span>
-</span><span class='line'>        <span class="p">{</span>
-</span><span class='line'>            <span class="k">return</span> <span class="n">_name</span><span class="p">;</span>
-</span><span class='line'>        <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="k">set</span>
-</span><span class='line'>        <span class="p">{</span>
-</span><span class='line'>            <span class="k">if</span> <span class="p">(</span><span class="k">value</span> <span class="p">!=</span> <span class="n">_name</span><span class="p">)</span>
-</span><span class='line'>            <span class="p">{</span>
-</span><span class='line'>                <span class="n">_name</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span>
-</span><span class='line'>                <span class="n">OnPropertyChanged</span><span class="p">(</span><span class="s">&quot;Name&quot;</span><span class="p">);</span>
-</span><span class='line'>            <span class="p">}</span>
-</span><span class='line'>        <span class="p">}</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">public</span> <span class="kt">double</span> <span class="n">Age</span>
-</span><span class='line'>    <span class="p">{</span>
-</span><span class='line'>        <span class="k">get</span>
-</span><span class='line'>        <span class="p">{</span>
-</span><span class='line'>            <span class="k">return</span> <span class="n">_age</span><span class="p">;</span>
-</span><span class='line'>        <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="k">set</span>
-</span><span class='line'>        <span class="p">{</span>
-</span><span class='line'>            <span class="k">if</span> <span class="p">(</span><span class="n">_age</span> <span class="p">!=</span> <span class="k">value</span><span class="p">)</span>
-</span><span class='line'>            <span class="p">{</span>
-</span><span class='line'>                <span class="n">_age</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span>
-</span><span class='line'>                <span class="n">OnPropertyChanged</span><span class="p">(</span><span class="s">&quot;Age&quot;</span><span class="p">);</span>
-</span><span class='line'>            <span class="p">}</span>
-</span><span class='line'>        <span class="p">}</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">public</span> <span class="k">event</span> <span class="n">PropertyChangedEventHandler</span> <span class="n">PropertyChanged</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">private</span> <span class="k">void</span> <span class="nf">OnPropertyChanged</span><span class="p">(</span><span class="kt">string</span> <span class="n">propertyName</span><span class="p">)</span>
-</span><span class='line'>    <span class="p">{</span>
-</span><span class='line'>        <span class="k">if</span> <span class="p">(</span><span class="n">PropertyChanged</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
-</span><span class='line'>        <span class="p">{</span>
-</span><span class='line'>            <span class="n">PropertyChanged</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="k">new</span> <span class="n">PropertyChangedEventArgs</span><span class="p">(</span><span class="n">propertyName</span><span class="p">));</span>
-</span><span class='line'>        <span class="p">}</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+<span class="line-number">37</span>
+<span class="line-number">38</span>
+<span class="line-number">39</span>
+<span class="line-number">40</span>
+<span class="line-number">41</span>
+<span class="line-number">42</span>
+<span class="line-number">43</span>
+<span class="line-number">44</span>
+<span class="line-number">45</span>
+<span class="line-number">46</span>
+<span class="line-number">47</span>
+<span class="line-number">48</span>
+<span class="line-number">49</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="k">public</span> <span class="k">class</span> <span class="nc">Person</span> <span class="p">:</span> <span class="n">INotifyPropertyChanged</span>
+</span><span class="line"><span class="p">{</span>
+</span><span class="line">    <span class="k">private</span> <span class="kt">string</span> <span class="n">_name</span><span class="p">;</span>
+</span><span class="line">    <span class="k">private</span> <span class="kt">double</span> <span class="n">_age</span><span class="p">;</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span>
+</span><span class="line">    <span class="p">{</span>
+</span><span class="line">        <span class="k">get</span>
+</span><span class="line">        <span class="p">{</span>
+</span><span class="line">            <span class="k">return</span> <span class="n">_name</span><span class="p">;</span>
+</span><span class="line">        <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">        <span class="k">set</span>
+</span><span class="line">        <span class="p">{</span>
+</span><span class="line">            <span class="k">if</span> <span class="p">(</span><span class="k">value</span> <span class="p">!=</span> <span class="n">_name</span><span class="p">)</span>
+</span><span class="line">            <span class="p">{</span>
+</span><span class="line">                <span class="n">_name</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span>
+</span><span class="line">                <span class="n">OnPropertyChanged</span><span class="p">(</span><span class="s">&quot;Name&quot;</span><span class="p">);</span>
+</span><span class="line">            <span class="p">}</span>
+</span><span class="line">        <span class="p">}</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">public</span> <span class="kt">double</span> <span class="n">Age</span>
+</span><span class="line">    <span class="p">{</span>
+</span><span class="line">        <span class="k">get</span>
+</span><span class="line">        <span class="p">{</span>
+</span><span class="line">            <span class="k">return</span> <span class="n">_age</span><span class="p">;</span>
+</span><span class="line">        <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">        <span class="k">set</span>
+</span><span class="line">        <span class="p">{</span>
+</span><span class="line">            <span class="k">if</span> <span class="p">(</span><span class="n">_age</span> <span class="p">!=</span> <span class="k">value</span><span class="p">)</span>
+</span><span class="line">            <span class="p">{</span>
+</span><span class="line">                <span class="n">_age</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span>
+</span><span class="line">                <span class="n">OnPropertyChanged</span><span class="p">(</span><span class="s">&quot;Age&quot;</span><span class="p">);</span>
+</span><span class="line">            <span class="p">}</span>
+</span><span class="line">        <span class="p">}</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">public</span> <span class="k">event</span> <span class="n">PropertyChangedEventHandler</span> <span class="n">PropertyChanged</span><span class="p">;</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">private</span> <span class="k">void</span> <span class="nf">OnPropertyChanged</span><span class="p">(</span><span class="kt">string</span> <span class="n">propertyName</span><span class="p">)</span>
+</span><span class="line">    <span class="p">{</span>
+</span><span class="line">        <span class="k">if</span> <span class="p">(</span><span class="n">PropertyChanged</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+</span><span class="line">        <span class="p">{</span>
+</span><span class="line">            <span class="n">PropertyChanged</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="k">new</span> <span class="n">PropertyChangedEventArgs</span><span class="p">(</span><span class="n">propertyName</span><span class="p">));</span>
+</span><span class="line">        <span class="p">}</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>See how the setters pass the property name in a <code>string</code>. This is not nice, because whenever we change the property name through refactoring tools, the string value remains untouched and we have to manually change them as well (if we are lucky enough to get notified before run-time). Anyway we had to tolerate them for years&hellip;</p>
 
 <p>C# 5 comes with a nice feature, which is addition of two attributes <code>[CallerFilePath]</code> and <code>[CallerMemberName]</code> in the <code>System.Runtime.CompilerServices</code> namespace. If you decorate an <strong>optional</strong> string parameter of a method with one of these attributes, then the value of that parameter will be replaced with the caller&rsquo;s file name or the caller&rsquo;s member name at runtime, if no explicit value is passed for the optional parameter. They come very handy in logging scenarios, but we can use the latter for making our data-binding code nicer. This is how:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">Person</span> <span class="p">:</span> <span class="n">INotifyPropertyChanged</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>    <span class="k">private</span> <span class="kt">string</span> <span class="n">_name</span><span class="p">;</span>
-</span><span class='line'>    <span class="k">private</span> <span class="kt">double</span> <span class="n">_age</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span>
-</span><span class='line'>    <span class="p">{</span>
-</span><span class='line'>        <span class="k">get</span>
-</span><span class='line'>        <span class="p">{</span>
-</span><span class='line'>            <span class="k">return</span> <span class="n">_name</span><span class="p">;</span>
-</span><span class='line'>        <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="k">set</span>
-</span><span class='line'>        <span class="p">{</span>
-</span><span class='line'>            <span class="k">if</span> <span class="p">(</span><span class="k">value</span> <span class="p">!=</span> <span class="n">_name</span><span class="p">)</span>
-</span><span class='line'>            <span class="p">{</span>
-</span><span class='line'>                <span class="n">_name</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span>
-</span><span class='line'>                <span class="n">OnPropertyChanged</span><span class="p">();</span>
-</span><span class='line'>            <span class="p">}</span>
-</span><span class='line'>        <span class="p">}</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">public</span> <span class="kt">double</span> <span class="n">Age</span>
-</span><span class='line'>    <span class="p">{</span>
-</span><span class='line'>        <span class="k">get</span>
-</span><span class='line'>        <span class="p">{</span>
-</span><span class='line'>            <span class="k">return</span> <span class="n">_age</span><span class="p">;</span>
-</span><span class='line'>        <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="k">set</span>
-</span><span class='line'>        <span class="p">{</span>
-</span><span class='line'>            <span class="k">if</span> <span class="p">(</span><span class="n">_age</span> <span class="p">!=</span> <span class="k">value</span><span class="p">)</span>
-</span><span class='line'>            <span class="p">{</span>
-</span><span class='line'>                <span class="n">_age</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span>
-</span><span class='line'>                <span class="n">OnPropertyChanged</span><span class="p">();</span>
-</span><span class='line'>            <span class="p">}</span>
-</span><span class='line'>        <span class="p">}</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">public</span> <span class="k">event</span> <span class="n">PropertyChangedEventHandler</span> <span class="n">PropertyChanged</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">private</span> <span class="k">void</span> <span class="nf">OnPropertyChanged</span><span class="p">([</span><span class="n">CallerMemberName</span><span class="p">]</span><span class="kt">string</span> <span class="n">propertyName</span> <span class="p">=</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
-</span><span class='line'>    <span class="p">{</span>
-</span><span class='line'>        <span class="k">if</span> <span class="p">(</span><span class="n">PropertyChanged</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
-</span><span class='line'>        <span class="p">{</span>
-</span><span class='line'>            <span class="n">PropertyChanged</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="k">new</span> <span class="n">PropertyChangedEventArgs</span><span class="p">(</span><span class="n">propertyName</span><span class="p">));</span>
-</span><span class='line'>        <span class="p">}</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+<span class="line-number">37</span>
+<span class="line-number">38</span>
+<span class="line-number">39</span>
+<span class="line-number">40</span>
+<span class="line-number">41</span>
+<span class="line-number">42</span>
+<span class="line-number">43</span>
+<span class="line-number">44</span>
+<span class="line-number">45</span>
+<span class="line-number">46</span>
+<span class="line-number">47</span>
+<span class="line-number">48</span>
+<span class="line-number">49</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="k">public</span> <span class="k">class</span> <span class="nc">Person</span> <span class="p">:</span> <span class="n">INotifyPropertyChanged</span>
+</span><span class="line"><span class="p">{</span>
+</span><span class="line">    <span class="k">private</span> <span class="kt">string</span> <span class="n">_name</span><span class="p">;</span>
+</span><span class="line">    <span class="k">private</span> <span class="kt">double</span> <span class="n">_age</span><span class="p">;</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span>
+</span><span class="line">    <span class="p">{</span>
+</span><span class="line">        <span class="k">get</span>
+</span><span class="line">        <span class="p">{</span>
+</span><span class="line">            <span class="k">return</span> <span class="n">_name</span><span class="p">;</span>
+</span><span class="line">        <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">        <span class="k">set</span>
+</span><span class="line">        <span class="p">{</span>
+</span><span class="line">            <span class="k">if</span> <span class="p">(</span><span class="k">value</span> <span class="p">!=</span> <span class="n">_name</span><span class="p">)</span>
+</span><span class="line">            <span class="p">{</span>
+</span><span class="line">                <span class="n">_name</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span>
+</span><span class="line">                <span class="n">OnPropertyChanged</span><span class="p">();</span>
+</span><span class="line">            <span class="p">}</span>
+</span><span class="line">        <span class="p">}</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">public</span> <span class="kt">double</span> <span class="n">Age</span>
+</span><span class="line">    <span class="p">{</span>
+</span><span class="line">        <span class="k">get</span>
+</span><span class="line">        <span class="p">{</span>
+</span><span class="line">            <span class="k">return</span> <span class="n">_age</span><span class="p">;</span>
+</span><span class="line">        <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">        <span class="k">set</span>
+</span><span class="line">        <span class="p">{</span>
+</span><span class="line">            <span class="k">if</span> <span class="p">(</span><span class="n">_age</span> <span class="p">!=</span> <span class="k">value</span><span class="p">)</span>
+</span><span class="line">            <span class="p">{</span>
+</span><span class="line">                <span class="n">_age</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span>
+</span><span class="line">                <span class="n">OnPropertyChanged</span><span class="p">();</span>
+</span><span class="line">            <span class="p">}</span>
+</span><span class="line">        <span class="p">}</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">public</span> <span class="k">event</span> <span class="n">PropertyChangedEventHandler</span> <span class="n">PropertyChanged</span><span class="p">;</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">private</span> <span class="k">void</span> <span class="nf">OnPropertyChanged</span><span class="p">([</span><span class="n">CallerMemberName</span><span class="p">]</span><span class="kt">string</span> <span class="n">propertyName</span> <span class="p">=</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+</span><span class="line">    <span class="p">{</span>
+</span><span class="line">        <span class="k">if</span> <span class="p">(</span><span class="n">PropertyChanged</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+</span><span class="line">        <span class="p">{</span>
+</span><span class="line">            <span class="n">PropertyChanged</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="k">new</span> <span class="n">PropertyChangedEventArgs</span><span class="p">(</span><span class="n">propertyName</span><span class="p">));</span>
+</span><span class="line">        <span class="p">}</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>Now that string constants are removed from the setters we can more freely refactor our code. After being spoiled by automatic properties, this is still a very verbose way of defining properties; however it is much better than before.</p>
 </div>
@@ -400,35 +398,29 @@
   </header>
 
 
-  <div class="entry-content"><h3>In C# Code</h3>
+  <div class="entry-content"><h3 id="in-c-code">In C# Code</h3>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="kt">var</span> <span class="n">newGuid</span> <span class="p">=</span> <span class="n">Guid</span><span class="p">.</span><span class="n">NewGuid</span><span class="p">();</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="kt">var</span> <span class="n">newGuid</span> <span class="p">=</span> <span class="n">Guid</span><span class="p">.</span><span class="n">NewGuid</span><span class="p">();</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<h3>In Visual Studio</h3>
-
+<h3 id="in-visual-studio">In Visual Studio</h3>
 <p>Go to: <code>Tools &gt; Create GUID</code></p>
 
-<h3>In SQL Server Management Studio</h3>
-
+<h3 id="in-sql-server-management-studio">In SQL Server Management Studio</h3>
 <p>Execute either of the following queries:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">SELECT</span> <span class="n">NEWID</span><span class="p">()</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="sql"><span class="line"><span class="k">SELECT</span> <span class="n">NEWID</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>or</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="n">PRINT</span> <span class="n">NEWID</span><span class="p">()</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="sql"><span class="line"><span class="n">PRINT</span> <span class="n">NEWID</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<h3>None of the above</h3>
-
+<h3 id="none-of-the-above">None of the above</h3>
 <p>Go to <a href="http://newguid.com/">newguid.com</a>, and refresh the page as many times as you want.</p>
 </div>
   
@@ -472,49 +464,47 @@
 
 <p>First, I changed all <code>void Save()</code> methods to <code>bool Save()</code>, and performed the validation stuff in each control separately. Then in the parent form, I created an array of <code>Control</code>s, so that I could loop through them, and call their <code>Save</code> method. But wait, <code>Save</code> is not inherited from any base-class or interface, so there&rsquo;s no polymorphism at hand. How can I call them through references of type <code>Control</code>?</p>
 
-<p>Well honestly, the best solution would be adding a new interface to the project, say <code>ISavableControl</code> or something, add the <code>Save</code> method to it, and let the controls implement that interface. But I wanted to make a quick fix to the problem without adding new files and types to the code. Here C#&lsquo;s <code>dynamic</code> comes into action.</p>
+<p>Well honestly, the best solution would be adding a new interface to the project, say <code>ISavableControl</code> or something, add the <code>Save</code> method to it, and let the controls implement that interface. But I wanted to make a quick fix to the problem without adding new files and types to the code. Here C#&rsquo;s <code>dynamic</code> comes into action.</p>
 
 <p>Using <code>dynamic</code> keyword, one postpones binding methods, properties, and fields to run-time. In our scenario we know that the user-controls each have a method called <code>Save</code>, which is not derived from a parent. Without <code>dynamic</code>, I would need to have a reference explicitly from each user control&rsquo;s type, and I would have to call them one by one, as in:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="kt">bool</span> <span class="n">succeeded</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
-</span><span class='line'><span class="n">succeeded</span> <span class="p">=</span> <span class="n">userControl1</span><span class="p">.</span><span class="n">Save</span><span class="p">();</span>
-</span><span class='line'><span class="n">succeeded</span> <span class="p">=</span> <span class="n">succeeded</span> <span class="p">||</span> <span class="n">userControl2</span><span class="p">.</span><span class="n">Save</span><span class="p">();</span>
-</span><span class='line'><span class="n">succeeded</span> <span class="p">=</span> <span class="n">succeeded</span> <span class="p">||</span> <span class="n">userControl3</span><span class="p">.</span><span class="n">Save</span><span class="p">();</span>
-</span><span class='line'><span class="c1">// ...</span>
-</span><span class='line'><span class="n">succeeded</span> <span class="p">=</span> <span class="n">succeeded</span> <span class="p">||</span> <span class="n">userControln</span><span class="p">.</span><span class="n">Save</span><span class="p">();</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="kt">bool</span> <span class="n">succeeded</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+</span><span class="line"><span class="n">succeeded</span> <span class="p">=</span> <span class="n">userControl1</span><span class="p">.</span><span class="n">Save</span><span class="p">();</span>
+</span><span class="line"><span class="n">succeeded</span> <span class="p">=</span> <span class="n">succeeded</span> <span class="p">||</span> <span class="n">userControl2</span><span class="p">.</span><span class="n">Save</span><span class="p">();</span>
+</span><span class="line"><span class="n">succeeded</span> <span class="p">=</span> <span class="n">succeeded</span> <span class="p">||</span> <span class="n">userControl3</span><span class="p">.</span><span class="n">Save</span><span class="p">();</span>
+</span><span class="line"><span class="c1">// ...</span>
+</span><span class="line"><span class="n">succeeded</span> <span class="p">=</span> <span class="n">succeeded</span> <span class="p">||</span> <span class="n">userControln</span><span class="p">.</span><span class="n">Save</span><span class="p">();</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>However using <code>dynamic</code> keyword, life gets a lot easier:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="c1">// objects are not inherited from a base class or interface,</span>
-</span><span class='line'><span class="c1">// therefore we cannot call Save using polymorphism</span>
-</span><span class='line'><span class="kt">bool</span> <span class="n">succeeded</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
-</span><span class='line'><span class="k">foreach</span><span class="p">(</span><span class="kt">var</span> <span class="n">ctrl</span> <span class="k">in</span> <span class="n">controlsArray</span><span class="p">)</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>    <span class="kt">dynamic</span> <span class="n">dynCtrl</span> <span class="p">=</span> <span class="n">ctrl</span><span class="p">;</span>
-</span><span class='line'>    <span class="n">succeeded</span> <span class="p">=</span> <span class="n">succeeded</span> <span class="p">||</span> <span class="n">dynCtrl</span><span class="p">.</span><span class="n">Save</span><span class="p">();</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">// do something with the value of succeeded</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="c1">// objects are not inherited from a base class or interface,</span>
+</span><span class="line"><span class="c1">// therefore we cannot call Save using polymorphism</span>
+</span><span class="line"><span class="kt">bool</span> <span class="n">succeeded</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+</span><span class="line"><span class="k">foreach</span><span class="p">(</span><span class="kt">var</span> <span class="n">ctrl</span> <span class="k">in</span> <span class="n">controlsArray</span><span class="p">)</span>
+</span><span class="line"><span class="p">{</span>
+</span><span class="line">    <span class="kt">dynamic</span> <span class="n">dynCtrl</span> <span class="p">=</span> <span class="n">ctrl</span><span class="p">;</span>
+</span><span class="line">    <span class="n">succeeded</span> <span class="p">=</span> <span class="n">succeeded</span> <span class="p">||</span> <span class="n">dynCtrl</span><span class="p">.</span><span class="n">Save</span><span class="p">();</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">// do something with the value of succeeded</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>Take care that binding the <code>Save</code> methods to controls happen at runtime. Therefore if a control does not implement a <code>Save</code> method, or if another one misspells <code>Save</code>, as say <code>Svae</code>, you will get no hints at compile time. So, try to avoid this style of coding, unless you have good reasons for doing so.</p>
 </div>
@@ -625,28 +615,28 @@
 <p>We need to do the following steps next:</p>
 
 <ol>
-<li>Right click somewhere in the Windows explorer window, and from the context-menu go to: TortoiseGit > Settings >> Git branch; and fill the user-name and email fields with the ones suggested by GitHub, and press OK.</li>
-<li>Create a folder preferably with the same name as your project (in my case PdfRenamer), and browse into it with Windows explorer.</li>
-<li>Right click somewhere in the folder and from the context menu select &ldquo;Git Create repository here&hellip;&rdquo;. A window pops-up. Make sure that &ldquo;Make it Bare&rdquo; is not checked; and press OK.</li>
-<li>Right click somewhere in the folder and from the context menu go to: TortoiseGit > Settings >> Git branch >> Remote sub-branch. In the &ldquo;Remote&rdquo; field enter &ldquo;origin&rdquo;, in the URL field enter the git repository address which was highlighted above and is in the form of <code>git@github.com:[username]/[projectname].git</code>; and finally in front of &ldquo;putty key&rdquo; provide the address to the SSH private key which we saved earlier in this tutorial, and has the <code>.ppk</code> extension. When finished press the &ldquo;Add New/Save&rdquo; button. After that origin should be added to the list of Remotes.</li>
+  <li>Right click somewhere in the Windows explorer window, and from the context-menu go to: TortoiseGit &gt; Settings�� Git branch; and fill the user-name and email fields with the ones suggested by GitHub, and press OK.</li>
+  <li>Create a folder preferably with the same name as your project (in my case PdfRenamer), and browse into it with Windows explorer.</li>
+  <li>Right click somewhere in the folder and from the context menu select &ldquo;Git Create repository here&hellip;&rdquo;. A window pops-up. Make sure that &ldquo;Make it Bare&rdquo; is not checked; and press OK.</li>
+  <li>Right click somewhere in the folder and from the context menu go to: TortoiseGit &gt; Settings�� Git branch�� Remote sub-branch. In the &ldquo;Remote&rdquo; field enter &ldquo;origin&rdquo;, in the URL field enter the git repository address which was highlighted above and is in the form of <code>git@github.com:[username]/[projectname].git</code>; and finally in front of &ldquo;putty key&rdquo; provide the address to the SSH private key which we saved earlier in this tutorial, and has the <code>.ppk</code> extension. When finished press the &ldquo;Add New/Save&rdquo; button. After that origin should be added to the list of Remotes.</li>
 </ol>
-
 
 <p><img src="/images/posts/tortoisegitremotesetting.png" alt="TortoiseGit Remote Setting" /></p>
 
 <p><strong>Add files to the project structure.</strong> With git, adding a file to a project structure and having it reflected in the remote repository requires 3 operations: add, commit, and push. The first 2 operations are required for adding the file to the local repository, and the third one reflects the changes to the remote repository. This last operation can be postponed to a later time when you want to push a bundle of changes all at once.</p>
 
-<p>To start, create a <code>Readme.txt</code> file in the root folder. Right click on the newly added file, from the context menu select: TortoiseGit > add; check the files to be added, and press OK. This was the first operation: add. In the new window press &ldquo;commit &hellip;&rdquo;, provide a meaningful commit message in the new window, and press OK when finished. This was the second operation: commit which reflects the changes to your local repository, the one in your hard-drive. You can push the changes in the next window if you want, however it&rsquo;s not a good idea to push every local commit to the remote repository (that&rsquo;s why we are using a DVCS after all).</p>
+<p>To start, create a <code>Readme.txt</code> file in the root folder. Right click on the newly added file, from the context menu select: TortoiseGit &gt; add; check the files to be added, and press OK. This was the first operation: add. In the new window press &ldquo;commit &hellip;&rdquo;, provide a meaningful commit message in the new window, and press OK when finished. This was the second operation: commit which reflects the changes to your local repository, the one in your hard-drive. You can push the changes in the next window if you want, however it&rsquo;s not a good idea to push every local commit to the remote repository (that&rsquo;s why we are using a DVCS after all).</p>
 
 <p>Before continuing to the push command, let&rsquo;s talk about some naming conventions in the Git world. With DVCSs such as git you can have different remote repositories which you may choose from to push your changes to. By convention, the default name for the remote repository is &ldquo;origin&rdquo;. In our case origin is the remote repository at the GitHub server, for which we manually added the link before. On the other hand, each project may have several branches. Conceptually a branch is another copy of the same project where other features are developed and tested. For example imagine that at a certain stage of development you may decide to add a new feature to your project. You may create a new branch called &ldquo;test&rdquo;, develop and test the feature there, and finally merge the changes with the code at the main branch. By convention, the main branch is called &ldquo;master&rdquo;.</p>
 
-<p>When it comes to push, you need to know which branch of the code you want to push to which remote repository. In our simple case we want to push the master branch to the origin repository. For this purpose, right click somewhere on the Windows explorer that shows the project root folder, and select: TortoiseGit > Push&hellip;. Make sure the name of the branches for local and remote repositories and the name of the remote repository are selected correctly. More importantly make sure that the &ldquo;Autoload Putty Key&rdquo; check-box is also checked, and press OK. Next, the TortoiseGit will prompt you for the private-key passphrase. Note that this is not your GitHub account password, this is the passphrase that you chose when creating the private key with Puttygen. After finishing the push operation, check the sources in the project&rsquo;s GitHub page to make sure the changes have been reflected there. Note that after the first push, the PuTTY authentication agent (Pageant) gets run in the background, so that you won&rsquo;t need to enter the passphrase any time you want to push to GitHub.</p>
+<p>When it comes to push, you need to know which branch of the code you want to push to which remote repository. In our simple case we want to push the master branch to the origin repository. For this purpose, right click somewhere on the Windows explorer that shows the project root folder, and select: TortoiseGit &gt; Push&hellip;. Make sure the name of the branches for local and remote repositories and the name of the remote repository are selected correctly. More importantly make sure that the &ldquo;Autoload Putty Key&rdquo; check-box is also checked, and press OK. Next, the TortoiseGit will prompt you for the private-key passphrase. Note that this is not your GitHub account password, this is the passphrase that you chose when creating the private key with Puttygen. After finishing the push operation, check the sources in the project&rsquo;s GitHub page to make sure the changes have been reflected there. Note that after the first push, the PuTTY authentication agent (Pageant) gets run in the background, so that you won&rsquo;t need to enter the passphrase any time you want to push to GitHub.</p>
 
 <p><strong>Updating the local repository with the latest changes made by other team members to the remote repository.</strong> Well, there are two solutions. The one that I prefer is using git pull. You can easily find this command in the TortoiseGit&rsquo;s context menu. The pull command, preserves the history of changes made by different people and makes a final merge afterwards. The other solution is git fetch and rebase. The fetch command only receives the latest changes from the remote repository but does not apply them. The rebase command first applies the remote changes to the repository, then applies your changes. Therefore it always seems that you have made the recent changes, while it may not be true. See this <a href="http://stackoverflow.com/questions/3357122/git-pull-vs-git-fetch-git-rebase">stackoverflow question</a> for a better explanation.</p>
 
 <p><strong>Note:</strong> At any stage, if git complains about connecting through a null proxy, then you will have to remove proxy settings from the global <code>.gitconfig</code> file. For more information see tip 7 on my earlier <a href="/blog/2012/05/01/how-to-setup-git-for-windows/">post</a></p>
 
 <p>You may also want to see my earlier <a href="/blog/2012/05/02/using-git-with-codeplex-on-windows/">post</a> that describes using git with <a href="http://www.codeplex.com/">CodePlex</a> on Windows.</p>
+
 </div>
   
   
@@ -697,16 +687,16 @@
 
 <p>Now that you have the currently empty project structure at your hard-drive, it&rsquo;s time to add some files to it. Using git, adding a file to a project structure and having it reflected in the remote repository requires 3 operations: <em>add</em>, <em>commit</em>, and <em>push</em>. The first 2 operations are required for adding the file to the local repository, and the third one reflects the changes to the remote repository. This last operation can be postponed to a later time when you want to push a bundle of changes all at once.</p>
 
-<p>To start, create a <code>Readme.txt</code> file in the root folder. Right click on the newly added file, from the context menu select: <em>TortoiseGit > add</em>; check the files to be added, and press OK. This was the first operation: <em>add</em>. In the new window press <em>&ldquo;commit &hellip;&rdquo;</em>, provide a meaningful commit message in the new window, and press OK when finished. This was the second operation: <em>commit</em> which reflects the changes to your local repository, the one in your hard-drive. You can push the changes in the next window if you want, however it&rsquo;s not a good idea to push every local commit to the remote repository (that&rsquo;s why we are using a DVCS after all).</p>
+<p>To start, create a <code>Readme.txt</code> file in the root folder. Right click on the newly added file, from the context menu select: <em>TortoiseGit &gt; add</em>; check the files to be added, and press OK. This was the first operation: <em>add</em>. In the new window press <em>&ldquo;commit &hellip;&rdquo;</em>, provide a meaningful commit message in the new window, and press OK when finished. This was the second operation: <em>commit</em> which reflects the changes to your local repository, the one in your hard-drive. You can push the changes in the next window if you want, however it&rsquo;s not a good idea to push every local commit to the remote repository (that&rsquo;s why we are using a DVCS after all).</p>
 
 <p>Before continuing to the <em>push</em> command, let&rsquo;s talk about some naming conventions in the git world. With DVCSs such as git you can have different remote repositories which you may choose from to push your changes to. By convention, the default name for the remote repository is <em>&ldquo;origin&rdquo;</em>. In our case origin is the remote repository at the CodePlex server. On the other hand, each project may have several branches. Conceptually a branch is another copy of the same project where other features are developed and tested. For example imagine that at a certain stage of development you may decide to add a new feature to your project. You may create a new branch called <em>&ldquo;test&rdquo;</em>, develop and test the feature there, and finally merge the changes with the code at the main branch. By convention, the main branch is called <em>&ldquo;master&rdquo;</em>.</p>
 
-<p>When it comes to <em>push</em>, you need to know which branch of the code you want to push to which remote repository. In our simple case we want to push the <em>master</em> branch to the <em>origin</em> repository. For this purpose, right click somewhere on the Windows explorer that shows the project root folder, and select: <em>TortoiseGit > Push&hellip;</em>. Make sure the name of the branches for local and remote repositories and the name of the remote repository are selected correctly, and press OK. Enter CodePlex user-name and passwords which are prompted. Now check the sources in the project&rsquo;s CodePlex site to make sure the changes have been reflected there.</p>
+<p>When it comes to <em>push</em>, you need to know which branch of the code you want to push to which remote repository. In our simple case we want to push the <em>master</em> branch to the <em>origin</em> repository. For this purpose, right click somewhere on the Windows explorer that shows the project root folder, and select: <em>TortoiseGit &gt; Push&hellip;</em>. Make sure the name of the branches for local and remote repositories and the name of the remote repository are selected correctly, and press OK. Enter CodePlex user-name and passwords which are prompted. Now check the sources in the project&rsquo;s CodePlex site to make sure the changes have been reflected there.</p>
 
 <p>How to update the local repository with the latest changes made by other team members to the remote repository? Well, there are two solutions. The one that I prefer is to use git <em>pull</em>. You can easily find this command in the TortoiseGit&rsquo;s context menu. The <em>pull</em> command, preserves the history of changes made by different people and makes a final merge afterwards. The other solution is git <em>fetch</em> and <em>rebase</em>. The <em>fetch</em> command only receives the latest changes from the remote repository but does not apply them. The <em>rebase</em> command first applies the remote changes to the repository, then applies your changes. Therefore it always seems that you have made the recent changes, while it may not be true. See this <a href="http://stackoverflow.com/questions/3357122/git-pull-vs-git-fetch-git-rebase">stackoverflow question</a> for a better explanation.</p>
 
-<p>See also:  <br/>
-<a href="/blog/2012/05/01/how-to-setup-git-for-windows/">How to Setup Git for Windows</a>  <br/>
+<p>See also:  <br />
+<a href="/blog/2012/05/01/how-to-setup-git-for-windows/">How to Setup Git for Windows</a>  <br />
 <a href="/blog/2012/05/05/using-git-with-github-on-windows/">Using Git With GitHub on Windows</a></p>
 </div>
   
@@ -749,23 +739,36 @@
   <div class="entry-content"><p>These are some easy steps required to setup Git for Windows:</p>
 
 <ol>
-<li><p>Download msysGit from: <a href="http://code.google.com/p/msysgit">http://code.google.com/p/msysgit</a>  <br/>
-I prefer to use the portable version. At the time of this writing there&rsquo;s no difference between 32 bit and 64 bit versions and the filename for the portable version is: <code>PortableGit-1.7.10-preview20120409.7z</code>. Currently it seems that the development of the project has been moved to <a href="http://github.com/msysgit">GitHub</a>, but the releases are still located in Google Code.</p></li>
-<li><p>Extract the contents in a proper location. I made them into:  <br/>
-<code>D:\PortableProgs\msysGit</code></p></li>
-<li><p>If you intend to use the git command-line for every git operation simply run <code>git-bash.bat</code> in the root folder of <em>msysGit</em>. This is the old lovely <em>Cygwin</em> command-line.</p></li>
-<li><p>If you don&rsquo;t intend to use command-line (like me) install <em>TortoiseGit</em>. It is hosted on Google Code:  <br/>
-<a href="http://code.google.com/p/tortoisegit/">http://code.google.com/p/tortoisegit/</a>  <br/>
-Note that it comes with different releases for 32-bit and 64-bit systems. At the time of this writing the latest version is 1.7.8.0. After installing <em>TortoiseGit</em> you may need to restart Windows, or the Windows explorer process, or none.</p></li>
-<li><p>Right click somewhere on a Windows Explorer window, and from the context menu select: <em>TortoiseGit > Settings</em>. There will be a message-box appearing begging for adjusting the path to <em>msysGit</em>. Click on &ldquo;Set MSysGit path&rdquo; button (If you have ever missed this window, or want to change the path to an already existing <em>msysGit</em>, simply go to: <em>TortoiseGit > Settings >> the General branch</em>).  <br/>
-In the field titled as <em>&ldquo;Git.exe path:&rdquo;</em> enter the path to the <em>bin</em> folder of the <em>msysGit</em> installation/copy.</p></li>
-<li><p>You don&rsquo;t have to, but it is highly recommended that before starting any git operations you set some global settings such as your name, email, and AutoCrlf. To this aim in the Windows explorer&rsquo;s context menu go to: <em>TortoiseGit > Settings >> the Git branch</em>. Fill in the fields labelled <em>Name</em> and <em>Email</em> with proper values. Then make sure that <em>AutoCrlf</em> check-box is unchecked, so that you don&rsquo;t touch every file in order to change their line-endings. Read more about this kind of problem <a href="http://code52.org/line-endings.html">here</a>, and see <a href="http://stackoverflow.com/questions/4181870/git-on-windows-what-do-the-crlf-settings-mean">here</a> to know more what AutoCrlf and SafeCrlf options do for you.</p></li>
-<li><p><strong>[UPDATED on 3 May 2012]</strong> When performing some git operations, git may complain that it cannot connect through a <em>null</em> proxy. It may happen for some versions if in git settings the value for proxy is assigned to an empty string. If this is the case for you, simply remove proxy settings in the global <code>.gitconfig</code> file. To do this, right click somewhere in Windows explorer, go to: <em>TortoiseGit > Settings >> The Git Branch >> Edit Global .gitconfig button</em>. From there remove the line that assigns proxy, or the whole <code>[http]</code> section if it only contains proxy settings.</p></li>
+  <li>
+    <p>Download msysGit from: http://code.google.com/p/msysgit  <br />
+I prefer to use the portable version. At the time of this writing there&rsquo;s no difference between 32 bit and 64 bit versions and the filename for the portable version is: <code>PortableGit-1.7.10-preview20120409.7z</code>. Currently it seems that the development of the project has been moved to <a href="http://github.com/msysgit">GitHub</a>, but the releases are still located in Google Code.</p>
+  </li>
+  <li>
+    <p>Extract the contents in a proper location. I made them into:  <br />
+<code>D:\PortableProgs\msysGit</code></p>
+  </li>
+  <li>
+    <p>If you intend to use the git command-line for every git operation simply run <code>git-bash.bat</code> in the root folder of <em>msysGit</em>. This is the old lovely <em>Cygwin</em> command-line.</p>
+  </li>
+  <li>
+    <p>If you don&rsquo;t intend to use command-line (like me) install <em>TortoiseGit</em>. It is hosted on Google Code:  <br />
+http://code.google.com/p/tortoisegit/  <br />
+Note that it comes with different releases for 32-bit and 64-bit systems. At the time of this writing the latest version is 1.7.8.0. After installing <em>TortoiseGit</em> you may need to restart Windows, or the Windows explorer process, or none.</p>
+  </li>
+  <li>
+    <p>Right click somewhere on a Windows Explorer window, and from the context menu select: <em>TortoiseGit &gt; Settings</em>. There will be a message-box appearing begging for adjusting the path to <em>msysGit</em>. Click on &ldquo;Set MSysGit path&rdquo; button (If you have ever missed this window, or want to change the path to an already existing <em>msysGit</em>, simply go to: <em>TortoiseGit &gt; Settings�� the General branch</em>).  <br />
+In the field titled as <em>&ldquo;Git.exe path:&rdquo;</em> enter the path to the <em>bin</em> folder of the <em>msysGit</em> installation/copy.</p>
+  </li>
+  <li>
+    <p>You don&rsquo;t have to, but it is highly recommended that before starting any git operations you set some global settings such as your name, email, and AutoCrlf. To this aim in the Windows explorer&rsquo;s context menu go to: <em>TortoiseGit &gt; Settings�� the Git branch</em>. Fill in the fields labelled <em>Name</em> and <em>Email</em> with proper values. Then make sure that <em>AutoCrlf</em> check-box is unchecked, so that you don&rsquo;t touch every file in order to change their line-endings. Read more about this kind of problem <a href="http://code52.org/line-endings.html">here</a>, and see <a href="http://stackoverflow.com/questions/4181870/git-on-windows-what-do-the-crlf-settings-mean">here</a> to know more what AutoCrlf and SafeCrlf options do for you.</p>
+  </li>
+  <li>
+    <p><strong>[UPDATED on 3 May 2012]</strong> When performing some git operations, git may complain that it cannot connect through a <em>null</em> proxy. It may happen for some versions if in git settings the value for proxy is assigned to an empty string. If this is the case for you, simply remove proxy settings in the global <code>.gitconfig</code> file. To do this, right click somewhere in Windows explorer, go to: <em>TortoiseGit &gt; Settings�� The Git Branch�� Edit Global .gitconfig button</em>. From there remove the line that assigns proxy, or the whole <code>[http]</code> section if it only contains proxy settings.</p>
+  </li>
 </ol>
 
-
-<p>See also:  <br/>
-<a href="/blog/2012/05/02/using-git-with-codeplex-on-windows/">Using Git With CodePlex on Windows</a>  <br/>
+<p>See also:  <br />
+<a href="/blog/2012/05/02/using-git-with-codeplex-on-windows/">Using Git With CodePlex on Windows</a>  <br />
 <a href="/blog/2012/05/05/using-git-with-github-on-windows/">Using Git With GitHub on Windows</a></p>
 </div>
   
@@ -805,23 +808,23 @@ In the field titled as <em>&ldquo;Git.exe path:&rdquo;</em> enter the path to th
   </header>
 
 
-  <div class="entry-content"><p>I downloaded the Qt SDK (offline installer version which was 1.7 GB) from:
-<a href="http://qt.nokia.com/downloads">http://qt.nokia.com/downloads</a></p>
+  <div class="entry-content"><p>I downloaded the Qt SDK (offline installer version which was 1.7 GB) from: 
+http://qt.nokia.com/downloads</p>
 
 <p>At the time of this writing, the Qt libraries version was 4.7.3.</p>
 
 <p>Then I downloaded the VS-Addin, using the link at the bottom of the downloads page, titled &ldquo;Qt Visual Studio Add-in&rdquo;.</p>
 
-<p>After installing both SDK, and the VS-Addin on my system, I started Visual Studio 2010. I tried to create a sample project by selecting: File > New > Project&hellip; > Qt4 Projects > Qt Application, and specified proper values for Name and Location. After going through the Qt wizard to the end, I encountered the following error message:</p>
+<p>After installing both SDK, and the VS-Addin on my system, I started Visual Studio 2010. I tried to create a sample project by selecting: File &gt; New &gt; Project&hellip; &gt; Qt4 Projects &gt; Qt Application, and specified proper values for Name and Location. After going through the Qt wizard to the end, I encountered the following error message:</p>
 
 <pre><code>unable to find Qt Build!
 To solve this problem specify Qt Build!
 </code></pre>
 
-<p>By going to the Qt setup directory, one sees that there are Qt SDKs available for different target platforms. For example I installed Qt in &ldquo;D:\QtSDK\&rdquo; and in that directory I see some folders which correspond to different target platforms such as Desktop, Madde, Symbian, and others. An appropriate platform directory should contain a bin folder inside. This is true about Madde, and Symbian, but the Desktop folder is a root for subdirectories related to different Qt versions and C++ compilers. Since I wanted to develop Qt applications with Microsoft Visual C++ for the Windows Desktop platform I went to the following directory which contains the required bin folder:
+<p>By going to the Qt setup directory, one sees that there are Qt SDKs available for different target platforms. For example I installed Qt in &ldquo;D:\QtSDK&#8221; and in that directory I see some folders which correspond to different target platforms such as Desktop, Madde, Symbian, and others. An appropriate platform directory should contain a bin folder inside. This is true about Madde, and Symbian, but the Desktop folder is a root for subdirectories related to different Qt versions and C++ compilers. Since I wanted to develop Qt applications with Microsoft Visual C++ for the Windows Desktop platform I went to the following directory which contains the required bin folder: 
 D:\QtSDK\Desktop\Qt\4.7.3\msvc2008</p>
 
-<p>For the next step, I had to introduce this directory for the Qt VS-addin. From the main menu, I selected Qt > Qt Options > Qt Versions. I pressed the Add button, and entered &ldquo;Win 4.7.3&rdquo; in the  &ldquo;Version name&rdquo; field, and entered the above path in the &ldquo;Path&rdquo; field, and pressed OK. The path that I specified was added to the gird. Then I made sure that in the Default Qt/Win version, the version that I have just specified (i.e., Win 4.7.3) is selected. I pressed OK, and tried once more with the Qt New Project wizard. This time everything went OK, and I succeeded to create and build my first Qt Application in the VS 2010 environment.</p>
+<p>For the next step, I had to introduce this directory for the Qt VS-addin. From the main menu, I selected Qt &gt; Qt Options &gt; Qt Versions. I pressed the Add button, and entered &ldquo;Win 4.7.3&rdquo; in the  &ldquo;Version name&rdquo; field, and entered the above path in the &ldquo;Path&rdquo; field, and pressed OK. The path that I specified was added to the gird. Then I made sure that in the Default Qt/Win version, the version that I have just specified (i.e., Win 4.7.3) is selected. I pressed OK, and tried once more with the Qt New Project wizard. This time everything went OK, and I succeeded to create and build my first Qt Application in the VS 2010 environment.</p>
 
 <p>Note: In fact the current Qt binaries are targeted for Visual Studio 2008. I was able to use the binaries (i.e., libs and dlls) because I had also Visual Studio 2008 and the corresponding C++ compiler installed on my machine. Otherwise, I presume that I would need to recompile the sources with the VS-2010 C++ compiler.</p>
 </div>
@@ -866,16 +869,13 @@ D:\QtSDK\Desktop\Qt\4.7.3\msvc2008</p>
 
 <p>Run the following command:</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>powercfg.exe -h off</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">powercfg.exe -h off</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>The disk space is freed immediately. To turn it back on run:</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>powercfg.exe -h on</span></code></pre></td></tr></table></div></figure>
-
-
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">powercfg.exe -h on</span></code></pre></td></tr></table></div></figure></notextile></div>
 <p>Reference: [<a href="http://helpdeskgeek.com/windows-7/windows-7-delete-hibernation-file-hiberfil-sys/">+</a>]</p>
 </div>
   

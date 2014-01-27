@@ -114,12 +114,11 @@
 
 <div class="entry-content"><p>PdfLaTeX does not support <code>eps</code> files by default. Add the following imports in the beginning:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='latex'><span class='line'><span class="k">\usepackage</span><span class="nb">{</span>graphicx<span class="nb">}</span> <span class="c">% already added</span>
-</span><span class='line'><span class="k">\usepackage</span><span class="nb">{</span>epstopdf<span class="nb">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="latex"><span class="line"><span class="k">\usepackage</span><span class="nb">{</span>graphicx<span class="nb">}</span> <span class="c">% already added</span>
+</span><span class="line"><span class="k">\usepackage</span><span class="nb">{</span>epstopdf<span class="nb">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>After that the <code>includegraphics</code> commands with <code>eps</code> arguments should produce no problems.</p>
 

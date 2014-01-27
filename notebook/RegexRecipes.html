@@ -9,7 +9,8 @@
   <meta name="author" content="Sina Iravanian">
 
   
-  <meta name="description" content="Regular Expression Recipes Identical character repetition detection Match 2 repetitions of a character (.)\1 Match 3 repetitions of a character (.)\ &hellip;">
+  <meta name="description" content="Regular Expression Recipes Identical character repetition detection
+Match 2 repetitions of a character (.)\1 Match 3 repetitions of a character (.)\ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -86,8 +87,7 @@
     
   </header>
   
-  <h2>Identical character repetition detection</h2>
-
+  <h2 id="identical-character-repetition-detection">Identical character repetition detection</h2>
 <p>Match 2 repetitions of a character</p>
 
 <pre><code>(.)\1
@@ -105,9 +105,9 @@
 
 <p><strong>Note</strong>: <code>\1</code> is referring to to group matched just before it.</p>
 
-<h2>Matching beginning, and ending characters of input, or every line of input</h2>
+<h2 id="matching-beginning-and-ending-characters-of-input-or-every-line-of-input">Matching beginning, and ending characters of input, or every line of input</h2>
 
-<p>Regex <em>Anchors</em> are used for this purpose.</p>
+<p>Regex <em>Anchors</em> are used for this purpose. </p>
 
 <p><code>\A</code> matches the beginning of the whole input string (the position, not a character). It does not match beginning of every line of input.</p>
 
@@ -120,6 +120,7 @@
 <p><code>$</code> in single line mode matches the end of the whole input; while in multi-line mode matches the end of every line of input. It does not match lines that contain only line-breaks. In single line mode it behaves like <code>\Z</code>, i.e., it matches the final line break only if the input string ends with a single one.</p>
 
 <p>Note that whenever <code>\Z</code>, and <code>$</code> match the final line breaks, they match the actual character, not the position. Therefore <code>.\Z</code> and <code>.$</code> patterns both match the character right before line-break.</p>
+
 
   
     <footer>

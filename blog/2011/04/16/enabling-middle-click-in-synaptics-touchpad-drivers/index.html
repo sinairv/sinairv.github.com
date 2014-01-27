@@ -112,12 +112,11 @@
 <div class="entry-content"><p>Recently I upgraded my currently installed Synaptics touchpad driver to version 15.x, and I found that I cannot emulate the middle-click effect by pressing both right and left click buttons. I found no options in the settings to enable that functionality. Finally after searching the web I found a workaround here [<a href="http://forum.notebookreview.com/hp-compaq/205207-those-synaptics-touchstyk-trackpoint-any-way-enable-middle-button-scrolling.html">+</a>]:</p>
 
 <ol>
-<li>Run the registry editor (<code>regedit</code>)</li>
-<li>Go to key: <code>HKEY_LOCAL_MACHINE\Software\Synaptics\SynTP\Defaults\</code></li>
-<li>Here create a new key as a <code>DWORD</code> and name it <code>HasBothButtonFeature</code> and set the value to 1.</li>
-<li>Log off and Log on again</li>
+  <li>Run the registry editor (<code>regedit</code>)</li>
+  <li>Go to key: <code>HKEY_LOCAL_MACHINE\Software\Synaptics\SynTP\Defaults\</code></li>
+  <li>Here create a new key as a <code>DWORD</code> and name it <code>HasBothButtonFeature</code> and set the value to 1.</li>
+  <li>Log off and Log on again</li>
 </ol>
-
 
 <p>It worked fine for me.</p>
 </div>

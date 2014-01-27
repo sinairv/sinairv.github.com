@@ -107,46 +107,45 @@ IF EXISTS ( &hellip;">
     
   </header>
   
-  <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="c1">-- Method 1</span>
-</span><span class='line'><span class="c1">-- Use the name without database owner (such as dbo, etc)</span>
-</span><span class='line'><span class="n">IF</span> <span class="k">EXISTS</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">name</span> <span class="k">FROM</span> <span class="n">sysobjects</span>
-</span><span class='line'>      <span class="k">WHERE</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;MyTrigger&#39;</span> <span class="k">AND</span> <span class="k">type</span> <span class="o">=</span> <span class="s1">&#39;TR&#39;</span><span class="p">)</span>
-</span><span class='line'>   <span class="n">PRINT</span> <span class="s1">&#39;Exists&#39;</span>
-</span><span class='line'>   <span class="c1">-- DROP TRIGGER reminder</span>
-</span><span class='line'><span class="k">GO</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">-- Method 2</span>
-</span><span class='line'><span class="c1">-- Use the name with or without the database owner (such as dbo, etc)</span>
-</span><span class='line'><span class="n">IF</span> <span class="n">OBJECT_ID</span> <span class="p">(</span><span class="s1">&#39;dbo.MyTrigger&#39;</span><span class="p">,</span><span class="s1">&#39;TR&#39;</span><span class="p">)</span> <span class="k">IS</span> <span class="k">NOT</span> <span class="k">NULL</span>
-</span><span class='line'>   <span class="n">PRINT</span> <span class="s1">&#39;Exists&#39;</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">-- or </span>
-</span><span class='line'>
-</span><span class='line'><span class="n">IF</span> <span class="n">OBJECT_ID</span> <span class="p">(</span><span class="s1">&#39;MyTrigger&#39;</span><span class="p">,</span><span class="s1">&#39;TR&#39;</span><span class="p">)</span> <span class="k">IS</span> <span class="k">NOT</span> <span class="k">NULL</span>
-</span><span class='line'>   <span class="n">PRINT</span> <span class="s1">&#39;Exists&#39;</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">GO</span>
-</span></code></pre></td></tr></table></div></figure>
-
+  <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+</pre></td><td class="code"><pre><code class="sql"><span class="line"><span class="c1">-- Method 1</span>
+</span><span class="line"><span class="c1">-- Use the name without database owner (such as dbo, etc)</span>
+</span><span class="line"><span class="n">IF</span> <span class="k">EXISTS</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">name</span> <span class="k">FROM</span> <span class="n">sysobjects</span>
+</span><span class="line">      <span class="k">WHERE</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;MyTrigger&#39;</span> <span class="k">AND</span> <span class="k">type</span> <span class="o">=</span> <span class="s1">&#39;TR&#39;</span><span class="p">)</span>
+</span><span class="line">   <span class="n">PRINT</span> <span class="s1">&#39;Exists&#39;</span>
+</span><span class="line">   <span class="c1">-- DROP TRIGGER reminder</span>
+</span><span class="line"><span class="k">GO</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">-- Method 2</span>
+</span><span class="line"><span class="c1">-- Use the name with or without the database owner (such as dbo, etc)</span>
+</span><span class="line"><span class="n">IF</span> <span class="n">OBJECT_ID</span> <span class="p">(</span><span class="s1">&#39;dbo.MyTrigger&#39;</span><span class="p">,</span><span class="s1">&#39;TR&#39;</span><span class="p">)</span> <span class="k">IS</span> <span class="k">NOT</span> <span class="k">NULL</span>
+</span><span class="line">   <span class="n">PRINT</span> <span class="s1">&#39;Exists&#39;</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">-- or </span>
+</span><span class="line">
+</span><span class="line"><span class="n">IF</span> <span class="n">OBJECT_ID</span> <span class="p">(</span><span class="s1">&#39;MyTrigger&#39;</span><span class="p">,</span><span class="s1">&#39;TR&#39;</span><span class="p">)</span> <span class="k">IS</span> <span class="k">NOT</span> <span class="k">NULL</span>
+</span><span class="line">   <span class="n">PRINT</span> <span class="s1">&#39;Exists&#39;</span>
+</span><span class="line">
+</span><span class="line"><span class="k">GO</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>The <code>deleted</code> table stores copies of the affected rows during <code>DELETE</code> and <code>UPDATE</code> statements. During the execution of a <code>DELETE</code> or <code>UPDATE</code> statement, rows are <code>deleted</code> from the trigger table and transferred to the <code>deleted</code> table. The <code>deleted</code> table and the trigger table ordinarily have no rows in common.</p>
 
@@ -156,7 +155,7 @@ IF EXISTS ( &hellip;">
 
 <p>When you set trigger conditions, use the <code>inserted</code> and <code>deleted</code> tables appropriately for the action that fired the trigger. Although referencing the <code>deleted</code> table when testing an <code>INSERT</code> or the <code>inserted</code> table when testing a DELETE does not cause any errors, these trigger test tables do not contain any rows in these cases.</p>
 
-<p>From: <a href="http://msdn.microsoft.com/en-us/library/ms191300.aspx">http://msdn.microsoft.com/en-us/library/ms191300.aspx</a></p>
+<p>From: http://msdn.microsoft.com/en-us/library/ms191300.aspx</p>
 
   
     <footer>

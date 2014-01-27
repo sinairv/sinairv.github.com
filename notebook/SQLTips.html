@@ -88,269 +88,254 @@ SELECT DATENAME(WEEKDAY, &#39;20120101&#39 &hellip;">
     
   </header>
   
-  <h1>SQL Tips</h1>
+  <h1 id="sql-tips">SQL Tips</h1>
 
-<h3>Get the name of day of week</h3>
+<h3 id="get-the-name-of-day-of-week">Get the name of day of week</h3>
 
 <p>Use the <code>DATENAME</code> function with <code>WEEKDAY</code> or <code>DW</code> parameter:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">SELECT</span> <span class="n">DATENAME</span><span class="p">(</span><span class="n">WEEKDAY</span><span class="p">,</span> <span class="s1">&#39;20120101&#39;</span><span class="p">)</span>
-</span><span class='line'><span class="c1">-- Sunday</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="sql"><span class="line"><span class="k">SELECT</span> <span class="n">DATENAME</span><span class="p">(</span><span class="n">WEEKDAY</span><span class="p">,</span> <span class="s1">&#39;20120101&#39;</span><span class="p">)</span>
+</span><span class="line"><span class="c1">-- Sunday</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<h3>Retrieve only the date part from a <code>DATETIME</code></h3>
+<h3 id="retrieve-only-the-date-part-from-a-datetime">Retrieve only the date part from a <code>DATETIME</code></h3>
 
 <p>Method 1: by keeping the <code>DATETIME</code> data type:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="n">DATEADD</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">DATEDIFF</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;2012-11-09 20:30&#39;</span><span class="p">))</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="sql"><span class="line"><span class="n">DATEADD</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">DATEDIFF</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;2012-11-09 20:30&#39;</span><span class="p">))</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>Method 2: by converting <code>DATETIME</code> to <code>VARCHAR</code>:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">CONVERT</span><span class="p">(</span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="s1">&#39;2012-11-09 20:30&#39;</span><span class="p">,</span> <span class="mi">111</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="sql"><span class="line"><span class="k">CONVERT</span><span class="p">(</span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="s1">&#39;2012-11-09 20:30&#39;</span><span class="p">,</span> <span class="mi">111</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p><a href="http://blog.sqlauthority.com/2007/07/23/sql-server-udf-get-the-day-of-the-week-function/">Source</a></p>
 
-<h3>See if two date-times belong to a same day</h3>
+<h3 id="see-if-two-date-times-belong-to-a-same-day">See if two date-times belong to a same day</h3>
 
-<p>The ugly solution is to strip both dates of their time section (as described above), and then compare if the results are equal.
+<p>The ugly solution is to strip both dates of their time section (as described above), and then compare if the results are equal. 
 The better solution is to use the <code>DATEDIFF</code> function, with the <code>DAY</code> or <code>D</code> parameter, and make sure if the result is 0:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="n">DATEDIFF</span><span class="p">(</span><span class="k">DAY</span><span class="p">,</span><span class="o">@</span><span class="n">StartDate</span><span class="p">,</span><span class="o">@</span><span class="n">EndDate</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="sql"><span class="line"><span class="n">DATEDIFF</span><span class="p">(</span><span class="k">DAY</span><span class="p">,</span><span class="o">@</span><span class="n">StartDate</span><span class="p">,</span><span class="o">@</span><span class="n">EndDate</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<h3>Getting Weekday Number Regardless of Database Settings</h3>
+<h3 id="getting-weekday-number-regardless-of-database-settings">Getting Weekday Number Regardless of Database Settings</h3>
 
 <p>Use this to have Monday as 0, Tuesday as 1, and so on:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">SELECT</span> <span class="p">(</span><span class="n">DATEPART</span><span class="p">(</span><span class="n">dw</span><span class="p">,</span> <span class="o">@</span><span class="n">SomeDate</span><span class="p">)</span> <span class="o">+</span> <span class="o">@@</span><span class="n">DATEFIRST</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span> <span class="o">%</span> <span class="mi">7</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="sql"><span class="line"><span class="k">SELECT</span> <span class="p">(</span><span class="n">DATEPART</span><span class="p">(</span><span class="n">dw</span><span class="p">,</span> <span class="o">@</span><span class="n">SomeDate</span><span class="p">)</span> <span class="o">+</span> <span class="o">@@</span><span class="n">DATEFIRST</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span> <span class="o">%</span> <span class="mi">7</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>Use this to have Sunday as 0, Monday as 1, and so on. This is in correspondance with C# <code>DayOfWeek</code> Enum:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">SELECT</span> <span class="p">(</span><span class="n">DATEPART</span><span class="p">(</span><span class="n">dw</span><span class="p">,</span> <span class="o">@</span><span class="n">SomeDate</span><span class="p">)</span> <span class="o">+</span> <span class="o">@@</span><span class="n">DATEFIRST</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">7</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="sql"><span class="line"><span class="k">SELECT</span> <span class="p">(</span><span class="n">DATEPART</span><span class="p">(</span><span class="n">dw</span><span class="p">,</span> <span class="o">@</span><span class="n">SomeDate</span><span class="p">)</span> <span class="o">+</span> <span class="o">@@</span><span class="n">DATEFIRST</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">7</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
+<h3 id="number-of-weekdays-workdays-between-two-dates">Number of weekdays (workdays) between two dates</h3>
 
-<h3>Number of weekdays (workdays) between two dates</h3>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td><td class="code"><pre><code class="sql"><span class="line"><span class="k">DECLARE</span> <span class="o">@</span><span class="n">StartDate</span> <span class="n">DATETIME</span>
+</span><span class="line"><span class="k">DECLARE</span> <span class="o">@</span><span class="n">EndDate</span> <span class="n">DATETIME</span>
+</span><span class="line"><span class="k">SET</span> <span class="o">@</span><span class="n">StartDate</span> <span class="o">=</span> <span class="s1">&#39;2008/10/01&#39;</span>
+</span><span class="line"><span class="k">SET</span> <span class="o">@</span><span class="n">EndDate</span> <span class="o">=</span> <span class="s1">&#39;2008/10/31&#39;</span>
+</span><span class="line">
+</span><span class="line">
+</span><span class="line"><span class="k">SELECT</span>
+</span><span class="line">   <span class="p">(</span><span class="n">DATEDIFF</span><span class="p">(</span><span class="n">dd</span><span class="p">,</span> <span class="o">@</span><span class="n">StartDate</span><span class="p">,</span> <span class="o">@</span><span class="n">EndDate</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+</span><span class="line">  <span class="o">-</span><span class="p">(</span><span class="n">DATEDIFF</span><span class="p">(</span><span class="n">wk</span><span class="p">,</span> <span class="o">@</span><span class="n">StartDate</span><span class="p">,</span> <span class="o">@</span><span class="n">EndDate</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+</span><span class="line">  <span class="o">-</span><span class="p">(</span><span class="k">CASE</span> <span class="k">WHEN</span> <span class="n">DATENAME</span><span class="p">(</span><span class="n">dw</span><span class="p">,</span> <span class="o">@</span><span class="n">StartDate</span><span class="p">)</span> <span class="o">=</span> <span class="s1">&#39;Sunday&#39;</span> <span class="k">THEN</span> <span class="mi">1</span> <span class="k">ELSE</span> <span class="mi">0</span> <span class="k">END</span><span class="p">)</span>
+</span><span class="line">  <span class="o">-</span><span class="p">(</span><span class="k">CASE</span> <span class="k">WHEN</span> <span class="n">DATENAME</span><span class="p">(</span><span class="n">dw</span><span class="p">,</span> <span class="o">@</span><span class="n">EndDate</span><span class="p">)</span> <span class="o">=</span> <span class="s1">&#39;Saturday&#39;</span> <span class="k">THEN</span> <span class="mi">1</span> <span class="k">ELSE</span> <span class="mi">0</span> <span class="k">END</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">DECLARE</span> <span class="o">@</span><span class="n">StartDate</span> <span class="n">DATETIME</span>
-</span><span class='line'><span class="k">DECLARE</span> <span class="o">@</span><span class="n">EndDate</span> <span class="n">DATETIME</span>
-</span><span class='line'><span class="k">SET</span> <span class="o">@</span><span class="n">StartDate</span> <span class="o">=</span> <span class="s1">&#39;2008/10/01&#39;</span>
-</span><span class='line'><span class="k">SET</span> <span class="o">@</span><span class="n">EndDate</span> <span class="o">=</span> <span class="s1">&#39;2008/10/31&#39;</span>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'><span class="k">SELECT</span>
-</span><span class='line'>   <span class="p">(</span><span class="n">DATEDIFF</span><span class="p">(</span><span class="n">dd</span><span class="p">,</span> <span class="o">@</span><span class="n">StartDate</span><span class="p">,</span> <span class="o">@</span><span class="n">EndDate</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-</span><span class='line'>  <span class="o">-</span><span class="p">(</span><span class="n">DATEDIFF</span><span class="p">(</span><span class="n">wk</span><span class="p">,</span> <span class="o">@</span><span class="n">StartDate</span><span class="p">,</span> <span class="o">@</span><span class="n">EndDate</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
-</span><span class='line'>  <span class="o">-</span><span class="p">(</span><span class="k">CASE</span> <span class="k">WHEN</span> <span class="n">DATENAME</span><span class="p">(</span><span class="n">dw</span><span class="p">,</span> <span class="o">@</span><span class="n">StartDate</span><span class="p">)</span> <span class="o">=</span> <span class="s1">&#39;Sunday&#39;</span> <span class="k">THEN</span> <span class="mi">1</span> <span class="k">ELSE</span> <span class="mi">0</span> <span class="k">END</span><span class="p">)</span>
-</span><span class='line'>  <span class="o">-</span><span class="p">(</span><span class="k">CASE</span> <span class="k">WHEN</span> <span class="n">DATENAME</span><span class="p">(</span><span class="n">dw</span><span class="p">,</span> <span class="o">@</span><span class="n">EndDate</span><span class="p">)</span> <span class="o">=</span> <span class="s1">&#39;Saturday&#39;</span> <span class="k">THEN</span> <span class="mi">1</span> <span class="k">ELSE</span> <span class="mi">0</span> <span class="k">END</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
+<p>(Source)[http://stackoverflow.com/questions/252519/count-work-days-between-two-dates-in-t-sql]</p>
 
-
-<p>(Source)[<a href="http://stackoverflow.com/questions/252519/count-work-days-between-two-dates-in-t-sql">http://stackoverflow.com/questions/252519/count-work-days-between-two-dates-in-t-sql</a>]</p>
-
-<h3>Remove carriage return and line breaks</h3>
+<h3 id="remove-carriage-return-and-line-breaks">Remove carriage return and line breaks</h3>
 
 <p>And replace duplicate spaces with a single one:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">SELECT</span>
-</span><span class='line'>    <span class="k">REPLACE</span><span class="p">(</span>
-</span><span class='line'>        <span class="k">REPLACE</span><span class="p">(</span>
-</span><span class='line'>            <span class="k">REPLACE</span><span class="p">(</span>
-</span><span class='line'>                <span class="k">REPLACE</span><span class="p">(</span><span class="o">@</span><span class="n">string</span><span class="p">,</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">13</span><span class="p">),</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
-</span><span class='line'>            <span class="nb">CHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="s1">&#39; &#39;</span><span class="p">),</span>
-</span><span class='line'>        <span class="s1">&#39;  &#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">),</span>
-</span><span class='line'>    <span class="s1">&#39;  &#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td><td class="code"><pre><code class="sql"><span class="line"><span class="k">SELECT</span>
+</span><span class="line">    <span class="k">REPLACE</span><span class="p">(</span>
+</span><span class="line">        <span class="k">REPLACE</span><span class="p">(</span>
+</span><span class="line">            <span class="k">REPLACE</span><span class="p">(</span>
+</span><span class="line">                <span class="k">REPLACE</span><span class="p">(</span><span class="o">@</span><span class="n">string</span><span class="p">,</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">13</span><span class="p">),</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
+</span><span class="line">            <span class="nb">CHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="s1">&#39; &#39;</span><span class="p">),</span>
+</span><span class="line">        <span class="s1">&#39;  &#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">),</span>
+</span><span class="line">    <span class="s1">&#39;  &#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
+<h3 id="t-sql-len-function-does-not-count-trailing-spaces">T-SQL <code>LEN</code> function does not count trailing spaces</h3>
 
-<h3>T-SQL <code>LEN</code> function does not count trailing spaces</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="n">LEN</span><span class="p">(</span><span class="s1">&#39;word&#39;</span><span class="p">)</span> <span class="o">=</span> <span class="n">LEN</span><span class="p">(</span><span class="s1">&#39;word &#39;</span><span class="p">)</span> <span class="o">=</span> <span class="n">LEN</span><span class="p">(</span><span class="s1">&#39;word     &#39;</span><span class="p">)</span> <span class="o">=</span> <span class="mi">4</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="sql"><span class="line"><span class="n">LEN</span><span class="p">(</span><span class="s1">&#39;word&#39;</span><span class="p">)</span> <span class="o">=</span> <span class="n">LEN</span><span class="p">(</span><span class="s1">&#39;word &#39;</span><span class="p">)</span> <span class="o">=</span> <span class="n">LEN</span><span class="p">(</span><span class="s1">&#39;word     &#39;</span><span class="p">)</span> <span class="o">=</span> <span class="mi">4</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>However the leading spaces are taken into account:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="n">LEN</span><span class="p">(</span><span class="s1">&#39; word&#39;</span><span class="p">)</span> <span class="o">=</span> <span class="mi">5</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="sql"><span class="line"><span class="n">LEN</span><span class="p">(</span><span class="s1">&#39; word&#39;</span><span class="p">)</span> <span class="o">=</span> <span class="mi">5</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<h3>Ammend query rsults with 0 counts for all possible items</h3>
+<h3 id="ammend-query-rsults-with-0-counts-for-all-possible-items">Ammend query rsults with 0 counts for all possible items</h3>
 
 <p>Assuming <code>DS</code> as the data-source, we want the count for all items for all persons to be returned. If an item is missing for a person in <code>DS</code> it should be returned with the value of 0. This is how to do it, and it&rsquo;s inspired from <a href="http://stackoverflow.com/questions/13576402/how-to-include-count-equal-to-0-on-this-query#comment18604831_13576402">here</a>:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">WITH</span> <span class="n">DS</span> <span class="p">(</span><span class="n">Person</span><span class="p">,</span> <span class="n">Item</span><span class="p">,</span> <span class="n">Unit</span><span class="p">)</span> <span class="k">AS</span>
-</span><span class='line'><span class="p">(</span>
-</span><span class='line'>    <span class="k">SELECT</span> <span class="s1">&#39;P1&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mi">1</span>
-</span><span class='line'>    <span class="k">UNION</span> <span class="k">ALL</span>
-</span><span class='line'>    <span class="k">SELECT</span> <span class="s1">&#39;P1&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="mi">2</span>
-</span><span class='line'>    <span class="k">UNION</span> <span class="k">ALL</span>
-</span><span class='line'>    <span class="k">SELECT</span> <span class="s1">&#39;P2&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mi">3</span>
-</span><span class='line'>    <span class="k">UNION</span> <span class="k">ALL</span>
-</span><span class='line'>    <span class="k">SELECT</span> <span class="s1">&#39;P3&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="mi">4</span>
-</span><span class='line'>    <span class="k">UNION</span> <span class="k">ALL</span>
-</span><span class='line'>    <span class="k">SELECT</span> <span class="s1">&#39;P4&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="mi">1</span>
-</span><span class='line'><span class="p">)</span>
-</span><span class='line'><span class="k">SELECT</span> <span class="n">P</span><span class="p">.</span><span class="n">Person</span> <span class="k">AS</span> <span class="n">Person</span><span class="p">,</span> <span class="n">T</span><span class="p">.</span><span class="n">Item</span><span class="p">,</span> <span class="n">COALESCE</span><span class="p">(</span><span class="n">DS</span><span class="p">.</span><span class="n">Unit</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">AS</span> <span class="n">Unit</span><span class="p">,</span> <span class="n">T</span><span class="p">.</span><span class="n">SortOrder</span>
-</span><span class='line'><span class="k">FROM</span>
-</span><span class='line'><span class="p">(</span>
-</span><span class='line'>    <span class="k">SELECT</span> <span class="s1">&#39;a&#39;</span> <span class="k">AS</span> <span class="n">Item</span><span class="p">,</span> <span class="mi">1</span> <span class="k">As</span> <span class="n">SortOrder</span>
-</span><span class='line'>    <span class="k">UNION</span> <span class="k">ALL</span>
-</span><span class='line'>    <span class="k">SELECT</span> <span class="s1">&#39;b&#39;</span> <span class="k">AS</span> <span class="n">Item</span><span class="p">,</span> <span class="mi">2</span> <span class="k">As</span> <span class="n">SortOrder</span>
-</span><span class='line'>    <span class="k">UNION</span> <span class="k">ALL</span>
-</span><span class='line'>    <span class="k">SELECT</span> <span class="s1">&#39;c&#39;</span> <span class="k">AS</span> <span class="n">Item</span><span class="p">,</span> <span class="mi">3</span> <span class="k">As</span> <span class="n">SortOrder</span>
-</span><span class='line'><span class="p">)</span> <span class="n">T</span>
-</span><span class='line'><span class="k">LEFT</span> <span class="k">JOIN</span>
-</span><span class='line'><span class="p">(</span>
-</span><span class='line'>    <span class="k">SELECT</span> <span class="k">DISTINCT</span> <span class="n">DS</span><span class="p">.</span><span class="n">Person</span> <span class="k">AS</span> <span class="n">Person</span>
-</span><span class='line'>    <span class="k">FROM</span> <span class="n">DS</span>
-</span><span class='line'>
-</span><span class='line'><span class="p">)</span> <span class="n">P</span> <span class="k">ON</span> <span class="mi">1</span> <span class="o">=</span> <span class="mi">1</span>
-</span><span class='line'><span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">DS</span> <span class="k">ON</span> <span class="n">DS</span><span class="p">.</span><span class="n">Item</span> <span class="o">=</span> <span class="n">T</span><span class="p">.</span><span class="n">Item</span> <span class="k">AND</span> <span class="n">DS</span><span class="p">.</span><span class="n">Person</span> <span class="o">=</span> <span class="n">P</span><span class="p">.</span><span class="n">Person</span>
-</span><span class='line'><span class="k">ORDER</span> <span class="k">BY</span> <span class="n">P</span><span class="p">.</span><span class="n">Person</span><span class="p">,</span> <span class="n">T</span><span class="p">.</span><span class="n">SortOrder</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+</pre></td><td class="code"><pre><code class="sql"><span class="line"><span class="k">WITH</span> <span class="n">DS</span> <span class="p">(</span><span class="n">Person</span><span class="p">,</span> <span class="n">Item</span><span class="p">,</span> <span class="n">Unit</span><span class="p">)</span> <span class="k">AS</span>
+</span><span class="line"><span class="p">(</span>
+</span><span class="line">    <span class="k">SELECT</span> <span class="s1">&#39;P1&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mi">1</span>
+</span><span class="line">    <span class="k">UNION</span> <span class="k">ALL</span>
+</span><span class="line">    <span class="k">SELECT</span> <span class="s1">&#39;P1&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="mi">2</span>
+</span><span class="line">    <span class="k">UNION</span> <span class="k">ALL</span>
+</span><span class="line">    <span class="k">SELECT</span> <span class="s1">&#39;P2&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mi">3</span>
+</span><span class="line">    <span class="k">UNION</span> <span class="k">ALL</span>
+</span><span class="line">    <span class="k">SELECT</span> <span class="s1">&#39;P3&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="mi">4</span>
+</span><span class="line">    <span class="k">UNION</span> <span class="k">ALL</span>
+</span><span class="line">    <span class="k">SELECT</span> <span class="s1">&#39;P4&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="mi">1</span>
+</span><span class="line"><span class="p">)</span>
+</span><span class="line"><span class="k">SELECT</span> <span class="n">P</span><span class="p">.</span><span class="n">Person</span> <span class="k">AS</span> <span class="n">Person</span><span class="p">,</span> <span class="n">T</span><span class="p">.</span><span class="n">Item</span><span class="p">,</span> <span class="n">COALESCE</span><span class="p">(</span><span class="n">DS</span><span class="p">.</span><span class="n">Unit</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">AS</span> <span class="n">Unit</span><span class="p">,</span> <span class="n">T</span><span class="p">.</span><span class="n">SortOrder</span>
+</span><span class="line"><span class="k">FROM</span>
+</span><span class="line"><span class="p">(</span>
+</span><span class="line">    <span class="k">SELECT</span> <span class="s1">&#39;a&#39;</span> <span class="k">AS</span> <span class="n">Item</span><span class="p">,</span> <span class="mi">1</span> <span class="k">As</span> <span class="n">SortOrder</span>
+</span><span class="line">    <span class="k">UNION</span> <span class="k">ALL</span>
+</span><span class="line">    <span class="k">SELECT</span> <span class="s1">&#39;b&#39;</span> <span class="k">AS</span> <span class="n">Item</span><span class="p">,</span> <span class="mi">2</span> <span class="k">As</span> <span class="n">SortOrder</span>
+</span><span class="line">    <span class="k">UNION</span> <span class="k">ALL</span>
+</span><span class="line">    <span class="k">SELECT</span> <span class="s1">&#39;c&#39;</span> <span class="k">AS</span> <span class="n">Item</span><span class="p">,</span> <span class="mi">3</span> <span class="k">As</span> <span class="n">SortOrder</span>
+</span><span class="line"><span class="p">)</span> <span class="n">T</span>
+</span><span class="line"><span class="k">LEFT</span> <span class="k">JOIN</span>
+</span><span class="line"><span class="p">(</span>
+</span><span class="line">    <span class="k">SELECT</span> <span class="k">DISTINCT</span> <span class="n">DS</span><span class="p">.</span><span class="n">Person</span> <span class="k">AS</span> <span class="n">Person</span>
+</span><span class="line">    <span class="k">FROM</span> <span class="n">DS</span>
+</span><span class="line">
+</span><span class="line"><span class="p">)</span> <span class="n">P</span> <span class="k">ON</span> <span class="mi">1</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span class="line"><span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">DS</span> <span class="k">ON</span> <span class="n">DS</span><span class="p">.</span><span class="n">Item</span> <span class="o">=</span> <span class="n">T</span><span class="p">.</span><span class="n">Item</span> <span class="k">AND</span> <span class="n">DS</span><span class="p">.</span><span class="n">Person</span> <span class="o">=</span> <span class="n">P</span><span class="p">.</span><span class="n">Person</span>
+</span><span class="line"><span class="k">ORDER</span> <span class="k">BY</span> <span class="n">P</span><span class="p">.</span><span class="n">Person</span><span class="p">,</span> <span class="n">T</span><span class="p">.</span><span class="n">SortOrder</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>Note that constant tables are comming first in the join-chain, and <code>DS</code> is comming last. Also note that the last join condition binding <code>DS</code> with constant tables must have conditions for all constant tables (here <code>P</code> and <code>T</code>).</p>
 
-<h3>Cursor syntax</h3>
+<h3 id="cursor-syntax">Cursor syntax</h3>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">DECLARE</span> <span class="o">@</span><span class="n">myVar</span> <span class="nb">varchar</span><span class="p">(</span><span class="k">MAX</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">DECLARE</span> <span class="n">my_cursor</span> <span class="k">CURSOR</span> <span class="k">FOR</span>
-</span><span class='line'><span class="k">SELECT</span> <span class="o">*</span>
-</span><span class='line'><span class="k">FROM</span> <span class="n">myTable</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">OPEN</span> <span class="n">my_cursor</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">FETCH</span> <span class="k">NEXT</span> <span class="k">FROM</span> <span class="n">my_cursor</span>
-</span><span class='line'><span class="k">INTO</span> <span class="o">@</span><span class="n">myVar</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">WHILE</span> <span class="o">@@</span><span class="n">FETCH_STATUS</span> <span class="o">=</span> <span class="mi">0</span>
-</span><span class='line'><span class="k">BEGIN</span>
-</span><span class='line'>    <span class="c1">-- Do something with @myVar</span>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">FETCH</span> <span class="k">NEXT</span> <span class="k">FROM</span> <span class="n">my_cursor</span>
-</span><span class='line'>    <span class="k">INTO</span> <span class="o">@</span><span class="n">myVar</span>
-</span><span class='line'><span class="k">END</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">CLOSE</span> <span class="n">my_cursor</span>
-</span><span class='line'><span class="k">DEALLOCATE</span> <span class="n">my_cursor</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+</pre></td><td class="code"><pre><code class="sql"><span class="line"><span class="k">DECLARE</span> <span class="o">@</span><span class="n">myVar</span> <span class="nb">varchar</span><span class="p">(</span><span class="k">MAX</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="k">DECLARE</span> <span class="n">my_cursor</span> <span class="k">CURSOR</span> <span class="k">FOR</span>
+</span><span class="line"><span class="k">SELECT</span> <span class="o">*</span>
+</span><span class="line"><span class="k">FROM</span> <span class="n">myTable</span>
+</span><span class="line">
+</span><span class="line"><span class="k">OPEN</span> <span class="n">my_cursor</span>
+</span><span class="line">
+</span><span class="line"><span class="k">FETCH</span> <span class="k">NEXT</span> <span class="k">FROM</span> <span class="n">my_cursor</span>
+</span><span class="line"><span class="k">INTO</span> <span class="o">@</span><span class="n">myVar</span>
+</span><span class="line">
+</span><span class="line"><span class="n">WHILE</span> <span class="o">@@</span><span class="n">FETCH_STATUS</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class="line"><span class="k">BEGIN</span>
+</span><span class="line">    <span class="c1">-- Do something with @myVar</span>
+</span><span class="line">
+</span><span class="line">
+</span><span class="line">    <span class="k">FETCH</span> <span class="k">NEXT</span> <span class="k">FROM</span> <span class="n">my_cursor</span>
+</span><span class="line">    <span class="k">INTO</span> <span class="o">@</span><span class="n">myVar</span>
+</span><span class="line"><span class="k">END</span>
+</span><span class="line">
+</span><span class="line"><span class="k">CLOSE</span> <span class="n">my_cursor</span>
+</span><span class="line"><span class="k">DEALLOCATE</span> <span class="n">my_cursor</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<h3>Kill all connections to a SQL Server Database</h3>
+<h3 id="kill-all-connections-to-a-sql-server-database">Kill all connections to a SQL Server Database</h3>
 
 <p>Run the first statement and immediately after that the second one to revert the effect of the first statement:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">alter</span> <span class="k">database</span> <span class="n">dbName</span> <span class="k">set</span> <span class="n">single_user</span> <span class="k">with</span> <span class="k">rollback</span> <span class="k">immediate</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">alter</span> <span class="k">database</span> <span class="n">dbName</span> <span class="k">set</span> <span class="n">multi_user</span> <span class="k">with</span> <span class="k">rollback</span> <span class="k">immediate</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="sql"><span class="line"><span class="k">alter</span> <span class="k">database</span> <span class="n">dbName</span> <span class="k">set</span> <span class="n">single_user</span> <span class="k">with</span> <span class="k">rollback</span> <span class="k">immediate</span>
+</span><span class="line">
+</span><span class="line"><span class="k">alter</span> <span class="k">database</span> <span class="n">dbName</span> <span class="k">set</span> <span class="n">multi_user</span> <span class="k">with</span> <span class="k">rollback</span> <span class="k">immediate</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p><a href="http://blog.tech-cats.com/2008/01/kill-all-database-connections-to-sql.html">Source</a></p>
 
-<h3>Great Syntax to back-up a table into a temp table</h3>
+<h3 id="great-syntax-to-back-up-a-table-into-a-temp-table">Great Syntax to back-up a table into a temp table</h3>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">SELECT</span> <span class="o">*</span> <span class="k">INTO</span> <span class="o">#</span><span class="n">backup_temp_table_name</span> <span class="k">FROM</span> <span class="n">SomeTable</span>
-</span><span class='line'><span class="k">GO</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="sql"><span class="line"><span class="k">SELECT</span> <span class="o">*</span> <span class="k">INTO</span> <span class="o">#</span><span class="n">backup_temp_table_name</span> <span class="k">FROM</span> <span class="n">SomeTable</span>
+</span><span class="line"><span class="k">GO</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 
   

@@ -92,11 +92,10 @@
 
 <p>Q: when there are more than 1 ctor, how to force it to use a specific one?</p>
 
-<p>A: decorate the one you want with <code>[InjectionConstructor]</code>. TODO: there&rsquo;s another way to OVERRIDE injection.</p>
+<p>A: decorate the one you want with ` [InjectionConstructor]`. TODO: there&rsquo;s another way to OVERRIDE injection.</p>
 
-<p>From <a href="http://vincenthomedev.wordpress.com/2010/02/01/a-schematic-view-of-dependency-injection-in-unity-ioc/">here</a>:</p>
-
-<blockquote><p>When a target class contains more than one constructor, Unity will use the one that has the InjectionConstructor attribute applied. If there is more than one constructor, and none carries the InjectionConstructor attribute, Unity will use the constructor with the most parameters. If there is more than one such constructor (more than one of the “longest” with the same number of parameters), Unity will raise an exception.</p></blockquote>
+<p>From <a href="http://vincenthomedev.wordpress.com/2010/02/01/a-schematic-view-of-dependency-injection-in-unity-ioc/">here</a>:
+&gt; When a target class contains more than one constructor, Unity will use the one that has the InjectionConstructor attribute applied. If there is more than one constructor, and none carries the InjectionConstructor attribute, Unity will use the constructor with the most parameters. If there is more than one such constructor (more than one of the “longest” with the same number of parameters), Unity will raise an exception.</p>
 
 <p>Q: What does <code>BuildUp</code> do?</p>
 
@@ -104,29 +103,27 @@
 
 <p>Key methods are <code>RegisterType</code> and <code>RegisterInstance</code>.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="n">UnityContainer</span> <span class="n">container</span> <span class="p">=</span> <span class="k">new</span> <span class="n">UnityContainer</span><span class="p">();</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">container</span><span class="p">.</span><span class="n">RegisterType</span><span class="p">&lt;</span><span class="n">ISomeInterface</span><span class="p">,</span><span class="n">SomeConcreteClass</span><span class="p">&gt;();</span>
-</span><span class='line'>
-</span><span class='line'><span class="kt">var</span> <span class="n">requiredObj</span> <span class="p">=</span> <span class="n">container</span><span class="p">.</span><span class="n">Resolve</span><span class="p">(</span><span class="n">ISomeInterface</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="n">UnityContainer</span> <span class="n">container</span> <span class="p">=</span> <span class="k">new</span> <span class="n">UnityContainer</span><span class="p">();</span>
+</span><span class="line">
+</span><span class="line"><span class="n">container</span><span class="p">.</span><span class="n">RegisterType</span><span class="p">&lt;</span><span class="n">ISomeInterface</span><span class="p">,</span><span class="n">SomeConcreteClass</span><span class="p">&gt;();</span>
+</span><span class="line">
+</span><span class="line"><span class="kt">var</span> <span class="n">requiredObj</span> <span class="p">=</span> <span class="n">container</span><span class="p">.</span><span class="n">Resolve</span><span class="p">(</span><span class="n">ISomeInterface</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>Read it as: when someone wants an  <code>ISomeInterface</code> give them a <code>SomeConcreteClass</code>.</p>
 
 <p>Register instance will always resolve the requested object with the given instance. So:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="n">Calculator</span> <span class="n">calc</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Calculator</span><span class="p">();</span>
-</span><span class='line'><span class="n">container</span><span class="p">.</span><span class="n">RegisterInstance</span><span class="p">&lt;</span><span class="n">ICalculator</span><span class="p">&gt;(</span><span class="n">calc</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="n">Calculator</span> <span class="n">calc</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Calculator</span><span class="p">();</span>
+</span><span class="line"><span class="n">container</span><span class="p">.</span><span class="n">RegisterInstance</span><span class="p">&lt;</span><span class="n">ICalculator</span><span class="p">&gt;(</span><span class="n">calc</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>whoever needs an <code>ICalculator</code> will be given the very <code>Calculator</code> instance created above.</p>
 
@@ -134,31 +131,29 @@
 
 <p>To configure a property that is not marked as <code>[Dependency]</code> use <code>InjectionProperty</code> instance.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="n">container</span><span class="p">.</span><span class="n">RegisterType</span><span class="p">&lt;</span><span class="n">IStockQuoteService</span><span class="p">,</span> <span class="n">RandomStockQuoteService</span><span class="p">&gt;(</span><span class="k">new</span> <span class="n">InjectionProperty</span><span class="p">(</span><span class="s">&quot;Logger&quot;</span><span class="p">));</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="n">container</span><span class="p">.</span><span class="n">RegisterType</span><span class="p">&lt;</span><span class="n">IStockQuoteService</span><span class="p">,</span> <span class="n">RandomStockQuoteService</span><span class="p">&gt;(</span><span class="k">new</span> <span class="n">InjectionProperty</span><span class="p">(</span><span class="s">&quot;Logger&quot;</span><span class="p">));</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>which means <code>RandomStockQuoteService</code> has a property called <code>Logger</code> which needs to be injected.</p>
 
 <p>Also the resolution can be specified (e.g., when there are more than one options available):</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="n">container</span>
-</span><span class='line'>    <span class="p">.</span><span class="n">RegisterType</span><span class="p">&lt;</span><span class="n">ILogger</span><span class="p">,</span> <span class="n">ConsoleLogger</span><span class="p">&gt;()</span>
-</span><span class='line'>    <span class="p">.</span><span class="n">RegisterType</span><span class="p">&lt;</span><span class="n">ILogger</span><span class="p">,</span> <span class="n">TraceSourceLogger</span><span class="p">&gt;(</span><span class="s">&quot;UI&quot;</span><span class="p">)</span>
-</span><span class='line'>    <span class="p">.</span><span class="n">RegisterInstance</span><span class="p">(</span><span class="k">new</span> <span class="n">TraceSource</span><span class="p">(</span><span class="s">&quot;UI&quot;</span><span class="p">,</span> <span class="n">SourceLevels</span><span class="p">.</span><span class="n">All</span><span class="p">))</span>
-</span><span class='line'>    <span class="p">.</span><span class="n">RegisterType</span><span class="p">&lt;</span><span class="n">StocksTickerPresenter</span><span class="p">&gt;(</span>
-</span><span class='line'>        <span class="k">new</span> <span class="nf">InjectionProperty</span><span class="p">(</span><span class="s">&quot;Logger&quot;</span><span class="p">,</span>
-</span><span class='line'>            <span class="k">new</span> <span class="n">ResolvedParameter</span><span class="p">&lt;</span><span class="n">ILogger</span><span class="p">&gt;(</span><span class="s">&quot;UI&quot;</span><span class="p">)));</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="n">container</span>
+</span><span class="line">    <span class="p">.</span><span class="n">RegisterType</span><span class="p">&lt;</span><span class="n">ILogger</span><span class="p">,</span> <span class="n">ConsoleLogger</span><span class="p">&gt;()</span>
+</span><span class="line">    <span class="p">.</span><span class="n">RegisterType</span><span class="p">&lt;</span><span class="n">ILogger</span><span class="p">,</span> <span class="n">TraceSourceLogger</span><span class="p">&gt;(</span><span class="s">&quot;UI&quot;</span><span class="p">)</span>
+</span><span class="line">    <span class="p">.</span><span class="n">RegisterInstance</span><span class="p">(</span><span class="k">new</span> <span class="n">TraceSource</span><span class="p">(</span><span class="s">&quot;UI&quot;</span><span class="p">,</span> <span class="n">SourceLevels</span><span class="p">.</span><span class="n">All</span><span class="p">))</span>
+</span><span class="line">    <span class="p">.</span><span class="n">RegisterType</span><span class="p">&lt;</span><span class="n">StocksTickerPresenter</span><span class="p">&gt;(</span>
+</span><span class="line">        <span class="k">new</span> <span class="nf">InjectionProperty</span><span class="p">(</span><span class="s">&quot;Logger&quot;</span><span class="p">,</span>
+</span><span class="line">            <span class="k">new</span> <span class="n">ResolvedParameter</span><span class="p">&lt;</span><span class="n">ILogger</span><span class="p">&gt;(</span><span class="s">&quot;UI&quot;</span><span class="p">)));</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>Here <code>ILogger</code> had 2 candidates for resolution.</p>
 
@@ -167,196 +162,190 @@
 
 <p>If you want to register an interface with more than one classes, you must specify a name for each registration, so that unity can distinguish between them when one is required.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="n">container</span><span class="p">.</span><span class="n">RegisterType</span><span class="p">&lt;</span><span class="n">ILogger</span><span class="p">,</span> <span class="n">ConsoleLogger</span><span class="p">&gt;();</span>
-</span><span class='line'><span class="n">container</span><span class="p">.</span><span class="n">RegisterType</span><span class="p">&lt;</span><span class="n">ILogger</span><span class="p">,</span> <span class="n">TraceSourceLogger</span><span class="p">&gt;(</span><span class="s">&quot;UI&quot;</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="n">container</span><span class="p">.</span><span class="n">RegisterType</span><span class="p">&lt;</span><span class="n">ILogger</span><span class="p">,</span> <span class="n">ConsoleLogger</span><span class="p">&gt;();</span>
+</span><span class="line"><span class="n">container</span><span class="p">.</span><span class="n">RegisterType</span><span class="p">&lt;</span><span class="n">ILogger</span><span class="p">,</span> <span class="n">TraceSourceLogger</span><span class="p">&gt;(</span><span class="s">&quot;UI&quot;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>We could also give the first registration a name.</p>
 
 <p>To get a sequence of all the instances registered (not only one of them with the given name), use <code>ResolveAll</code>.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="kt">var</span> <span class="n">loggers</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">ILogger</span><span class="p">&gt;(</span>
-</span><span class='line'>  <span class="n">container</span><span class="p">.</span><span class="n">ResolveAll</span><span class="p">&lt;</span><span class="n">ILogger</span><span class="p">&gt;());</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="kt">var</span> <span class="n">loggers</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">ILogger</span><span class="p">&gt;(</span>
+</span><span class="line">  <span class="n">container</span><span class="p">.</span><span class="n">ResolveAll</span><span class="p">&lt;</span><span class="n">ILogger</span><span class="p">&gt;());</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>In above, <code>loggers</code> will contain instances from both <code>ConsoleLogger</code> and <code>TraceSourceLogger</code> classes.</p>
 
 <p>You can also inject the container itself (use <code>IUnityContainer</code> as the interface) (e.g., as the argument to ctor). I think no registration will be needed and unity will automatically resolve that.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">SomeClass</span> <span class="p">{</span>
-</span><span class='line'>    <span class="k">public</span> <span class="nf">SomeClass</span><span class="p">(</span><span class="n">IUnityContainer</span> <span class="n">container</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="p">...</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="k">public</span> <span class="k">class</span> <span class="nc">SomeClass</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">public</span> <span class="nf">SomeClass</span><span class="p">(</span><span class="n">IUnityContainer</span> <span class="n">container</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="p">...</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>If you may want to change <code>IUnityContainer</code> with another type of container (e.g., Ninject), use service locator instead of <code>IUnityContainer</code>. The interface is <code>IServiceLocator</code>. The ctor will be:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">SomeClass</span> <span class="p">{</span>
-</span><span class='line'>    <span class="k">public</span> <span class="nf">SomeClass</span><span class="p">(</span><span class="n">IServiceLocator</span> <span class="n">serviceLocator</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="p">...</span>
-</span><span class='line'>    <span class="c1">// instead of Resolve use</span>
-</span><span class='line'>    <span class="n">locator</span><span class="p">.</span><span class="n">GetInstance</span><span class="p">&lt;</span><span class="n">ISomething</span><span class="p">&gt;();</span>
-</span><span class='line'>    <span class="c1">// or instead of ResolveAll use</span>
-</span><span class='line'>    <span class="n">locator</span><span class="p">.</span><span class="n">GetAllInstances</span><span class="p">&lt;</span><span class="n">ISomething</span><span class="p">&gt;();</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="k">public</span> <span class="k">class</span> <span class="nc">SomeClass</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">public</span> <span class="nf">SomeClass</span><span class="p">(</span><span class="n">IServiceLocator</span> <span class="n">serviceLocator</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="p">...</span>
+</span><span class="line">    <span class="c1">// instead of Resolve use</span>
+</span><span class="line">    <span class="n">locator</span><span class="p">.</span><span class="n">GetInstance</span><span class="p">&lt;</span><span class="n">ISomething</span><span class="p">&gt;();</span>
+</span><span class="line">    <span class="c1">// or instead of ResolveAll use</span>
+</span><span class="line">    <span class="n">locator</span><span class="p">.</span><span class="n">GetAllInstances</span><span class="p">&lt;</span><span class="n">ISomething</span><span class="p">&gt;();</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>We need to register <code>IServiceLocator</code> after unity container has been created.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="n">UnityContainer</span> <span class="n">container</span> <span class="p">=</span> <span class="k">new</span> <span class="n">UnityContainer</span><span class="p">();</span>
-</span><span class='line'><span class="n">container</span><span class="p">.</span><span class="n">RegisterInstance</span><span class="p">&lt;</span><span class="n">IServiceLocator</span><span class="p">&gt;(</span>
-</span><span class='line'>    <span class="n">UnityServiceLocatorAdapter</span><span class="p">(</span><span class="n">container</span><span class="p">));</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="n">UnityContainer</span> <span class="n">container</span> <span class="p">=</span> <span class="k">new</span> <span class="n">UnityContainer</span><span class="p">();</span>
+</span><span class="line"><span class="n">container</span><span class="p">.</span><span class="n">RegisterInstance</span><span class="p">&lt;</span><span class="n">IServiceLocator</span><span class="p">&gt;(</span>
+</span><span class="line">    <span class="n">UnityServiceLocatorAdapter</span><span class="p">(</span><span class="n">container</span><span class="p">));</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>The adapter wrapper is because <code>UnityContainer</code> does not implement <code>IServiceLocator</code>.</p>
 
-<h3>Singleton (container controlled life-time manager)</h3>
+<h3 id="singleton-container-controlled-life-time-manager">Singleton (container controlled life-time manager)</h3>
 
 <p><code>unityContainer.RegisterType&lt;TheType&gt;(new ContainerControlledLifetimeManager());</code> means that the injected object will be created once and will be disposed of with the container, hence it&rsquo;ll be a singleton.</p>
 
-<h3>Semi-singleton (per-resolve life-time manager)</h3>
+<h3 id="semi-singleton-per-resolve-life-time-manager">Semi-singleton (per-resolve life-time manager)</h3>
 
-<p>Taken from <a href="http://www.sharpfellows.com/post/Unity-IoC-Container-.aspx">here</a> > section: Injecting the same object in multiple places in the object graph (semi-singleton)</p>
+<p>Taken from <a href="http://www.sharpfellows.com/post/Unity-IoC-Container-.aspx">here</a> &gt; section: Injecting the same object in multiple places in the object graph (semi-singleton)</p>
 
 <p><code>PerResolveLifetimeManager</code> within a single call to <code>Resolve&lt;T&gt;()</code> will create an instance of particular type and reuse it wherever required as the next sample illustrates:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-<span class='line-number'>50</span>
-<span class='line-number'>51</span>
-</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="na">[TestFixture]</span>
-</span><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">PerResolutionLifetimeTests</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'><span class="na">    [Test]</span>
-</span><span class='line'>    <span class="k">public</span> <span class="k">void</span> <span class="nf">Regiser_WithPerResolveLifetimeManager_ContainerInjectsSameInstance</span><span class="p">()</span>
-</span><span class='line'>    <span class="p">{</span>
-</span><span class='line'>        <span class="kt">var</span> <span class="n">container</span> <span class="p">=</span> <span class="k">new</span> <span class="n">UnityContainer</span><span class="p">();</span>
-</span><span class='line'>        <span class="n">container</span><span class="p">.</span><span class="n">RegisterType</span><span class="p">&lt;</span><span class="n">IService</span><span class="p">,</span> <span class="n">AService</span><span class="p">&gt;(</span><span class="k">new</span> <span class="n">PerResolveLifetimeManager</span><span class="p">());</span>
-</span><span class='line'>        <span class="n">container</span><span class="p">.</span><span class="n">RegisterType</span><span class="p">&lt;</span><span class="n">IParent</span><span class="p">,</span> <span class="n">Parent</span><span class="p">&gt;();</span>
-</span><span class='line'>        <span class="n">container</span><span class="p">.</span><span class="n">RegisterType</span><span class="p">&lt;</span><span class="n">IChild</span><span class="p">,</span> <span class="n">Child</span><span class="p">&gt;();</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="kt">var</span> <span class="n">parent</span> <span class="p">=</span> <span class="n">container</span><span class="p">.</span><span class="n">Resolve</span><span class="p">&lt;</span><span class="n">IParent</span><span class="p">&gt;();</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="n">Assert</span><span class="p">.</span><span class="n">AreSame</span><span class="p">(</span><span class="n">parent</span><span class="p">.</span><span class="n">Service</span><span class="p">,</span> <span class="n">parent</span><span class="p">.</span><span class="n">Child</span><span class="p">.</span><span class="n">Service</span><span class="p">);</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">public</span> <span class="k">interface</span> <span class="n">IService</span> <span class="p">{}</span>
-</span><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">AService</span> <span class="p">:</span> <span class="n">IService</span> <span class="p">{}</span>
-</span><span class='line'><span class="k">public</span> <span class="k">interface</span> <span class="n">IChild</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>    <span class="n">IService</span> <span class="n">Service</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">Child</span> <span class="p">:</span> <span class="n">IChild</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>    <span class="k">public</span> <span class="n">IService</span> <span class="n">Service</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">public</span> <span class="nf">Child</span><span class="p">(</span><span class="n">IService</span> <span class="n">service</span><span class="p">)</span>
-</span><span class='line'>    <span class="p">{</span>
-</span><span class='line'>        <span class="n">Service</span> <span class="p">=</span> <span class="n">service</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">public</span> <span class="k">interface</span> <span class="n">IParent</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>    <span class="n">IChild</span> <span class="n">Child</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-</span><span class='line'>    <span class="n">IService</span> <span class="n">Service</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">Parent</span> <span class="p">:</span> <span class="n">IParent</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>    <span class="k">public</span> <span class="n">IChild</span> <span class="n">Child</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-</span><span class='line'>    <span class="k">public</span> <span class="n">IService</span> <span class="n">Service</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">public</span> <span class="nf">Parent</span><span class="p">(</span><span class="n">IChild</span> <span class="n">child</span><span class="p">,</span> <span class="n">IService</span> <span class="n">service</span><span class="p">)</span>
-</span><span class='line'>    <span class="p">{</span>
-</span><span class='line'>        <span class="n">Child</span> <span class="p">=</span> <span class="n">child</span><span class="p">;</span>
-</span><span class='line'>        <span class="n">Service</span> <span class="p">=</span> <span class="n">service</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+<span class="line-number">37</span>
+<span class="line-number">38</span>
+<span class="line-number">39</span>
+<span class="line-number">40</span>
+<span class="line-number">41</span>
+<span class="line-number">42</span>
+<span class="line-number">43</span>
+<span class="line-number">44</span>
+<span class="line-number">45</span>
+<span class="line-number">46</span>
+<span class="line-number">47</span>
+<span class="line-number">48</span>
+<span class="line-number">49</span>
+<span class="line-number">50</span>
+<span class="line-number">51</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="na">[TestFixture]</span>
+</span><span class="line"><span class="k">public</span> <span class="k">class</span> <span class="nc">PerResolutionLifetimeTests</span>
+</span><span class="line"><span class="p">{</span>
+</span><span class="line"><span class="na">    [Test]</span>
+</span><span class="line">    <span class="k">public</span> <span class="k">void</span> <span class="nf">Regiser_WithPerResolveLifetimeManager_ContainerInjectsSameInstance</span><span class="p">()</span>
+</span><span class="line">    <span class="p">{</span>
+</span><span class="line">        <span class="kt">var</span> <span class="n">container</span> <span class="p">=</span> <span class="k">new</span> <span class="n">UnityContainer</span><span class="p">();</span>
+</span><span class="line">        <span class="n">container</span><span class="p">.</span><span class="n">RegisterType</span><span class="p">&lt;</span><span class="n">IService</span><span class="p">,</span> <span class="n">AService</span><span class="p">&gt;(</span><span class="k">new</span> <span class="n">PerResolveLifetimeManager</span><span class="p">());</span>
+</span><span class="line">        <span class="n">container</span><span class="p">.</span><span class="n">RegisterType</span><span class="p">&lt;</span><span class="n">IParent</span><span class="p">,</span> <span class="n">Parent</span><span class="p">&gt;();</span>
+</span><span class="line">        <span class="n">container</span><span class="p">.</span><span class="n">RegisterType</span><span class="p">&lt;</span><span class="n">IChild</span><span class="p">,</span> <span class="n">Child</span><span class="p">&gt;();</span>
+</span><span class="line">
+</span><span class="line">        <span class="kt">var</span> <span class="n">parent</span> <span class="p">=</span> <span class="n">container</span><span class="p">.</span><span class="n">Resolve</span><span class="p">&lt;</span><span class="n">IParent</span><span class="p">&gt;();</span>
+</span><span class="line">
+</span><span class="line">        <span class="n">Assert</span><span class="p">.</span><span class="n">AreSame</span><span class="p">(</span><span class="n">parent</span><span class="p">.</span><span class="n">Service</span><span class="p">,</span> <span class="n">parent</span><span class="p">.</span><span class="n">Child</span><span class="p">.</span><span class="n">Service</span><span class="p">);</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="k">public</span> <span class="k">interface</span> <span class="n">IService</span> <span class="p">{}</span>
+</span><span class="line"><span class="k">public</span> <span class="k">class</span> <span class="nc">AService</span> <span class="p">:</span> <span class="n">IService</span> <span class="p">{}</span>
+</span><span class="line"><span class="k">public</span> <span class="k">interface</span> <span class="n">IChild</span>
+</span><span class="line"><span class="p">{</span>
+</span><span class="line">    <span class="n">IService</span> <span class="n">Service</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="k">public</span> <span class="k">class</span> <span class="nc">Child</span> <span class="p">:</span> <span class="n">IChild</span>
+</span><span class="line"><span class="p">{</span>
+</span><span class="line">    <span class="k">public</span> <span class="n">IService</span> <span class="n">Service</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">public</span> <span class="nf">Child</span><span class="p">(</span><span class="n">IService</span> <span class="n">service</span><span class="p">)</span>
+</span><span class="line">    <span class="p">{</span>
+</span><span class="line">        <span class="n">Service</span> <span class="p">=</span> <span class="n">service</span><span class="p">;</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="k">public</span> <span class="k">interface</span> <span class="n">IParent</span>
+</span><span class="line"><span class="p">{</span>
+</span><span class="line">    <span class="n">IChild</span> <span class="n">Child</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="line">    <span class="n">IService</span> <span class="n">Service</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="k">public</span> <span class="k">class</span> <span class="nc">Parent</span> <span class="p">:</span> <span class="n">IParent</span>
+</span><span class="line"><span class="p">{</span>
+</span><span class="line">    <span class="k">public</span> <span class="n">IChild</span> <span class="n">Child</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="line">    <span class="k">public</span> <span class="n">IService</span> <span class="n">Service</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">public</span> <span class="nf">Parent</span><span class="p">(</span><span class="n">IChild</span> <span class="n">child</span><span class="p">,</span> <span class="n">IService</span> <span class="n">service</span><span class="p">)</span>
+</span><span class="line">    <span class="p">{</span>
+</span><span class="line">        <span class="n">Child</span> <span class="p">=</span> <span class="n">child</span><span class="p">;</span>
+</span><span class="line">        <span class="n">Service</span> <span class="p">=</span> <span class="n">service</span><span class="p">;</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <hr />
 
 <p>Great awesome video:
-<a href="http://channel9.msdn.com/blogs/mtaulty/prism--silverlight-part-2-dependency-injection-with-unity">http://channel9.msdn.com/blogs/mtaulty/prism&#8211;silverlight-part-2-dependency-injection-with-unity</a></p>
+http://channel9.msdn.com/blogs/mtaulty/prism&ndash;silverlight-part-2-dependency-injection-with-unity</p>
 
   
     <footer>

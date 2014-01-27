@@ -9,9 +9,7 @@
   <meta name="author" content="Sina Iravanian">
 
   
-  <meta name="description" content="WCF Notes WCF Serializers XmlSerializer (from .NET 1.0 till now)
-NetDataContractSerializer
-DataContractSerializer (default to WCF) &hellip;">
+  <meta name="description" content="WCF Notes WCF Serializers XmlSerializer (from .NET 1.0 till now) NetDataContractSerializer DataContractSerializer (default to WCF) &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,41 +86,39 @@ DataContractSerializer (default to WCF) &hellip;">
     
   </header>
   
-  <h2>WCF Serializers</h2>
+  <h2 id="wcf-serializers">WCF Serializers</h2>
 
 <ul>
-<li>XmlSerializer (from .NET 1.0 till now)</li>
-<li>NetDataContractSerializer</li>
-<li>DataContractSerializer (default to WCF)</li>
-<li>DataContractJsonSerializer (new in .NET 3.5)</li>
+  <li>XmlSerializer (from .NET 1.0 till now)</li>
+  <li>NetDataContractSerializer</li>
+  <li>DataContractSerializer (default to WCF)</li>
+  <li>DataContractJsonSerializer (new in .NET 3.5)</li>
 </ul>
 
-
-<p><code>SVCUtil.exe</code>: two-way conversion between .NET Objects and XSD
+<p><code>SVCUtil.exe</code>: two-way conversion between .NET Objects and XSD 
 * XSD Types <code>&lt;-&gt;</code> .NET Types</p>
 
-<h2><code>DataContractSerializer</code> sample class</h2>
+<h2 id="datacontractserializer-sample-class"><code>DataContractSerializer</code> sample class</h2>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="na">[DataContract]</span>
-</span><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">Eval</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'><span class="na">   [DataMemeber]</span>
-</span><span class='line'>   <span class="k">public</span> <span class="kt">string</span> <span class="n">Submitter</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="na">[DataContract]</span>
+</span><span class="line"><span class="k">public</span> <span class="k">class</span> <span class="nc">Eval</span>
+</span><span class="line"><span class="p">{</span>
+</span><span class="line"><span class="na">   [DataMemeber]</span>
+</span><span class="line">   <span class="k">public</span> <span class="kt">string</span> <span class="n">Submitter</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>Add <code>System.Runtime.Serialization.dll</code>.</p>
 
 <p>Serialization done through <code>WriteObject</code> and <code>ReadObject</code> methods of <code>DataContractSerializer</code>.</p>
 
-<h2>Create schema from assembly and vice versa</h2>
+<h2 id="create-schema-from-assembly-and-vice-versa">Create schema from assembly and vice versa</h2>
 
 <pre><code>SvcUtil.exe /dconly Assembly.dll
 </code></pre>
@@ -134,14 +130,13 @@ DataContractSerializer (default to WCF) &hellip;">
 <pre><code>SvcUtil.exe /dconly Schema.xsd
 </code></pre>
 
-<h2><code>XmlSerializer</code></h2>
+<h2 id="xmlserializer"><code>XmlSerializer</code></h2>
 
 <ul>
-<li>Available since .NET 1.0</li>
-<li>Used by default by ASP.NET Web Services (ASMX)</li>
-<li>Relies on things being <code>public</code></li>
+  <li>Available since .NET 1.0</li>
+  <li>Used by default by ASP.NET Web Services (ASMX)</li>
+  <li>Relies on things being <code>public</code></li>
 </ul>
-
 
   
     <footer>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Reflection | Sina Iravanian]]></title>
   <link href="http://www.sinairv.com/blog/categories/reflection/atom.xml" rel="self"/>
   <link href="http://www.sinairv.com/"/>
-  <updated>2014-01-26T20:58:44+10:00</updated>
+  <updated>2014-01-27T19:14:54+10:00</updated>
   <id>http://www.sinairv.com/</id>
   <author>
     <name><![CDATA[Sina Iravanian]]></name>
@@ -22,18 +22,14 @@
 
 <p>```csharp
 public class ClassToTest
-{</p>
+{
+    public int SomeNumber { get; set; }</p>
 
-<pre><code>public int SomeNumber { get; set; }
-
-private int m_somePrivateProperty { get; set; }
+<pre><code>private int m_somePrivateProperty { get; set; }
 private int m_somePrivateVar;
 
-private static int s_someStaticNumber;
+private static int s_someStaticNumber; } ```
 </code></pre>
-
-<p>}
-```</p>
 
 <p>And suppose that we desire to assign some value to the private variable <code>m_somePrivateVar</code>, and the private property <code>m_somePrivateProperty</code>. The approach is to iterate through the fields of the <code>ClassToTest</code> type to find the desired field. If it is a variable we should type-cast it to <code>FieldInfo</code>, and if it is a property we should type-cast it to <code>PropertyInfo</code>. Then we should call the <code>SetValue</code> method appropriately. This is shown below:</p>
 
@@ -41,29 +37,23 @@ private static int s_someStaticNumber;
 ClassToTest c = new ClassToTest();</p>
 
 <p>Type t = typeof(ClassToTest);
-foreach (var member in t.GetMembers(BindingFlags.Instance |</p>
-
-<pre><code>                                BindingFlags.NonPublic | 
-                                BindingFlags.Public))
-</code></pre>
-
-<p>{</p>
-
-<pre><code>if (member.Name == "m_somePrivateVar")
+foreach (var member in t.GetMembers(BindingFlags.Instance |
+                                    BindingFlags.NonPublic | 
+                                    BindingFlags.Public))
 {
-    // changing the variable
-    FieldInfo fi = (FieldInfo)member;
-    fi.SetValue(c, 18);
+    if (member.Name == &ldquo;m_somePrivateVar&rdquo;)
+    {
+        // changing the variable
+        FieldInfo fi = (FieldInfo)member;
+        fi.SetValue(c, 18);
+    }
+    else if (member.Name == &ldquo;m_somePrivateProperty&rdquo;)
+    {
+        // changing the property
+        PropertyInfo pi = (PropertyInfo)member;
+        pi.SetValue(c, 13, null);
+    }
 }
-else if (member.Name == "m_somePrivateProperty")
-{
-    // changing the property
-    PropertyInfo pi = (PropertyInfo)member;
-    pi.SetValue(c, 13, null);
-}
-</code></pre>
-
-<p>}
 ```</p>
 
 <p>Here we have successfully assigned values to selected private fields of our class.</p>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Data Binding | Sina Iravanian]]></title>
   <link href="http://www.sinairv.com/blog/categories/data-binding/atom.xml" rel="self"/>
   <link href="http://www.sinairv.com/"/>
-  <updated>2014-01-26T20:58:44+10:00</updated>
+  <updated>2014-01-27T19:14:54+10:00</updated>
   <id>http://www.sinairv.com/</id>
   <author>
     <name><![CDATA[Sina Iravanian]]></name>
@@ -22,12 +22,11 @@
 
 <p>```csharp
 public class Person : INotifyPropertyChanged
-{</p>
+{
+    private string _name;
+    private double _age;</p>
 
-<pre><code>private string _name;
-private double _age;
-
-public string Name 
+<pre><code>public string Name 
 {
     get
     {
@@ -69,11 +68,8 @@ private void OnPropertyChanged(string propertyName)
     {
         PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
     }
-}
+} } ```
 </code></pre>
-
-<p>}
-```</p>
 
 <p>See how the setters pass the property name in a <code>string</code>. This is not nice, because whenever we change the property name through refactoring tools, the string value remains untouched and we have to manually change them as well (if we are lucky enough to get notified before run-time). Anyway we had to tolerate them for years&hellip;</p>
 
@@ -81,12 +77,11 @@ private void OnPropertyChanged(string propertyName)
 
 <p>```csharp
 public class Person : INotifyPropertyChanged
-{</p>
+{
+    private string _name;
+    private double _age;</p>
 
-<pre><code>private string _name;
-private double _age;
-
-public string Name 
+<pre><code>public string Name 
 {
     get
     {
@@ -128,11 +123,8 @@ private void OnPropertyChanged([CallerMemberName]string propertyName = "")
     {
         PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
     }
-}
+} } ```
 </code></pre>
-
-<p>}
-```</p>
 
 <p>Now that string constants are removed from the setters we can more freely refactor our code. After being spoiled by automatic properties, this is still a very verbose way of defining properties; however it is much better than before.</p>
 ]]></content>

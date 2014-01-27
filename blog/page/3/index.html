@@ -114,13 +114,12 @@
 
   <div class="entry-content"><p>In normal situations you cannot view the content of special folders, such as <code>Windows/assembly</code> or <code>Windows/fonts</code>, and so on. The way these folders are shown are set through the <code>desktop.ini</code> file in each of these folders, which is normally hidden and protected. One trick that I learned from here [<a href="http://blogs.msdn.com/cumgranosalis/archive/2005/10/03/476275.aspx">+</a>] is described below. Open a command prompt and type:</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>cd /d %windows%\assembly
-</span><span class='line'>attrib -r -h -s desktop.ini
-</span><span class='line'>ren desktop.ini desktop.bak</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">cd /d %windows%\assembly
+</span><span class="line">attrib -r -h -s desktop.ini
+</span><span class="line">ren desktop.ini desktop.bak</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>Using the above commands, we kill the <code>desktop.ini</code> file, which will cause Windows Explorer to successfully open and explore the real contents of the folder.</p>
 </div>
@@ -165,39 +164,37 @@
 
 <p>Imagine that you have created and released a project to public. Your project contains several assemblies in form of <code>.dll</code> files. They make use of some constant value in one of the <code>.dll</code> files, e.g., <code>SomeLibrary.dll</code> stores a constant value in one of its classes, e.g.,</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">Options</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>   <span class="p">...</span>
-</span><span class='line'>   <span class="k">public</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">NetworkTimeout</span> <span class="p">=</span> <span class="m">2000</span><span class="p">;</span>
-</span><span class='line'>   <span class="p">...</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="k">public</span> <span class="k">class</span> <span class="nc">Options</span>
+</span><span class="line"><span class="p">{</span>
+</span><span class="line">   <span class="p">...</span>
+</span><span class="line">   <span class="k">public</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">NetworkTimeout</span> <span class="p">=</span> <span class="m">2000</span><span class="p">;</span>
+</span><span class="line">   <span class="p">...</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>You realize that the value assigned to <code>NetworkTimeout</code> is less than expected, so you decide to update <code>SomeLibrary.dll</code> files in all your customer machines with a new one in which <code>NetworkTimeout</code> is set to 3000. But it will not work. Because all references to <code>NetworkTimeout</code> in other assemblies have been replaced with the constant 2000, and the new value will not be fetched any more. In this case the problem will be solved only when all other assemblies are rebuilt. No other update scenarios will do.</p>
 
 <p>But if we have used <code>readonly</code> instead of <code>const</code> the problem would have been solved with updating <code>SomeLibrary.dll</code> only.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">Options</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>    <span class="p">...</span>
-</span><span class='line'>    <span class="k">public</span> <span class="k">static</span> <span class="k">readonly</span> <span class="kt">int</span> <span class="n">NetworkTimeout</span> <span class="p">=</span> <span class="m">2000</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">...</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="k">public</span> <span class="k">class</span> <span class="nc">Options</span>
+</span><span class="line"><span class="p">{</span>
+</span><span class="line">    <span class="p">...</span>
+</span><span class="line">    <span class="k">public</span> <span class="k">static</span> <span class="k">readonly</span> <span class="kt">int</span> <span class="n">NetworkTimeout</span> <span class="p">=</span> <span class="m">2000</span><span class="p">;</span>
+</span><span class="line">    <span class="p">...</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>The <code>static</code> modifier has been added only to make the two codes above compatible. Note that all <code>const</code> fields are also static, but <code>readonly</code> fields can be either <code>static</code> or an instance field.</p>
 </div>
@@ -240,71 +237,69 @@
 
   <div class="entry-content"><p>Suppose that you have a class with various non-public fields, e.g., the class named <code>ClassToTest</code> below servers as a good example.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">ClassToTest</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>    <span class="k">public</span> <span class="kt">int</span> <span class="n">SomeNumber</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">private</span> <span class="kt">int</span> <span class="n">m_somePrivateProperty</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-</span><span class='line'>    <span class="k">private</span> <span class="kt">int</span> <span class="n">m_somePrivateVar</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">private</span> <span class="k">static</span> <span class="kt">int</span> <span class="n">s_someStaticNumber</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="k">public</span> <span class="k">class</span> <span class="nc">ClassToTest</span>
+</span><span class="line"><span class="p">{</span>
+</span><span class="line">    <span class="k">public</span> <span class="kt">int</span> <span class="n">SomeNumber</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">private</span> <span class="kt">int</span> <span class="n">m_somePrivateProperty</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="line">    <span class="k">private</span> <span class="kt">int</span> <span class="n">m_somePrivateVar</span><span class="p">;</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">private</span> <span class="k">static</span> <span class="kt">int</span> <span class="n">s_someStaticNumber</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>And suppose that we desire to assign some value to the private variable <code>m_somePrivateVar</code>, and the private property <code>m_somePrivateProperty</code>. The approach is to iterate through the fields of the <code>ClassToTest</code> type to find the desired field. If it is a variable we should type-cast it to <code>FieldInfo</code>, and if it is a property we should type-cast it to <code>PropertyInfo</code>. Then we should call the <code>SetValue</code> method appropriately. This is shown below:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="n">ClassToTest</span> <span class="n">c</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ClassToTest</span><span class="p">();</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">Type</span> <span class="n">t</span> <span class="p">=</span> <span class="k">typeof</span><span class="p">(</span><span class="n">ClassToTest</span><span class="p">);</span>
-</span><span class='line'><span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">member</span> <span class="k">in</span> <span class="n">t</span><span class="p">.</span><span class="n">GetMembers</span><span class="p">(</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">Instance</span> <span class="p">|</span>
-</span><span class='line'>                                    <span class="n">BindingFlags</span><span class="p">.</span><span class="n">NonPublic</span> <span class="p">|</span>
-</span><span class='line'>                                    <span class="n">BindingFlags</span><span class="p">.</span><span class="n">Public</span><span class="p">))</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="n">member</span><span class="p">.</span><span class="n">Name</span> <span class="p">==</span> <span class="s">&quot;m_somePrivateVar&quot;</span><span class="p">)</span>
-</span><span class='line'>    <span class="p">{</span>
-</span><span class='line'>        <span class="c1">// changing the variable</span>
-</span><span class='line'>        <span class="n">FieldInfo</span> <span class="n">fi</span> <span class="p">=</span> <span class="p">(</span><span class="n">FieldInfo</span><span class="p">)</span><span class="n">member</span><span class="p">;</span>
-</span><span class='line'>        <span class="n">fi</span><span class="p">.</span><span class="n">SetValue</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="m">18</span><span class="p">);</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>    <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">member</span><span class="p">.</span><span class="n">Name</span> <span class="p">==</span> <span class="s">&quot;m_somePrivateProperty&quot;</span><span class="p">)</span>
-</span><span class='line'>    <span class="p">{</span>
-</span><span class='line'>        <span class="c1">// changing the property</span>
-</span><span class='line'>        <span class="n">PropertyInfo</span> <span class="n">pi</span> <span class="p">=</span> <span class="p">(</span><span class="n">PropertyInfo</span><span class="p">)</span><span class="n">member</span><span class="p">;</span>
-</span><span class='line'>        <span class="n">pi</span><span class="p">.</span><span class="n">SetValue</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="m">13</span><span class="p">,</span> <span class="k">null</span><span class="p">);</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="n">ClassToTest</span> <span class="n">c</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ClassToTest</span><span class="p">();</span>
+</span><span class="line">
+</span><span class="line"><span class="n">Type</span> <span class="n">t</span> <span class="p">=</span> <span class="k">typeof</span><span class="p">(</span><span class="n">ClassToTest</span><span class="p">);</span>
+</span><span class="line"><span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">member</span> <span class="k">in</span> <span class="n">t</span><span class="p">.</span><span class="n">GetMembers</span><span class="p">(</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">Instance</span> <span class="p">|</span>
+</span><span class="line">                                    <span class="n">BindingFlags</span><span class="p">.</span><span class="n">NonPublic</span> <span class="p">|</span>
+</span><span class="line">                                    <span class="n">BindingFlags</span><span class="p">.</span><span class="n">Public</span><span class="p">))</span>
+</span><span class="line"><span class="p">{</span>
+</span><span class="line">    <span class="k">if</span> <span class="p">(</span><span class="n">member</span><span class="p">.</span><span class="n">Name</span> <span class="p">==</span> <span class="s">&quot;m_somePrivateVar&quot;</span><span class="p">)</span>
+</span><span class="line">    <span class="p">{</span>
+</span><span class="line">        <span class="c1">// changing the variable</span>
+</span><span class="line">        <span class="n">FieldInfo</span> <span class="n">fi</span> <span class="p">=</span> <span class="p">(</span><span class="n">FieldInfo</span><span class="p">)</span><span class="n">member</span><span class="p">;</span>
+</span><span class="line">        <span class="n">fi</span><span class="p">.</span><span class="n">SetValue</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="m">18</span><span class="p">);</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">    <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">member</span><span class="p">.</span><span class="n">Name</span> <span class="p">==</span> <span class="s">&quot;m_somePrivateProperty&quot;</span><span class="p">)</span>
+</span><span class="line">    <span class="p">{</span>
+</span><span class="line">        <span class="c1">// changing the property</span>
+</span><span class="line">        <span class="n">PropertyInfo</span> <span class="n">pi</span> <span class="p">=</span> <span class="p">(</span><span class="n">PropertyInfo</span><span class="p">)</span><span class="n">member</span><span class="p">;</span>
+</span><span class="line">        <span class="n">pi</span><span class="p">.</span><span class="n">SetValue</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="m">13</span><span class="p">,</span> <span class="k">null</span><span class="p">);</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>Here we have successfully assigned values to selected private fields of our class.</p>
 </div>

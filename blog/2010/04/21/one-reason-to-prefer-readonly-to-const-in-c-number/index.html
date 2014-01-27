@@ -113,39 +113,37 @@
 
 <p>Imagine that you have created and released a project to public. Your project contains several assemblies in form of <code>.dll</code> files. They make use of some constant value in one of the <code>.dll</code> files, e.g., <code>SomeLibrary.dll</code> stores a constant value in one of its classes, e.g.,</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">Options</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>   <span class="p">...</span>
-</span><span class='line'>   <span class="k">public</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">NetworkTimeout</span> <span class="p">=</span> <span class="m">2000</span><span class="p">;</span>
-</span><span class='line'>   <span class="p">...</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="k">public</span> <span class="k">class</span> <span class="nc">Options</span>
+</span><span class="line"><span class="p">{</span>
+</span><span class="line">   <span class="p">...</span>
+</span><span class="line">   <span class="k">public</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">NetworkTimeout</span> <span class="p">=</span> <span class="m">2000</span><span class="p">;</span>
+</span><span class="line">   <span class="p">...</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>You realize that the value assigned to <code>NetworkTimeout</code> is less than expected, so you decide to update <code>SomeLibrary.dll</code> files in all your customer machines with a new one in which <code>NetworkTimeout</code> is set to 3000. But it will not work. Because all references to <code>NetworkTimeout</code> in other assemblies have been replaced with the constant 2000, and the new value will not be fetched any more. In this case the problem will be solved only when all other assemblies are rebuilt. No other update scenarios will do.</p>
 
 <p>But if we have used <code>readonly</code> instead of <code>const</code> the problem would have been solved with updating <code>SomeLibrary.dll</code> only.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">Options</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>    <span class="p">...</span>
-</span><span class='line'>    <span class="k">public</span> <span class="k">static</span> <span class="k">readonly</span> <span class="kt">int</span> <span class="n">NetworkTimeout</span> <span class="p">=</span> <span class="m">2000</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">...</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="k">public</span> <span class="k">class</span> <span class="nc">Options</span>
+</span><span class="line"><span class="p">{</span>
+</span><span class="line">    <span class="p">...</span>
+</span><span class="line">    <span class="k">public</span> <span class="k">static</span> <span class="k">readonly</span> <span class="kt">int</span> <span class="n">NetworkTimeout</span> <span class="p">=</span> <span class="m">2000</span><span class="p">;</span>
+</span><span class="line">    <span class="p">...</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>The <code>static</code> modifier has been added only to make the two codes above compatible. Note that all <code>const</code> fields are also static, but <code>readonly</code> fields can be either <code>static</code> or an instance field.</p>
 </div>

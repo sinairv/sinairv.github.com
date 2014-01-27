@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>JavaScript Notes - Sina Iravanian</title>
+  <title>Entity Framework Notes - Sina Iravanian</title>
   <meta name="author" content="Sina Iravanian">
 
   
-  <meta name="description" content="JavaScript Notes JavaScript Notes 'use strict' statement TL;DR. It prevents some bad usages of the language. Here&rsquo;s a summary. This is the &hellip;">
+  <meta name="description" content="Entity Framework Notes This was because the designer would generate a context that derived from ObjectContext and entity classes that derived from &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://www.sinairv.com/notebook/JavaScriptNotes.html">
+  <link rel="canonical" href="http://www.sinairv.com/notebook/EntityFrameworkNotes.html">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Sina Iravanian" type="application/atom+xml">
@@ -82,48 +82,15 @@
 <article role="article">
   
   <header>
-    <h1 class="entry-title">JavaScript Notes</h1>
+    <h1 class="entry-title">Entity Framework Notes</h1>
     
   </header>
   
-  <h1>JavaScript Notes</h1>
+  <blockquote>
+  <p>This was because the designer would generate a context that derived from <code>ObjectContext</code> and entity classes that derived from <code>EntityObject</code>.</p>
+</blockquote>
 
-<h3><code>'use strict'</code> statement</h3>
-
-<p>TL;DR. It prevents some bad usages of the language. Here&rsquo;s a <a href="http://ejohn.org/blog/ecmascript-5-strict-mode-json-and-more/">summary</a>.</p>
-
-<p>This is the <a href="http://stackoverflow.com/questions/1335851/what-does-use-strict-do-in-javascript-and-what-is-the-reasoning-behind-it">Source</a>.</p>
-
-<blockquote><p>Strict Mode is a new feature in ECMAScript 5 that allows you to place a program, or a function, in a &ldquo;strict&rdquo; operating context. This strict context prevents certain actions from being taken and throws more exceptions.</p></blockquote>
-
-<p>And:</p>
-
-<blockquote><p>Strict mode helps out in a couple ways:
-* It catches some common coding bloopers, throwing exceptions.
-* It prevents, or throws errors, when relatively &ldquo;unsafe&rdquo; actions are taken (such as gaining access to the global object).
-* It disables features that are confusing or poorly thought out.</p></blockquote>
-
-<p>Usage:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// Non-strict code...</span>
-</span><span class='line'>
-</span><span class='line'><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>  <span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="c1">// Define your library strictly...</span>
-</span><span class='line'><span class="p">})();</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">// Non-strict code... </span>
-</span></code></pre></td></tr></table></div></figure>
+<p>Q: What is <code>ObjectContext</code> and <code>EntityObject</code>?</p>
 
 
   
@@ -132,7 +99,7 @@
       
         <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.sinairv.com/notebook/JavaScriptNotes.html" data-via="sinairv" data-counturl="http://www.sinairv.com/notebook/JavaScriptNotes.html" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.sinairv.com/notebook/EntityFrameworkNotes.html" data-via="sinairv" data-counturl="http://www.sinairv.com/notebook/EntityFrameworkNotes.html" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -258,8 +225,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://www.sinairv.com/notebook/JavaScriptNotes.html';
-        var disqus_url = 'http://www.sinairv.com/notebook/JavaScriptNotes.html';
+        var disqus_identifier = 'http://www.sinairv.com/notebook/EntityFrameworkNotes.html';
+        var disqus_url = 'http://www.sinairv.com/notebook/EntityFrameworkNotes.html';
         var disqus_script = 'embed.js';
       
     (function () {

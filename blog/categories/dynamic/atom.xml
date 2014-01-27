@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Dynamic | Sina Iravanian]]></title>
   <link href="http://www.sinairv.com/blog/categories/dynamic/atom.xml" rel="self"/>
   <link href="http://www.sinairv.com/"/>
-  <updated>2014-01-26T20:58:44+10:00</updated>
+  <updated>2014-01-27T19:14:54+10:00</updated>
   <id>http://www.sinairv.com/</id>
   <author>
     <name><![CDATA[Sina Iravanian]]></name>
@@ -22,7 +22,7 @@
 
 <p>First, I changed all <code>void Save()</code> methods to <code>bool Save()</code>, and performed the validation stuff in each control separately. Then in the parent form, I created an array of <code>Control</code>s, so that I could loop through them, and call their <code>Save</code> method. But wait, <code>Save</code> is not inherited from any base-class or interface, so there&rsquo;s no polymorphism at hand. How can I call them through references of type <code>Control</code>?</p>
 
-<p>Well honestly, the best solution would be adding a new interface to the project, say <code>ISavableControl</code> or something, add the <code>Save</code> method to it, and let the controls implement that interface. But I wanted to make a quick fix to the problem without adding new files and types to the code. Here C#&lsquo;s <code>dynamic</code> comes into action.</p>
+<p>Well honestly, the best solution would be adding a new interface to the project, say <code>ISavableControl</code> or something, add the <code>Save</code> method to it, and let the controls implement that interface. But I wanted to make a quick fix to the problem without adding new files and types to the code. Here C#&rsquo;s <code>dynamic</code> comes into action.</p>
 
 <p>Using <code>dynamic</code> keyword, one postpones binding methods, properties, and fields to run-time. In our scenario we know that the user-controls each have a method called <code>Save</code>, which is not derived from a parent. Without <code>dynamic</code>, I would need to have a reference explicitly from each user control&rsquo;s type, and I would have to call them one by one, as in:</p>
 
@@ -42,13 +42,10 @@ succeeded = succeeded || userControln.Save();
 // therefore we cannot call Save using polymorphism
 bool succeeded = false;
 foreach(var ctrl in controlsArray)
-{</p>
-
-<pre><code>dynamic dynCtrl = ctrl;
-succeeded = succeeded || dynCtrl.Save();
-</code></pre>
-
-<p>}</p>
+{
+    dynamic dynCtrl = ctrl;
+    succeeded = succeeded || dynCtrl.Save();
+}</p>
 
 <p>// do something with the value of succeeded
 ```</p>

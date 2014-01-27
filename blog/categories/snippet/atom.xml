@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Snippet | Sina Iravanian]]></title>
   <link href="http://www.sinairv.com/blog/categories/snippet/atom.xml" rel="self"/>
   <link href="http://www.sinairv.com/"/>
-  <updated>2014-01-26T20:58:44+10:00</updated>
+  <updated>2014-01-27T19:14:54+10:00</updated>
   <id>http://www.sinairv.com/</id>
   <author>
     <name><![CDATA[Sina Iravanian]]></name>
@@ -37,8 +37,6 @@
     <content type="html"><![CDATA[<p>This piece of code is useful for debugging purposes or working on string processing algorithms. There are times, that you need to see all the characters of a string including invisible characters. This little method may help:</p>
 
 <script src="https://gist.github.com/sinairv/2694034.js"></script>
-
-
 
 ]]></content>
   </entry>

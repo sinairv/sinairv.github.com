@@ -86,59 +86,56 @@
     
   </header>
   
-  <h1>NHibernate Notes</h1>
+  <h1 id="nhibernate-notes">NHibernate Notes</h1>
 
-<h2>Mapping metadata</h2>
-
-<ul>
-<li>XML-based
+<h2 id="mapping-metadata">Mapping metadata</h2>
 
 <ul>
-<li>hbm.xml files</li>
+  <li>XML-based
+    <ul>
+      <li>hbm.xml files</li>
+    </ul>
+  </li>
+  <li>Code-based
+    <ul>
+      <li>Fluent NHibernate</li>
+    </ul>
+  </li>
+  <li>Convention-based
+    <ul>
+      <li>Automapping in Fluent NHibernate</li>
+      <li>ConfORM</li>
+    </ul>
+  </li>
 </ul>
-</li>
-<li>Code-based
 
-<ul>
-<li>Fluent NHibernate</li>
-</ul>
-</li>
-<li>Convention-based
-
-<ul>
-<li>Automapping in Fluent NHibernate</li>
-<li>ConfORM</li>
-</ul>
-</li>
-</ul>
-
-
-<h2>Enbale visual studio intelli-sense</h2>
+<h2 id="enbale-visual-studio-intelli-sense">Enbale visual studio intelli-sense</h2>
 
 <p>Copy NHibernate <code>xsd</code> files to <code>C:\Program Files\Visual Studio\Xml\Schemas</code></p>
 
-<h2>Defining entity classes</h2>
+<h2 id="defining-entity-classes">Defining entity classes</h2>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">SomeEntity</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>    <span class="k">public</span> <span class="nf">SomeEntity</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
-</span><span class='line'>    <span class="k">public</span> <span class="k">virtual</span> <span class="n">Guid</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-</span><span class='line'>    <span class="k">public</span> <span class="k">virtual</span> <span class="kt">string</span> <span class="n">SomeName</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-</span><span class='line'>    <span class="k">public</span> <span class="k">virtual</span> <span class="n">DateTime</span><span class="p">?</span> <span class="n">SomeDate</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="k">public</span> <span class="k">class</span> <span class="nc">SomeEntity</span>
+</span><span class="line"><span class="p">{</span>
+</span><span class="line">    <span class="k">public</span> <span class="nf">SomeEntity</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
+</span><span class="line">    <span class="k">public</span> <span class="k">virtual</span> <span class="n">Guid</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="line">    <span class="k">public</span> <span class="k">virtual</span> <span class="kt">string</span> <span class="n">SomeName</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="line">    <span class="k">public</span> <span class="k">virtual</span> <span class="n">DateTime</span><span class="p">?</span> <span class="n">SomeDate</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>Notice that all properties are preceded by a <code>virtual</code> declaration. This is required in order to use the <strong>lazy loading</strong> feature of NHibernate. As you can see, NHibernate does not require inheritance from a base class or implementation of any interfaces to utilize its features. Instead, <strong>NHibernate creates a proxy of the class</strong>. In this context, <strong>an NHibernate proxy is an inherited type of the <code>SomeEntity</code> class</strong>. The <code>SomeEntity</code> class is considered the base class to NHibernate&rsquo;s proxies. <strong>At application startup</strong>, NHibernate inherits and overrides the class, adding the required logic to support <strong>lazy loading</strong>. Note that if value-types correspond to a nullable database column, must be defined as nullable in the entity class as well, otherwise an instance of <code>PropertyValueException</code> would be thrown.</p>
 
-<blockquote><p>All value types should be implemented as nullable or you need to ensure that the values on the database do not allow nulls.</p></blockquote>
+<blockquote>
+  <p>All value types should be implemented as nullable or you need to ensure that the values on the database do not allow nulls.</p>
+</blockquote>
 
 <p>Use automatic properties: When using NHibernate&rsquo;s property-level accessor mappings, using
 the underlying private field value (instead of going through the <code>{get; set;}</code>
@@ -149,15 +146,17 @@ this another reason to use auto-implemented or automatic properties.</p>
 into the first entity, the second entity is also loaded, too, even if it is not needed.</p>
 
 <p><em>TODOs</em>:
-* Note about ClassMapping<Enitity>
+* Note about ClassMapping<enitity>
 * Note about session techniques, e.g., session-per-presenter
-* What is flushing</p>
+* What is flushing</enitity></p>
 
-<blockquote><p>Take a look at the NHibernate.ISession.cs file for a great description of
+<blockquote>
+  <p>Take a look at the NHibernate.ISession.cs file for a great description of
 the Session and the role it plays. The source code is well documented and you
 can learn a lot from it. The comments were written by experts and you can find
-some real gems in there.
-<a href="https://github.com/nhibernate/nhibernate-core/blob/master/src/NHibernate/ISession.cs">ISession.cs</a></p></blockquote>
+some real gems in there. 
+<a href="https://github.com/nhibernate/nhibernate-core/blob/master/src/NHibernate/ISession.cs">ISession.cs</a></p>
+</blockquote>
 
   
     <footer>

@@ -4,7 +4,7 @@
   <title><![CDATA[Sina Iravanian]]></title>
   <link href="http://sinairv.github.io/atom.xml" rel="self"/>
   <link href="http://sinairv.github.io/"/>
-  <updated>2015-01-21T22:49:29+10:00</updated>
+  <updated>2015-01-21T23:08:33+10:00</updated>
   <id>http://sinairv.github.io/</id>
   <author>
     <name><![CDATA[Sina Iravanian]]></name>
@@ -183,7 +183,7 @@
     <link href="http://sinairv.github.io/blog/2014/01/10/moved-my-blog-to-octopress/"/>
     <updated>2014-01-10T01:22:25+10:00</updated>
     <id>http://sinairv.github.io/blog/2014/01/10/moved-my-blog-to-octopress</id>
-    <content type="html"><![CDATA[<p>I&rsquo;ve moved my blog from <a href="http://sinairv.wordpress.com">Wordpress</a> to my <a href="http://www.sinairv.com">homepage domain</a>. It makes use of <a href="http://octopress.org/">Octopress</a>, which is based on <a href="http://jekyllrb.com/">Jekyll</a>, and is a static site generator. The blog is hosted on GitHub pages, and is <a href="https://github.com/sinairv/sinairv.github.com">open source</a>. </p>
+    <content type="html"><![CDATA[<p>I&rsquo;ve moved my blog from <a href="http://sinairv.wordpress.com">Wordpress</a> to my <a href="http://sinairv.github.io">homepage domain</a>. It makes use of <a href="http://octopress.org/">Octopress</a>, which is based on <a href="http://jekyllrb.com/">Jekyll</a>, and is a static site generator. The blog is hosted on GitHub pages, and is <a href="https://github.com/sinairv/sinairv.github.com">open source</a>. </p>
 
 <p>The great benefit of this stack of tools is that I can easily create and edit my posts in <a href="http://en.wikipedia.org/wiki/Markdown">Markdown</a>, re-generate the blog <a href="http://octopress.org/docs/blogging/">through command line</a>, and make use of <a href="http://rake.rubyforge.org/">Rake</a> (Ruby&rsquo;s make tools) to perform various tasks ranging from post creation to deployment to GitHub pages. It&rsquo;s awesome.</p>
 ]]></content>

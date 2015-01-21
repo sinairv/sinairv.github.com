@@ -1,0 +1,552 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Sina Iravanian</title>
+  <meta name="author" content="Sina Iravanian">
+
+  
+  <meta name="description" content="This piece of code is useful for debugging purposes or working on string processing algorithms. There are times, that you need to see all the &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.sinairv.com/blog/page/3">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Sina Iravanian" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-46467071-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Sina Iravanian</a></h1>
+  
+    <h2>I blog about software development</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:www.sinairv.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About</a></li>
+  <li><a href="/works">Works</a></li>
+  <li><a href="/notebook">Notebook</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/08/08/code-snippet-for-representing-strings-with-all-their-characters-visible/">Code Snippet for Representing Strings With All Their Characters Visible</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-08T23:55:20+10:00" pubdate data-updated="true">Aug 8<span>th</span>, 2010</time>
+        
+           | <a href="/blog/2010/08/08/code-snippet-for-representing-strings-with-all-their-characters-visible/#disqus_thread"
+             data-disqus-identifier="http://www.sinairv.com/blog/2010/08/08/code-snippet-for-representing-strings-with-all-their-characters-visible/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This piece of code is useful for debugging purposes or working on string processing algorithms. There are times, that you need to see all the characters of a string including invisible characters. This little method may help:</p>
+
+<script src="https://gist.github.com/sinairv/2694034.js"></script>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/08/08/a-code-snippet-for-searching-and-highlighting-a-token-or-string-in-a-richtextbox/">A Code Snippet for Searching and Highlighting a Token or String in a RichTextBox</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-08T21:28:07+10:00" pubdate data-updated="true">Aug 8<span>th</span>, 2010</time>
+        
+           | <a href="/blog/2010/08/08/a-code-snippet-for-searching-and-highlighting-a-token-or-string-in-a-richtextbox/#disqus_thread"
+             data-disqus-identifier="http://www.sinairv.com/blog/2010/08/08/a-code-snippet-for-searching-and-highlighting-a-token-or-string-in-a-richtextbox/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Suppose that you intend to find a string or a token (i.e., whole word, instead of a substring) and change their color in some Windows Forms <code>RichTextBox</code>. The following code snippets will help. The <code>FindStringAndSetColor</code> method looks for instances of an arbitrary string in the contents of the <code>RichTextBox</code>, while the <code>FindTokenAndSetColor</code> method looks for whole words (tokens).</p>
+
+<script src="https://gist.github.com/sinairv/2694067.js"></script>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/05/15/how-to-explore-special-folders-in-windows-explorer/">How to Explore Special Folders (Like GAC) in Windows Explorer</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-15T21:09:33+10:00" pubdate data-updated="true">May 15<span>th</span>, 2010</time>
+        
+           | <a href="/blog/2010/05/15/how-to-explore-special-folders-in-windows-explorer/#disqus_thread"
+             data-disqus-identifier="http://www.sinairv.com/blog/2010/05/15/how-to-explore-special-folders-in-windows-explorer/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In normal situations you cannot view the content of special folders, such as <code>Windows/assembly</code> or <code>Windows/fonts</code>, and so on. The way these folders are shown are set through the <code>desktop.ini</code> file in each of these folders, which is normally hidden and protected. One trick that I learned from here [<a href="http://blogs.msdn.com/cumgranosalis/archive/2005/10/03/476275.aspx">+</a>] is described below. Open a command prompt and type:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">cd /d %windows%\assembly
+</span><span class="line">attrib -r -h -s desktop.ini
+</span><span class="line">ren desktop.ini desktop.bak</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Using the above commands, we kill the <code>desktop.ini</code> file, which will cause Windows Explorer to successfully open and explore the real contents of the folder.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/04/21/one-reason-to-prefer-readonly-to-const-in-c-number/">One Reason to Prefer Readonly to Const in C#</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-21T14:19:38+10:00" pubdate data-updated="true">Apr 21<span>st</span>, 2010</time>
+        
+           | <a href="/blog/2010/04/21/one-reason-to-prefer-readonly-to-const-in-c-number/#disqus_thread"
+             data-disqus-identifier="http://www.sinairv.com/blog/2010/04/21/one-reason-to-prefer-readonly-to-const-in-c-number/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>First off, let&rsquo;s talk about what&rsquo;s going on in C# compiler when you use <code>const</code> or <code>readonly</code> in your field definitions. The <code>const</code> qualifier can be used with primitive data types, and strings only. When used, the value assigned to a <code>const</code> field, is inserted directly in all its references in the generated IL code. This is true about other assemblies too. Other assemblies that refer to that <code>const</code> field, are compiled as if they have used directly the value itself. This can be the source of problem that I&rsquo;m going to talk about soon. <code>readonly</code> fields are run-time constants. They occupy some space in memory, and references to them are resolved at run-time, as if we have referred to an ordinary variable. Actually they are variables that resemble constants.</p>
+
+<p>Imagine that you have created and released a project to public. Your project contains several assemblies in form of <code>.dll</code> files. They make use of some constant value in one of the <code>.dll</code> files, e.g., <code>SomeLibrary.dll</code> stores a constant value in one of its classes, e.g.,</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="k">public</span> <span class="k">class</span> <span class="nc">Options</span>
+</span><span class="line"><span class="p">{</span>
+</span><span class="line">   <span class="p">...</span>
+</span><span class="line">   <span class="k">public</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">NetworkTimeout</span> <span class="p">=</span> <span class="m">2000</span><span class="p">;</span>
+</span><span class="line">   <span class="p">...</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>You realize that the value assigned to <code>NetworkTimeout</code> is less than expected, so you decide to update <code>SomeLibrary.dll</code> files in all your customer machines with a new one in which <code>NetworkTimeout</code> is set to 3000. But it will not work. Because all references to <code>NetworkTimeout</code> in other assemblies have been replaced with the constant 2000, and the new value will not be fetched any more. In this case the problem will be solved only when all other assemblies are rebuilt. No other update scenarios will do.</p>
+
+<p>But if we have used <code>readonly</code> instead of <code>const</code> the problem would have been solved with updating <code>SomeLibrary.dll</code> only.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="k">public</span> <span class="k">class</span> <span class="nc">Options</span>
+</span><span class="line"><span class="p">{</span>
+</span><span class="line">    <span class="p">...</span>
+</span><span class="line">    <span class="k">public</span> <span class="k">static</span> <span class="k">readonly</span> <span class="kt">int</span> <span class="n">NetworkTimeout</span> <span class="p">=</span> <span class="m">2000</span><span class="p">;</span>
+</span><span class="line">    <span class="p">...</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>The <code>static</code> modifier has been added only to make the two codes above compatible. Note that all <code>const</code> fields are also static, but <code>readonly</code> fields can be either <code>static</code> or an instance field.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/03/06/assigning-values-to-private-fields-using-reflection/">Assigning Values to Private Fields Using Reflection</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-06T14:19:38+10:00" pubdate data-updated="true">Mar 6<span>th</span>, 2010</time>
+        
+           | <a href="/blog/2010/03/06/assigning-values-to-private-fields-using-reflection/#disqus_thread"
+             data-disqus-identifier="http://www.sinairv.com/blog/2010/03/06/assigning-values-to-private-fields-using-reflection/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Suppose that you have a class with various non-public fields, e.g., the class named <code>ClassToTest</code> below servers as a good example.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="k">public</span> <span class="k">class</span> <span class="nc">ClassToTest</span>
+</span><span class="line"><span class="p">{</span>
+</span><span class="line">    <span class="k">public</span> <span class="kt">int</span> <span class="n">SomeNumber</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">private</span> <span class="kt">int</span> <span class="n">m_somePrivateProperty</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="line">    <span class="k">private</span> <span class="kt">int</span> <span class="n">m_somePrivateVar</span><span class="p">;</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">private</span> <span class="k">static</span> <span class="kt">int</span> <span class="n">s_someStaticNumber</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>And suppose that we desire to assign some value to the private variable <code>m_somePrivateVar</code>, and the private property <code>m_somePrivateProperty</code>. The approach is to iterate through the fields of the <code>ClassToTest</code> type to find the desired field. If it is a variable we should type-cast it to <code>FieldInfo</code>, and if it is a property we should type-cast it to <code>PropertyInfo</code>. Then we should call the <code>SetValue</code> method appropriately. This is shown below:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="n">ClassToTest</span> <span class="n">c</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ClassToTest</span><span class="p">();</span>
+</span><span class="line">
+</span><span class="line"><span class="n">Type</span> <span class="n">t</span> <span class="p">=</span> <span class="k">typeof</span><span class="p">(</span><span class="n">ClassToTest</span><span class="p">);</span>
+</span><span class="line"><span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">member</span> <span class="k">in</span> <span class="n">t</span><span class="p">.</span><span class="n">GetMembers</span><span class="p">(</span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">Instance</span> <span class="p">|</span>
+</span><span class="line">                                    <span class="n">BindingFlags</span><span class="p">.</span><span class="n">NonPublic</span> <span class="p">|</span>
+</span><span class="line">                                    <span class="n">BindingFlags</span><span class="p">.</span><span class="n">Public</span><span class="p">))</span>
+</span><span class="line"><span class="p">{</span>
+</span><span class="line">    <span class="k">if</span> <span class="p">(</span><span class="n">member</span><span class="p">.</span><span class="n">Name</span> <span class="p">==</span> <span class="s">&quot;m_somePrivateVar&quot;</span><span class="p">)</span>
+</span><span class="line">    <span class="p">{</span>
+</span><span class="line">        <span class="c1">// changing the variable</span>
+</span><span class="line">        <span class="n">FieldInfo</span> <span class="n">fi</span> <span class="p">=</span> <span class="p">(</span><span class="n">FieldInfo</span><span class="p">)</span><span class="n">member</span><span class="p">;</span>
+</span><span class="line">        <span class="n">fi</span><span class="p">.</span><span class="n">SetValue</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="m">18</span><span class="p">);</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">    <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">member</span><span class="p">.</span><span class="n">Name</span> <span class="p">==</span> <span class="s">&quot;m_somePrivateProperty&quot;</span><span class="p">)</span>
+</span><span class="line">    <span class="p">{</span>
+</span><span class="line">        <span class="c1">// changing the property</span>
+</span><span class="line">        <span class="n">PropertyInfo</span> <span class="n">pi</span> <span class="p">=</span> <span class="p">(</span><span class="n">PropertyInfo</span><span class="p">)</span><span class="n">member</span><span class="p">;</span>
+</span><span class="line">        <span class="n">pi</span><span class="p">.</span><span class="n">SetValue</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="m">13</span><span class="p">,</span> <span class="k">null</span><span class="p">);</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Here we have successfully assigned values to selected private fields of our class.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/2/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <a href="http://stackoverflow.com/users/836432/sina-iravanian">
+<img src="http://stackoverflow.com/users/flair/836432.png?theme=dark" width="208" height="58" alt="profile for Sina Iravanian at Stack Overflow, Q&A for professional and enthusiast programmers" title="profile for Sina Iravanian at Stack Overflow, Q&A for professional and enthusiast programmers">
+</a><a href="https://flattr.com/submit/auto?user_id=sinairv&url=http%3A%2F%2Fblog.sinairv.com" target="_blank"><img src="//api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0"></a><a href='https://www.ohloh.net/accounts/143041?ref=Detailed'>
+<img alt='Ohloh profile for Sina Iravanian' src='https://www.ohloh.net/accounts/143041/widgets/account_detailed.gif' />
+</a>
+<a href="https://github.com/sinairv"><img src="/images/github.png" alt="GitHub" title="GitHub" /></a>
+<a href="http://www.linkedin.com/in/sinairv"><img src="/images/linkedin.png" alt="LinkedIn" title="LinkedIn" /></a>
+<a href="https://twitter.com/sinairv"><img src="/images/twitter.png" alt="Twitter" title="Twitter" /></a>
+<a href="http://nuget.org/profiles/sinairv"><img src="/images/nuget.png" alt="Nuget" title="Nuget" /></a>
+<a href="http://www.codeplex.com/site/users/view/sina_iravanian"><img src="/images/codeplex.png" alt="CodePlex" title="CodePlex" /></a>
+<a href="http://www.codeproject.com/Articles/Sina-Iravanian"><img src="/images/codeproject.png" alt="CodeProject" title="CodeProject" /></a>
+<a href="http://sourceforge.net/users/sina_iravanian"><img src="/images/sourceforge.png" alt="Sourceforge" title="Sourceforge" /></a>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/12/01/syntax-highlighter-for-windows-forms-rich-text-box/">Syntax Highlighter for Windows Forms Rich Text Box</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/20/the-pains-of-upgrading-android-studio/">The Pains of Upgrading Android Studio</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/01/10/moved-my-blog-to-octopress/">Moved My Blog to Octopress</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c-number-5/">How to Make More Refactoring Friendly Data-bindings With C# 5</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/22/different-ways-of-generating-new-guids/">Different Ways of Generating New GUIDs</a>
+      </li>
+    
+  </ul>
+</section>
+<a class="twitter-timeline" href="https://twitter.com/sinairv" data-widget-id="412581503571214336">Tweets by @sinairv</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/sinairv">@sinairv</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'sinairv',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section class="googleplus googleplus-hidden">
+  <h1>
+    <a href="https://plus.google.com/+SinaIravanian?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Sina Iravanian -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'sinairv';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

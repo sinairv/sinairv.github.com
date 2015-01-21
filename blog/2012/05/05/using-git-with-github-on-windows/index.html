@@ -1,0 +1,379 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Using Git With GitHub on Windows - Sina Iravanian</title>
+  <meta name="author" content="Sina Iravanian">
+
+  
+  <meta name="description" content="If you&rsquo;re new to Git and don&rsquo;t know how to install Git on Windows, read my earlier post: How to Setup Git for Windows In an earlier  &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.sinairv.com/blog/2012/05/05/using-git-with-github-on-windows">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Sina Iravanian" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-46467071-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Sina Iravanian</a></h1>
+  
+    <h2>I blog about software development</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:www.sinairv.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About</a></li>
+  <li><a href="/works">Works</a></li>
+  <li><a href="/notebook">Notebook</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Using Git With GitHub on Windows</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-05T16:25:00+10:00" pubdate data-updated="true">May 5<span>th</span>, 2012</time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://www.sinairv.com">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>If you&rsquo;re new to Git and don&rsquo;t know how to install Git on Windows, read my earlier post: <a href="/blog/2012/05/01/how-to-setup-git-for-windows/">How to Setup Git for Windows</a></p>
+
+<p>In an earlier <a href="/blog/2012/05/02/using-git-with-codeplex-on-windows/">post</a>, I described the preliminary steps required to work with git on CodePlex. However using git with<a href="https://github.com/">GitHub</a> requires more initial steps.</p>
+
+<p><strong>Generating SSH Keys.</strong> Before proceeding to Git operations we need to create SSH public and private keys, and register the public key on the GitHub site. In order to generate the keys we can use PuTTY Key Generator, which is already bundled with TortoiseGit fortunately. This program is called &ldquo;Puttygen&rdquo; and can be found in start-menu under TortoiseGit:</p>
+
+<p><img src="/images/posts/tortoisegit-puttygen.png" alt="puttygen under TortoiseGit in Windows start-menu" /></p>
+
+<p>After running Puttygen you need to press &ldquo;Generate&rdquo;, and make some crazy mouse movements in the spotted area to provide some random data for the program (wow, what a brilliant idea). When finished you will have the public key generated. It is recommended that you provide a passphrase so that you would have a more secure private key. After that save your public and private keys using the 2 save buttons near the bottom of the window. But these are not all that you need to save! The public key format that GitHub and some other applications require you to provide is not the one that this program has saved for you. The topmost field which is labelled &ldquo;Public key for passing into OpenSSH authorized_keys file&rdquo; is the one that GitHub needs. It should be in one line (i.e., with no line-breaks), therefore we would refer to it later as the one-line-public-key. Please save the contents of this field and the next &ldquo;key fingerprint&rdquo; field somewhere for future references.</p>
+
+<p><img src="/images/posts/puttygenfields.png" alt="Puttygen fields" /></p>
+
+<p><strong>Registering SSH Keys in GitHub.</strong> Browse to GitHub, and go to your Account Seetings, and select SSH Keystherein. Press the Add SSH key button on the right. Provide a name for the key (I chose TortoiseGit), and paste the one-line-public-key in the Key field. Press Add Key. You may be prompted for your GitHub account password next. When finished, GitHub adds this key to its list of keys and provides a fingerprint. Make sure this fingerprint matches the key fingerprint that Puttygen created for you.</p>
+
+<p><strong>Creating a Repository in GitHub.</strong> Browse to the GitHub page and press the &ldquo;Create a New Repo&rdquo; button at the top of the page.</p>
+
+<p><img src="/images/posts/githubnewrepo.png" alt="GitHub Create New Repo" /></p>
+
+<p>In the new form that appears, enter desired values for your project&rsquo;s name and description. Currently there&rsquo;s an option to add a README file or an appropriate <code>.gitignore</code> file to the repository. While making use of these options are recommended, in this tutorial I intend to start from a completely empty repository; therefore I unchecked those options. When finished press the &ldquo;Create repository&rdquo; button. With these steps I created a project called &ldquo;PdfRenamer&rdquo;.</p>
+
+<p><strong>Setting up TortoiseGit for the new project.</strong> After creating the repository, GitHub introduces some helpful basic commands to start working with the repository. We don&rsquo;t intend to use the command-line, however this page contains useful information such as user-name and email with which GitHub recognizes you, and the git repository address, as highlighted below:</p>
+
+<p><img src="/images/posts/githubnewprojectaddressandusername1.png" alt="GitHub New Project Address And User-Name" /></p>
+
+<p>We need to do the following steps next:</p>
+
+<ol>
+  <li>Right click somewhere in the Windows explorer window, and from the context-menu go to: TortoiseGit &gt; Settings�� Git branch; and fill the user-name and email fields with the ones suggested by GitHub, and press OK.</li>
+  <li>Create a folder preferably with the same name as your project (in my case PdfRenamer), and browse into it with Windows explorer.</li>
+  <li>Right click somewhere in the folder and from the context menu select &ldquo;Git Create repository here&hellip;&rdquo;. A window pops-up. Make sure that &ldquo;Make it Bare&rdquo; is not checked; and press OK.</li>
+  <li>Right click somewhere in the folder and from the context menu go to: TortoiseGit &gt; Settings�� Git branch�� Remote sub-branch. In the &ldquo;Remote&rdquo; field enter &ldquo;origin&rdquo;, in the URL field enter the git repository address which was highlighted above and is in the form of <code>git@github.com:[username]/[projectname].git</code>; and finally in front of &ldquo;putty key&rdquo; provide the address to the SSH private key which we saved earlier in this tutorial, and has the <code>.ppk</code> extension. When finished press the &ldquo;Add New/Save&rdquo; button. After that origin should be added to the list of Remotes.</li>
+</ol>
+
+<p><img src="/images/posts/tortoisegitremotesetting.png" alt="TortoiseGit Remote Setting" /></p>
+
+<p><strong>Add files to the project structure.</strong> With git, adding a file to a project structure and having it reflected in the remote repository requires 3 operations: add, commit, and push. The first 2 operations are required for adding the file to the local repository, and the third one reflects the changes to the remote repository. This last operation can be postponed to a later time when you want to push a bundle of changes all at once.</p>
+
+<p>To start, create a <code>Readme.txt</code> file in the root folder. Right click on the newly added file, from the context menu select: TortoiseGit &gt; add; check the files to be added, and press OK. This was the first operation: add. In the new window press &ldquo;commit &hellip;&rdquo;, provide a meaningful commit message in the new window, and press OK when finished. This was the second operation: commit which reflects the changes to your local repository, the one in your hard-drive. You can push the changes in the next window if you want, however it&rsquo;s not a good idea to push every local commit to the remote repository (that&rsquo;s why we are using a DVCS after all).</p>
+
+<p>Before continuing to the push command, let&rsquo;s talk about some naming conventions in the Git world. With DVCSs such as git you can have different remote repositories which you may choose from to push your changes to. By convention, the default name for the remote repository is &ldquo;origin&rdquo;. In our case origin is the remote repository at the GitHub server, for which we manually added the link before. On the other hand, each project may have several branches. Conceptually a branch is another copy of the same project where other features are developed and tested. For example imagine that at a certain stage of development you may decide to add a new feature to your project. You may create a new branch called &ldquo;test&rdquo;, develop and test the feature there, and finally merge the changes with the code at the main branch. By convention, the main branch is called &ldquo;master&rdquo;.</p>
+
+<p>When it comes to push, you need to know which branch of the code you want to push to which remote repository. In our simple case we want to push the master branch to the origin repository. For this purpose, right click somewhere on the Windows explorer that shows the project root folder, and select: TortoiseGit &gt; Push&hellip;. Make sure the name of the branches for local and remote repositories and the name of the remote repository are selected correctly. More importantly make sure that the &ldquo;Autoload Putty Key&rdquo; check-box is also checked, and press OK. Next, the TortoiseGit will prompt you for the private-key passphrase. Note that this is not your GitHub account password, this is the passphrase that you chose when creating the private key with Puttygen. After finishing the push operation, check the sources in the project&rsquo;s GitHub page to make sure the changes have been reflected there. Note that after the first push, the PuTTY authentication agent (Pageant) gets run in the background, so that you won&rsquo;t need to enter the passphrase any time you want to push to GitHub.</p>
+
+<p><strong>Updating the local repository with the latest changes made by other team members to the remote repository.</strong> Well, there are two solutions. The one that I prefer is using git pull. You can easily find this command in the TortoiseGit&rsquo;s context menu. The pull command, preserves the history of changes made by different people and makes a final merge afterwards. The other solution is git fetch and rebase. The fetch command only receives the latest changes from the remote repository but does not apply them. The rebase command first applies the remote changes to the repository, then applies your changes. Therefore it always seems that you have made the recent changes, while it may not be true. See this <a href="http://stackoverflow.com/questions/3357122/git-pull-vs-git-fetch-git-rebase">stackoverflow question</a> for a better explanation.</p>
+
+<p><strong>Note:</strong> At any stage, if git complains about connecting through a null proxy, then you will have to remove proxy settings from the global <code>.gitconfig</code> file. For more information see tip 7 on my earlier <a href="/blog/2012/05/01/how-to-setup-git-for-windows/">post</a></p>
+
+<p>You may also want to see my earlier <a href="/blog/2012/05/02/using-git-with-codeplex-on-windows/">post</a> that describes using git with <a href="http://www.codeplex.com/">CodePlex</a> on Windows.</p>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Sina Iravanian</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-05T16:25:00+10:00" pubdate data-updated="true">May 5<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/git/'>Git</a>, <a class='category' href='/blog/categories/github/'>GitHub</a>, <a class='category' href='/blog/categories/windows/'>Windows</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.sinairv.com/blog/2012/05/05/using-git-with-github-on-windows/" data-via="sinairv" data-counturl="http://www.sinairv.com/blog/2012/05/05/using-git-with-github-on-windows/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/05/02/using-git-with-codeplex-on-windows/" title="Previous Post: Using Git with CodePlex on Windows">&laquo; Using Git with CodePlex on Windows</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/05/27/programming-koans-one-of-the-best-ways-to-learn-a-new-language-or-framework/" title="Next Post: Programming Koans: One of the best ways to learn a new language or framework">Programming Koans: One of the best ways to learn a new language or framework &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <a href="http://stackoverflow.com/users/836432/sina-iravanian">
+<img src="http://stackoverflow.com/users/flair/836432.png?theme=dark" width="208" height="58" alt="profile for Sina Iravanian at Stack Overflow, Q&A for professional and enthusiast programmers" title="profile for Sina Iravanian at Stack Overflow, Q&A for professional and enthusiast programmers">
+</a><a href="https://flattr.com/submit/auto?user_id=sinairv&url=http%3A%2F%2Fblog.sinairv.com" target="_blank"><img src="//api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0"></a><a href='https://www.ohloh.net/accounts/143041?ref=Detailed'>
+<img alt='Ohloh profile for Sina Iravanian' src='https://www.ohloh.net/accounts/143041/widgets/account_detailed.gif' />
+</a>
+<a href="https://github.com/sinairv"><img src="/images/github.png" alt="GitHub" title="GitHub" /></a>
+<a href="http://www.linkedin.com/in/sinairv"><img src="/images/linkedin.png" alt="LinkedIn" title="LinkedIn" /></a>
+<a href="https://twitter.com/sinairv"><img src="/images/twitter.png" alt="Twitter" title="Twitter" /></a>
+<a href="http://nuget.org/profiles/sinairv"><img src="/images/nuget.png" alt="Nuget" title="Nuget" /></a>
+<a href="http://www.codeplex.com/site/users/view/sina_iravanian"><img src="/images/codeplex.png" alt="CodePlex" title="CodePlex" /></a>
+<a href="http://www.codeproject.com/Articles/Sina-Iravanian"><img src="/images/codeproject.png" alt="CodeProject" title="CodeProject" /></a>
+<a href="http://sourceforge.net/users/sina_iravanian"><img src="/images/sourceforge.png" alt="Sourceforge" title="Sourceforge" /></a>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/12/01/syntax-highlighter-for-windows-forms-rich-text-box/">Syntax Highlighter for Windows Forms Rich Text Box</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/20/the-pains-of-upgrading-android-studio/">The Pains of Upgrading Android Studio</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/01/10/moved-my-blog-to-octopress/">Moved My Blog to Octopress</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c-number-5/">How to Make More Refactoring Friendly Data-bindings With C# 5</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/22/different-ways-of-generating-new-guids/">Different Ways of Generating New GUIDs</a>
+      </li>
+    
+  </ul>
+</section>
+<a class="twitter-timeline" href="https://twitter.com/sinairv" data-widget-id="412581503571214336">Tweets by @sinairv</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/sinairv">@sinairv</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'sinairv',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section class="googleplus googleplus-hidden">
+  <h1>
+    <a href="https://plus.google.com/+SinaIravanian?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Sina Iravanian -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'sinairv';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://www.sinairv.com/blog/2012/05/05/using-git-with-github-on-windows/';
+        var disqus_url = 'http://www.sinairv.com/blog/2012/05/05/using-git-with-github-on-windows/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

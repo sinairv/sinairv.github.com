@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Statistics | Sina Iravanian]]></title>
+  <link href="http://www.sinairv.com/blog/categories/statistics/atom.xml" rel="self"/>
+  <link href="http://www.sinairv.com/"/>
+  <updated>2015-01-21T22:31:04+10:00</updated>
+  <id>http://www.sinairv.com/</id>
+  <author>
+    <name><![CDATA[Sina Iravanian]]></name>
+    <email><![CDATA[sina.iravanian@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Code Snippet for Calculating Mean, Variance, and Standard Deviation]]></title>
+    <link href="http://www.sinairv.com/blog/2011/05/15/code-snippet-for-calculating-mean/"/>
+    <updated>2011-05-15T22:58:36+10:00</updated>
+    <id>http://www.sinairv.com/blog/2011/05/15/code-snippet-for-calculating-mean</id>
+    <content type="html"><![CDATA[<p>Here are the methods to calculate mean, variance, and standard deviation of a vector of values. These are put here for easy reference, so that I do not need to rewrite them again (and again (and again)).</p>
+
+<script src="https://gist.github.com/sinairv/2693528.js"></script>
+
+]]></content>
+  </entry>
+  
+</feed>

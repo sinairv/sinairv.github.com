@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Android Studio | Sina Iravanian]]></title>
+  <link href="http://www.sinairv.com/blog/categories/android-studio/atom.xml" rel="self"/>
+  <link href="http://www.sinairv.com/"/>
+  <updated>2015-01-21T22:31:04+10:00</updated>
+  <id>http://www.sinairv.com/</id>
+  <author>
+    <name><![CDATA[Sina Iravanian]]></name>
+    <email><![CDATA[sina.iravanian@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[The Pains of Upgrading Android Studio]]></title>
+    <link href="http://www.sinairv.com/blog/2014/04/20/the-pains-of-upgrading-android-studio/"/>
+    <updated>2014-04-20T20:32:23+10:00</updated>
+    <id>http://www.sinairv.com/blog/2014/04/20/the-pains-of-upgrading-android-studio</id>
+    <content type="html"><![CDATA[<p>I could gracefully install and test earlier versions of Android Studio before they adopted <a href="http://www.gradle.org/">Gradle</a> for their build system. After doing the upgrade I could no longer build a single project with weird error messages relating to Gradle. I searched the web, and found some workarounds in stackoverflow, e.g., manually installing Gradle, updating environment variables and so and so. None of them were helpful for me, although they seemed to be solving the issue for many (who have voted for the answers). I had to do the following steps instead:</p>
+
+<ol>
+  <li>Downloaded the latest version of SDK which is bundled with Eclipse. Although many answers suggested to upgrade the SDK to the latest version through SDK Manager, and I did so; it did not solve my problem. So I downloaded a fresh copy of latest SDK bundled with eclipse, and then updated Android Studio settings to refer to this new SDK. This trick solved the build problem.</li>
+  <li>When running the emulator I got a very descriptive error message (#NOT) that says: <em>PANIC: could not open Nexus</em>, in which <em>Nexus</em> is the name of my emulator. For this problem what I found on stackoverflow was quite helpful, for example see <a href="http://stackoverflow.com/questions/15103782/avd-panic-could-not-open-not-a-path-issue">this thread</a>. The trick is to create an environment variable called <code>ANDROID_SDK_HOME</code> and set it to the path of the folder containing <code>.android</code> folder. If you don&rsquo;t know where is your <code>.android</code> folder, AVD Manager will give you the path in its main screen right above the list of existing virtual devices. For my case it was in <code>D:\Documents</code>. After setting the environment variable I had to restart both AVD Manager and Android Studio.</li>
+</ol>
+]]></content>
+  </entry>
+  
+</feed>

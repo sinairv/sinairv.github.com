@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Java | Sina Iravanian]]></title>
+  <link href="http://www.sinairv.com/blog/categories/java/atom.xml" rel="self"/>
+  <link href="http://www.sinairv.com/"/>
+  <updated>2015-01-21T22:31:04+10:00</updated>
+  <id>http://www.sinairv.com/</id>
+  <author>
+    <name><![CDATA[Sina Iravanian]]></name>
+    <email><![CDATA[sina.iravanian@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Problem With Finding Local Resources in Intellij IDEA]]></title>
+    <link href="http://www.sinairv.com/blog/2011/05/10/problem-with-finding-local-resources-in-intellij-idea/"/>
+    <updated>2011-05-10T22:33:07+10:00</updated>
+    <id>http://www.sinairv.com/blog/2011/05/10/problem-with-finding-local-resources-in-intellij-idea</id>
+    <content type="html"><![CDATA[<p>Some classes use external data files which are located in the same directory as the one that the <code>.java</code> file is located, or somewhere nearby which can be easily addressed with a relative path. This happens a lot for me, esp. when I am running open source programs developed by someone else. As an example, imagine a class called <code>SampleClass</code> located in a directory in which there exists a text file with the name of <code>SomeFile.txt</code>. One way to have access to the file is through calling the class-loader&rsquo;s <code>getResource</code> function:</p>
+
+<p><code>java
+URL theURL = this.getClass().getResource("SomeFile.txt");
+System.out.println(theURL.toString());
+</code></p>
+
+<p>I tested this piece of code in <em>NetBeans</em> and it works fine. But not in <em>Intellij IDEA</em>! To solve this (annoying) problem, I needed to add the path of the source directory to <code>classpath</code>. For this purpose I did the following steps in Intellij IDEA 10.0.3 Community Edition:</p>
+
+<ol>
+  <li>Right click on the module name and select &ldquo;Open Module Settings&rdquo;</li>
+  <li>Select &ldquo;Modules&rdquo; from the leftmost pane</li>
+  <li>Select &ldquo;Dependencies&rdquo; tab</li>
+  <li>Press &ldquo;Add&hellip;&rdquo; button and select &ldquo;1 Single-Entry Module Library…&rdquo; from the popup menu</li>
+  <li>Find and select the &ldquo;src&rdquo; folder of your sources.</li>
+  <li>Under the &ldquo;Scope&rdquo; column, change the scope to &ldquo;Runtime&rdquo;</li>
+  <li>Press Apply and OK</li>
+</ol>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,544 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>YAXLib - Sina Iravanian</title>
+  <meta name="author" content="Sina Iravanian">
+
+  
+  <meta name="description" content="YAXLib <input type="hidden" name="encrypted" value="-----BEGIN PKCS7----- &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.sinairv.com/yaxlib">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Sina Iravanian" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-46467071-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Sina Iravanian</a></h1>
+  
+    <h2>I blog about software development</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:www.sinairv.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About</a></li>
+  <li><a href="/works">Works</a></li>
+  <li><a href="/notebook">Notebook</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article role="article">
+  
+  <header>
+    <h1 class="entry-title">YAXLib</h1>
+    
+  </header>
+  
+  <p><a href="https://flattr.com/submit/auto?user_id=sinairv&amp;url=http%3A%2F%2Fwww.sinairv.com%2Fyaxlib" target="_blank"><img src="//api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0" /></a></p>
+
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick" />
+<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+" /><input type="image" src="https://www.paypalobjects.com/en_AU/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal — The safer, easier way to pay online." /></form>
+
+<p><a href="https://github.com/sinairv/YAXLib">View on GitHub</a></p>
+
+<p><em>YAXLib</em> is a flexible XML serialization library that lets developers design freely the XML file structure, choose among private and public fields to be serialized, and serialize all known collection classes and arrays (single-dimensional, multi-dimensional, and jagged arrays) in the .NET Framework. </p>
+
+<p><em>YAXLib</em> can be used as a powerful XML parser or generator, that exploits the object to XML mapping in the class definitions themselves. </p>
+
+<p>The exception handling policies and its missing data recovery capabilities makes <em>YAXLib</em> a reliable tool for XML configuration storage and retrieval.</p>
+
+<h2 id="features">Features</h2>
+
+<ul>
+  <li>Allowing the programmer to format the XML result as desired</li>
+  <li>Support for specifying path-like serialization addresses, e.g., <code>elem1/elem2/elem3</code>, and <code>../elem1</code>, and <code>./elem1</code></li>
+  <li>Support for XML namespaces</li>
+  <li>Serialization and deserialization of all known generic and non-generic collection classes in <code>System.Collections</code>, and <code>System.Collections.Generic</code></li>
+  <li>Support for serialization of single-dimensional, multi-dimensional, and jagged arrays</li>
+  <li>Support for recursive serialization of collections (i.e., collection of collections)</li>
+  <li>Support for specifying aliases for enum members</li>
+  <li>Support for defining user-defined custom serializer for specific types or specific fields</li>
+  <li>Allowing the programmer to choose the fields to serialize (public, or non-public properties, or member variables)</li>
+  <li>Support for serialization and deserialization of objects through a reference to their base-class or interface (also known as polymorphic serialization)</li>
+  <li>Support for multi-stage deserialization</li>
+  <li>Allowing the programmer to add comments for the elements in the XML result</li>
+  <li>and more &hellip;</li>
+</ul>
+
+<p>See the accompanied demo application for an example of each functionality. </p>
+
+<h2 id="documentation">Documentation</h2>
+
+<p>The best documentation for <em>YAXLib</em> is its various samples and unit-tests. However this (rather old) <a href="http://www.codeproject.com/Articles/34045/Yet-Another-XML-Serialization-Library-for-the-NET">CodeProject article</a> is a good source to start. The article is also found in the <code>Doc</code> folder of the source code.</p>
+
+<p>To play with sample classes, open one of the solution files (based on version of your Visual Studio), go to <code>YAXLibTests</code> project, <code>SampleClasses</code> folder. If you want a sample class to appear in the demo application simply put a <code>[ShowInDemoApplication]</code> attribute on top of the class definition. In the demo application you can see the serialization result, modify it, and test its deserialization.</p>
+
+<h2 id="nuget">Nuget</h2>
+
+<p>To install <em>YAXLib</em>, run the following command in the <em>Package Manager Console</em>:</p>
+
+<pre><code>PM&gt; Install-Package YAXLib
+</code></pre>
+
+<h2 id="a-quick-introduction">A Quick Introduction</h2>
+
+<p>Imagine that we have a simple <code>Warehouse</code> class with the following definition:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="k">public</span> <span class="k">class</span> <span class="nc">Warehouse</span>
+</span><span class="line"><span class="p">{</span>
+</span><span class="line">    <span class="k">public</span> <span class="k">class</span> <span class="nc">Person</span>
+</span><span class="line">    <span class="p">{</span>
+</span><span class="line">        <span class="k">public</span> <span class="kt">string</span> <span class="n">SSN</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="line">        <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="line">        <span class="k">public</span> <span class="kt">string</span> <span class="n">Family</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="line">        <span class="k">public</span> <span class="kt">int</span> <span class="n">Age</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="line">    <span class="k">public</span> <span class="kt">string</span> <span class="n">Address</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="line">    <span class="k">public</span> <span class="kt">double</span> <span class="n">Area</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="line">    <span class="k">public</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="n">Items</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="line">    <span class="k">public</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">int</span><span class="p">&gt;</span> <span class="n">ItemQuantitiesDic</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="line">    <span class="k">public</span> <span class="n">Person</span> <span class="n">Owner</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Without adding any attributes, <em>YAXLib</em> is perfectly capable of serializing objects of the above class. The following is an XML serialization of a sample instantiation of our <code>Warehouse</code> class:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+</pre></td><td class="code"><pre><code class="xml"><span class="line"><span class="nt">&lt;Warehouse&gt;</span>
+</span><span class="line">  <span class="nt">&lt;Name&gt;</span>Foo Warehousing Ltd.<span class="nt">&lt;/Name&gt;</span>
+</span><span class="line">  <span class="nt">&lt;Address&gt;</span>No. 10, Some Ave., Some City, Some Country<span class="nt">&lt;/Address&gt;</span>
+</span><span class="line">  <span class="nt">&lt;Area&gt;</span>120000.5<span class="nt">&lt;/Area&gt;</span>
+</span><span class="line">  <span class="nt">&lt;Items&gt;</span>
+</span><span class="line">    <span class="nt">&lt;String&gt;</span>Bicycle<span class="nt">&lt;/String&gt;</span>
+</span><span class="line">    <span class="nt">&lt;String&gt;</span>Football<span class="nt">&lt;/String&gt;</span>
+</span><span class="line">    <span class="nt">&lt;String&gt;</span>Shoe<span class="nt">&lt;/String&gt;</span>
+</span><span class="line">    <span class="nt">&lt;String&gt;</span>Treadmill<span class="nt">&lt;/String&gt;</span>
+</span><span class="line">  <span class="nt">&lt;/Items&gt;</span>
+</span><span class="line">  <span class="nt">&lt;ItemQuantitiesDic&gt;</span>
+</span><span class="line">    <span class="nt">&lt;KeyValuePairOfStringInt32&gt;</span>
+</span><span class="line">      <span class="nt">&lt;Key&gt;</span>Bicycle<span class="nt">&lt;/Key&gt;</span>
+</span><span class="line">      <span class="nt">&lt;Value&gt;</span>10<span class="nt">&lt;/Value&gt;</span>
+</span><span class="line">    <span class="nt">&lt;/KeyValuePairOfStringInt32&gt;</span>
+</span><span class="line">    <span class="nt">&lt;KeyValuePairOfStringInt32&gt;</span>
+</span><span class="line">      <span class="nt">&lt;Key&gt;</span>Football<span class="nt">&lt;/Key&gt;</span>
+</span><span class="line">      <span class="nt">&lt;Value&gt;</span>120<span class="nt">&lt;/Value&gt;</span>
+</span><span class="line">    <span class="nt">&lt;/KeyValuePairOfStringInt32&gt;</span>
+</span><span class="line">    <span class="nt">&lt;KeyValuePairOfStringInt32&gt;</span>
+</span><span class="line">      <span class="nt">&lt;Key&gt;</span>Shoe<span class="nt">&lt;/Key&gt;</span>
+</span><span class="line">      <span class="nt">&lt;Value&gt;</span>600<span class="nt">&lt;/Value&gt;</span>
+</span><span class="line">    <span class="nt">&lt;/KeyValuePairOfStringInt32&gt;</span>
+</span><span class="line">    <span class="nt">&lt;KeyValuePairOfStringInt32&gt;</span>
+</span><span class="line">      <span class="nt">&lt;Key&gt;</span>treadmill<span class="nt">&lt;/Key&gt;</span>
+</span><span class="line">      <span class="nt">&lt;Value&gt;</span>25<span class="nt">&lt;/Value&gt;</span>
+</span><span class="line">    <span class="nt">&lt;/KeyValuePairOfStringInt32&gt;</span>
+</span><span class="line">  <span class="nt">&lt;/ItemQuantitiesDic&gt;</span>
+</span><span class="line">  <span class="nt">&lt;Owner&gt;</span>
+</span><span class="line">    <span class="nt">&lt;SSN&gt;</span>123456789<span class="nt">&lt;/SSN&gt;</span>
+</span><span class="line">    <span class="nt">&lt;Name&gt;</span>John<span class="nt">&lt;/Name&gt;</span>
+</span><span class="line">    <span class="nt">&lt;Family&gt;</span>Doe<span class="nt">&lt;/Family&gt;</span>
+</span><span class="line">    <span class="nt">&lt;Age&gt;</span>50<span class="nt">&lt;/Age&gt;</span>
+</span><span class="line">  <span class="nt">&lt;/Owner&gt;</span>
+</span><span class="line"><span class="nt">&lt;/Warehouse&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>It&rsquo;s good to have it serialized this simple, but <em>YAXLib</em> can do more than that. Let&rsquo;s do some house-keeping on the XML side. Let&rsquo;s move the XML-elements and attributes around, so that we will have a nicer and more human readable XML file. Let&rsquo;s decorate our <code>Warehouse</code> class with the following <em>YAXLib</em> attributes and see the XML result.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+<span class="line-number">37</span>
+<span class="line-number">38</span>
+<span class="line-number">39</span>
+<span class="line-number">40</span>
+<span class="line-number">41</span>
+<span class="line-number">42</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="na">[YAXComment(&quot;Watch it closely. It&#39;s awesome, isn&#39;t it!&quot;)]</span>
+</span><span class="line"><span class="k">public</span> <span class="k">class</span> <span class="nc">Warehouse</span>
+</span><span class="line"><span class="p">{</span>
+</span><span class="line">    <span class="k">public</span> <span class="k">class</span> <span class="nc">Person</span>
+</span><span class="line">    <span class="p">{</span>
+</span><span class="line"><span class="na">        [YAXAttributeFor(&quot;..&quot;)]</span>
+</span><span class="line"><span class="na">        [YAXSerializeAs(&quot;OwnerSSN&quot;)]</span>
+</span><span class="line">        <span class="k">public</span> <span class="kt">string</span> <span class="n">SSN</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="na">        [YAXAttributeFor(&quot;Identification&quot;)]</span>
+</span><span class="line">        <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="na">        [YAXAttributeFor(&quot;Identification&quot;)]</span>
+</span><span class="line">        <span class="k">public</span> <span class="kt">string</span> <span class="n">Family</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">        <span class="k">public</span> <span class="kt">int</span> <span class="n">Age</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="na">    [YAXAttributeForClass]</span>
+</span><span class="line">    <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="na">    [YAXSerializeAs(&quot;address&quot;)]</span>
+</span><span class="line"><span class="na">    [YAXAttributeFor(&quot;SiteInfo&quot;)]</span>
+</span><span class="line">    <span class="k">public</span> <span class="kt">string</span> <span class="n">Address</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="na">    [YAXSerializeAs(&quot;SurfaceArea&quot;)]</span>
+</span><span class="line"><span class="na">    [YAXElementFor(&quot;SiteInfo&quot;)]</span>
+</span><span class="line">    <span class="k">public</span> <span class="kt">double</span> <span class="n">Area</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="na">    [YAXCollection(YAXCollectionSerializationTypes.Serially, SeparateBy = &quot;, &quot;)]</span>
+</span><span class="line"><span class="na">    [YAXSerializeAs(&quot;AvailableItems&quot;)]</span>
+</span><span class="line">    <span class="k">public</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="n">Items</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="na">    [YAXDictionary(EachPairName = &quot;ItemInfo&quot;, KeyName = &quot;Item&quot;, ValueName = &quot;Count&quot;,</span>
+</span><span class="line"><span class="na">                    SerializeKeyAs = YAXNodeTypes.Attribute,</span>
+</span><span class="line"><span class="na">                    SerializeValueAs = YAXNodeTypes.Attribute)]</span>
+</span><span class="line"><span class="na">    [YAXCollection(YAXCollectionSerializationTypes.RecursiveWithNoContainingElement)]</span>
+</span><span class="line"><span class="na">    [YAXSerializeAs(&quot;ItemQuantities&quot;)]</span>
+</span><span class="line">    <span class="k">public</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">int</span><span class="p">&gt;</span> <span class="n">ItemQuantitiesDic</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">public</span> <span class="n">Person</span> <span class="n">Owner</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>And this is the result of XML serialization:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+</pre></td><td class="code"><pre><code class="xml"><span class="line"><span class="c">&lt;!-- Watch it closely. It&#39;s awesome, isn&#39;t it! --&gt;</span>
+</span><span class="line"><span class="nt">&lt;Warehouse</span> <span class="na">Name=</span><span class="s">&quot;Foo Warehousing Ltd.&quot;</span> <span class="na">OwnerSSN=</span><span class="s">&quot;123456789&quot;</span><span class="nt">&gt;</span>
+</span><span class="line">  <span class="nt">&lt;SiteInfo</span> <span class="na">address=</span><span class="s">&quot;No. 10, Some Ave., Some City, Some Country&quot;</span><span class="nt">&gt;</span>
+</span><span class="line">    <span class="nt">&lt;SurfaceArea&gt;</span>120000.5<span class="nt">&lt;/SurfaceArea&gt;</span>
+</span><span class="line">  <span class="nt">&lt;/SiteInfo&gt;</span>
+</span><span class="line">  <span class="nt">&lt;AvailableItems&gt;</span>Bicycle, Football, Shoe, Treadmill<span class="nt">&lt;/AvailableItems&gt;</span>
+</span><span class="line">  <span class="nt">&lt;ItemInfo</span> <span class="na">Item=</span><span class="s">&quot;Bicycle&quot;</span> <span class="na">Count=</span><span class="s">&quot;10&quot;</span> <span class="nt">/&gt;</span>
+</span><span class="line">  <span class="nt">&lt;ItemInfo</span> <span class="na">Item=</span><span class="s">&quot;Football&quot;</span> <span class="na">Count=</span><span class="s">&quot;120&quot;</span> <span class="nt">/&gt;</span>
+</span><span class="line">  <span class="nt">&lt;ItemInfo</span> <span class="na">Item=</span><span class="s">&quot;Shoe&quot;</span> <span class="na">Count=</span><span class="s">&quot;600&quot;</span> <span class="nt">/&gt;</span>
+</span><span class="line">  <span class="nt">&lt;ItemInfo</span> <span class="na">Item=</span><span class="s">&quot;treadmill&quot;</span> <span class="na">Count=</span><span class="s">&quot;25&quot;</span> <span class="nt">/&gt;</span>
+</span><span class="line">  <span class="nt">&lt;Owner&gt;</span>
+</span><span class="line">    <span class="nt">&lt;Identification</span> <span class="na">Name=</span><span class="s">&quot;John&quot;</span> <span class="na">Family=</span><span class="s">&quot;Doe&quot;</span> <span class="nt">/&gt;</span>
+</span><span class="line">    <span class="nt">&lt;Age&gt;</span>50<span class="nt">&lt;/Age&gt;</span>
+</span><span class="line">  <span class="nt">&lt;/Owner&gt;</span>
+</span><span class="line"><span class="nt">&lt;/Warehouse&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="contact">Contact</h2>
+
+<p>YAXLib is hosted on both <a href="https://github.com/sinairv/YAXLib">GitHub</a> and <a href="http://yaxlib.codeplex.com">CodePlex</a>. Feel free to discuss about and fork it on either of these sites that you prefer. </p>
+
+<p>Copyright (c) 2009 - 2013 Sina Iravanian and Contributors - Licenced under MIT </p>
+
+<p>Homepage: <a href="http://www.sinairv.com">www.sinairv.com</a></p>
+
+<p>Github: <a href="https://github.com/sinairv">github.com/sinairv</a></p>
+
+<p>Twitter: <a href="http://www.twitter.com/sinairv">@sinairv</a></p>
+
+  
+    <footer>
+      
+      
+        <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.sinairv.com/yaxlib/index.html" data-via="sinairv" data-counturl="http://www.sinairv.com/yaxlib/index.html" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+      
+    </footer>
+  
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <a href="http://stackoverflow.com/users/836432/sina-iravanian">
+<img src="http://stackoverflow.com/users/flair/836432.png?theme=dark" width="208" height="58" alt="profile for Sina Iravanian at Stack Overflow, Q&A for professional and enthusiast programmers" title="profile for Sina Iravanian at Stack Overflow, Q&A for professional and enthusiast programmers">
+</a><a href="https://flattr.com/submit/auto?user_id=sinairv&url=http%3A%2F%2Fblog.sinairv.com" target="_blank"><img src="//api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0"></a><a href='https://www.ohloh.net/accounts/143041?ref=Detailed'>
+<img alt='Ohloh profile for Sina Iravanian' src='https://www.ohloh.net/accounts/143041/widgets/account_detailed.gif' />
+</a>
+<a href="https://github.com/sinairv"><img src="/images/github.png" alt="GitHub" title="GitHub" /></a>
+<a href="http://www.linkedin.com/in/sinairv"><img src="/images/linkedin.png" alt="LinkedIn" title="LinkedIn" /></a>
+<a href="https://twitter.com/sinairv"><img src="/images/twitter.png" alt="Twitter" title="Twitter" /></a>
+<a href="http://nuget.org/profiles/sinairv"><img src="/images/nuget.png" alt="Nuget" title="Nuget" /></a>
+<a href="http://www.codeplex.com/site/users/view/sina_iravanian"><img src="/images/codeplex.png" alt="CodePlex" title="CodePlex" /></a>
+<a href="http://www.codeproject.com/Articles/Sina-Iravanian"><img src="/images/codeproject.png" alt="CodeProject" title="CodeProject" /></a>
+<a href="http://sourceforge.net/users/sina_iravanian"><img src="/images/sourceforge.png" alt="Sourceforge" title="Sourceforge" /></a>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/12/01/syntax-highlighter-for-windows-forms-rich-text-box/">Syntax Highlighter for Windows Forms Rich Text Box</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/20/the-pains-of-upgrading-android-studio/">The Pains of Upgrading Android Studio</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/01/10/moved-my-blog-to-octopress/">Moved My Blog to Octopress</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c-number-5/">How to Make More Refactoring Friendly Data-bindings With C# 5</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/22/different-ways-of-generating-new-guids/">Different Ways of Generating New GUIDs</a>
+      </li>
+    
+  </ul>
+</section>
+<a class="twitter-timeline" href="https://twitter.com/sinairv" data-widget-id="412581503571214336">Tweets by @sinairv</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/sinairv">@sinairv</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'sinairv',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section class="googleplus googleplus-hidden">
+  <h1>
+    <a href="https://plus.google.com/+SinaIravanian?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Sina Iravanian -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

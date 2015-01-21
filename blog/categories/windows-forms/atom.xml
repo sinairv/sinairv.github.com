@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Windows Forms | Sina Iravanian]]></title>
-  <link href="http://www.sinairv.com/blog/categories/windows-forms/atom.xml" rel="self"/>
-  <link href="http://www.sinairv.com/"/>
-  <updated>2015-01-21T22:31:04+10:00</updated>
-  <id>http://www.sinairv.com/</id>
+  <link href="http://sinairv.github.io/blog/categories/windows-forms/atom.xml" rel="self"/>
+  <link href="http://sinairv.github.io/"/>
+  <updated>2015-01-21T22:49:29+10:00</updated>
+  <id>http://sinairv.github.io/</id>
   <author>
     <name><![CDATA[Sina Iravanian]]></name>
     <email><![CDATA[sina.iravanian@gmail.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Syntax Highlighter for Windows Forms Rich Text Box]]></title>
-    <link href="http://www.sinairv.com/blog/2014/12/01/syntax-highlighter-for-windows-forms-rich-text-box/"/>
+    <link href="http://sinairv.github.io/blog/2014/12/01/syntax-highlighter-for-windows-forms-rich-text-box/"/>
     <updated>2014-12-01T18:18:48+10:00</updated>
-    <id>http://www.sinairv.com/blog/2014/12/01/syntax-highlighter-for-windows-forms-rich-text-box</id>
+    <id>http://sinairv.github.io/blog/2014/12/01/syntax-highlighter-for-windows-forms-rich-text-box</id>
     <content type="html"><![CDATA[<p>Years ago I created a tool called <a href="http://code4public.codeplex.com">Code4Public</a> to convert source code into HTML called. I was using this tool to put nice code snippets in the blog I used to maintain at that time. The tool is able to get the code, apply syntax highlighting to it based on the syntax of the language selected, and then create HTML based on the theme selected (e.g., MSDN theme). I didn&rsquo;t assign more time on making the tool better and better, as better ways of doing the same task were emerging, and also other by-products of the tool were becoming more interesting at the time; e.g., <a href="https://github.com/sinairv/YAXLib">YAXLib</a> was a little by-product of Code4Public used to store settings, themes and language syntaxes in XML files.</p>
 
 <p>This post is to introduce yet another by-product of Code4Public: <a href="https://github.com/sinairv/WinFormsSyntaxHighlighter">WinFormsSyntaxHighlighter</a>. This library enables syntax highlighting on a <code>RichTextBox</code> based on patterns that the developer defines.</p>
@@ -113,9 +113,9 @@ syntaxHighlighter.AddPattern(
   
   <entry>
     <title type="html"><![CDATA[Code Snippet for Dealing With Windows Forms ListView Control in Details Mode]]></title>
-    <link href="http://www.sinairv.com/blog/2011/05/09/code-snippet-for-dealing-with-windows-forms-listview-control-in-details-mode/"/>
+    <link href="http://sinairv.github.io/blog/2011/05/09/code-snippet-for-dealing-with-windows-forms-listview-control-in-details-mode/"/>
     <updated>2011-05-09T00:39:37+10:00</updated>
-    <id>http://www.sinairv.com/blog/2011/05/09/code-snippet-for-dealing-with-windows-forms-listview-control-in-details-mode</id>
+    <id>http://sinairv.github.io/blog/2011/05/09/code-snippet-for-dealing-with-windows-forms-listview-control-in-details-mode</id>
     <content type="html"><![CDATA[<p>I needed a piece of code to manage list-view controllers. I needed to use <code>ListView</code> controls in the details mode, which automatically sort its contents when I click on the header, and also pastes the content in a tabular format when I press <code>Ctrl</code>+<code>C</code> or <code>Ctrl</code>+<code>Insert</code> on it. So I created the following classes. The code that carries out the sorting stuff when the header is clicked is taken from <a href="http://msdn.microsoft.com/en-us/library/ms996467.aspx">this</a> following MSDN article.</p>
 
 <p>So these are the contributions of these pieces of code: 1) Sort <code>ListView</code> items when the column header is clicked, 2) Paste the contents of the <code>ListView</code> control to clipboard in a tabular format, and 3) Provide an easy to use API to append data to a <code>ListView</code> control.</p>

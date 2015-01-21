@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Sina Iravanian]]></title>
-  <link href="http://www.sinairv.com/atom.xml" rel="self"/>
-  <link href="http://www.sinairv.com/"/>
-  <updated>2015-01-21T22:31:04+10:00</updated>
-  <id>http://www.sinairv.com/</id>
+  <link href="http://sinairv.github.io/atom.xml" rel="self"/>
+  <link href="http://sinairv.github.io/"/>
+  <updated>2015-01-21T22:49:29+10:00</updated>
+  <id>http://sinairv.github.io/</id>
   <author>
     <name><![CDATA[Sina Iravanian]]></name>
     <email><![CDATA[sina.iravanian@gmail.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Syntax Highlighter for Windows Forms Rich Text Box]]></title>
-    <link href="http://www.sinairv.com/blog/2014/12/01/syntax-highlighter-for-windows-forms-rich-text-box/"/>
+    <link href="http://sinairv.github.io/blog/2014/12/01/syntax-highlighter-for-windows-forms-rich-text-box/"/>
     <updated>2014-12-01T18:18:48+10:00</updated>
-    <id>http://www.sinairv.com/blog/2014/12/01/syntax-highlighter-for-windows-forms-rich-text-box</id>
+    <id>http://sinairv.github.io/blog/2014/12/01/syntax-highlighter-for-windows-forms-rich-text-box</id>
     <content type="html"><![CDATA[<p>Years ago I created a tool called <a href="http://code4public.codeplex.com">Code4Public</a> to convert source code into HTML called. I was using this tool to put nice code snippets in the blog I used to maintain at that time. The tool is able to get the code, apply syntax highlighting to it based on the syntax of the language selected, and then create HTML based on the theme selected (e.g., MSDN theme). I didn&rsquo;t assign more time on making the tool better and better, as better ways of doing the same task were emerging, and also other by-products of the tool were becoming more interesting at the time; e.g., <a href="https://github.com/sinairv/YAXLib">YAXLib</a> was a little by-product of Code4Public used to store settings, themes and language syntaxes in XML files.</p>
 
 <p>This post is to introduce yet another by-product of Code4Public: <a href="https://github.com/sinairv/WinFormsSyntaxHighlighter">WinFormsSyntaxHighlighter</a>. This library enables syntax highlighting on a <code>RichTextBox</code> based on patterns that the developer defines.</p>
@@ -166,9 +166,9 @@
   
   <entry>
     <title type="html"><![CDATA[The Pains of Upgrading Android Studio]]></title>
-    <link href="http://www.sinairv.com/blog/2014/04/20/the-pains-of-upgrading-android-studio/"/>
+    <link href="http://sinairv.github.io/blog/2014/04/20/the-pains-of-upgrading-android-studio/"/>
     <updated>2014-04-20T20:32:23+10:00</updated>
-    <id>http://www.sinairv.com/blog/2014/04/20/the-pains-of-upgrading-android-studio</id>
+    <id>http://sinairv.github.io/blog/2014/04/20/the-pains-of-upgrading-android-studio</id>
     <content type="html"><![CDATA[<p>I could gracefully install and test earlier versions of Android Studio before they adopted <a href="http://www.gradle.org/">Gradle</a> for their build system. After doing the upgrade I could no longer build a single project with weird error messages relating to Gradle. I searched the web, and found some workarounds in stackoverflow, e.g., manually installing Gradle, updating environment variables and so and so. None of them were helpful for me, although they seemed to be solving the issue for many (who have voted for the answers). I had to do the following steps instead:</p>
 
 <ol>
@@ -180,9 +180,9 @@
   
   <entry>
     <title type="html"><![CDATA[Moved My Blog to Octopress]]></title>
-    <link href="http://www.sinairv.com/blog/2014/01/10/moved-my-blog-to-octopress/"/>
+    <link href="http://sinairv.github.io/blog/2014/01/10/moved-my-blog-to-octopress/"/>
     <updated>2014-01-10T01:22:25+10:00</updated>
-    <id>http://www.sinairv.com/blog/2014/01/10/moved-my-blog-to-octopress</id>
+    <id>http://sinairv.github.io/blog/2014/01/10/moved-my-blog-to-octopress</id>
     <content type="html"><![CDATA[<p>I&rsquo;ve moved my blog from <a href="http://sinairv.wordpress.com">Wordpress</a> to my <a href="http://www.sinairv.com">homepage domain</a>. It makes use of <a href="http://octopress.org/">Octopress</a>, which is based on <a href="http://jekyllrb.com/">Jekyll</a>, and is a static site generator. The blog is hosted on GitHub pages, and is <a href="https://github.com/sinairv/sinairv.github.com">open source</a>. </p>
 
 <p>The great benefit of this stack of tools is that I can easily create and edit my posts in <a href="http://en.wikipedia.org/wiki/Markdown">Markdown</a>, re-generate the blog <a href="http://octopress.org/docs/blogging/">through command line</a>, and make use of <a href="http://rake.rubyforge.org/">Rake</a> (Ruby&rsquo;s make tools) to perform various tasks ranging from post creation to deployment to GitHub pages. It&rsquo;s awesome.</p>
@@ -191,9 +191,9 @@
   
   <entry>
     <title type="html"><![CDATA[How to Make More Refactoring Friendly Data-bindings With C# 5]]></title>
-    <link href="http://www.sinairv.com/blog/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c-number-5/"/>
+    <link href="http://sinairv.github.io/blog/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c-number-5/"/>
     <updated>2012-11-01T19:46:29+10:00</updated>
-    <id>http://www.sinairv.com/blog/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c-number-5</id>
+    <id>http://sinairv.github.io/blog/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c-number-5</id>
     <content type="html"><![CDATA[<p>Imagine that we want to create a <code>Person</code> business object for whose properties we desire a two-way data binding. The source-to-target data-binding can be triggered by implementing <code>INotifyPropertyChanged</code> interface, like this:</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
@@ -406,9 +406,9 @@
   
   <entry>
     <title type="html"><![CDATA[Different Ways of Generating New GUIDs]]></title>
-    <link href="http://www.sinairv.com/blog/2012/09/22/different-ways-of-generating-new-guids/"/>
+    <link href="http://sinairv.github.io/blog/2012/09/22/different-ways-of-generating-new-guids/"/>
     <updated>2012-09-22T17:49:59+10:00</updated>
-    <id>http://www.sinairv.com/blog/2012/09/22/different-ways-of-generating-new-guids</id>
+    <id>http://sinairv.github.io/blog/2012/09/22/different-ways-of-generating-new-guids</id>
     <content type="html"><![CDATA[<h3 id="in-c-code">In C# Code</h3>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
@@ -438,9 +438,9 @@
   
   <entry>
     <title type="html"><![CDATA[An Example for C# Dynamic in Action]]></title>
-    <link href="http://www.sinairv.com/blog/2012/07/23/an-example-for-c-number-dynamic-in-action/"/>
+    <link href="http://sinairv.github.io/blog/2012/07/23/an-example-for-c-number-dynamic-in-action/"/>
     <updated>2012-07-23T17:20:53+10:00</updated>
-    <id>http://www.sinairv.com/blog/2012/07/23/an-example-for-c-number-dynamic-in-action</id>
+    <id>http://sinairv.github.io/blog/2012/07/23/an-example-for-c-number-dynamic-in-action</id>
     <content type="html"><![CDATA[<p>Recently I was involved with enabling validation for a Windows Forms form containing several pages shown through a tree view. There were one user control defined for each page, therefore whenever a node in tree-view got activated, an instance of that user-control were shown. The user-controls did not have a common user-defined parent base-class or interface. The author of the existing code had defined a <code>Save</code> method in each control separately which performed updating data with values entered in the forms.</p>
 
 <p>First, I changed all <code>void Save()</code> methods to <code>bool Save()</code>, and performed the validation stuff in each control separately. Then in the parent form, I created an array of <code>Control</code>s, so that I could loop through them, and call their <code>Save</code> method. But wait, <code>Save</code> is not inherited from any base-class or interface, so there&rsquo;s no polymorphism at hand. How can I call them through references of type <code>Control</code>?</p>
@@ -493,9 +493,9 @@
   
   <entry>
     <title type="html"><![CDATA[Programming Koans: One of the Best Ways to Learn a New Language or Framework]]></title>
-    <link href="http://www.sinairv.com/blog/2012/05/27/programming-koans-one-of-the-best-ways-to-learn-a-new-language-or-framework/"/>
+    <link href="http://sinairv.github.io/blog/2012/05/27/programming-koans-one-of-the-best-ways-to-learn-a-new-language-or-framework/"/>
     <updated>2012-05-27T16:46:35+10:00</updated>
-    <id>http://www.sinairv.com/blog/2012/05/27/programming-koans-one-of-the-best-ways-to-learn-a-new-language-or-framework</id>
+    <id>http://sinairv.github.io/blog/2012/05/27/programming-koans-one-of-the-best-ways-to-learn-a-new-language-or-framework</id>
     <content type="html"><![CDATA[<p>Based on Wikipedia, originally a <a href="http://en.wikipedia.org/wiki/K%C5%8Dan">Koan in Zen-practice</a> is a paradoxical question that provokes doubt and tests a student&rsquo;s progress. On the other hand, programming Koans are a set of failing unit-tests, for which the learner is required to fix the code or fill the required fields with proper values in order to make each test pass. Probably one of the earliest and most popular Koans were <a href="http://rubykoans.com/">Ruby Koans</a>. Now there are several Koans implemented for different languages and frameworks. Search the word &ldquo;Koan&rdquo; in <a href="https://github.com/">GitHub</a> or <a href="https://bitbucket.org/">BitBucket</a> and you will find the gems.</p>
 
 <p>My first experience of Koans was <a href="https://github.com/rally25rs/MoqKoans">MoqKoans</a>, a great set of Koans for learning <a href="http://code.google.com/p/moq/">Moq</a>, a mocking library for the .NET framework. That was really a wonderful learning experience. These days I&rsquo;m trying to strengthen my web programming skills, and as one of the early steps I decided to remaster JavaScript. I found two JavaScript Koans on GitHub; both of them are great. However, I suggest that one should start with the <a href="https://github.com/liammclennan/JavaScript-Koans">JavaScript Koans by Liam McLennan</a>, which is easier to begin with. after finishing this step, I highly recommend proceeding with the<a href="https://github.com/mrdavidlaing/javascript-koans">JavaScript Koans by David Laing</a>. This one is a smaller set of Koans, but gets more advanced, and contains an introduction to <a href="http://underscorejs.org/">Underscore.js</a> as well.</p>
@@ -506,32 +506,32 @@
   
   <entry>
     <title type="html"><![CDATA[Using Git With GitHub on Windows]]></title>
-    <link href="http://www.sinairv.com/blog/2012/05/05/using-git-with-github-on-windows/"/>
+    <link href="http://sinairv.github.io/blog/2012/05/05/using-git-with-github-on-windows/"/>
     <updated>2012-05-05T16:25:00+10:00</updated>
-    <id>http://www.sinairv.com/blog/2012/05/05/using-git-with-github-on-windows</id>
-    <content type="html"><![CDATA[<p>If you&rsquo;re new to Git and don&rsquo;t know how to install Git on Windows, read my earlier post: <a href="http://www.sinairv.com/blog/2012/05/01/how-to-setup-git-for-windows/">How to Setup Git for Windows</a></p>
+    <id>http://sinairv.github.io/blog/2012/05/05/using-git-with-github-on-windows</id>
+    <content type="html"><![CDATA[<p>If you&rsquo;re new to Git and don&rsquo;t know how to install Git on Windows, read my earlier post: <a href="http://sinairv.github.io/blog/2012/05/01/how-to-setup-git-for-windows/">How to Setup Git for Windows</a></p>
 
-<p>In an earlier <a href="http://www.sinairv.com/blog/2012/05/02/using-git-with-codeplex-on-windows/">post</a>, I described the preliminary steps required to work with git on CodePlex. However using git with<a href="https://github.com/">GitHub</a> requires more initial steps.</p>
+<p>In an earlier <a href="http://sinairv.github.io/blog/2012/05/02/using-git-with-codeplex-on-windows/">post</a>, I described the preliminary steps required to work with git on CodePlex. However using git with<a href="https://github.com/">GitHub</a> requires more initial steps.</p>
 
 <p><strong>Generating SSH Keys.</strong> Before proceeding to Git operations we need to create SSH public and private keys, and register the public key on the GitHub site. In order to generate the keys we can use PuTTY Key Generator, which is already bundled with TortoiseGit fortunately. This program is called &ldquo;Puttygen&rdquo; and can be found in start-menu under TortoiseGit:</p>
 
-<p><img src="http://www.sinairv.com/images/posts/tortoisegit-puttygen.png" alt="puttygen under TortoiseGit in Windows start-menu" /></p>
+<p><img src="http://sinairv.github.io/images/posts/tortoisegit-puttygen.png" alt="puttygen under TortoiseGit in Windows start-menu" /></p>
 
 <p>After running Puttygen you need to press &ldquo;Generate&rdquo;, and make some crazy mouse movements in the spotted area to provide some random data for the program (wow, what a brilliant idea). When finished you will have the public key generated. It is recommended that you provide a passphrase so that you would have a more secure private key. After that save your public and private keys using the 2 save buttons near the bottom of the window. But these are not all that you need to save! The public key format that GitHub and some other applications require you to provide is not the one that this program has saved for you. The topmost field which is labelled &ldquo;Public key for passing into OpenSSH authorized_keys file&rdquo; is the one that GitHub needs. It should be in one line (i.e., with no line-breaks), therefore we would refer to it later as the one-line-public-key. Please save the contents of this field and the next &ldquo;key fingerprint&rdquo; field somewhere for future references.</p>
 
-<p><img src="http://www.sinairv.com/images/posts/puttygenfields.png" alt="Puttygen fields" /></p>
+<p><img src="http://sinairv.github.io/images/posts/puttygenfields.png" alt="Puttygen fields" /></p>
 
 <p><strong>Registering SSH Keys in GitHub.</strong> Browse to GitHub, and go to your Account Seetings, and select SSH Keystherein. Press the Add SSH key button on the right. Provide a name for the key (I chose TortoiseGit), and paste the one-line-public-key in the Key field. Press Add Key. You may be prompted for your GitHub account password next. When finished, GitHub adds this key to its list of keys and provides a fingerprint. Make sure this fingerprint matches the key fingerprint that Puttygen created for you.</p>
 
 <p><strong>Creating a Repository in GitHub.</strong> Browse to the GitHub page and press the &ldquo;Create a New Repo&rdquo; button at the top of the page.</p>
 
-<p><img src="http://www.sinairv.com/images/posts/githubnewrepo.png" alt="GitHub Create New Repo" /></p>
+<p><img src="http://sinairv.github.io/images/posts/githubnewrepo.png" alt="GitHub Create New Repo" /></p>
 
 <p>In the new form that appears, enter desired values for your project&rsquo;s name and description. Currently there&rsquo;s an option to add a README file or an appropriate <code>.gitignore</code> file to the repository. While making use of these options are recommended, in this tutorial I intend to start from a completely empty repository; therefore I unchecked those options. When finished press the &ldquo;Create repository&rdquo; button. With these steps I created a project called &ldquo;PdfRenamer&rdquo;.</p>
 
 <p><strong>Setting up TortoiseGit for the new project.</strong> After creating the repository, GitHub introduces some helpful basic commands to start working with the repository. We don&rsquo;t intend to use the command-line, however this page contains useful information such as user-name and email with which GitHub recognizes you, and the git repository address, as highlighted below:</p>
 
-<p><img src="http://www.sinairv.com/images/posts/githubnewprojectaddressandusername1.png" alt="GitHub New Project Address And User-Name" /></p>
+<p><img src="http://sinairv.github.io/images/posts/githubnewprojectaddressandusername1.png" alt="GitHub New Project Address And User-Name" /></p>
 
 <p>We need to do the following steps next:</p>
 
@@ -542,7 +542,7 @@
   <li>Right click somewhere in the folder and from the context menu go to: TortoiseGit &gt; Settings�� Git branch�� Remote sub-branch. In the &ldquo;Remote&rdquo; field enter &ldquo;origin&rdquo;, in the URL field enter the git repository address which was highlighted above and is in the form of <code>git@github.com:[username]/[projectname].git</code>; and finally in front of &ldquo;putty key&rdquo; provide the address to the SSH private key which we saved earlier in this tutorial, and has the <code>.ppk</code> extension. When finished press the &ldquo;Add New/Save&rdquo; button. After that origin should be added to the list of Remotes.</li>
 </ol>
 
-<p><img src="http://www.sinairv.com/images/posts/tortoisegitremotesetting.png" alt="TortoiseGit Remote Setting" /></p>
+<p><img src="http://sinairv.github.io/images/posts/tortoisegitremotesetting.png" alt="TortoiseGit Remote Setting" /></p>
 
 <p><strong>Add files to the project structure.</strong> With git, adding a file to a project structure and having it reflected in the remote repository requires 3 operations: add, commit, and push. The first 2 operations are required for adding the file to the local repository, and the third one reflects the changes to the remote repository. This last operation can be postponed to a later time when you want to push a bundle of changes all at once.</p>
 
@@ -554,27 +554,27 @@
 
 <p><strong>Updating the local repository with the latest changes made by other team members to the remote repository.</strong> Well, there are two solutions. The one that I prefer is using git pull. You can easily find this command in the TortoiseGit&rsquo;s context menu. The pull command, preserves the history of changes made by different people and makes a final merge afterwards. The other solution is git fetch and rebase. The fetch command only receives the latest changes from the remote repository but does not apply them. The rebase command first applies the remote changes to the repository, then applies your changes. Therefore it always seems that you have made the recent changes, while it may not be true. See this <a href="http://stackoverflow.com/questions/3357122/git-pull-vs-git-fetch-git-rebase">stackoverflow question</a> for a better explanation.</p>
 
-<p><strong>Note:</strong> At any stage, if git complains about connecting through a null proxy, then you will have to remove proxy settings from the global <code>.gitconfig</code> file. For more information see tip 7 on my earlier <a href="http://www.sinairv.com/blog/2012/05/01/how-to-setup-git-for-windows/">post</a></p>
+<p><strong>Note:</strong> At any stage, if git complains about connecting through a null proxy, then you will have to remove proxy settings from the global <code>.gitconfig</code> file. For more information see tip 7 on my earlier <a href="http://sinairv.github.io/blog/2012/05/01/how-to-setup-git-for-windows/">post</a></p>
 
-<p>You may also want to see my earlier <a href="http://www.sinairv.com/blog/2012/05/02/using-git-with-codeplex-on-windows/">post</a> that describes using git with <a href="http://www.codeplex.com/">CodePlex</a> on Windows.</p>
+<p>You may also want to see my earlier <a href="http://sinairv.github.io/blog/2012/05/02/using-git-with-codeplex-on-windows/">post</a> that describes using git with <a href="http://www.codeplex.com/">CodePlex</a> on Windows.</p>
 
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Using Git With CodePlex on Windows]]></title>
-    <link href="http://www.sinairv.com/blog/2012/05/02/using-git-with-codeplex-on-windows/"/>
+    <link href="http://sinairv.github.io/blog/2012/05/02/using-git-with-codeplex-on-windows/"/>
     <updated>2012-05-02T10:50:41+10:00</updated>
-    <id>http://www.sinairv.com/blog/2012/05/02/using-git-with-codeplex-on-windows</id>
-    <content type="html"><![CDATA[<p>If you&rsquo;re new to Git and don&rsquo;t know how to install Git on Windows, read my earlier post: <a href="http://www.sinairv.com/blog/2012/05/01/how-to-setup-git-for-windows/">How to Setup Git for Windows</a></p>
+    <id>http://sinairv.github.io/blog/2012/05/02/using-git-with-codeplex-on-windows</id>
+    <content type="html"><![CDATA[<p>If you&rsquo;re new to Git and don&rsquo;t know how to install Git on Windows, read my earlier post: <a href="http://sinairv.github.io/blog/2012/05/01/how-to-setup-git-for-windows/">How to Setup Git for Windows</a></p>
 
 <p>On 21 March 2012, the <a href="http://www.codeplex.com/">CodePlex</a> team <a href="http://blogs.msdn.com/b/codeplex/archive/2012/03/21/git-commit-m-codeplex-now-supports-git.aspx">announced</a> their support for Git.</p>
 
 <p>Creating a project with Git as source control is very easy in CodePlex and is done with a few clicks at no time. Suppose the project name is <code>CodePlexGitTest</code>. In order to make any changes to the project structure you need to clone the project first. This way you will have your own copy of the repository on your hard disk. To do this, the path to the git repository is needed. This can be obtained from the <em>Source Code</em> tab of the project&rsquo;s CodePlex page, by pressing the <em>Git</em> link/button under <em>&ldquo;Source Control&rdquo;</em> section on the right pane, as seen below:</p>
 
-<p><img src="http://www.sinairv.com/images/posts/codeplexgit.png" alt="CodePlex Git settings" /></p>
+<p><img src="http://sinairv.github.io/images/posts/codeplexgit.png" alt="CodePlex Git settings" /></p>
 
-<p>In order to clone the project, move to the folder that is going to host the project directory. Right click somewhere in the Windows explorer window and choose <em>Git Clone</em>. In the opened window set the <em>&ldquo;Url&rdquo;</em> field to the <em>&ldquo;Clone URL&rdquo;</em> value above, leave other options unchanged, and press OK. After prompting for your CodePlex user-name and password, it should now create the folder structure for your empty repository (<strong>Note</strong>: in case that git complains about connecting through a <em>null</em> proxy, then you will have to remove proxy settings from the global <code>.gitconfig</code> file. For more information see tip 7 on my earlier <a href="http://www.sinairv.com/blog/2012/05/01/how-to-setup-git-for-windows/">post</a>).</p>
+<p>In order to clone the project, move to the folder that is going to host the project directory. Right click somewhere in the Windows explorer window and choose <em>Git Clone</em>. In the opened window set the <em>&ldquo;Url&rdquo;</em> field to the <em>&ldquo;Clone URL&rdquo;</em> value above, leave other options unchanged, and press OK. After prompting for your CodePlex user-name and password, it should now create the folder structure for your empty repository (<strong>Note</strong>: in case that git complains about connecting through a <em>null</em> proxy, then you will have to remove proxy settings from the global <code>.gitconfig</code> file. For more information see tip 7 on my earlier <a href="http://sinairv.github.io/blog/2012/05/01/how-to-setup-git-for-windows/">post</a>).</p>
 
 <p>Now that you have the currently empty project structure at your hard-drive, it&rsquo;s time to add some files to it. Using git, adding a file to a project structure and having it reflected in the remote repository requires 3 operations: <em>add</em>, <em>commit</em>, and <em>push</em>. The first 2 operations are required for adding the file to the local repository, and the third one reflects the changes to the remote repository. This last operation can be postponed to a later time when you want to push a bundle of changes all at once.</p>
 
@@ -587,16 +587,16 @@
 <p>How to update the local repository with the latest changes made by other team members to the remote repository? Well, there are two solutions. The one that I prefer is to use git <em>pull</em>. You can easily find this command in the TortoiseGit&rsquo;s context menu. The <em>pull</em> command, preserves the history of changes made by different people and makes a final merge afterwards. The other solution is git <em>fetch</em> and <em>rebase</em>. The <em>fetch</em> command only receives the latest changes from the remote repository but does not apply them. The <em>rebase</em> command first applies the remote changes to the repository, then applies your changes. Therefore it always seems that you have made the recent changes, while it may not be true. See this <a href="http://stackoverflow.com/questions/3357122/git-pull-vs-git-fetch-git-rebase">stackoverflow question</a> for a better explanation.</p>
 
 <p>See also:  <br />
-<a href="http://www.sinairv.com/blog/2012/05/01/how-to-setup-git-for-windows/">How to Setup Git for Windows</a>  <br />
-<a href="http://www.sinairv.com/blog/2012/05/05/using-git-with-github-on-windows/">Using Git With GitHub on Windows</a></p>
+<a href="http://sinairv.github.io/blog/2012/05/01/how-to-setup-git-for-windows/">How to Setup Git for Windows</a>  <br />
+<a href="http://sinairv.github.io/blog/2012/05/05/using-git-with-github-on-windows/">Using Git With GitHub on Windows</a></p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[How to Setup Git for Windows]]></title>
-    <link href="http://www.sinairv.com/blog/2012/05/01/how-to-setup-git-for-windows/"/>
+    <link href="http://sinairv.github.io/blog/2012/05/01/how-to-setup-git-for-windows/"/>
     <updated>2012-05-01T23:27:40+10:00</updated>
-    <id>http://www.sinairv.com/blog/2012/05/01/how-to-setup-git-for-windows</id>
+    <id>http://sinairv.github.io/blog/2012/05/01/how-to-setup-git-for-windows</id>
     <content type="html"><![CDATA[<p>These are some easy steps required to setup Git for Windows:</p>
 
 <ol>
@@ -629,16 +629,16 @@ In the field titled as <em>&ldquo;Git.exe path:&rdquo;</em> enter the path to th
 </ol>
 
 <p>See also:  <br />
-<a href="http://www.sinairv.com/blog/2012/05/02/using-git-with-codeplex-on-windows/">Using Git With CodePlex on Windows</a>  <br />
-<a href="http://www.sinairv.com/blog/2012/05/05/using-git-with-github-on-windows/">Using Git With GitHub on Windows</a></p>
+<a href="http://sinairv.github.io/blog/2012/05/02/using-git-with-codeplex-on-windows/">Using Git With CodePlex on Windows</a>  <br />
+<a href="http://sinairv.github.io/blog/2012/05/05/using-git-with-github-on-windows/">Using Git With GitHub on Windows</a></p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[How I Built My First Qt Application in Visual Studio 2010]]></title>
-    <link href="http://www.sinairv.com/blog/2011/07/04/how-i-built-my-first-qt-application-in-visual-studio-2010/"/>
+    <link href="http://sinairv.github.io/blog/2011/07/04/how-i-built-my-first-qt-application-in-visual-studio-2010/"/>
     <updated>2011-07-04T23:10:54+10:00</updated>
-    <id>http://www.sinairv.com/blog/2011/07/04/how-i-built-my-first-qt-application-in-visual-studio-2010</id>
+    <id>http://sinairv.github.io/blog/2011/07/04/how-i-built-my-first-qt-application-in-visual-studio-2010</id>
     <content type="html"><![CDATA[<p>I downloaded the Qt SDK (offline installer version which was 1.7 GB) from: 
 http://qt.nokia.com/downloads</p>
 
@@ -663,9 +663,9 @@ D:\QtSDK\Desktop\Qt\4.7.3\msvc2008</p>
   
   <entry>
     <title type="html"><![CDATA[How to Disable Hibernate and Free Some Disk Space in Windows 7]]></title>
-    <link href="http://www.sinairv.com/blog/2011/05/26/how-to-disable-hibernate-and-free-some-disk-space-in-windows-7/"/>
+    <link href="http://sinairv.github.io/blog/2011/05/26/how-to-disable-hibernate-and-free-some-disk-space-in-windows-7/"/>
     <updated>2011-05-26T23:07:00+10:00</updated>
-    <id>http://www.sinairv.com/blog/2011/05/26/how-to-disable-hibernate-and-free-some-disk-space-in-windows-7</id>
+    <id>http://sinairv.github.io/blog/2011/05/26/how-to-disable-hibernate-and-free-some-disk-space-in-windows-7</id>
     <content type="html"><![CDATA[<p>Run a command prompt as administrator.</p>
 
 <p>Run the following command:</p>
@@ -683,9 +683,9 @@ D:\QtSDK\Desktop\Qt\4.7.3\msvc2008</p>
   
   <entry>
     <title type="html"><![CDATA[How to Include .eps Images With Pdflatex]]></title>
-    <link href="http://www.sinairv.com/blog/2011/05/21/how-to-include-eps-images-with-pdflatex/"/>
+    <link href="http://sinairv.github.io/blog/2011/05/21/how-to-include-eps-images-with-pdflatex/"/>
     <updated>2011-05-21T23:03:15+10:00</updated>
-    <id>http://www.sinairv.com/blog/2011/05/21/how-to-include-eps-images-with-pdflatex</id>
+    <id>http://sinairv.github.io/blog/2011/05/21/how-to-include-eps-images-with-pdflatex</id>
     <content type="html"><![CDATA[<p>PdfLaTeX does not support <code>eps</code> files by default. Add the following imports in the beginning:</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
@@ -702,9 +702,9 @@ D:\QtSDK\Desktop\Qt\4.7.3\msvc2008</p>
   
   <entry>
     <title type="html"><![CDATA[Code Snippet for Calculating Mean, Variance, and Standard Deviation]]></title>
-    <link href="http://www.sinairv.com/blog/2011/05/15/code-snippet-for-calculating-mean/"/>
+    <link href="http://sinairv.github.io/blog/2011/05/15/code-snippet-for-calculating-mean/"/>
     <updated>2011-05-15T22:58:36+10:00</updated>
-    <id>http://www.sinairv.com/blog/2011/05/15/code-snippet-for-calculating-mean</id>
+    <id>http://sinairv.github.io/blog/2011/05/15/code-snippet-for-calculating-mean</id>
     <content type="html"><![CDATA[<p>Here are the methods to calculate mean, variance, and standard deviation of a vector of values. These are put here for easy reference, so that I do not need to rewrite them again (and again (and again)).</p>
 
 <script src="https://gist.github.com/sinairv/2693528.js"></script>
@@ -714,9 +714,9 @@ D:\QtSDK\Desktop\Qt\4.7.3\msvc2008</p>
   
   <entry>
     <title type="html"><![CDATA[A Helper Method for Performing K-Fold Cross Validation]]></title>
-    <link href="http://www.sinairv.com/blog/2011/05/15/a-helper-method-for-performing-k-fold-cross-validation/"/>
+    <link href="http://sinairv.github.io/blog/2011/05/15/a-helper-method-for-performing-k-fold-cross-validation/"/>
     <updated>2011-05-15T22:41:05+10:00</updated>
-    <id>http://www.sinairv.com/blog/2011/05/15/a-helper-method-for-performing-k-fold-cross-validation</id>
+    <id>http://sinairv.github.io/blog/2011/05/15/a-helper-method-for-performing-k-fold-cross-validation</id>
     <content type="html"><![CDATA[<p>The following method is a utility method for creating the <em>K</em> divisions upon which one is going to perform the <em>K</em>-fold cross validation operation. The input of the method is the length of the training data, and the number <em>K</em>. The output conveys which indices of the training-data is to be put in each division.</p>
 
 <script src="https://gist.github.com/sinairv/2693647.js"></script>
@@ -726,9 +726,9 @@ D:\QtSDK\Desktop\Qt\4.7.3\msvc2008</p>
   
   <entry>
     <title type="html"><![CDATA[Problem With Finding Local Resources in Intellij IDEA]]></title>
-    <link href="http://www.sinairv.com/blog/2011/05/10/problem-with-finding-local-resources-in-intellij-idea/"/>
+    <link href="http://sinairv.github.io/blog/2011/05/10/problem-with-finding-local-resources-in-intellij-idea/"/>
     <updated>2011-05-10T22:33:07+10:00</updated>
-    <id>http://www.sinairv.com/blog/2011/05/10/problem-with-finding-local-resources-in-intellij-idea</id>
+    <id>http://sinairv.github.io/blog/2011/05/10/problem-with-finding-local-resources-in-intellij-idea</id>
     <content type="html"><![CDATA[<p>Some classes use external data files which are located in the same directory as the one that the <code>.java</code> file is located, or somewhere nearby which can be easily addressed with a relative path. This happens a lot for me, esp. when I am running open source programs developed by someone else. As an example, imagine a class called <code>SampleClass</code> located in a directory in which there exists a text file with the name of <code>SomeFile.txt</code>. One way to have access to the file is through calling the class-loader&rsquo;s <code>getResource</code> function:</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
@@ -753,9 +753,9 @@ D:\QtSDK\Desktop\Qt\4.7.3\msvc2008</p>
   
   <entry>
     <title type="html"><![CDATA[Code Snippet for Dealing With Windows Forms ListView Control in Details Mode]]></title>
-    <link href="http://www.sinairv.com/blog/2011/05/09/code-snippet-for-dealing-with-windows-forms-listview-control-in-details-mode/"/>
+    <link href="http://sinairv.github.io/blog/2011/05/09/code-snippet-for-dealing-with-windows-forms-listview-control-in-details-mode/"/>
     <updated>2011-05-09T00:39:37+10:00</updated>
-    <id>http://www.sinairv.com/blog/2011/05/09/code-snippet-for-dealing-with-windows-forms-listview-control-in-details-mode</id>
+    <id>http://sinairv.github.io/blog/2011/05/09/code-snippet-for-dealing-with-windows-forms-listview-control-in-details-mode</id>
     <content type="html"><![CDATA[<p>I needed a piece of code to manage list-view controllers. I needed to use <code>ListView</code> controls in the details mode, which automatically sort its contents when I click on the header, and also pastes the content in a tabular format when I press <code>Ctrl</code>+<code>C</code> or <code>Ctrl</code>+<code>Insert</code> on it. So I created the following classes. The code that carries out the sorting stuff when the header is clicked is taken from <a href="http://msdn.microsoft.com/en-us/library/ms996467.aspx">this</a> following MSDN article.</p>
 
 <p>So these are the contributions of these pieces of code: 1) Sort <code>ListView</code> items when the column header is clicked, 2) Paste the contents of the <code>ListView</code> control to clipboard in a tabular format, and 3) Provide an easy to use API to append data to a <code>ListView</code> control.</p>
@@ -769,9 +769,9 @@ D:\QtSDK\Desktop\Qt\4.7.3\msvc2008</p>
   
   <entry>
     <title type="html"><![CDATA[Enabling Middle Click in Synaptics Touchpad Drivers]]></title>
-    <link href="http://www.sinairv.com/blog/2011/04/16/enabling-middle-click-in-synaptics-touchpad-drivers/"/>
+    <link href="http://sinairv.github.io/blog/2011/04/16/enabling-middle-click-in-synaptics-touchpad-drivers/"/>
     <updated>2011-04-16T00:25:53+10:00</updated>
-    <id>http://www.sinairv.com/blog/2011/04/16/enabling-middle-click-in-synaptics-touchpad-drivers</id>
+    <id>http://sinairv.github.io/blog/2011/04/16/enabling-middle-click-in-synaptics-touchpad-drivers</id>
     <content type="html"><![CDATA[<p>Recently I upgraded my currently installed Synaptics touchpad driver to version 15.x, and I found that I cannot emulate the middle-click effect by pressing both right and left click buttons. I found no options in the settings to enable that functionality. Finally after searching the web I found a workaround here [<a href="http://forum.notebookreview.com/hp-compaq/205207-those-synaptics-touchstyk-trackpoint-any-way-enable-middle-button-scrolling.html">+</a>]:</p>
 
 <ol>
@@ -787,9 +787,9 @@ D:\QtSDK\Desktop\Qt\4.7.3\msvc2008</p>
   
   <entry>
     <title type="html"><![CDATA[Code Snippet for Trimming Strings of White-space and Control Characters]]></title>
-    <link href="http://www.sinairv.com/blog/2011/03/02/code-snippet-for-trimming-strings-of-white-space-and-control-characters/"/>
+    <link href="http://sinairv.github.io/blog/2011/03/02/code-snippet-for-trimming-strings-of-white-space-and-control-characters/"/>
     <updated>2011-03-02T00:07:00+10:00</updated>
-    <id>http://www.sinairv.com/blog/2011/03/02/code-snippet-for-trimming-strings-of-white-space-and-control-characters</id>
+    <id>http://sinairv.github.io/blog/2011/03/02/code-snippet-for-trimming-strings-of-white-space-and-control-characters</id>
     <content type="html"><![CDATA[<p>The following method trims the given string of both white-space characters and control characters, and its rather fast!</p>
 
 <script src="https://gist.github.com/sinairv/2693951.js"></script>
@@ -799,9 +799,9 @@ D:\QtSDK\Desktop\Qt\4.7.3\msvc2008</p>
   
   <entry>
     <title type="html"><![CDATA[Code Snippet for Determining How Two Intervals Overlap]]></title>
-    <link href="http://www.sinairv.com/blog/2010/08/09/code-snippet-for-determining-how-two-intervals-overlap/"/>
+    <link href="http://sinairv.github.io/blog/2010/08/09/code-snippet-for-determining-how-two-intervals-overlap/"/>
     <updated>2010-08-09T23:45:00+10:00</updated>
-    <id>http://www.sinairv.com/blog/2010/08/09/code-snippet-for-determining-how-two-intervals-overlap</id>
+    <id>http://sinairv.github.io/blog/2010/08/09/code-snippet-for-determining-how-two-intervals-overlap</id>
     <content type="html"><![CDATA[<p>The following pieces of code help figure out how two intervals overlap, and provides helper methods to represent them in a way that is useful for debugging purposes. This job is quite easy to accomplish, but since I&rsquo;ve written it too many times from scratch, I put them in the following gist.</p>
 
 <p>The <code>IntervalOverlapKinds.cs</code> file defines the <code>IntervalOverlapKinds</code> enumeration. The interval detection is carried out in the static methods of the <code>IntervalOverlap</code> class.</p>

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: C# | Sina Iravanian]]></title>
-  <link href="http://www.sinairv.com/blog/categories/c-number/atom.xml" rel="self"/>
-  <link href="http://www.sinairv.com/"/>
-  <updated>2015-01-21T22:31:04+10:00</updated>
-  <id>http://www.sinairv.com/</id>
+  <link href="http://sinairv.github.io/blog/categories/c-number/atom.xml" rel="self"/>
+  <link href="http://sinairv.github.io/"/>
+  <updated>2015-01-21T22:49:29+10:00</updated>
+  <id>http://sinairv.github.io/</id>
   <author>
     <name><![CDATA[Sina Iravanian]]></name>
     <email><![CDATA[sina.iravanian@gmail.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Syntax Highlighter for Windows Forms Rich Text Box]]></title>
-    <link href="http://www.sinairv.com/blog/2014/12/01/syntax-highlighter-for-windows-forms-rich-text-box/"/>
+    <link href="http://sinairv.github.io/blog/2014/12/01/syntax-highlighter-for-windows-forms-rich-text-box/"/>
     <updated>2014-12-01T18:18:48+10:00</updated>
-    <id>http://www.sinairv.com/blog/2014/12/01/syntax-highlighter-for-windows-forms-rich-text-box</id>
+    <id>http://sinairv.github.io/blog/2014/12/01/syntax-highlighter-for-windows-forms-rich-text-box</id>
     <content type="html"><![CDATA[<p>Years ago I created a tool called <a href="http://code4public.codeplex.com">Code4Public</a> to convert source code into HTML called. I was using this tool to put nice code snippets in the blog I used to maintain at that time. The tool is able to get the code, apply syntax highlighting to it based on the syntax of the language selected, and then create HTML based on the theme selected (e.g., MSDN theme). I didn&rsquo;t assign more time on making the tool better and better, as better ways of doing the same task were emerging, and also other by-products of the tool were becoming more interesting at the time; e.g., <a href="https://github.com/sinairv/YAXLib">YAXLib</a> was a little by-product of Code4Public used to store settings, themes and language syntaxes in XML files.</p>
 
 <p>This post is to introduce yet another by-product of Code4Public: <a href="https://github.com/sinairv/WinFormsSyntaxHighlighter">WinFormsSyntaxHighlighter</a>. This library enables syntax highlighting on a <code>RichTextBox</code> based on patterns that the developer defines.</p>
@@ -113,9 +113,9 @@ syntaxHighlighter.AddPattern(
   
   <entry>
     <title type="html"><![CDATA[How to Make More Refactoring Friendly Data-bindings With C# 5]]></title>
-    <link href="http://www.sinairv.com/blog/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c-number-5/"/>
+    <link href="http://sinairv.github.io/blog/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c-number-5/"/>
     <updated>2012-11-01T19:46:29+10:00</updated>
-    <id>http://www.sinairv.com/blog/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c-number-5</id>
+    <id>http://sinairv.github.io/blog/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c-number-5</id>
     <content type="html"><![CDATA[<p>Imagine that we want to create a <code>Person</code> business object for whose properties we desire a two-way data binding. The source-to-target data-binding can be triggered by implementing <code>INotifyPropertyChanged</code> interface, like this:</p>
 
 <p>```csharp
@@ -230,9 +230,9 @@ private void OnPropertyChanged([CallerMemberName]string propertyName = "")
   
   <entry>
     <title type="html"><![CDATA[An Example for C# Dynamic in Action]]></title>
-    <link href="http://www.sinairv.com/blog/2012/07/23/an-example-for-c-number-dynamic-in-action/"/>
+    <link href="http://sinairv.github.io/blog/2012/07/23/an-example-for-c-number-dynamic-in-action/"/>
     <updated>2012-07-23T17:20:53+10:00</updated>
-    <id>http://www.sinairv.com/blog/2012/07/23/an-example-for-c-number-dynamic-in-action</id>
+    <id>http://sinairv.github.io/blog/2012/07/23/an-example-for-c-number-dynamic-in-action</id>
     <content type="html"><![CDATA[<p>Recently I was involved with enabling validation for a Windows Forms form containing several pages shown through a tree view. There were one user control defined for each page, therefore whenever a node in tree-view got activated, an instance of that user-control were shown. The user-controls did not have a common user-defined parent base-class or interface. The author of the existing code had defined a <code>Save</code> method in each control separately which performed updating data with values entered in the forms.</p>
 
 <p>First, I changed all <code>void Save()</code> methods to <code>bool Save()</code>, and performed the validation stuff in each control separately. Then in the parent form, I created an array of <code>Control</code>s, so that I could loop through them, and call their <code>Save</code> method. But wait, <code>Save</code> is not inherited from any base-class or interface, so there&rsquo;s no polymorphism at hand. How can I call them through references of type <code>Control</code>?</p>
@@ -271,9 +271,9 @@ foreach(var ctrl in controlsArray)
   
   <entry>
     <title type="html"><![CDATA[Code Snippet for Calculating Mean, Variance, and Standard Deviation]]></title>
-    <link href="http://www.sinairv.com/blog/2011/05/15/code-snippet-for-calculating-mean/"/>
+    <link href="http://sinairv.github.io/blog/2011/05/15/code-snippet-for-calculating-mean/"/>
     <updated>2011-05-15T22:58:36+10:00</updated>
-    <id>http://www.sinairv.com/blog/2011/05/15/code-snippet-for-calculating-mean</id>
+    <id>http://sinairv.github.io/blog/2011/05/15/code-snippet-for-calculating-mean</id>
     <content type="html"><![CDATA[<p>Here are the methods to calculate mean, variance, and standard deviation of a vector of values. These are put here for easy reference, so that I do not need to rewrite them again (and again (and again)).</p>
 
 <script src="https://gist.github.com/sinairv/2693528.js"></script>
@@ -283,9 +283,9 @@ foreach(var ctrl in controlsArray)
   
   <entry>
     <title type="html"><![CDATA[A Helper Method for Performing K-Fold Cross Validation]]></title>
-    <link href="http://www.sinairv.com/blog/2011/05/15/a-helper-method-for-performing-k-fold-cross-validation/"/>
+    <link href="http://sinairv.github.io/blog/2011/05/15/a-helper-method-for-performing-k-fold-cross-validation/"/>
     <updated>2011-05-15T22:41:05+10:00</updated>
-    <id>http://www.sinairv.com/blog/2011/05/15/a-helper-method-for-performing-k-fold-cross-validation</id>
+    <id>http://sinairv.github.io/blog/2011/05/15/a-helper-method-for-performing-k-fold-cross-validation</id>
     <content type="html"><![CDATA[<p>The following method is a utility method for creating the <em>K</em> divisions upon which one is going to perform the <em>K</em>-fold cross validation operation. The input of the method is the length of the training data, and the number <em>K</em>. The output conveys which indices of the training-data is to be put in each division.</p>
 
 <script src="https://gist.github.com/sinairv/2693647.js"></script>

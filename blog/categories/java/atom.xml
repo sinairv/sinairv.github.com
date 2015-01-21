@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Java | Sina Iravanian]]></title>
-  <link href="http://www.sinairv.com/blog/categories/java/atom.xml" rel="self"/>
-  <link href="http://www.sinairv.com/"/>
-  <updated>2015-01-21T22:31:04+10:00</updated>
-  <id>http://www.sinairv.com/</id>
+  <link href="http://sinairv.github.io/blog/categories/java/atom.xml" rel="self"/>
+  <link href="http://sinairv.github.io/"/>
+  <updated>2015-01-21T22:49:29+10:00</updated>
+  <id>http://sinairv.github.io/</id>
   <author>
     <name><![CDATA[Sina Iravanian]]></name>
     <email><![CDATA[sina.iravanian@gmail.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Problem With Finding Local Resources in Intellij IDEA]]></title>
-    <link href="http://www.sinairv.com/blog/2011/05/10/problem-with-finding-local-resources-in-intellij-idea/"/>
+    <link href="http://sinairv.github.io/blog/2011/05/10/problem-with-finding-local-resources-in-intellij-idea/"/>
     <updated>2011-05-10T22:33:07+10:00</updated>
-    <id>http://www.sinairv.com/blog/2011/05/10/problem-with-finding-local-resources-in-intellij-idea</id>
+    <id>http://sinairv.github.io/blog/2011/05/10/problem-with-finding-local-resources-in-intellij-idea</id>
     <content type="html"><![CDATA[<p>Some classes use external data files which are located in the same directory as the one that the <code>.java</code> file is located, or somewhere nearby which can be easily addressed with a relative path. This happens a lot for me, esp. when I am running open source programs developed by someone else. As an example, imagine a class called <code>SampleClass</code> located in a directory in which there exists a text file with the name of <code>SomeFile.txt</code>. One way to have access to the file is through calling the class-loader&rsquo;s <code>getResource</code> function:</p>
 
 <p><code>java

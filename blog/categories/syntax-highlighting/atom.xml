@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Syntax Highlighting | Sina Iravanian]]></title>
-  <link href="http://www.sinairv.com/blog/categories/syntax-highlighting/atom.xml" rel="self"/>
-  <link href="http://www.sinairv.com/"/>
-  <updated>2015-01-21T22:31:04+10:00</updated>
-  <id>http://www.sinairv.com/</id>
+  <link href="http://sinairv.github.io/blog/categories/syntax-highlighting/atom.xml" rel="self"/>
+  <link href="http://sinairv.github.io/"/>
+  <updated>2015-01-21T22:49:29+10:00</updated>
+  <id>http://sinairv.github.io/</id>
   <author>
     <name><![CDATA[Sina Iravanian]]></name>
     <email><![CDATA[sina.iravanian@gmail.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Syntax Highlighter for Windows Forms Rich Text Box]]></title>
-    <link href="http://www.sinairv.com/blog/2014/12/01/syntax-highlighter-for-windows-forms-rich-text-box/"/>
+    <link href="http://sinairv.github.io/blog/2014/12/01/syntax-highlighter-for-windows-forms-rich-text-box/"/>
     <updated>2014-12-01T18:18:48+10:00</updated>
-    <id>http://www.sinairv.com/blog/2014/12/01/syntax-highlighter-for-windows-forms-rich-text-box</id>
+    <id>http://sinairv.github.io/blog/2014/12/01/syntax-highlighter-for-windows-forms-rich-text-box</id>
     <content type="html"><![CDATA[<p>Years ago I created a tool called <a href="http://code4public.codeplex.com">Code4Public</a> to convert source code into HTML called. I was using this tool to put nice code snippets in the blog I used to maintain at that time. The tool is able to get the code, apply syntax highlighting to it based on the syntax of the language selected, and then create HTML based on the theme selected (e.g., MSDN theme). I didn&rsquo;t assign more time on making the tool better and better, as better ways of doing the same task were emerging, and also other by-products of the tool were becoming more interesting at the time; e.g., <a href="https://github.com/sinairv/YAXLib">YAXLib</a> was a little by-product of Code4Public used to store settings, themes and language syntaxes in XML files.</p>
 
 <p>This post is to introduce yet another by-product of Code4Public: <a href="https://github.com/sinairv/WinFormsSyntaxHighlighter">WinFormsSyntaxHighlighter</a>. This library enables syntax highlighting on a <code>RichTextBox</code> based on patterns that the developer defines.</p>

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: GitHub | Sina Iravanian]]></title>
-  <link href="http://www.sinairv.com/blog/categories/github/atom.xml" rel="self"/>
-  <link href="http://www.sinairv.com/"/>
-  <updated>2015-01-21T22:31:04+10:00</updated>
-  <id>http://www.sinairv.com/</id>
+  <link href="http://sinairv.github.io/blog/categories/github/atom.xml" rel="self"/>
+  <link href="http://sinairv.github.io/"/>
+  <updated>2015-01-21T22:49:29+10:00</updated>
+  <id>http://sinairv.github.io/</id>
   <author>
     <name><![CDATA[Sina Iravanian]]></name>
     <email><![CDATA[sina.iravanian@gmail.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Using Git With GitHub on Windows]]></title>
-    <link href="http://www.sinairv.com/blog/2012/05/05/using-git-with-github-on-windows/"/>
+    <link href="http://sinairv.github.io/blog/2012/05/05/using-git-with-github-on-windows/"/>
     <updated>2012-05-05T16:25:00+10:00</updated>
-    <id>http://www.sinairv.com/blog/2012/05/05/using-git-with-github-on-windows</id>
+    <id>http://sinairv.github.io/blog/2012/05/05/using-git-with-github-on-windows</id>
     <content type="html"><![CDATA[<p>If you&rsquo;re new to Git and don&rsquo;t know how to install Git on Windows, read my earlier post: <a href="/blog/2012/05/01/how-to-setup-git-for-windows/">How to Setup Git for Windows</a></p>
 
 <p>In an earlier <a href="/blog/2012/05/02/using-git-with-codeplex-on-windows/">post</a>, I described the preliminary steps required to work with git on CodePlex. However using git with<a href="https://github.com/">GitHub</a> requires more initial steps.</p>

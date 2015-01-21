@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Data Binding | Sina Iravanian]]></title>
-  <link href="http://www.sinairv.com/blog/categories/data-binding/atom.xml" rel="self"/>
-  <link href="http://www.sinairv.com/"/>
-  <updated>2015-01-21T22:31:04+10:00</updated>
-  <id>http://www.sinairv.com/</id>
+  <link href="http://sinairv.github.io/blog/categories/data-binding/atom.xml" rel="self"/>
+  <link href="http://sinairv.github.io/"/>
+  <updated>2015-01-21T22:49:29+10:00</updated>
+  <id>http://sinairv.github.io/</id>
   <author>
     <name><![CDATA[Sina Iravanian]]></name>
     <email><![CDATA[sina.iravanian@gmail.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[How to Make More Refactoring Friendly Data-bindings With C# 5]]></title>
-    <link href="http://www.sinairv.com/blog/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c-number-5/"/>
+    <link href="http://sinairv.github.io/blog/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c-number-5/"/>
     <updated>2012-11-01T19:46:29+10:00</updated>
-    <id>http://www.sinairv.com/blog/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c-number-5</id>
+    <id>http://sinairv.github.io/blog/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c-number-5</id>
     <content type="html"><![CDATA[<p>Imagine that we want to create a <code>Person</code> business object for whose properties we desire a two-way data binding. The source-to-target data-binding can be triggered by implementing <code>INotifyPropertyChanged</code> interface, like this:</p>
 
 <p>```csharp

@@ -39,7 +39,7 @@ RCSSCoachable is hosted on SourceForge. Here's the [home page](http://rcsscoacha
 You can get Coach Assistant including source and binary from its [GitHub page](https://github.com/sinairv/CoachAssistant). Note that you need Java 1.5 or higher to make and run the application. 
 The source code is released under GNU GPL.
 
-Also, [here](http://www.sinairv.com/coachassistant/catut.html) you will find a short tutorial on Coach Assistant.
+Also, [here](http://sinairv.github.io/coachassistant/catut.html) you will find a short tutorial on Coach Assistant.
 
 ### Temporal Difference Methods: Article, Slides, and Demo Application
 

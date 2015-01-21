@@ -4,7 +4,7 @@
   <title><![CDATA[Sina Iravanian]]></title>
   <link href="http://sinairv.github.io/atom.xml" rel="self"/>
   <link href="http://sinairv.github.io/"/>
-  <updated>2015-01-22T00:19:24+10:00</updated>
+  <updated>2015-01-22T00:34:16+10:00</updated>
   <id>http://sinairv.github.io/</id>
   <author>
     <name><![CDATA[Sina Iravanian]]></name>
@@ -12,6 +12,151 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Handy Extensions for INotifyPropertyChanged]]></title>
+    <link href="http://sinairv.github.io/blog/2015/01/15/handy-extensions-for-inotifypropertychanged/"/>
+    <updated>2015-01-15T00:22:39+10:00</updated>
+    <id>http://sinairv.github.io/blog/2015/01/15/handy-extensions-for-inotifypropertychanged</id>
+    <content type="html"><![CDATA[<p>I recently created a <a href="https://github.com/sinairv/INPC-Extensions">library</a> that contains some handy extensions for <code>INotifyPropertyChanged</code> interface (aka INPC). To start using the library, add the following to the top of your C# code:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="k">using</span> <span class="nn">NotifyPropertyChangedExtensions</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h4 id="how-to-easily-raise-inpc-in-a-refactor-friendly-way">How to easily raise INPC in a refactor friendly way</h4>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="k">public</span> <span class="k">class</span> <span class="nc">MyClass</span> <span class="p">:</span> <span class="n">INotifyPropertyChanged</span>
+</span><span class="line"><span class="p">{</span>
+</span><span class="line">    <span class="k">private</span> <span class="kt">int</span> <span class="n">_number</span><span class="p">;</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">public</span> <span class="kt">int</span> <span class="n">Number</span>
+</span><span class="line">    <span class="p">{</span>
+</span><span class="line">        <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="n">_number</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="line">        <span class="k">set</span>
+</span><span class="line">        <span class="p">{</span>
+</span><span class="line">            <span class="k">if</span><span class="p">(</span><span class="n">_number</span> <span class="p">!=</span> <span class="k">value</span><span class="p">)</span>
+</span><span class="line">            <span class="p">{</span>
+</span><span class="line">                <span class="n">_number</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span>
+</span><span class="line">                <span class="k">this</span><span class="p">.</span><span class="n">RaisePropertyChanged</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="n">Number</span><span class="p">);</span>
+</span><span class="line">            <span class="p">}</span>
+</span><span class="line">        <span class="p">}</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">public</span> <span class="k">event</span> <span class="n">PropertyChangedEventHandler</span> <span class="n">PropertyChanged</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h4 id="how-to-easily-handle-listen-to-inpc-in-a-refactor-friendly-way">How to easily handle (listen to) INPC in a refactor friendly way</h4>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="n">MyClass</span> <span class="n">myObject</span> <span class="p">=</span> <span class="p">...;</span>
+</span><span class="line">
+</span><span class="line"><span class="n">myObject</span><span class="p">.</span><span class="n">HandleOnPropertyChanged</span><span class="p">(</span><span class="n">src</span> <span class="p">=&gt;</span> <span class="n">src</span><span class="p">.</span><span class="n">Number</span><span class="p">,</span> <span class="n">sender</span> <span class="p">=&gt;</span>
+</span><span class="line">    <span class="p">{</span>
+</span><span class="line">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Number changed to {0}&quot;</span><span class="p">,</span> <span class="n">sender</span><span class="p">.</span><span class="n">Number</span><span class="p">);</span>
+</span><span class="line">    <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h4 id="how-to-do-one-way-binding-from-a-class-that-implements-inpc">How to do one-way binding from a class that implements INPC</h4>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="kt">var</span> <span class="n">source</span> <span class="p">=</span> <span class="k">new</span> <span class="n">MyClass</span><span class="p">();</span>
+</span><span class="line"><span class="kt">var</span> <span class="n">target</span> <span class="p">=</span> <span class="k">new</span> <span class="n">TargetClass</span><span class="p">();</span>
+</span><span class="line">
+</span><span class="line"><span class="n">source</span><span class="p">.</span><span class="n">BindProperty</span><span class="p">(</span><span class="n">src</span> <span class="p">=&gt;</span> <span class="n">src</span><span class="p">.</span><span class="n">Number</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">t</span> <span class="p">=&gt;</span> <span class="n">t</span><span class="p">.</span><span class="n">Num</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line"><span class="n">source</span><span class="p">.</span><span class="n">Number</span> <span class="p">=</span> <span class="m">10</span><span class="p">;</span>
+</span><span class="line"><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">target</span><span class="p">.</span><span class="n">Num</span><span class="p">);</span> <span class="c1">// 10</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>You can negate a boolean property while binding it. I use it a lot and find it very handy.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="n">source</span><span class="p">.</span><span class="n">BindProperty</span><span class="p">(</span><span class="n">src</span> <span class="p">=&gt;</span> <span class="n">src</span><span class="p">.</span><span class="n">IsActive</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">t</span> <span class="p">=&gt;</span> <span class="p">!</span><span class="n">t</span><span class="p">.</span><span class="n">IsDeleted</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line"><span class="n">source</span><span class="p">.</span><span class="n">IsActive</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+</span><span class="line"><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">target</span><span class="p">.</span><span class="n">IsDeleted</span><span class="p">);</span> <span class="c1">// True</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>You can bind primitive data-types in source class to <code>Nullable</code> primitive data-types in the target class, and vice versa. </p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="n">source</span><span class="p">.</span><span class="n">BindProperty</span><span class="p">(</span><span class="n">src</span> <span class="p">=&gt;</span> <span class="n">src</span><span class="p">.</span><span class="n">Number</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">t</span> <span class="p">=&gt;</span> <span class="n">t</span><span class="p">.</span><span class="n">NullableNumber</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>What happens if source is <code>null</code>, and the target is not <code>Nullable</code>? </p>
+
+<p>The default behavior is to update target with default value of that type:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="n">target</span><span class="p">.</span><span class="n">Number</span> <span class="p">=</span> <span class="m">10</span><span class="p">;</span>
+</span><span class="line"><span class="n">source</span><span class="p">.</span><span class="n">BindProperty</span><span class="p">(</span><span class="n">src</span> <span class="p">=&gt;</span> <span class="n">src</span><span class="p">.</span><span class="n">NullableNumber</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">t</span> <span class="p">=&gt;</span> <span class="n">t</span><span class="p">.</span><span class="n">Number</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line"><span class="n">source</span><span class="p">.</span><span class="n">NullableNumber</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+</span><span class="line"><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">target</span><span class="p">.</span><span class="n">Number</span><span class="p">);</span> <span class="c1">// 0</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>You can also choose not to update target if source becomes <code>null</code>:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="n">target</span><span class="p">.</span><span class="n">Number</span> <span class="p">=</span> <span class="m">10</span><span class="p">;</span>
+</span><span class="line"><span class="n">source</span><span class="p">.</span><span class="n">BindProperty</span><span class="p">(</span><span class="n">src</span> <span class="p">=&gt;</span> <span class="n">src</span><span class="p">.</span><span class="n">NullableNumber</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">t</span> <span class="p">=&gt;</span> <span class="n">t</span><span class="p">.</span><span class="n">Number</span><span class="p">,</span>
+</span><span class="line">    <span class="n">BindPropertyOptions</span><span class="p">.</span><span class="n">DontUpdateWhenSourceIsNullAndTargetIsNotNullable</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line"><span class="n">source</span><span class="p">.</span><span class="n">NullableNumber</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+</span><span class="line"><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">target</span><span class="p">.</span><span class="n">Number</span><span class="p">);</span> <span class="c1">// still 10</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h4 id="how-to-find-more-information-about-this-library">How to find more information about this library?</h4>
+
+<p>At the moment the best way to find out how this library works is by reading the unit tests or at least their titles.</p>
+
+<p><a href="https://github.com/sinairv/INPC-Extensions">INPC-Extensions</a> is now hosted in GitHub and is licensed under MIT.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Syntax Highlighter for Windows Forms Rich Text Box]]></title>
@@ -793,20 +938,6 @@ D:\QtSDK\Desktop\Qt\4.7.3\msvc2008</p>
     <content type="html"><![CDATA[<p>The following method trims the given string of both white-space characters and control characters, and its rather fast!</p>
 
 <script src="https://gist.github.com/sinairv/2693951.js"></script>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Code Snippet for Determining How Two Intervals Overlap]]></title>
-    <link href="http://sinairv.github.io/blog/2010/08/09/code-snippet-for-determining-how-two-intervals-overlap/"/>
-    <updated>2010-08-09T23:45:00+10:00</updated>
-    <id>http://sinairv.github.io/blog/2010/08/09/code-snippet-for-determining-how-two-intervals-overlap</id>
-    <content type="html"><![CDATA[<p>The following pieces of code help figure out how two intervals overlap, and provides helper methods to represent them in a way that is useful for debugging purposes. This job is quite easy to accomplish, but since I&rsquo;ve written it too many times from scratch, I put them in the following gist.</p>
-
-<p>The <code>IntervalOverlapKinds.cs</code> file defines the <code>IntervalOverlapKinds</code> enumeration. The interval detection is carried out in the static methods of the <code>IntervalOverlap</code> class.</p>
-
-<script src="https://gist.github.com/sinairv/2693975.js"></script>
 
 ]]></content>
   </entry>

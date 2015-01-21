@@ -9,7 +9,7 @@
   <meta name="author" content="Sina Iravanian">
 
   
-  <meta name="description" content="Years ago I created a tool called Code4Public to convert source code into HTML called. I was using this tool to put nice code snippets in the blog I &hellip;">
+  <meta name="description" content="I recently created a library that contains some handy extensions for INotifyPropertyChanged interface (aka INPC). To start using the library, add the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +80,181 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/01/15/handy-extensions-for-inotifypropertychanged/">Handy Extensions for INotifyPropertyChanged</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-01-15T00:22:39+10:00" pubdate data-updated="true">Jan 15<span>th</span>, 2015</time>
+        
+           | <a href="/blog/2015/01/15/handy-extensions-for-inotifypropertychanged/#disqus_thread"
+             data-disqus-identifier="http://sinairv.github.io/blog/2015/01/15/handy-extensions-for-inotifypropertychanged/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I recently created a <a href="https://github.com/sinairv/INPC-Extensions">library</a> that contains some handy extensions for <code>INotifyPropertyChanged</code> interface (aka INPC). To start using the library, add the following to the top of your C# code:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="k">using</span> <span class="nn">NotifyPropertyChangedExtensions</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h4 id="how-to-easily-raise-inpc-in-a-refactor-friendly-way">How to easily raise INPC in a refactor friendly way</h4>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="k">public</span> <span class="k">class</span> <span class="nc">MyClass</span> <span class="p">:</span> <span class="n">INotifyPropertyChanged</span>
+</span><span class="line"><span class="p">{</span>
+</span><span class="line">    <span class="k">private</span> <span class="kt">int</span> <span class="n">_number</span><span class="p">;</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">public</span> <span class="kt">int</span> <span class="n">Number</span>
+</span><span class="line">    <span class="p">{</span>
+</span><span class="line">        <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="n">_number</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="line">        <span class="k">set</span>
+</span><span class="line">        <span class="p">{</span>
+</span><span class="line">            <span class="k">if</span><span class="p">(</span><span class="n">_number</span> <span class="p">!=</span> <span class="k">value</span><span class="p">)</span>
+</span><span class="line">            <span class="p">{</span>
+</span><span class="line">                <span class="n">_number</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span>
+</span><span class="line">                <span class="k">this</span><span class="p">.</span><span class="n">RaisePropertyChanged</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="n">Number</span><span class="p">);</span>
+</span><span class="line">            <span class="p">}</span>
+</span><span class="line">        <span class="p">}</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">public</span> <span class="k">event</span> <span class="n">PropertyChangedEventHandler</span> <span class="n">PropertyChanged</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h4 id="how-to-easily-handle-listen-to-inpc-in-a-refactor-friendly-way">How to easily handle (listen to) INPC in a refactor friendly way</h4>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="n">MyClass</span> <span class="n">myObject</span> <span class="p">=</span> <span class="p">...;</span>
+</span><span class="line">
+</span><span class="line"><span class="n">myObject</span><span class="p">.</span><span class="n">HandleOnPropertyChanged</span><span class="p">(</span><span class="n">src</span> <span class="p">=&gt;</span> <span class="n">src</span><span class="p">.</span><span class="n">Number</span><span class="p">,</span> <span class="n">sender</span> <span class="p">=&gt;</span>
+</span><span class="line">    <span class="p">{</span>
+</span><span class="line">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Number changed to {0}&quot;</span><span class="p">,</span> <span class="n">sender</span><span class="p">.</span><span class="n">Number</span><span class="p">);</span>
+</span><span class="line">    <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h4 id="how-to-do-one-way-binding-from-a-class-that-implements-inpc">How to do one-way binding from a class that implements INPC</h4>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="kt">var</span> <span class="n">source</span> <span class="p">=</span> <span class="k">new</span> <span class="n">MyClass</span><span class="p">();</span>
+</span><span class="line"><span class="kt">var</span> <span class="n">target</span> <span class="p">=</span> <span class="k">new</span> <span class="n">TargetClass</span><span class="p">();</span>
+</span><span class="line">
+</span><span class="line"><span class="n">source</span><span class="p">.</span><span class="n">BindProperty</span><span class="p">(</span><span class="n">src</span> <span class="p">=&gt;</span> <span class="n">src</span><span class="p">.</span><span class="n">Number</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">t</span> <span class="p">=&gt;</span> <span class="n">t</span><span class="p">.</span><span class="n">Num</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line"><span class="n">source</span><span class="p">.</span><span class="n">Number</span> <span class="p">=</span> <span class="m">10</span><span class="p">;</span>
+</span><span class="line"><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">target</span><span class="p">.</span><span class="n">Num</span><span class="p">);</span> <span class="c1">// 10</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>You can negate a boolean property while binding it. I use it a lot and find it very handy.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="n">source</span><span class="p">.</span><span class="n">BindProperty</span><span class="p">(</span><span class="n">src</span> <span class="p">=&gt;</span> <span class="n">src</span><span class="p">.</span><span class="n">IsActive</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">t</span> <span class="p">=&gt;</span> <span class="p">!</span><span class="n">t</span><span class="p">.</span><span class="n">IsDeleted</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line"><span class="n">source</span><span class="p">.</span><span class="n">IsActive</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+</span><span class="line"><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">target</span><span class="p">.</span><span class="n">IsDeleted</span><span class="p">);</span> <span class="c1">// True</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>You can bind primitive data-types in source class to <code>Nullable</code> primitive data-types in the target class, and vice versa. </p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="n">source</span><span class="p">.</span><span class="n">BindProperty</span><span class="p">(</span><span class="n">src</span> <span class="p">=&gt;</span> <span class="n">src</span><span class="p">.</span><span class="n">Number</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">t</span> <span class="p">=&gt;</span> <span class="n">t</span><span class="p">.</span><span class="n">NullableNumber</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>What happens if source is <code>null</code>, and the target is not <code>Nullable</code>? </p>
+
+<p>The default behavior is to update target with default value of that type:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="n">target</span><span class="p">.</span><span class="n">Number</span> <span class="p">=</span> <span class="m">10</span><span class="p">;</span>
+</span><span class="line"><span class="n">source</span><span class="p">.</span><span class="n">BindProperty</span><span class="p">(</span><span class="n">src</span> <span class="p">=&gt;</span> <span class="n">src</span><span class="p">.</span><span class="n">NullableNumber</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">t</span> <span class="p">=&gt;</span> <span class="n">t</span><span class="p">.</span><span class="n">Number</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line"><span class="n">source</span><span class="p">.</span><span class="n">NullableNumber</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+</span><span class="line"><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">target</span><span class="p">.</span><span class="n">Number</span><span class="p">);</span> <span class="c1">// 0</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>You can also choose not to update target if source becomes <code>null</code>:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="n">target</span><span class="p">.</span><span class="n">Number</span> <span class="p">=</span> <span class="m">10</span><span class="p">;</span>
+</span><span class="line"><span class="n">source</span><span class="p">.</span><span class="n">BindProperty</span><span class="p">(</span><span class="n">src</span> <span class="p">=&gt;</span> <span class="n">src</span><span class="p">.</span><span class="n">NullableNumber</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">t</span> <span class="p">=&gt;</span> <span class="n">t</span><span class="p">.</span><span class="n">Number</span><span class="p">,</span>
+</span><span class="line">    <span class="n">BindPropertyOptions</span><span class="p">.</span><span class="n">DontUpdateWhenSourceIsNullAndTargetIsNotNullable</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line"><span class="n">source</span><span class="p">.</span><span class="n">NullableNumber</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+</span><span class="line"><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">target</span><span class="p">.</span><span class="n">Number</span><span class="p">);</span> <span class="c1">// still 10</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h4 id="how-to-find-more-information-about-this-library">How to find more information about this library?</h4>
+
+<p>At the moment the best way to find out how this library works is by reading the unit tests or at least their titles.</p>
+
+<p><a href="https://github.com/sinairv/INPC-Extensions">INPC-Extensions</a> is now hosted in GitHub and is licensed under MIT.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -930,78 +1105,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/05/01/how-to-setup-git-for-windows/">How to Setup Git for Windows</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-01T23:27:40+10:00" pubdate data-updated="true">May 1<span>st</span>, 2012</time>
-        
-           | <a href="/blog/2012/05/01/how-to-setup-git-for-windows/#disqus_thread"
-             data-disqus-identifier="http://sinairv.github.io/blog/2012/05/01/how-to-setup-git-for-windows/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>These are some easy steps required to setup Git for Windows:</p>
-
-<ol>
-  <li>
-    <p>Download msysGit from: http://code.google.com/p/msysgit  <br />
-I prefer to use the portable version. At the time of this writing there&rsquo;s no difference between 32 bit and 64 bit versions and the filename for the portable version is: <code>PortableGit-1.7.10-preview20120409.7z</code>. Currently it seems that the development of the project has been moved to <a href="http://github.com/msysgit">GitHub</a>, but the releases are still located in Google Code.</p>
-  </li>
-  <li>
-    <p>Extract the contents in a proper location. I made them into:  <br />
-<code>D:\PortableProgs\msysGit</code></p>
-  </li>
-  <li>
-    <p>If you intend to use the git command-line for every git operation simply run <code>git-bash.bat</code> in the root folder of <em>msysGit</em>. This is the old lovely <em>Cygwin</em> command-line.</p>
-  </li>
-  <li>
-    <p>If you don&rsquo;t intend to use command-line (like me) install <em>TortoiseGit</em>. It is hosted on Google Code:  <br />
-http://code.google.com/p/tortoisegit/  <br />
-Note that it comes with different releases for 32-bit and 64-bit systems. At the time of this writing the latest version is 1.7.8.0. After installing <em>TortoiseGit</em> you may need to restart Windows, or the Windows explorer process, or none.</p>
-  </li>
-  <li>
-    <p>Right click somewhere on a Windows Explorer window, and from the context menu select: <em>TortoiseGit &gt; Settings</em>. There will be a message-box appearing begging for adjusting the path to <em>msysGit</em>. Click on &ldquo;Set MSysGit path&rdquo; button (If you have ever missed this window, or want to change the path to an already existing <em>msysGit</em>, simply go to: <em>TortoiseGit &gt; Settingsÿ¯ the General branch</em>).  <br />
-In the field titled as <em>&ldquo;Git.exe path:&rdquo;</em> enter the path to the <em>bin</em> folder of the <em>msysGit</em> installation/copy.</p>
-  </li>
-  <li>
-    <p>You don&rsquo;t have to, but it is highly recommended that before starting any git operations you set some global settings such as your name, email, and AutoCrlf. To this aim in the Windows explorer&rsquo;s context menu go to: <em>TortoiseGit &gt; Settingsÿ¯ the Git branch</em>. Fill in the fields labelled <em>Name</em> and <em>Email</em> with proper values. Then make sure that <em>AutoCrlf</em> check-box is unchecked, so that you don&rsquo;t touch every file in order to change their line-endings. Read more about this kind of problem <a href="http://code52.org/line-endings.html">here</a>, and see <a href="http://stackoverflow.com/questions/4181870/git-on-windows-what-do-the-crlf-settings-mean">here</a> to know more what AutoCrlf and SafeCrlf options do for you.</p>
-  </li>
-  <li>
-    <p><strong>[UPDATED on 3 May 2012]</strong> When performing some git operations, git may complain that it cannot connect through a <em>null</em> proxy. It may happen for some versions if in git settings the value for proxy is assigned to an empty string. If this is the case for you, simply remove proxy settings in the global <code>.gitconfig</code> file. To do this, right click somewhere in Windows explorer, go to: <em>TortoiseGit &gt; Settingsÿ¯ The Git Branchÿ¯ Edit Global .gitconfig button</em>. From there remove the line that assigns proxy, or the whole <code>[http]</code> section if it only contains proxy settings.</p>
-  </li>
-</ol>
-
-<p>See also:  <br />
-<a href="/blog/2012/05/02/using-git-with-codeplex-on-windows/">Using Git With CodePlex on Windows</a>  <br />
-<a href="/blog/2012/05/05/using-git-with-github-on-windows/">Using Git With GitHub on Windows</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -1029,6 +1132,10 @@ In the field titled as <em>&ldquo;Git.exe path:&rdquo;</em> enter the path to th
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/01/15/handy-extensions-for-inotifypropertychanged/">Handy Extensions for INotifyPropertyChanged</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/12/01/syntax-highlighter-for-windows-forms-rich-text-box/">Syntax Highlighter for Windows Forms Rich Text Box</a>
       </li>
     
@@ -1042,10 +1149,6 @@ In the field titled as <em>&ldquo;Git.exe path:&rdquo;</em> enter the path to th
     
       <li class="post">
         <a href="/blog/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c-number-5/">How to Make More Refactoring Friendly Data-bindings With C# 5</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/09/22/different-ways-of-generating-new-guids/">Different Ways of Generating New GUIDs</a>
       </li>
     
   </ul>

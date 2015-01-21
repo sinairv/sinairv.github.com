@@ -4,7 +4,7 @@
   <title><![CDATA[Category: C# | Sina Iravanian]]></title>
   <link href="http://sinairv.github.io/blog/categories/c-number/atom.xml" rel="self"/>
   <link href="http://sinairv.github.io/"/>
-  <updated>2015-01-22T00:19:24+10:00</updated>
+  <updated>2015-01-22T00:34:16+10:00</updated>
   <id>http://sinairv.github.io/</id>
   <author>
     <name><![CDATA[Sina Iravanian]]></name>
@@ -12,6 +12,109 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Handy Extensions for INotifyPropertyChanged]]></title>
+    <link href="http://sinairv.github.io/blog/2015/01/15/handy-extensions-for-inotifypropertychanged/"/>
+    <updated>2015-01-15T00:22:39+10:00</updated>
+    <id>http://sinairv.github.io/blog/2015/01/15/handy-extensions-for-inotifypropertychanged</id>
+    <content type="html"><![CDATA[<p>I recently created a <a href="https://github.com/sinairv/INPC-Extensions">library</a> that contains some handy extensions for <code>INotifyPropertyChanged</code> interface (aka INPC). To start using the library, add the following to the top of your C# code:</p>
+
+<p><code>csharp
+using NotifyPropertyChangedExtensions;
+</code></p>
+
+<h4 id="how-to-easily-raise-inpc-in-a-refactor-friendly-way">How to easily raise INPC in a refactor friendly way</h4>
+
+<p>```csharp
+public class MyClass : INotifyPropertyChanged
+{
+    private int _number;</p>
+
+<pre><code>public int Number
+{
+    get { return _number; }
+    set 
+    { 
+        if(_number != value)
+        {
+            _number = value; 
+            this.RaisePropertyChanged(() =&gt; Number); 
+        }
+    }
+}
+
+public event PropertyChangedEventHandler PropertyChanged; } ```
+</code></pre>
+
+<h4 id="how-to-easily-handle-listen-to-inpc-in-a-refactor-friendly-way">How to easily handle (listen to) INPC in a refactor friendly way</h4>
+
+<p>```csharp
+MyClass myObject = &hellip;;</p>
+
+<p>myObject.HandleOnPropertyChanged(src =&gt; src.Number, sender =&gt;
+    {
+        Console.WriteLine(&ldquo;Number changed to {0}&rdquo;, sender.Number);
+    });
+```</p>
+
+<h4 id="how-to-do-one-way-binding-from-a-class-that-implements-inpc">How to do one-way binding from a class that implements INPC</h4>
+
+<p>```csharp
+var source = new MyClass();
+var target = new TargetClass();</p>
+
+<p>source.BindProperty(src =&gt; src.Number, target, t =&gt; t.Num);</p>
+
+<p>source.Number = 10;
+Console.WriteLine(target.Num); // 10
+```</p>
+
+<p>You can negate a boolean property while binding it. I use it a lot and find it very handy.</p>
+
+<p>```csharp
+source.BindProperty(src =&gt; src.IsActive, target, t =&gt; !t.IsDeleted);</p>
+
+<p>source.IsActive = false;
+Console.WriteLine(target.IsDeleted); // True
+```</p>
+
+<p>You can bind primitive data-types in source class to <code>Nullable</code> primitive data-types in the target class, and vice versa. </p>
+
+<p><code>csharp
+source.BindProperty(src =&gt; src.Number, target, t =&gt; t.NullableNumber);
+</code></p>
+
+<p>What happens if source is <code>null</code>, and the target is not <code>Nullable</code>? </p>
+
+<p>The default behavior is to update target with default value of that type:</p>
+
+<p>```csharp
+target.Number = 10;
+source.BindProperty(src =&gt; src.NullableNumber, target, t =&gt; t.Number);</p>
+
+<p>source.NullableNumber = null;
+Console.WriteLine(target.Number); // 0
+```</p>
+
+<p>You can also choose not to update target if source becomes <code>null</code>:</p>
+
+<p>```csharp
+target.Number = 10;
+source.BindProperty(src =&gt; src.NullableNumber, target, t =&gt; t.Number, 
+    BindPropertyOptions.DontUpdateWhenSourceIsNullAndTargetIsNotNullable);</p>
+
+<p>source.NullableNumber = null;
+Console.WriteLine(target.Number); // still 10
+```</p>
+
+<h4 id="how-to-find-more-information-about-this-library">How to find more information about this library?</h4>
+
+<p>At the moment the best way to find out how this library works is by reading the unit tests or at least their titles.</p>
+
+<p><a href="https://github.com/sinairv/INPC-Extensions">INPC-Extensions</a> is now hosted in GitHub and is licensed under MIT.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Syntax Highlighter for Windows Forms Rich Text Box]]></title>
@@ -277,18 +380,6 @@ foreach(var ctrl in controlsArray)
     <content type="html"><![CDATA[<p>Here are the methods to calculate mean, variance, and standard deviation of a vector of values. These are put here for easy reference, so that I do not need to rewrite them again (and again (and again)).</p>
 
 <script src="https://gist.github.com/sinairv/2693528.js"></script>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[A Helper Method for Performing K-Fold Cross Validation]]></title>
-    <link href="http://sinairv.github.io/blog/2011/05/15/a-helper-method-for-performing-k-fold-cross-validation/"/>
-    <updated>2011-05-15T22:41:05+10:00</updated>
-    <id>http://sinairv.github.io/blog/2011/05/15/a-helper-method-for-performing-k-fold-cross-validation</id>
-    <content type="html"><![CDATA[<p>The following method is a utility method for creating the <em>K</em> divisions upon which one is going to perform the <em>K</em>-fold cross validation operation. The input of the method is the length of the training data, and the number <em>K</em>. The output conveys which indices of the training-data is to be put in each division.</p>
-
-<script src="https://gist.github.com/sinairv/2693647.js"></script>
 
 ]]></content>
   </entry>

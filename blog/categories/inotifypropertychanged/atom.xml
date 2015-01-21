@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Data Binding | Sina Iravanian]]></title>
-  <link href="http://sinairv.github.io/blog/categories/data-binding/atom.xml" rel="self"/>
+  <title><![CDATA[Category: INotifyPropertyChanged | Sina Iravanian]]></title>
+  <link href="http://sinairv.github.io/blog/categories/inotifypropertychanged/atom.xml" rel="self"/>
   <link href="http://sinairv.github.io/"/>
   <updated>2015-01-22T00:34:16+10:00</updated>
   <id>http://sinairv.github.io/</id>
@@ -113,123 +113,6 @@ Console.WriteLine(target.Number); // still 10
 <p>At the moment the best way to find out how this library works is by reading the unit tests or at least their titles.</p>
 
 <p><a href="https://github.com/sinairv/INPC-Extensions">INPC-Extensions</a> is now hosted in GitHub and is licensed under MIT.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[How to Make More Refactoring Friendly Data-bindings With C# 5]]></title>
-    <link href="http://sinairv.github.io/blog/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c-number-5/"/>
-    <updated>2012-11-01T19:46:29+10:00</updated>
-    <id>http://sinairv.github.io/blog/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c-number-5</id>
-    <content type="html"><![CDATA[<p>Imagine that we want to create a <code>Person</code> business object for whose properties we desire a two-way data binding. The source-to-target data-binding can be triggered by implementing <code>INotifyPropertyChanged</code> interface, like this:</p>
-
-<p>```csharp
-public class Person : INotifyPropertyChanged
-{
-    private string _name;
-    private double _age;</p>
-
-<pre><code>public string Name 
-{
-    get
-    {
-        return _name;
-    }
-
-    set
-    {
-        if (value != _name)
-        {
-            _name = value;
-            OnPropertyChanged("Name");
-        }
-    }
-}
-
-public double Age 
-{
-    get
-    {
-        return _age;
-    }
-
-    set
-    {
-        if (_age != value)
-        {
-            _age = value;
-            OnPropertyChanged("Age");
-        }
-    }
-}
-
-public event PropertyChangedEventHandler PropertyChanged;
-
-private void OnPropertyChanged(string propertyName)
-{
-    if (PropertyChanged != null)
-    {
-        PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-    }
-} } ```
-</code></pre>
-
-<p>See how the setters pass the property name in a <code>string</code>. This is not nice, because whenever we change the property name through refactoring tools, the string value remains untouched and we have to manually change them as well (if we are lucky enough to get notified before run-time). Anyway we had to tolerate them for years&hellip;</p>
-
-<p>C# 5 comes with a nice feature, which is addition of two attributes <code>[CallerFilePath]</code> and <code>[CallerMemberName]</code> in the <code>System.Runtime.CompilerServices</code> namespace. If you decorate an <strong>optional</strong> string parameter of a method with one of these attributes, then the value of that parameter will be replaced with the caller&rsquo;s file name or the caller&rsquo;s member name at runtime, if no explicit value is passed for the optional parameter. They come very handy in logging scenarios, but we can use the latter for making our data-binding code nicer. This is how:</p>
-
-<p>```csharp
-public class Person : INotifyPropertyChanged
-{
-    private string _name;
-    private double _age;</p>
-
-<pre><code>public string Name 
-{
-    get
-    {
-        return _name;
-    }
-
-    set
-    {
-        if (value != _name)
-        {
-            _name = value;
-            OnPropertyChanged();
-        }
-    }
-}
-
-public double Age 
-{
-    get
-    {
-        return _age;
-    }
-
-    set
-    {
-        if (_age != value)
-        {
-            _age = value;
-            OnPropertyChanged();
-        }
-    }
-}
-
-public event PropertyChangedEventHandler PropertyChanged;
-
-private void OnPropertyChanged([CallerMemberName]string propertyName = "")
-{
-    if (PropertyChanged != null)
-    {
-        PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-    }
-} } ```
-</code></pre>
-
-<p>Now that string constants are removed from the setters we can more freely refactor our code. After being spoiled by automatic properties, this is still a very verbose way of defining properties; however it is much better than before.</p>
 ]]></content>
   </entry>
   

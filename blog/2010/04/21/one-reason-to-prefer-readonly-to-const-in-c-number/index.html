@@ -9,7 +9,7 @@
   <meta name="author" content="Sina Iravanian">
 
   
-  <meta name="description" content="First off, let&rsquo;s talk about what&rsquo;s going on in C# compiler when you use const or readonly in your field definitions. The const qualifier &hellip;">
+  <meta name="description" content="First off, let’s talk about what’s going on in C# compiler when you use const or readonly in your field definitions. The const qualifier can be used &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -109,7 +109,7 @@
   </header>
 
 
-<div class="entry-content"><p>First off, let&rsquo;s talk about what&rsquo;s going on in C# compiler when you use <code>const</code> or <code>readonly</code> in your field definitions. The <code>const</code> qualifier can be used with primitive data types, and strings only. When used, the value assigned to a <code>const</code> field, is inserted directly in all its references in the generated IL code. This is true about other assemblies too. Other assemblies that refer to that <code>const</code> field, are compiled as if they have used directly the value itself. This can be the source of problem that I&rsquo;m going to talk about soon. <code>readonly</code> fields are run-time constants. They occupy some space in memory, and references to them are resolved at run-time, as if we have referred to an ordinary variable. Actually they are variables that resemble constants.</p>
+<div class="entry-content"><p>First off, let’s talk about what’s going on in C# compiler when you use <code>const</code> or <code>readonly</code> in your field definitions. The <code>const</code> qualifier can be used with primitive data types, and strings only. When used, the value assigned to a <code>const</code> field, is inserted directly in all its references in the generated IL code. This is true about other assemblies too. Other assemblies that refer to that <code>const</code> field, are compiled as if they have used directly the value itself. This can be the source of problem that I’m going to talk about soon. <code>readonly</code> fields are run-time constants. They occupy some space in memory, and references to them are resolved at run-time, as if we have referred to an ordinary variable. Actually they are variables that resemble constants.</p>
 
 <p>Imagine that you have created and released a project to public. Your project contains several assemblies in form of <code>.dll</code> files. They make use of some constant value in one of the <code>.dll</code> files, e.g., <code>SomeLibrary.dll</code> stores a constant value in one of its classes, e.g.,</p>
 
@@ -122,7 +122,7 @@
 </pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="k">public</span> <span class="k">class</span> <span class="nc">Options</span>
 </span><span class="line"><span class="p">{</span>
 </span><span class="line">   <span class="p">...</span>
-</span><span class="line">   <span class="k">public</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">NetworkTimeout</span> <span class="p">=</span> <span class="m">2000</span><span class="p">;</span>
+</span><span class="line">   <span class="k">public</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">NetworkTimeout</span> <span class="p">=</span> <span class="m">2000</span><span class="p">;</span> 
 </span><span class="line">   <span class="p">...</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
@@ -231,6 +231,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/05/18/powershell-the-switch-data-type/">PowerShell: The Switch Data-type</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/01/15/handy-extensions-for-inotifypropertychanged/">Handy Extensions for INotifyPropertyChanged</a>
       </li>
     
@@ -244,10 +248,6 @@
     
       <li class="post">
         <a href="/blog/2014/01/10/moved-my-blog-to-octopress/">Moved My Blog to Octopress</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c-number-5/">How to Make More Refactoring Friendly Data-bindings With C# 5</a>
       </li>
     
   </ul>

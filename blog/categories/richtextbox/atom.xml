@@ -4,7 +4,7 @@
   <title><![CDATA[Category: RichTextBox | Sina Iravanian]]></title>
   <link href="http://sinairv.github.io/blog/categories/richtextbox/atom.xml" rel="self"/>
   <link href="http://sinairv.github.io/"/>
-  <updated>2015-01-22T00:34:16+10:00</updated>
+  <updated>2015-05-18T00:57:01+10:00</updated>
   <id>http://sinairv.github.io/</id>
   <author>
     <name><![CDATA[Sina Iravanian]]></name>
@@ -16,9 +16,9 @@
   <entry>
     <title type="html"><![CDATA[Syntax Highlighter for Windows Forms Rich Text Box]]></title>
     <link href="http://sinairv.github.io/blog/2014/12/01/syntax-highlighter-for-windows-forms-rich-text-box/"/>
-    <updated>2014-12-01T18:18:48+10:00</updated>
+    <updated>2014-12-01T19:18:48+11:00</updated>
     <id>http://sinairv.github.io/blog/2014/12/01/syntax-highlighter-for-windows-forms-rich-text-box</id>
-    <content type="html"><![CDATA[<p>Years ago I created a tool called <a href="http://code4public.codeplex.com">Code4Public</a> to convert source code into HTML called. I was using this tool to put nice code snippets in the blog I used to maintain at that time. The tool is able to get the code, apply syntax highlighting to it based on the syntax of the language selected, and then create HTML based on the theme selected (e.g., MSDN theme). I didn&rsquo;t assign more time on making the tool better and better, as better ways of doing the same task were emerging, and also other by-products of the tool were becoming more interesting at the time; e.g., <a href="https://github.com/sinairv/YAXLib">YAXLib</a> was a little by-product of Code4Public used to store settings, themes and language syntaxes in XML files.</p>
+    <content type="html"><![CDATA[<p>Years ago I created a tool called <a href="http://code4public.codeplex.com">Code4Public</a> to convert source code into HTML called. I was using this tool to put nice code snippets in the blog I used to maintain at that time. The tool is able to get the code, apply syntax highlighting to it based on the syntax of the language selected, and then create HTML based on the theme selected (e.g., MSDN theme). I didn’t assign more time on making the tool better and better, as better ways of doing the same task were emerging, and also other by-products of the tool were becoming more interesting at the time; e.g., <a href="https://github.com/sinairv/YAXLib">YAXLib</a> was a little by-product of Code4Public used to store settings, themes and language syntaxes in XML files.</p>
 
 <p>This post is to introduce yet another by-product of Code4Public: <a href="https://github.com/sinairv/WinFormsSyntaxHighlighter">WinFormsSyntaxHighlighter</a>. This library enables syntax highlighting on a <code>RichTextBox</code> based on patterns that the developer defines.</p>
 
@@ -28,7 +28,7 @@
 var syntaxHighlighter = new SyntaxHighlighter(theRichTextBox);
 </code></p>
 
-<p>That&rsquo;s it. Now I need to define patterns and colors. For example I want to see <code>for</code>, <code>foreach</code>, <code>int</code> and <code>var</code> in blue:</p>
+<p>That’s it. Now I need to define patterns and colors. For example I want to see <code>for</code>, <code>foreach</code>, <code>int</code> and <code>var</code> in blue:</p>
 
 <p><code>csharp
 // 1st set of keywords; I'd like to see them in Blue
@@ -60,52 +60,52 @@ syntaxHighlighter.AddPattern(
 <p>```csharp
 var syntaxHighlighter = new SyntaxHighlighter(theRichTextBox);</p>
 
-<p>// That&rsquo;s it. Now tell me how you&rsquo;d like to see what&hellip;</p>
+<p>// That’s it. Now tell me how you’d like to see what…</p>
 
-<p>// multi-line comments; I&rsquo;d like to see them in dark-sea-green and italic
+<p>// multi-line comments; I’d like to see them in dark-sea-green and italic
 syntaxHighlighter.AddPattern(
-    new PatternDefinition(new Regex(@&rdquo;/*(.|[\r\n])*?*/&rdquo;, 
+    new PatternDefinition(new Regex(@”/*(.|[\r\n])*?*/”, 
         RegexOptions.Multiline | RegexOptions.Compiled)), 
     new SyntaxStyle(Color.DarkSeaGreen, bold: false, italic: true));</p>
 
-<p>// singlie-line comments; I&rsquo;d like to see them in Green and italic
+<p>// singlie-line comments; I’d like to see them in Green and italic
 syntaxHighlighter.AddPattern(
-    new PatternDefinition(new Regex(@&rdquo;//.*?$&rdquo;, 
+    new PatternDefinition(new Regex(@”//.*?$”, 
         RegexOptions.Multiline | RegexOptions.Compiled)), 
     new SyntaxStyle(Color.Green, bold: false, italic: true));</p>
 
-<p>// double quote strings; I&rsquo;d like to see them in Red
+<p>// double quote strings; I’d like to see them in Red
 syntaxHighlighter.AddPattern(
-    new PatternDefinition(@&rdquo;"&rdquo;([^&rdquo;&rdquo;]|"&rdquo;"&rdquo;)+"&rdquo;&rdquo;), 
+    new PatternDefinition(@”"”([^””]|"”"”)+"””), 
     new SyntaxStyle(Color.Red));</p>
 
-<p>// single quote strings; I&rsquo;d like to see them in Salmon 
+<p>// single quote strings; I’d like to see them in Salmon 
 syntaxHighlighter.AddPattern(
-    new PatternDefinition(@&rdquo;'([^&rsquo;]|'')+'&rdquo;), 
+    new PatternDefinition(@”'([^’]|'')+'”), 
     new SyntaxStyle(Color.Salmon));</p>
 
-<p>// 1st set of keywords; I&rsquo;d like to see them in Blue
+<p>// 1st set of keywords; I’d like to see them in Blue
 syntaxHighlighter.AddPattern(
-    new PatternDefinition(&ldquo;for&rdquo;, &ldquo;foreach&rdquo;, &ldquo;int&rdquo;, &ldquo;var&rdquo;), 
+    new PatternDefinition(“for”, “foreach”, “int”, “var”), 
     new SyntaxStyle(Color.Blue));</p>
 
-<p>// 2nd set of keywords; I&rsquo;d like to see them in bold Navy, and they must be case insensitive
+<p>// 2nd set of keywords; I’d like to see them in bold Navy, and they must be case insensitive
 syntaxHighlighter.AddPattern(
-    new CaseInsensitivePatternDefinition(&ldquo;public&rdquo;, &ldquo;partial&rdquo;, &ldquo;class&rdquo;, &ldquo;void&rdquo;), 
+    new CaseInsensitivePatternDefinition(“public”, “partial”, “class”, “void”), 
     new SyntaxStyle(Color.Navy, true, false));</p>
 
-<p>// numbers; I&rsquo;d like to see them in purple
+<p>// numbers; I’d like to see them in purple
 syntaxHighlighter.AddPattern(
-    new PatternDefinition(@&rdquo;\d+.\d+|\d+&rdquo;), 
+    new PatternDefinition(@”\d+.\d+|\d+”), 
     new SyntaxStyle(Color.Purple));</p>
 
-<p>// operators; I&rsquo;d like to see them in Brown
+<p>// operators; I’d like to see them in Brown
 syntaxHighlighter.AddPattern(
-    new PatternDefinition(&ldquo;+&rdquo;, &ldquo;-&ldquo;, &ldquo;&gt;&rdquo;, &ldquo;&lt;&rdquo;, &ldquo;&amp;&rdquo;, &ldquo;|&rdquo;), 
+    new PatternDefinition(“+”, “-“, “&gt;”, “&lt;”, “&amp;”, “|”), 
     new SyntaxStyle(Color.Brown));
 ``` </p>
 
-<p>Please also note that, nobody can model a whole language like C# or Java with regular expressions, because these languages are not regular. So this tool is by no means a complete and error-free way of modeling languages. Use this just for simple key-word matching or pattern matching and coloring them as you like; but don&rsquo;t expect too much.</p>
+<p>Please also note that, nobody can model a whole language like C# or Java with regular expressions, because these languages are not regular. So this tool is by no means a complete and error-free way of modeling languages. Use this just for simple key-word matching or pattern matching and coloring them as you like; but don’t expect too much.</p>
 
 <p><a href="https://github.com/sinairv/WinFormsSyntaxHighlighter">WinFormsSyntaxHighlighter</a> is hosted in GitHub and is licensed under MIT.</p>
 ]]></content>

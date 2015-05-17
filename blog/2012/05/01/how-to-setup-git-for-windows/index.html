@@ -114,7 +114,7 @@
 <ol>
   <li>
     <p>Download msysGit from: http://code.google.com/p/msysgit  <br />
-I prefer to use the portable version. At the time of this writing there&rsquo;s no difference between 32 bit and 64 bit versions and the filename for the portable version is: <code>PortableGit-1.7.10-preview20120409.7z</code>. Currently it seems that the development of the project has been moved to <a href="http://github.com/msysgit">GitHub</a>, but the releases are still located in Google Code.</p>
+I prefer to use the portable version. At the time of this writing there’s no difference between 32 bit and 64 bit versions and the filename for the portable version is: <code>PortableGit-1.7.10-preview20120409.7z</code>. Currently it seems that the development of the project has been moved to <a href="http://github.com/msysgit">GitHub</a>, but the releases are still located in Google Code.</p>
   </li>
   <li>
     <p>Extract the contents in a proper location. I made them into:  <br />
@@ -124,19 +124,19 @@ I prefer to use the portable version. At the time of this writing there&rsquo;s 
     <p>If you intend to use the git command-line for every git operation simply run <code>git-bash.bat</code> in the root folder of <em>msysGit</em>. This is the old lovely <em>Cygwin</em> command-line.</p>
   </li>
   <li>
-    <p>If you don&rsquo;t intend to use command-line (like me) install <em>TortoiseGit</em>. It is hosted on Google Code:  <br />
+    <p>If you don’t intend to use command-line (like me) install <em>TortoiseGit</em>. It is hosted on Google Code:  <br />
 http://code.google.com/p/tortoisegit/  <br />
 Note that it comes with different releases for 32-bit and 64-bit systems. At the time of this writing the latest version is 1.7.8.0. After installing <em>TortoiseGit</em> you may need to restart Windows, or the Windows explorer process, or none.</p>
   </li>
   <li>
-    <p>Right click somewhere on a Windows Explorer window, and from the context menu select: <em>TortoiseGit &gt; Settings</em>. There will be a message-box appearing begging for adjusting the path to <em>msysGit</em>. Click on &ldquo;Set MSysGit path&rdquo; button (If you have ever missed this window, or want to change the path to an already existing <em>msysGit</em>, simply go to: <em>TortoiseGit &gt; Settings�� the General branch</em>).  <br />
-In the field titled as <em>&ldquo;Git.exe path:&rdquo;</em> enter the path to the <em>bin</em> folder of the <em>msysGit</em> installation/copy.</p>
+    <p>Right click somewhere on a Windows Explorer window, and from the context menu select: <em>TortoiseGit &gt; Settings</em>. There will be a message-box appearing begging for adjusting the path to <em>msysGit</em>. Click on “Set MSysGit path” button (If you have ever missed this window, or want to change the path to an already existing <em>msysGit</em>, simply go to: <em>TortoiseGit &gt; Settings » the General branch</em>).  <br />
+In the field titled as <em>“Git.exe path:”</em> enter the path to the <em>bin</em> folder of the <em>msysGit</em> installation/copy.</p>
   </li>
   <li>
-    <p>You don&rsquo;t have to, but it is highly recommended that before starting any git operations you set some global settings such as your name, email, and AutoCrlf. To this aim in the Windows explorer&rsquo;s context menu go to: <em>TortoiseGit &gt; Settings�� the Git branch</em>. Fill in the fields labelled <em>Name</em> and <em>Email</em> with proper values. Then make sure that <em>AutoCrlf</em> check-box is unchecked, so that you don&rsquo;t touch every file in order to change their line-endings. Read more about this kind of problem <a href="http://code52.org/line-endings.html">here</a>, and see <a href="http://stackoverflow.com/questions/4181870/git-on-windows-what-do-the-crlf-settings-mean">here</a> to know more what AutoCrlf and SafeCrlf options do for you.</p>
+    <p>You don’t have to, but it is highly recommended that before starting any git operations you set some global settings such as your name, email, and AutoCrlf. To this aim in the Windows explorer’s context menu go to: <em>TortoiseGit &gt; Settings » the Git branch</em>. Fill in the fields labelled <em>Name</em> and <em>Email</em> with proper values. Then make sure that <em>AutoCrlf</em> check-box is unchecked, so that you don’t touch every file in order to change their line-endings. Read more about this kind of problem <a href="http://code52.org/line-endings.html">here</a>, and see <a href="http://stackoverflow.com/questions/4181870/git-on-windows-what-do-the-crlf-settings-mean">here</a> to know more what AutoCrlf and SafeCrlf options do for you.</p>
   </li>
   <li>
-    <p><strong>[UPDATED on 3 May 2012]</strong> When performing some git operations, git may complain that it cannot connect through a <em>null</em> proxy. It may happen for some versions if in git settings the value for proxy is assigned to an empty string. If this is the case for you, simply remove proxy settings in the global <code>.gitconfig</code> file. To do this, right click somewhere in Windows explorer, go to: <em>TortoiseGit &gt; Settings�� The Git Branch�� Edit Global .gitconfig button</em>. From there remove the line that assigns proxy, or the whole <code>[http]</code> section if it only contains proxy settings.</p>
+    <p><strong>[UPDATED on 3 May 2012]</strong> When performing some git operations, git may complain that it cannot connect through a <em>null</em> proxy. It may happen for some versions if in git settings the value for proxy is assigned to an empty string. If this is the case for you, simply remove proxy settings in the global <code>.gitconfig</code> file. To do this, right click somewhere in Windows explorer, go to: <em>TortoiseGit &gt; Settings » The Git Branch » Edit Global .gitconfig button</em>. From there remove the line that assigns proxy, or the whole <code>[http]</code> section if it only contains proxy settings.</p>
   </li>
 </ol>
 
@@ -228,6 +228,10 @@ In the field titled as <em>&ldquo;Git.exe path:&rdquo;</em> enter the path to th
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/05/18/powershell-the-switch-data-type/">PowerShell: The Switch Data-type</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/01/15/handy-extensions-for-inotifypropertychanged/">Handy Extensions for INotifyPropertyChanged</a>
       </li>
     
@@ -241,10 +245,6 @@ In the field titled as <em>&ldquo;Git.exe path:&rdquo;</em> enter the path to th
     
       <li class="post">
         <a href="/blog/2014/01/10/moved-my-blog-to-octopress/">Moved My Blog to Octopress</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c-number-5/">How to Make More Refactoring Friendly Data-bindings With C# 5</a>
       </li>
     
   </ul>

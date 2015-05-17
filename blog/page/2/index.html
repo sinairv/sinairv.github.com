@@ -9,7 +9,7 @@
   <meta name="author" content="Sina Iravanian">
 
   
-  <meta name="description" content="These are some easy steps required to setup Git for Windows: Download msysGit from: http://code.google.com/p/msysgit I prefer to use the portable &hellip;">
+  <meta name="description" content="If you’re new to Git and don’t know how to install Git on Windows, read my earlier post: How to Setup Git for Windows On 21 March 2012, the CodePlex &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -86,6 +86,67 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2012/05/02/using-git-with-codeplex-on-windows/">Using Git With CodePlex on Windows</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-02T10:50:41+10:00" pubdate data-updated="true">May 2<span>nd</span>, 2012</time>
+        
+           | <a href="/blog/2012/05/02/using-git-with-codeplex-on-windows/#disqus_thread"
+             data-disqus-identifier="http://sinairv.github.io/blog/2012/05/02/using-git-with-codeplex-on-windows/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>If you’re new to Git and don’t know how to install Git on Windows, read my earlier post: <a href="/blog/2012/05/01/how-to-setup-git-for-windows/">How to Setup Git for Windows</a></p>
+
+<p>On 21 March 2012, the <a href="http://www.codeplex.com/">CodePlex</a> team <a href="http://blogs.msdn.com/b/codeplex/archive/2012/03/21/git-commit-m-codeplex-now-supports-git.aspx">announced</a> their support for Git.</p>
+
+<p>Creating a project with Git as source control is very easy in CodePlex and is done with a few clicks at no time. Suppose the project name is <code>CodePlexGitTest</code>. In order to make any changes to the project structure you need to clone the project first. This way you will have your own copy of the repository on your hard disk. To do this, the path to the git repository is needed. This can be obtained from the <em>Source Code</em> tab of the project’s CodePlex page, by pressing the <em>Git</em> link/button under <em>“Source Control”</em> section on the right pane, as seen below:</p>
+
+<p><img src="/images/posts/codeplexgit.png" alt="CodePlex Git settings" /></p>
+
+<p>In order to clone the project, move to the folder that is going to host the project directory. Right click somewhere in the Windows explorer window and choose <em>Git Clone</em>. In the opened window set the <em>“Url”</em> field to the <em>“Clone URL”</em> value above, leave other options unchanged, and press OK. After prompting for your CodePlex user-name and password, it should now create the folder structure for your empty repository (<strong>Note</strong>: in case that git complains about connecting through a <em>null</em> proxy, then you will have to remove proxy settings from the global <code>.gitconfig</code> file. For more information see tip 7 on my earlier <a href="/blog/2012/05/01/how-to-setup-git-for-windows/">post</a>).</p>
+
+<p>Now that you have the currently empty project structure at your hard-drive, it’s time to add some files to it. Using git, adding a file to a project structure and having it reflected in the remote repository requires 3 operations: <em>add</em>, <em>commit</em>, and <em>push</em>. The first 2 operations are required for adding the file to the local repository, and the third one reflects the changes to the remote repository. This last operation can be postponed to a later time when you want to push a bundle of changes all at once.</p>
+
+<p>To start, create a <code>Readme.txt</code> file in the root folder. Right click on the newly added file, from the context menu select: <em>TortoiseGit &gt; add</em>; check the files to be added, and press OK. This was the first operation: <em>add</em>. In the new window press <em>“commit …”</em>, provide a meaningful commit message in the new window, and press OK when finished. This was the second operation: <em>commit</em> which reflects the changes to your local repository, the one in your hard-drive. You can push the changes in the next window if you want, however it’s not a good idea to push every local commit to the remote repository (that’s why we are using a DVCS after all).</p>
+
+<p>Before continuing to the <em>push</em> command, let’s talk about some naming conventions in the git world. With DVCSs such as git you can have different remote repositories which you may choose from to push your changes to. By convention, the default name for the remote repository is <em>“origin”</em>. In our case origin is the remote repository at the CodePlex server. On the other hand, each project may have several branches. Conceptually a branch is another copy of the same project where other features are developed and tested. For example imagine that at a certain stage of development you may decide to add a new feature to your project. You may create a new branch called <em>“test”</em>, develop and test the feature there, and finally merge the changes with the code at the main branch. By convention, the main branch is called <em>“master”</em>.</p>
+
+<p>When it comes to <em>push</em>, you need to know which branch of the code you want to push to which remote repository. In our simple case we want to push the <em>master</em> branch to the <em>origin</em> repository. For this purpose, right click somewhere on the Windows explorer that shows the project root folder, and select: <em>TortoiseGit &gt; Push…</em>. Make sure the name of the branches for local and remote repositories and the name of the remote repository are selected correctly, and press OK. Enter CodePlex user-name and passwords which are prompted. Now check the sources in the project’s CodePlex site to make sure the changes have been reflected there.</p>
+
+<p>How to update the local repository with the latest changes made by other team members to the remote repository? Well, there are two solutions. The one that I prefer is to use git <em>pull</em>. You can easily find this command in the TortoiseGit’s context menu. The <em>pull</em> command, preserves the history of changes made by different people and makes a final merge afterwards. The other solution is git <em>fetch</em> and <em>rebase</em>. The <em>fetch</em> command only receives the latest changes from the remote repository but does not apply them. The <em>rebase</em> command first applies the remote changes to the repository, then applies your changes. Therefore it always seems that you have made the recent changes, while it may not be true. See this <a href="http://stackoverflow.com/questions/3357122/git-pull-vs-git-fetch-git-rebase">stackoverflow question</a> for a better explanation.</p>
+
+<p>See also:  <br />
+<a href="/blog/2012/05/01/how-to-setup-git-for-windows/">How to Setup Git for Windows</a>  <br />
+<a href="/blog/2012/05/05/using-git-with-github-on-windows/">Using Git With GitHub on Windows</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2012/05/01/how-to-setup-git-for-windows/">How to Setup Git for Windows</a></h1>
     
     
@@ -117,7 +178,7 @@
 <ol>
   <li>
     <p>Download msysGit from: http://code.google.com/p/msysgit  <br />
-I prefer to use the portable version. At the time of this writing there&rsquo;s no difference between 32 bit and 64 bit versions and the filename for the portable version is: <code>PortableGit-1.7.10-preview20120409.7z</code>. Currently it seems that the development of the project has been moved to <a href="http://github.com/msysgit">GitHub</a>, but the releases are still located in Google Code.</p>
+I prefer to use the portable version. At the time of this writing there’s no difference between 32 bit and 64 bit versions and the filename for the portable version is: <code>PortableGit-1.7.10-preview20120409.7z</code>. Currently it seems that the development of the project has been moved to <a href="http://github.com/msysgit">GitHub</a>, but the releases are still located in Google Code.</p>
   </li>
   <li>
     <p>Extract the contents in a proper location. I made them into:  <br />
@@ -127,19 +188,19 @@ I prefer to use the portable version. At the time of this writing there&rsquo;s 
     <p>If you intend to use the git command-line for every git operation simply run <code>git-bash.bat</code> in the root folder of <em>msysGit</em>. This is the old lovely <em>Cygwin</em> command-line.</p>
   </li>
   <li>
-    <p>If you don&rsquo;t intend to use command-line (like me) install <em>TortoiseGit</em>. It is hosted on Google Code:  <br />
+    <p>If you don’t intend to use command-line (like me) install <em>TortoiseGit</em>. It is hosted on Google Code:  <br />
 http://code.google.com/p/tortoisegit/  <br />
 Note that it comes with different releases for 32-bit and 64-bit systems. At the time of this writing the latest version is 1.7.8.0. After installing <em>TortoiseGit</em> you may need to restart Windows, or the Windows explorer process, or none.</p>
   </li>
   <li>
-    <p>Right click somewhere on a Windows Explorer window, and from the context menu select: <em>TortoiseGit &gt; Settings</em>. There will be a message-box appearing begging for adjusting the path to <em>msysGit</em>. Click on &ldquo;Set MSysGit path&rdquo; button (If you have ever missed this window, or want to change the path to an already existing <em>msysGit</em>, simply go to: <em>TortoiseGit &gt; Settings�� the General branch</em>).  <br />
-In the field titled as <em>&ldquo;Git.exe path:&rdquo;</em> enter the path to the <em>bin</em> folder of the <em>msysGit</em> installation/copy.</p>
+    <p>Right click somewhere on a Windows Explorer window, and from the context menu select: <em>TortoiseGit &gt; Settings</em>. There will be a message-box appearing begging for adjusting the path to <em>msysGit</em>. Click on “Set MSysGit path” button (If you have ever missed this window, or want to change the path to an already existing <em>msysGit</em>, simply go to: <em>TortoiseGit &gt; Settings » the General branch</em>).  <br />
+In the field titled as <em>“Git.exe path:”</em> enter the path to the <em>bin</em> folder of the <em>msysGit</em> installation/copy.</p>
   </li>
   <li>
-    <p>You don&rsquo;t have to, but it is highly recommended that before starting any git operations you set some global settings such as your name, email, and AutoCrlf. To this aim in the Windows explorer&rsquo;s context menu go to: <em>TortoiseGit &gt; Settings�� the Git branch</em>. Fill in the fields labelled <em>Name</em> and <em>Email</em> with proper values. Then make sure that <em>AutoCrlf</em> check-box is unchecked, so that you don&rsquo;t touch every file in order to change their line-endings. Read more about this kind of problem <a href="http://code52.org/line-endings.html">here</a>, and see <a href="http://stackoverflow.com/questions/4181870/git-on-windows-what-do-the-crlf-settings-mean">here</a> to know more what AutoCrlf and SafeCrlf options do for you.</p>
+    <p>You don’t have to, but it is highly recommended that before starting any git operations you set some global settings such as your name, email, and AutoCrlf. To this aim in the Windows explorer’s context menu go to: <em>TortoiseGit &gt; Settings » the Git branch</em>. Fill in the fields labelled <em>Name</em> and <em>Email</em> with proper values. Then make sure that <em>AutoCrlf</em> check-box is unchecked, so that you don’t touch every file in order to change their line-endings. Read more about this kind of problem <a href="http://code52.org/line-endings.html">here</a>, and see <a href="http://stackoverflow.com/questions/4181870/git-on-windows-what-do-the-crlf-settings-mean">here</a> to know more what AutoCrlf and SafeCrlf options do for you.</p>
   </li>
   <li>
-    <p><strong>[UPDATED on 3 May 2012]</strong> When performing some git operations, git may complain that it cannot connect through a <em>null</em> proxy. It may happen for some versions if in git settings the value for proxy is assigned to an empty string. If this is the case for you, simply remove proxy settings in the global <code>.gitconfig</code> file. To do this, right click somewhere in Windows explorer, go to: <em>TortoiseGit &gt; Settings�� The Git Branch�� Edit Global .gitconfig button</em>. From there remove the line that assigns proxy, or the whole <code>[http]</code> section if it only contains proxy settings.</p>
+    <p><strong>[UPDATED on 3 May 2012]</strong> When performing some git operations, git may complain that it cannot connect through a <em>null</em> proxy. It may happen for some versions if in git settings the value for proxy is assigned to an empty string. If this is the case for you, simply remove proxy settings in the global <code>.gitconfig</code> file. To do this, right click somewhere in Windows explorer, go to: <em>TortoiseGit &gt; Settings » The Git Branch » Edit Global .gitconfig button</em>. From there remove the line that assigns proxy, or the whole <code>[http]</code> section if it only contains proxy settings.</p>
   </li>
 </ol>
 
@@ -189,18 +250,18 @@ http://qt.nokia.com/downloads</p>
 
 <p>At the time of this writing, the Qt libraries version was 4.7.3.</p>
 
-<p>Then I downloaded the VS-Addin, using the link at the bottom of the downloads page, titled &ldquo;Qt Visual Studio Add-in&rdquo;.</p>
+<p>Then I downloaded the VS-Addin, using the link at the bottom of the downloads page, titled “Qt Visual Studio Add-in”.</p>
 
-<p>After installing both SDK, and the VS-Addin on my system, I started Visual Studio 2010. I tried to create a sample project by selecting: File &gt; New &gt; Project&hellip; &gt; Qt4 Projects &gt; Qt Application, and specified proper values for Name and Location. After going through the Qt wizard to the end, I encountered the following error message:</p>
+<p>After installing both SDK, and the VS-Addin on my system, I started Visual Studio 2010. I tried to create a sample project by selecting: File &gt; New &gt; Project… &gt; Qt4 Projects &gt; Qt Application, and specified proper values for Name and Location. After going through the Qt wizard to the end, I encountered the following error message:</p>
 
 <pre><code>unable to find Qt Build!
 To solve this problem specify Qt Build!
 </code></pre>
 
-<p>By going to the Qt setup directory, one sees that there are Qt SDKs available for different target platforms. For example I installed Qt in &ldquo;D:\QtSDK&#8221; and in that directory I see some folders which correspond to different target platforms such as Desktop, Madde, Symbian, and others. An appropriate platform directory should contain a bin folder inside. This is true about Madde, and Symbian, but the Desktop folder is a root for subdirectories related to different Qt versions and C++ compilers. Since I wanted to develop Qt applications with Microsoft Visual C++ for the Windows Desktop platform I went to the following directory which contains the required bin folder: 
+<p>By going to the Qt setup directory, one sees that there are Qt SDKs available for different target platforms. For example I installed Qt in “D:\QtSDK&#8221; and in that directory I see some folders which correspond to different target platforms such as Desktop, Madde, Symbian, and others. An appropriate platform directory should contain a bin folder inside. This is true about Madde, and Symbian, but the Desktop folder is a root for subdirectories related to different Qt versions and C++ compilers. Since I wanted to develop Qt applications with Microsoft Visual C++ for the Windows Desktop platform I went to the following directory which contains the required bin folder: 
 D:\QtSDK\Desktop\Qt\4.7.3\msvc2008</p>
 
-<p>For the next step, I had to introduce this directory for the Qt VS-addin. From the main menu, I selected Qt &gt; Qt Options &gt; Qt Versions. I pressed the Add button, and entered &ldquo;Win 4.7.3&rdquo; in the  &ldquo;Version name&rdquo; field, and entered the above path in the &ldquo;Path&rdquo; field, and pressed OK. The path that I specified was added to the gird. Then I made sure that in the Default Qt/Win version, the version that I have just specified (i.e., Win 4.7.3) is selected. I pressed OK, and tried once more with the Qt New Project wizard. This time everything went OK, and I succeeded to create and build my first Qt Application in the VS 2010 environment.</p>
+<p>For the next step, I had to introduce this directory for the Qt VS-addin. From the main menu, I selected Qt &gt; Qt Options &gt; Qt Versions. I pressed the Add button, and entered “Win 4.7.3” in the  “Version name” field, and entered the above path in the “Path” field, and pressed OK. The path that I specified was added to the gird. Then I made sure that in the Default Qt/Win version, the version that I have just specified (i.e., Win 4.7.3) is selected. I pressed OK, and tried once more with the Qt New Project wizard. This time everything went OK, and I succeeded to create and build my first Qt Application in the VS 2010 environment.</p>
 
 <p>Note: In fact the current Qt binaries are targeted for Visual Studio 2008. I was able to use the binaries (i.e., libs and dlls) because I had also Visual Studio 2008 and the corresponding C++ compiler installed on my machine. Otherwise, I presume that I would need to recompile the sources with the VS-2010 C++ compiler.</p>
 </div>
@@ -424,7 +485,7 @@ D:\QtSDK\Desktop\Qt\4.7.3\msvc2008</p>
   </header>
 
 
-  <div class="entry-content"><p>Some classes use external data files which are located in the same directory as the one that the <code>.java</code> file is located, or somewhere nearby which can be easily addressed with a relative path. This happens a lot for me, esp. when I am running open source programs developed by someone else. As an example, imagine a class called <code>SampleClass</code> located in a directory in which there exists a text file with the name of <code>SomeFile.txt</code>. One way to have access to the file is through calling the class-loader&rsquo;s <code>getResource</code> function:</p>
+  <div class="entry-content"><p>Some classes use external data files which are located in the same directory as the one that the <code>.java</code> file is located, or somewhere nearby which can be easily addressed with a relative path. This happens a lot for me, esp. when I am running open source programs developed by someone else. As an example, imagine a class called <code>SampleClass</code> located in a directory in which there exists a text file with the name of <code>SomeFile.txt</code>. One way to have access to the file is through calling the class-loader’s <code>getResource</code> function:</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
@@ -435,12 +496,12 @@ D:\QtSDK\Desktop\Qt\4.7.3\msvc2008</p>
 <p>I tested this piece of code in <em>NetBeans</em> and it works fine. But not in <em>Intellij IDEA</em>! To solve this (annoying) problem, I needed to add the path of the source directory to <code>classpath</code>. For this purpose I did the following steps in Intellij IDEA 10.0.3 Community Edition:</p>
 
 <ol>
-  <li>Right click on the module name and select &ldquo;Open Module Settings&rdquo;</li>
-  <li>Select &ldquo;Modules&rdquo; from the leftmost pane</li>
-  <li>Select &ldquo;Dependencies&rdquo; tab</li>
-  <li>Press &ldquo;Add&hellip;&rdquo; button and select &ldquo;1 Single-Entry Module Library…&rdquo; from the popup menu</li>
-  <li>Find and select the &ldquo;src&rdquo; folder of your sources.</li>
-  <li>Under the &ldquo;Scope&rdquo; column, change the scope to &ldquo;Runtime&rdquo;</li>
+  <li>Right click on the module name and select “Open Module Settings”</li>
+  <li>Select “Modules” from the leftmost pane</li>
+  <li>Select “Dependencies” tab</li>
+  <li>Press “Add…” button and select “1 Single-Entry Module Library…” from the popup menu</li>
+  <li>Find and select the “src” folder of your sources.</li>
+  <li>Under the “Scope” column, change the scope to “Runtime”</li>
   <li>Press Apply and OK</li>
 </ol>
 </div>
@@ -544,48 +605,6 @@ D:\QtSDK\Desktop\Qt\4.7.3\msvc2008</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/03/02/code-snippet-for-trimming-strings-of-white-space-and-control-characters/">Code Snippet for Trimming Strings of White-space and Control Characters</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-03-02T00:07:00+10:00" pubdate data-updated="true">Mar 2<span>nd</span>, 2011</time>
-        
-           | <a href="/blog/2011/03/02/code-snippet-for-trimming-strings-of-white-space-and-control-characters/#disqus_thread"
-             data-disqus-identifier="http://sinairv.github.io/blog/2011/03/02/code-snippet-for-trimming-strings-of-white-space-and-control-characters/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The following method trims the given string of both white-space characters and control characters, and its rather fast!</p>
-
-<script src="https://gist.github.com/sinairv/2693951.js"></script>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -615,6 +634,10 @@ D:\QtSDK\Desktop\Qt\4.7.3\msvc2008</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/05/18/powershell-the-switch-data-type/">PowerShell: The Switch Data-type</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/01/15/handy-extensions-for-inotifypropertychanged/">Handy Extensions for INotifyPropertyChanged</a>
       </li>
     
@@ -628,10 +651,6 @@ D:\QtSDK\Desktop\Qt\4.7.3\msvc2008</p>
     
       <li class="post">
         <a href="/blog/2014/01/10/moved-my-blog-to-octopress/">Moved My Blog to Octopress</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c-number-5/">How to Make More Refactoring Friendly Data-bindings With C# 5</a>
       </li>
     
   </ul>

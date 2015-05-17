@@ -99,7 +99,7 @@
   <li><a href="#self-invoking-functions">Self-invoking functions</a></li>
   <li><a href="#theargumentsmap">The arguments map</a></li>
   <li><a href="#regular-expressions">Regular Expressions</a></li>
-  <li><a href="#the-use-strict-statement">The &lsquo;use strict&rsquo; statement</a></li>
+  <li><a href="#the-use-strict-statement">The ‘use strict’ statement</a></li>
 </ul>
 
 <p>These are lessons learned when I tried to strengthen my JavaScript skills, by learning from these <a href="/blog/2012/05/27/programming-koans-one-of-the-best-ways-to-learn-a-new-language-or-framework/">Koans</a>:</p>
@@ -111,7 +111,7 @@
 
 <p>I highly recommend learning from both of these Koans in the same order as specified above. The first one is easier to start with. While the second one is a smaller set of Koans, but gets more advanced, and contains an introduction to <a href="http://underscorejs.org/">Underscore.js</a> as well.</p>
 
-<p>I come from a C#, Java, and C++ background, so that it&rsquo;s probable that my terminology is not consistent with those used by the JavaScript community; particularly when it comes to object oriented concepts.</p>
+<p>I come from a C#, Java, and C++ background, so that it’s probable that my terminology is not consistent with those used by the JavaScript community; particularly when it comes to object oriented concepts.</p>
 
 <p>To test the code snippets here, you will need to host the JavaScript code within an html page, and open that page into your browser. A simple way is using the following template:</p>
 
@@ -321,7 +321,7 @@
 </pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">myObject</span> <span class="o">=</span> <span class="p">{</span>
 </span><span class="line">    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;John Doe&quot;</span><span class="p">,</span>
 </span><span class="line">    <span class="nx">age</span><span class="o">:</span> <span class="mi">28</span>
-</span><span class="line"><span class="p">};</span>
+</span><span class="line"><span class="p">};</span> 
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>Or properties can be added later:</p>
@@ -375,7 +375,7 @@
 <span class="line-number">5</span>
 <span class="line-number">6</span>
 <span class="line-number">7</span>
-</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">favouriteThings</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;cellar door&quot;</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="kc">true</span><span class="p">];</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">favouriteThings</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;cellar door&quot;</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="kc">true</span><span class="p">];</span> 
 </span><span class="line"><span class="c1">// array elements do not have to be of the same type</span>
 </span><span class="line"><span class="c1">// elements are referenced by [] indexer</span>
 </span><span class="line"><span class="c1">// favouriteThings[1] -&gt; 42</span>
@@ -710,7 +710,7 @@
 </span><span class="line"><span class="p">};</span>
 </span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">simpleCircle</span><span class="p">.</span><span class="nx">describe</span><span class="p">());</span>
 </span><span class="line"><span class="c1">// This circle has a radius of: 10</span>
-</span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">colouredCircle</span><span class="p">.</span><span class="nx">describe</span><span class="p">());</span>
+</span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">colouredCircle</span><span class="p">.</span><span class="nx">describe</span><span class="p">());</span> 
 </span><span class="line"><span class="c1">// This circle has a radius of: 5</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
@@ -864,7 +864,7 @@
 <span class="line-number">6</span>
 <span class="line-number">7</span>
 </pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">invokee</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">message</span> <span class="p">){</span>
-</span><span class="line">    <span class="k">return</span> <span class="k">this</span> <span class="o">+</span> <span class="nx">message</span><span class="p">;</span>
+</span><span class="line">    <span class="k">return</span> <span class="k">this</span> <span class="o">+</span> <span class="nx">message</span><span class="p">;</span>    
 </span><span class="line"><span class="p">};</span>
 </span><span class="line">
 </span><span class="line"><span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">invokee</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="s2">&quot;I am this! &quot;</span><span class="p">,</span> <span class="s2">&quot;Where did it come from?&quot;</span><span class="p">);</span>
@@ -887,7 +887,7 @@
 </span><span class="line">    <span class="nx">handle</span><span class="o">:</span> <span class="s1">&#39;bob&#39;</span><span class="p">,</span>
 </span><span class="line">    <span class="nx">intro</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
 </span><span class="line">        <span class="k">return</span> <span class="s2">&quot;Hello, my name is &quot;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">handle</span><span class="p">;</span>
-</span><span class="line">    <span class="p">}</span>
+</span><span class="line">    <span class="p">}</span> 
 </span><span class="line"><span class="p">}</span>
 </span><span class="line">
 </span><span class="line"><span class="c1">// calling a function with &#39;call&#39; lets us assign &#39;this&#39; explicitly</span>
@@ -1047,7 +1047,7 @@
 </span><span class="line"><span class="k">while</span><span class="p">(</span><span class="nx">results</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
 </span><span class="line">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;index: &quot;</span> <span class="o">+</span> <span class="nx">results</span><span class="p">.</span><span class="nx">index</span> <span class="o">+</span> <span class="s2">&quot; found [&quot;</span> <span class="o">+</span> <span class="nx">results</span> <span class="o">+</span> <span class="s2">&quot;]&quot;</span><span class="p">);</span>
 </span><span class="line">    <span class="nx">results</span> <span class="o">=</span> <span class="nx">regexp</span><span class="p">.</span><span class="nx">exec</span><span class="p">(</span><span class="nx">input</span><span class="p">);</span>
-</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="p">}</span> 
 </span><span class="line"><span class="c1">// index: 3 found [ABA,A,A]</span>
 </span><span class="line"><span class="c1">// index: 10 found [aba,a,a]</span>
 </span><span class="line"><span class="c1">// index: 17 found [aca,a,a] </span>
@@ -1109,14 +1109,14 @@
 </span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span> <span class="c1">// 1. OOOPSS 2. oobs 3. oocs!</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<h3 id="the-use-strict-statement">The &lsquo;use strict&rsquo; statement</h3>
+<h3 id="the-use-strict-statement">The ‘use strict’ statement</h3>
 
-<p>TL;DR. It prevents some bad usages of the language. Here&rsquo;s a <a href="http://ejohn.org/blog/ecmascript-5-strict-mode-json-and-more/">summary</a>.</p>
+<p>TL;DR. It prevents some bad usages of the language. Here’s a <a href="http://ejohn.org/blog/ecmascript-5-strict-mode-json-and-more/">summary</a>.</p>
 
 <p>This is the <a href="http://stackoverflow.com/questions/1335851/what-does-use-strict-do-in-javascript-and-what-is-the-reasoning-behind-it">Source</a>.</p>
 
 <blockquote>
-  <p>Strict Mode is a new feature in ECMAScript 5 that allows you to place a program, or a function, in a &ldquo;strict&rdquo; operating context. This strict context prevents certain actions from being taken and throws more exceptions.</p>
+  <p>Strict Mode is a new feature in ECMAScript 5 that allows you to place a program, or a function, in a “strict” operating context. This strict context prevents certain actions from being taken and throws more exceptions.</p>
 </blockquote>
 
 <p>And:</p>
@@ -1124,7 +1124,7 @@
 <blockquote>
   <p>Strict mode helps out in a couple ways:
 * It catches some common coding bloopers, throwing exceptions.
-* It prevents, or throws errors, when relatively &ldquo;unsafe&rdquo; actions are taken (such as gaining access to the global object).
+* It prevents, or throws errors, when relatively “unsafe” actions are taken (such as gaining access to the global object).
 * It disables features that are confusing or poorly thought out.</p>
 </blockquote>
 
@@ -1199,6 +1199,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/05/18/powershell-the-switch-data-type/">PowerShell: The Switch Data-type</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/01/15/handy-extensions-for-inotifypropertychanged/">Handy Extensions for INotifyPropertyChanged</a>
       </li>
     
@@ -1212,10 +1216,6 @@
     
       <li class="post">
         <a href="/blog/2014/01/10/moved-my-blog-to-octopress/">Moved My Blog to Octopress</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c-number-5/">How to Make More Refactoring Friendly Data-bindings With C# 5</a>
       </li>
     
   </ul>

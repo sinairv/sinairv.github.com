@@ -9,7 +9,7 @@
   <meta name="author" content="Sina Iravanian">
 
   
-  <meta name="description" content="I recently created a library that contains some handy extensions for INotifyPropertyChanged interface (aka INPC). To start using the library, add the &hellip;">
+  <meta name="description" content="The switch data type is used to control whether a switch (as in arguments or options passed to a function or command) is provided for the function/ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -86,6 +86,169 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2015/05/18/powershell-the-switch-data-type/">PowerShell: The Switch Data-type</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-05-18T00:45:18+10:00" pubdate data-updated="true">May 18<span>th</span>, 2015</time>
+        
+           | <a href="/blog/2015/05/18/powershell-the-switch-data-type/#disqus_thread"
+             data-disqus-identifier="http://sinairv.github.io/blog/2015/05/18/powershell-the-switch-data-type/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The <code>switch</code> data type is used to control whether a switch (as in arguments or options passed to a function or command) is provided for the function/command or not. Suppose that there is a function called <code>Switch-Demo</code> that can accept <code>-Force</code> and <code>-Quiet</code> switches. These switches just work as toggles. What we care about them is whether they exist or not. There are no pieces of data accompanying them. The PowerShell <code>switch</code> data-type suits this purpose:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+</pre></td><td class="code"><pre><code class="powershell"><span class="line"><span class="k">function</span> <span class="k">Switch</span><span class="n">-Demo</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">param</span><span class="p">(</span>
+</span><span class="line">        <span class="no">[switch]</span><span class="nv">$Force</span><span class="p">,</span>
+</span><span class="line">        <span class="no">[switch]</span><span class="nv">$Quiet</span>
+</span><span class="line">    <span class="p">)</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">if</span><span class="p">(</span><span class="nv">$Force</span><span class="p">.</span><span class="n">IsPresent</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">        <span class="nb">Write-Host</span> <span class="s2">&quot;Forcefully doing the task&quot;</span>
+</span><span class="line">    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class="line">        <span class="nb">Write-Host</span> <span class="s2">&quot;Force is NOT present&quot;</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">if</span><span class="p">(</span><span class="nv">$Quiet</span><span class="p">.</span><span class="n">IsPresent</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">        <span class="nb">Write-Host</span> <span class="s2">&quot;Quietly doing the task&quot;</span>
+</span><span class="line">    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class="line">        <span class="nb">Write-Host</span> <span class="s2">&quot;Quiet is NOT present&quot;</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="c"># invocation:</span>
+</span><span class="line"><span class="k">Switch</span><span class="n">-Demo</span> <span class="n">-Quiet</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>In the invocation of the above example, the <code>Quiet</code> switch is present while the <code>Force</code> switch is not.</p>
+
+<p>As shown above, the <code>.IsPresent</code> property of the <code>switch</code> variable can be used to check whether the particular switch has been passed to the function/command.</p>
+
+<p><strong>Default values</strong> for the parameters of type <code>switch</code> can be specified by Boolean values. To make a switch present by default the <code>[switch]::Present</code> constant can also be used, which is equivalent to <code>$true</code>. As of now I’m not aware of any <code>[switch]::</code> constants that is equivalent to <code>$false</code>. Example:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class="powershell"><span class="line"><span class="k">function</span> <span class="k">Switch</span><span class="n">-Demo</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">param</span><span class="p">(</span>
+</span><span class="line">        <span class="no">[switch]</span><span class="nv">$Force</span><span class="p">=</span><span class="no">[switch]</span><span class="err">::</span><span class="n">Present</span><span class="p">,</span>
+</span><span class="line">        <span class="no">[switch]</span><span class="nv">$Quiet</span><span class="p">=</span><span class="nv">$false</span><span class="p">,</span>
+</span><span class="line">        <span class="no">[switch]</span><span class="nv">$WhatIf</span><span class="p">=</span><span class="nv">$true</span>
+</span><span class="line">    <span class="p">)</span>
+</span><span class="line">
+</span><span class="line">    <span class="c"># ...</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>This means that the invoker does not need to specify <code>-Force</code> switch (it is by default considered to be provided). What if the invoker doesn’t like the <code>-Force</code> switch to be present? To override that the invoker can specify Boolean constants as values for the switch:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="powershell"><span class="line"><span class="k">Switch</span><span class="n">-Demo</span> <span class="n">-Force</span><span class="err">:</span><span class="nv">$false</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>I personally don’t find this way of overriding switch values quite intuitive. I’d rather name <code>switch</code> variables in a way that their default value is <code>$false</code>, or when not possible provide another switch with a negative name compared to the other one that overrides its functionality. Example:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+</pre></td><td class="code"><pre><code class="powershell"><span class="line"><span class="k">function</span> <span class="k">Switch</span><span class="n">-Demo</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">param</span><span class="p">(</span>
+</span><span class="line">        <span class="no">[switch]</span><span class="nv">$Quiet</span><span class="p">=</span><span class="no">[switch]</span><span class="err">::</span><span class="n">Present</span><span class="p">,</span>
+</span><span class="line">        <span class="no">[switch]</span><span class="nv">$Verbose</span>
+</span><span class="line">    <span class="p">)</span>
+</span><span class="line">
+</span><span class="line">    <span class="c"># Override the values</span>
+</span><span class="line">    <span class="k">if</span><span class="p">(</span><span class="nv">$Verbose</span><span class="p">.</span><span class="n">IsPresent</span><span class="p">){</span>
+</span><span class="line">        <span class="nv">$Quiet</span> <span class="p">=</span> <span class="nv">$false</span><span class="err">;</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="c"># Check the values</span>
+</span><span class="line">    <span class="k">if</span><span class="p">(</span><span class="nv">$Quiet</span><span class="p">.</span><span class="n">IsPresent</span><span class="p">){</span>
+</span><span class="line">        <span class="nb">Write-Host</span> <span class="s2">&quot;Quietly doing the job.&quot;</span>
+</span><span class="line">    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class="line">        <span class="nb">Write-Host</span> <span class="s2">&quot;Verbosely doing the job.&quot;</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="c"># invocations:</span>
+</span><span class="line"><span class="k">Switch</span><span class="n">-Demo</span> <span class="n">-Quiet</span>
+</span><span class="line"><span class="k">Switch</span><span class="n">-Demo</span> <span class="n">-Verbose</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2015/01/15/handy-extensions-for-inotifypropertychanged/">Handy Extensions for INotifyPropertyChanged</a></h1>
     
     
@@ -102,7 +265,7 @@
   
 
 
-<time datetime="2015-01-15T00:22:39+10:00" pubdate data-updated="true">Jan 15<span>th</span>, 2015</time>
+<time datetime="2015-01-15T01:22:39+11:00" pubdate data-updated="true">Jan 15<span>th</span>, 2015</time>
         
            | <a href="/blog/2015/01/15/handy-extensions-for-inotifypropertychanged/#disqus_thread"
              data-disqus-identifier="http://sinairv.github.io/blog/2015/01/15/handy-extensions-for-inotifypropertychanged/">Comments</a>
@@ -277,7 +440,7 @@
   
 
 
-<time datetime="2014-12-01T18:18:48+10:00" pubdate data-updated="true">Dec 1<span>st</span>, 2014</time>
+<time datetime="2014-12-01T19:18:48+11:00" pubdate data-updated="true">Dec 1<span>st</span>, 2014</time>
         
            | <a href="/blog/2014/12/01/syntax-highlighter-for-windows-forms-rich-text-box/#disqus_thread"
              data-disqus-identifier="http://sinairv.github.io/blog/2014/12/01/syntax-highlighter-for-windows-forms-rich-text-box/">Comments</a>
@@ -287,7 +450,7 @@
   </header>
 
 
-  <div class="entry-content"><p>Years ago I created a tool called <a href="http://code4public.codeplex.com">Code4Public</a> to convert source code into HTML called. I was using this tool to put nice code snippets in the blog I used to maintain at that time. The tool is able to get the code, apply syntax highlighting to it based on the syntax of the language selected, and then create HTML based on the theme selected (e.g., MSDN theme). I didn&rsquo;t assign more time on making the tool better and better, as better ways of doing the same task were emerging, and also other by-products of the tool were becoming more interesting at the time; e.g., <a href="https://github.com/sinairv/YAXLib">YAXLib</a> was a little by-product of Code4Public used to store settings, themes and language syntaxes in XML files.</p>
+  <div class="entry-content"><p>Years ago I created a tool called <a href="http://code4public.codeplex.com">Code4Public</a> to convert source code into HTML called. I was using this tool to put nice code snippets in the blog I used to maintain at that time. The tool is able to get the code, apply syntax highlighting to it based on the syntax of the language selected, and then create HTML based on the theme selected (e.g., MSDN theme). I didn’t assign more time on making the tool better and better, as better ways of doing the same task were emerging, and also other by-products of the tool were becoming more interesting at the time; e.g., <a href="https://github.com/sinairv/YAXLib">YAXLib</a> was a little by-product of Code4Public used to store settings, themes and language syntaxes in XML files.</p>
 
 <p>This post is to introduce yet another by-product of Code4Public: <a href="https://github.com/sinairv/WinFormsSyntaxHighlighter">WinFormsSyntaxHighlighter</a>. This library enables syntax highlighting on a <code>RichTextBox</code> based on patterns that the developer defines.</p>
 
@@ -297,7 +460,7 @@
 </pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="kt">var</span> <span class="n">syntaxHighlighter</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SyntaxHighlighter</span><span class="p">(</span><span class="n">theRichTextBox</span><span class="p">);</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p>That&rsquo;s it. Now I need to define patterns and colors. For example I want to see <code>for</code>, <code>foreach</code>, <code>int</code> and <code>var</code> in blue:</p>
+<p>That’s it. Now I need to define patterns and colors. For example I want to see <code>for</code>, <code>foreach</code>, <code>int</code> and <code>var</code> in blue:</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
@@ -305,7 +468,7 @@
 <span class="line-number">4</span>
 </pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="c1">// 1st set of keywords; I&#39;d like to see them in Blue</span>
 </span><span class="line"><span class="n">syntaxHighlighter</span><span class="p">.</span><span class="n">AddPattern</span><span class="p">(</span>
-</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="s">&quot;for&quot;</span><span class="p">,</span> <span class="s">&quot;foreach&quot;</span><span class="p">,</span> <span class="s">&quot;int&quot;</span><span class="p">,</span> <span class="s">&quot;var&quot;</span><span class="p">),</span>
+</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="s">&quot;for&quot;</span><span class="p">,</span> <span class="s">&quot;foreach&quot;</span><span class="p">,</span> <span class="s">&quot;int&quot;</span><span class="p">,</span> <span class="s">&quot;var&quot;</span><span class="p">),</span> 
 </span><span class="line">    <span class="k">new</span> <span class="nf">SyntaxStyle</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="n">Blue</span><span class="p">));</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
@@ -317,7 +480,7 @@
 <span class="line-number">4</span>
 </pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="c1">// 2nd set of keywords; I&#39;d like to see them in bold Navy, and they must be case insensitive</span>
 </span><span class="line"><span class="n">syntaxHighlighter</span><span class="p">.</span><span class="n">AddPattern</span><span class="p">(</span>
-</span><span class="line">    <span class="k">new</span> <span class="nf">CaseInsensitivePatternDefinition</span><span class="p">(</span><span class="s">&quot;public&quot;</span><span class="p">,</span> <span class="s">&quot;partial&quot;</span><span class="p">,</span> <span class="s">&quot;class&quot;</span><span class="p">,</span> <span class="s">&quot;void&quot;</span><span class="p">),</span>
+</span><span class="line">    <span class="k">new</span> <span class="nf">CaseInsensitivePatternDefinition</span><span class="p">(</span><span class="s">&quot;public&quot;</span><span class="p">,</span> <span class="s">&quot;partial&quot;</span><span class="p">,</span> <span class="s">&quot;class&quot;</span><span class="p">,</span> <span class="s">&quot;void&quot;</span><span class="p">),</span> 
 </span><span class="line">    <span class="k">new</span> <span class="nf">SyntaxStyle</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="n">Navy</span><span class="p">,</span> <span class="n">bold</span><span class="p">:</span> <span class="k">true</span><span class="p">,</span> <span class="n">italic</span><span class="p">:</span> <span class="k">false</span><span class="p">));</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
@@ -329,7 +492,7 @@
 <span class="line-number">4</span>
 </pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="c1">// numbers; I&#39;d like to see them in purple</span>
 </span><span class="line"><span class="n">syntaxHighlighter</span><span class="p">.</span><span class="n">AddPattern</span><span class="p">(</span>
-</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="s">@&quot;\d+\.\d+|\d+&quot;</span><span class="p">),</span>
+</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="s">@&quot;\d+\.\d+|\d+&quot;</span><span class="p">),</span> 
 </span><span class="line">    <span class="k">new</span> <span class="nf">SyntaxStyle</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="n">Purple</span><span class="p">));</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
@@ -386,48 +549,48 @@
 </span><span class="line">
 </span><span class="line"><span class="c1">// multi-line comments; I&#39;d like to see them in dark-sea-green and italic</span>
 </span><span class="line"><span class="n">syntaxHighlighter</span><span class="p">.</span><span class="n">AddPattern</span><span class="p">(</span>
-</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="k">new</span> <span class="n">Regex</span><span class="p">(</span><span class="s">@&quot;/\*(.|[\r\n])*?\*/&quot;</span><span class="p">,</span>
-</span><span class="line">        <span class="n">RegexOptions</span><span class="p">.</span><span class="n">Multiline</span> <span class="p">|</span> <span class="n">RegexOptions</span><span class="p">.</span><span class="n">Compiled</span><span class="p">)),</span>
+</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="k">new</span> <span class="n">Regex</span><span class="p">(</span><span class="s">@&quot;/\*(.|[\r\n])*?\*/&quot;</span><span class="p">,</span> 
+</span><span class="line">        <span class="n">RegexOptions</span><span class="p">.</span><span class="n">Multiline</span> <span class="p">|</span> <span class="n">RegexOptions</span><span class="p">.</span><span class="n">Compiled</span><span class="p">)),</span> 
 </span><span class="line">    <span class="k">new</span> <span class="nf">SyntaxStyle</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="n">DarkSeaGreen</span><span class="p">,</span> <span class="n">bold</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">italic</span><span class="p">:</span> <span class="k">true</span><span class="p">));</span>
 </span><span class="line">
 </span><span class="line"><span class="c1">// singlie-line comments; I&#39;d like to see them in Green and italic</span>
 </span><span class="line"><span class="n">syntaxHighlighter</span><span class="p">.</span><span class="n">AddPattern</span><span class="p">(</span>
-</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="k">new</span> <span class="n">Regex</span><span class="p">(</span><span class="s">@&quot;//.*?$&quot;</span><span class="p">,</span>
-</span><span class="line">        <span class="n">RegexOptions</span><span class="p">.</span><span class="n">Multiline</span> <span class="p">|</span> <span class="n">RegexOptions</span><span class="p">.</span><span class="n">Compiled</span><span class="p">)),</span>
+</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="k">new</span> <span class="n">Regex</span><span class="p">(</span><span class="s">@&quot;//.*?$&quot;</span><span class="p">,</span> 
+</span><span class="line">        <span class="n">RegexOptions</span><span class="p">.</span><span class="n">Multiline</span> <span class="p">|</span> <span class="n">RegexOptions</span><span class="p">.</span><span class="n">Compiled</span><span class="p">)),</span> 
 </span><span class="line">    <span class="k">new</span> <span class="nf">SyntaxStyle</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="n">Green</span><span class="p">,</span> <span class="n">bold</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">italic</span><span class="p">:</span> <span class="k">true</span><span class="p">));</span>
 </span><span class="line">
 </span><span class="line"><span class="c1">// double quote strings; I&#39;d like to see them in Red</span>
 </span><span class="line"><span class="n">syntaxHighlighter</span><span class="p">.</span><span class="n">AddPattern</span><span class="p">(</span>
-</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="s">@&quot;\&quot;&quot;([^&quot;&quot;]|\&quot;&quot;\&quot;&quot;)+\&quot;&quot;&quot;</span><span class="p">),</span>
+</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="s">@&quot;\&quot;&quot;([^&quot;&quot;]|\&quot;&quot;\&quot;&quot;)+\&quot;&quot;&quot;</span><span class="p">),</span> 
 </span><span class="line">    <span class="k">new</span> <span class="nf">SyntaxStyle</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="n">Red</span><span class="p">));</span>
 </span><span class="line">
 </span><span class="line"><span class="c1">// single quote strings; I&#39;d like to see them in Salmon </span>
 </span><span class="line"><span class="n">syntaxHighlighter</span><span class="p">.</span><span class="n">AddPattern</span><span class="p">(</span>
-</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="s">@&quot;\&#39;([^&#39;]|\&#39;\&#39;)+\&#39;&quot;</span><span class="p">),</span>
+</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="s">@&quot;\&#39;([^&#39;]|\&#39;\&#39;)+\&#39;&quot;</span><span class="p">),</span> 
 </span><span class="line">    <span class="k">new</span> <span class="nf">SyntaxStyle</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="n">Salmon</span><span class="p">));</span>
-</span><span class="line">
+</span><span class="line">            
 </span><span class="line"><span class="c1">// 1st set of keywords; I&#39;d like to see them in Blue</span>
 </span><span class="line"><span class="n">syntaxHighlighter</span><span class="p">.</span><span class="n">AddPattern</span><span class="p">(</span>
-</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="s">&quot;for&quot;</span><span class="p">,</span> <span class="s">&quot;foreach&quot;</span><span class="p">,</span> <span class="s">&quot;int&quot;</span><span class="p">,</span> <span class="s">&quot;var&quot;</span><span class="p">),</span>
+</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="s">&quot;for&quot;</span><span class="p">,</span> <span class="s">&quot;foreach&quot;</span><span class="p">,</span> <span class="s">&quot;int&quot;</span><span class="p">,</span> <span class="s">&quot;var&quot;</span><span class="p">),</span> 
 </span><span class="line">    <span class="k">new</span> <span class="nf">SyntaxStyle</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="n">Blue</span><span class="p">));</span>
-</span><span class="line">
+</span><span class="line">            
 </span><span class="line"><span class="c1">// 2nd set of keywords; I&#39;d like to see them in bold Navy, and they must be case insensitive</span>
 </span><span class="line"><span class="n">syntaxHighlighter</span><span class="p">.</span><span class="n">AddPattern</span><span class="p">(</span>
-</span><span class="line">    <span class="k">new</span> <span class="nf">CaseInsensitivePatternDefinition</span><span class="p">(</span><span class="s">&quot;public&quot;</span><span class="p">,</span> <span class="s">&quot;partial&quot;</span><span class="p">,</span> <span class="s">&quot;class&quot;</span><span class="p">,</span> <span class="s">&quot;void&quot;</span><span class="p">),</span>
+</span><span class="line">    <span class="k">new</span> <span class="nf">CaseInsensitivePatternDefinition</span><span class="p">(</span><span class="s">&quot;public&quot;</span><span class="p">,</span> <span class="s">&quot;partial&quot;</span><span class="p">,</span> <span class="s">&quot;class&quot;</span><span class="p">,</span> <span class="s">&quot;void&quot;</span><span class="p">),</span> 
 </span><span class="line">    <span class="k">new</span> <span class="nf">SyntaxStyle</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="n">Navy</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span> <span class="k">false</span><span class="p">));</span>
 </span><span class="line">
 </span><span class="line"><span class="c1">// numbers; I&#39;d like to see them in purple</span>
 </span><span class="line"><span class="n">syntaxHighlighter</span><span class="p">.</span><span class="n">AddPattern</span><span class="p">(</span>
-</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="s">@&quot;\d+\.\d+|\d+&quot;</span><span class="p">),</span>
+</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="s">@&quot;\d+\.\d+|\d+&quot;</span><span class="p">),</span> 
 </span><span class="line">    <span class="k">new</span> <span class="nf">SyntaxStyle</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="n">Purple</span><span class="p">));</span>
 </span><span class="line">
 </span><span class="line"><span class="c1">// operators; I&#39;d like to see them in Brown</span>
 </span><span class="line"><span class="n">syntaxHighlighter</span><span class="p">.</span><span class="n">AddPattern</span><span class="p">(</span>
-</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="s">&quot;+&quot;</span><span class="p">,</span> <span class="s">&quot;-&quot;</span><span class="p">,</span> <span class="s">&quot;&gt;&quot;</span><span class="p">,</span> <span class="s">&quot;&lt;&quot;</span><span class="p">,</span> <span class="s">&quot;&amp;&quot;</span><span class="p">,</span> <span class="s">&quot;|&quot;</span><span class="p">),</span>
+</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="s">&quot;+&quot;</span><span class="p">,</span> <span class="s">&quot;-&quot;</span><span class="p">,</span> <span class="s">&quot;&gt;&quot;</span><span class="p">,</span> <span class="s">&quot;&lt;&quot;</span><span class="p">,</span> <span class="s">&quot;&amp;&quot;</span><span class="p">,</span> <span class="s">&quot;|&quot;</span><span class="p">),</span> 
 </span><span class="line">    <span class="k">new</span> <span class="nf">SyntaxStyle</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="n">Brown</span><span class="p">));</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p>Please also note that, nobody can model a whole language like C# or Java with regular expressions, because these languages are not regular. So this tool is by no means a complete and error-free way of modeling languages. Use this just for simple key-word matching or pattern matching and coloring them as you like; but don&rsquo;t expect too much.</p>
+<p>Please also note that, nobody can model a whole language like C# or Java with regular expressions, because these languages are not regular. So this tool is by no means a complete and error-free way of modeling languages. Use this just for simple key-word matching or pattern matching and coloring them as you like; but don’t expect too much.</p>
 
 <p><a href="https://github.com/sinairv/WinFormsSyntaxHighlighter">WinFormsSyntaxHighlighter</a> is hosted in GitHub and is licensed under MIT.</p>
 </div>
@@ -472,7 +635,7 @@
 
 <ol>
   <li>Downloaded the latest version of SDK which is bundled with Eclipse. Although many answers suggested to upgrade the SDK to the latest version through SDK Manager, and I did so; it did not solve my problem. So I downloaded a fresh copy of latest SDK bundled with eclipse, and then updated Android Studio settings to refer to this new SDK. This trick solved the build problem.</li>
-  <li>When running the emulator I got a very descriptive error message (#NOT) that says: <em>PANIC: could not open Nexus</em>, in which <em>Nexus</em> is the name of my emulator. For this problem what I found on stackoverflow was quite helpful, for example see <a href="http://stackoverflow.com/questions/15103782/avd-panic-could-not-open-not-a-path-issue">this thread</a>. The trick is to create an environment variable called <code>ANDROID_SDK_HOME</code> and set it to the path of the folder containing <code>.android</code> folder. If you don&rsquo;t know where is your <code>.android</code> folder, AVD Manager will give you the path in its main screen right above the list of existing virtual devices. For my case it was in <code>D:\Documents</code>. After setting the environment variable I had to restart both AVD Manager and Android Studio.</li>
+  <li>When running the emulator I got a very descriptive error message (#NOT) that says: <em>PANIC: could not open Nexus</em>, in which <em>Nexus</em> is the name of my emulator. For this problem what I found on stackoverflow was quite helpful, for example see <a href="http://stackoverflow.com/questions/15103782/avd-panic-could-not-open-not-a-path-issue">this thread</a>. The trick is to create an environment variable called <code>ANDROID_SDK_HOME</code> and set it to the path of the folder containing <code>.android</code> folder. If you don’t know where is your <code>.android</code> folder, AVD Manager will give you the path in its main screen right above the list of existing virtual devices. For my case it was in <code>D:\Documents</code>. After setting the environment variable I had to restart both AVD Manager and Android Studio.</li>
 </ol>
 </div>
   
@@ -502,7 +665,7 @@
   
 
 
-<time datetime="2014-01-10T01:22:25+10:00" pubdate data-updated="true">Jan 10<span>th</span>, 2014</time>
+<time datetime="2014-01-10T02:22:25+11:00" pubdate data-updated="true">Jan 10<span>th</span>, 2014</time>
         
            | <a href="/blog/2014/01/10/moved-my-blog-to-octopress/#disqus_thread"
              data-disqus-identifier="http://sinairv.github.io/blog/2014/01/10/moved-my-blog-to-octopress/">Comments</a>
@@ -512,9 +675,9 @@
   </header>
 
 
-  <div class="entry-content"><p>I&rsquo;ve moved my blog from <a href="http://sinairv.wordpress.com">Wordpress</a> to my <a href="http://sinairv.github.io">homepage domain</a>. It makes use of <a href="http://octopress.org/">Octopress</a>, which is based on <a href="http://jekyllrb.com/">Jekyll</a>, and is a static site generator. The blog is hosted on GitHub pages, and is <a href="https://github.com/sinairv/sinairv.github.com">open source</a>. </p>
+  <div class="entry-content"><p>I’ve moved my blog from <a href="http://sinairv.wordpress.com">Wordpress</a> to my <a href="http://sinairv.github.io">homepage domain</a>. It makes use of <a href="http://octopress.org/">Octopress</a>, which is based on <a href="http://jekyllrb.com/">Jekyll</a>, and is a static site generator. The blog is hosted on GitHub pages, and is <a href="https://github.com/sinairv/sinairv.github.com">open source</a>. </p>
 
-<p>The great benefit of this stack of tools is that I can easily create and edit my posts in <a href="http://en.wikipedia.org/wiki/Markdown">Markdown</a>, re-generate the blog <a href="http://octopress.org/docs/blogging/">through command line</a>, and make use of <a href="http://rake.rubyforge.org/">Rake</a> (Ruby&rsquo;s make tools) to perform various tasks ranging from post creation to deployment to GitHub pages. It&rsquo;s awesome.</p>
+<p>The great benefit of this stack of tools is that I can easily create and edit my posts in <a href="http://en.wikipedia.org/wiki/Markdown">Markdown</a>, re-generate the blog <a href="http://octopress.org/docs/blogging/">through command line</a>, and make use of <a href="http://rake.rubyforge.org/">Rake</a> (Ruby’s make tools) to perform various tasks ranging from post creation to deployment to GitHub pages. It’s awesome.</p>
 </div>
   
   
@@ -543,7 +706,7 @@
   
 
 
-<time datetime="2012-11-01T19:46:29+10:00" pubdate data-updated="true">Nov 1<span>st</span>, 2012</time>
+<time datetime="2012-11-01T20:46:29+11:00" pubdate data-updated="true">Nov 1<span>st</span>, 2012</time>
         
            | <a href="/blog/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c-number-5/#disqus_thread"
              data-disqus-identifier="http://sinairv.github.io/blog/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c-number-5/">Comments</a>
@@ -609,7 +772,7 @@
 </span><span class="line">    <span class="k">private</span> <span class="kt">string</span> <span class="n">_name</span><span class="p">;</span>
 </span><span class="line">    <span class="k">private</span> <span class="kt">double</span> <span class="n">_age</span><span class="p">;</span>
 </span><span class="line">
-</span><span class="line">    <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span>
+</span><span class="line">    <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span> 
 </span><span class="line">    <span class="p">{</span>
 </span><span class="line">        <span class="k">get</span>
 </span><span class="line">        <span class="p">{</span>
@@ -626,7 +789,7 @@
 </span><span class="line">        <span class="p">}</span>
 </span><span class="line">    <span class="p">}</span>
 </span><span class="line">
-</span><span class="line">    <span class="k">public</span> <span class="kt">double</span> <span class="n">Age</span>
+</span><span class="line">    <span class="k">public</span> <span class="kt">double</span> <span class="n">Age</span> 
 </span><span class="line">    <span class="p">{</span>
 </span><span class="line">        <span class="k">get</span>
 </span><span class="line">        <span class="p">{</span>
@@ -655,9 +818,9 @@
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p>See how the setters pass the property name in a <code>string</code>. This is not nice, because whenever we change the property name through refactoring tools, the string value remains untouched and we have to manually change them as well (if we are lucky enough to get notified before run-time). Anyway we had to tolerate them for years&hellip;</p>
+<p>See how the setters pass the property name in a <code>string</code>. This is not nice, because whenever we change the property name through refactoring tools, the string value remains untouched and we have to manually change them as well (if we are lucky enough to get notified before run-time). Anyway we had to tolerate them for years…</p>
 
-<p>C# 5 comes with a nice feature, which is addition of two attributes <code>[CallerFilePath]</code> and <code>[CallerMemberName]</code> in the <code>System.Runtime.CompilerServices</code> namespace. If you decorate an <strong>optional</strong> string parameter of a method with one of these attributes, then the value of that parameter will be replaced with the caller&rsquo;s file name or the caller&rsquo;s member name at runtime, if no explicit value is passed for the optional parameter. They come very handy in logging scenarios, but we can use the latter for making our data-binding code nicer. This is how:</p>
+<p>C# 5 comes with a nice feature, which is addition of two attributes <code>[CallerFilePath]</code> and <code>[CallerMemberName]</code> in the <code>System.Runtime.CompilerServices</code> namespace. If you decorate an <strong>optional</strong> string parameter of a method with one of these attributes, then the value of that parameter will be replaced with the caller’s file name or the caller’s member name at runtime, if no explicit value is passed for the optional parameter. They come very handy in logging scenarios, but we can use the latter for making our data-binding code nicer. This is how:</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
@@ -713,7 +876,7 @@
 </span><span class="line">    <span class="k">private</span> <span class="kt">string</span> <span class="n">_name</span><span class="p">;</span>
 </span><span class="line">    <span class="k">private</span> <span class="kt">double</span> <span class="n">_age</span><span class="p">;</span>
 </span><span class="line">
-</span><span class="line">    <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span>
+</span><span class="line">    <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span> 
 </span><span class="line">    <span class="p">{</span>
 </span><span class="line">        <span class="k">get</span>
 </span><span class="line">        <span class="p">{</span>
@@ -730,7 +893,7 @@
 </span><span class="line">        <span class="p">}</span>
 </span><span class="line">    <span class="p">}</span>
 </span><span class="line">
-</span><span class="line">    <span class="k">public</span> <span class="kt">double</span> <span class="n">Age</span>
+</span><span class="line">    <span class="k">public</span> <span class="kt">double</span> <span class="n">Age</span> 
 </span><span class="line">    <span class="p">{</span>
 </span><span class="line">        <span class="k">get</span>
 </span><span class="line">        <span class="p">{</span>
@@ -862,11 +1025,11 @@
 
   <div class="entry-content"><p>Recently I was involved with enabling validation for a Windows Forms form containing several pages shown through a tree view. There were one user control defined for each page, therefore whenever a node in tree-view got activated, an instance of that user-control were shown. The user-controls did not have a common user-defined parent base-class or interface. The author of the existing code had defined a <code>Save</code> method in each control separately which performed updating data with values entered in the forms.</p>
 
-<p>First, I changed all <code>void Save()</code> methods to <code>bool Save()</code>, and performed the validation stuff in each control separately. Then in the parent form, I created an array of <code>Control</code>s, so that I could loop through them, and call their <code>Save</code> method. But wait, <code>Save</code> is not inherited from any base-class or interface, so there&rsquo;s no polymorphism at hand. How can I call them through references of type <code>Control</code>?</p>
+<p>First, I changed all <code>void Save()</code> methods to <code>bool Save()</code>, and performed the validation stuff in each control separately. Then in the parent form, I created an array of <code>Control</code>s, so that I could loop through them, and call their <code>Save</code> method. But wait, <code>Save</code> is not inherited from any base-class or interface, so there’s no polymorphism at hand. How can I call them through references of type <code>Control</code>?</p>
 
-<p>Well honestly, the best solution would be adding a new interface to the project, say <code>ISavableControl</code> or something, add the <code>Save</code> method to it, and let the controls implement that interface. But I wanted to make a quick fix to the problem without adding new files and types to the code. Here C#&rsquo;s <code>dynamic</code> comes into action.</p>
+<p>Well honestly, the best solution would be adding a new interface to the project, say <code>ISavableControl</code> or something, add the <code>Save</code> method to it, and let the controls implement that interface. But I wanted to make a quick fix to the problem without adding new files and types to the code. Here C#’s <code>dynamic</code> comes into action.</p>
 
-<p>Using <code>dynamic</code> keyword, one postpones binding methods, properties, and fields to run-time. In our scenario we know that the user-controls each have a method called <code>Save</code>, which is not derived from a parent. Without <code>dynamic</code>, I would need to have a reference explicitly from each user control&rsquo;s type, and I would have to call them one by one, as in:</p>
+<p>Using <code>dynamic</code> keyword, one postpones binding methods, properties, and fields to run-time. In our scenario we know that the user-controls each have a method called <code>Save</code>, which is not derived from a parent. Without <code>dynamic</code>, I would need to have a reference explicitly from each user control’s type, and I would have to call them one by one, as in:</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
@@ -945,9 +1108,9 @@
   </header>
 
 
-  <div class="entry-content"><p>Based on Wikipedia, originally a <a href="http://en.wikipedia.org/wiki/K%C5%8Dan">Koan in Zen-practice</a> is a paradoxical question that provokes doubt and tests a student&rsquo;s progress. On the other hand, programming Koans are a set of failing unit-tests, for which the learner is required to fix the code or fill the required fields with proper values in order to make each test pass. Probably one of the earliest and most popular Koans were <a href="http://rubykoans.com/">Ruby Koans</a>. Now there are several Koans implemented for different languages and frameworks. Search the word &ldquo;Koan&rdquo; in <a href="https://github.com/">GitHub</a> or <a href="https://bitbucket.org/">BitBucket</a> and you will find the gems.</p>
+  <div class="entry-content"><p>Based on Wikipedia, originally a <a href="http://en.wikipedia.org/wiki/K%C5%8Dan">Koan in Zen-practice</a> is a paradoxical question that provokes doubt and tests a student’s progress. On the other hand, programming Koans are a set of failing unit-tests, for which the learner is required to fix the code or fill the required fields with proper values in order to make each test pass. Probably one of the earliest and most popular Koans were <a href="http://rubykoans.com/">Ruby Koans</a>. Now there are several Koans implemented for different languages and frameworks. Search the word “Koan” in <a href="https://github.com/">GitHub</a> or <a href="https://bitbucket.org/">BitBucket</a> and you will find the gems.</p>
 
-<p>My first experience of Koans was <a href="https://github.com/rally25rs/MoqKoans">MoqKoans</a>, a great set of Koans for learning <a href="http://code.google.com/p/moq/">Moq</a>, a mocking library for the .NET framework. That was really a wonderful learning experience. These days I&rsquo;m trying to strengthen my web programming skills, and as one of the early steps I decided to remaster JavaScript. I found two JavaScript Koans on GitHub; both of them are great. However, I suggest that one should start with the <a href="https://github.com/liammclennan/JavaScript-Koans">JavaScript Koans by Liam McLennan</a>, which is easier to begin with. after finishing this step, I highly recommend proceeding with the<a href="https://github.com/mrdavidlaing/javascript-koans">JavaScript Koans by David Laing</a>. This one is a smaller set of Koans, but gets more advanced, and contains an introduction to <a href="http://underscorejs.org/">Underscore.js</a> as well.</p>
+<p>My first experience of Koans was <a href="https://github.com/rally25rs/MoqKoans">MoqKoans</a>, a great set of Koans for learning <a href="http://code.google.com/p/moq/">Moq</a>, a mocking library for the .NET framework. That was really a wonderful learning experience. These days I’m trying to strengthen my web programming skills, and as one of the early steps I decided to remaster JavaScript. I found two JavaScript Koans on GitHub; both of them are great. However, I suggest that one should start with the <a href="https://github.com/liammclennan/JavaScript-Koans">JavaScript Koans by Liam McLennan</a>, which is easier to begin with. after finishing this step, I highly recommend proceeding with the<a href="https://github.com/mrdavidlaing/javascript-koans">JavaScript Koans by David Laing</a>. This one is a smaller set of Koans, but gets more advanced, and contains an introduction to <a href="http://underscorejs.org/">Underscore.js</a> as well.</p>
 
 <p>Experience the joy of learning with Koans, and having all the reds going green in the end.</p>
 </div>
@@ -988,116 +1151,55 @@
   </header>
 
 
-  <div class="entry-content"><p>If you&rsquo;re new to Git and don&rsquo;t know how to install Git on Windows, read my earlier post: <a href="/blog/2012/05/01/how-to-setup-git-for-windows/">How to Setup Git for Windows</a></p>
+  <div class="entry-content"><p>If you’re new to Git and don’t know how to install Git on Windows, read my earlier post: <a href="/blog/2012/05/01/how-to-setup-git-for-windows/">How to Setup Git for Windows</a></p>
 
 <p>In an earlier <a href="/blog/2012/05/02/using-git-with-codeplex-on-windows/">post</a>, I described the preliminary steps required to work with git on CodePlex. However using git with<a href="https://github.com/">GitHub</a> requires more initial steps.</p>
 
-<p><strong>Generating SSH Keys.</strong> Before proceeding to Git operations we need to create SSH public and private keys, and register the public key on the GitHub site. In order to generate the keys we can use PuTTY Key Generator, which is already bundled with TortoiseGit fortunately. This program is called &ldquo;Puttygen&rdquo; and can be found in start-menu under TortoiseGit:</p>
+<p><strong>Generating SSH Keys.</strong> Before proceeding to Git operations we need to create SSH public and private keys, and register the public key on the GitHub site. In order to generate the keys we can use PuTTY Key Generator, which is already bundled with TortoiseGit fortunately. This program is called “Puttygen” and can be found in start-menu under TortoiseGit:</p>
 
 <p><img src="/images/posts/tortoisegit-puttygen.png" alt="puttygen under TortoiseGit in Windows start-menu" /></p>
 
-<p>After running Puttygen you need to press &ldquo;Generate&rdquo;, and make some crazy mouse movements in the spotted area to provide some random data for the program (wow, what a brilliant idea). When finished you will have the public key generated. It is recommended that you provide a passphrase so that you would have a more secure private key. After that save your public and private keys using the 2 save buttons near the bottom of the window. But these are not all that you need to save! The public key format that GitHub and some other applications require you to provide is not the one that this program has saved for you. The topmost field which is labelled &ldquo;Public key for passing into OpenSSH authorized_keys file&rdquo; is the one that GitHub needs. It should be in one line (i.e., with no line-breaks), therefore we would refer to it later as the one-line-public-key. Please save the contents of this field and the next &ldquo;key fingerprint&rdquo; field somewhere for future references.</p>
+<p>After running Puttygen you need to press “Generate”, and make some crazy mouse movements in the spotted area to provide some random data for the program (wow, what a brilliant idea). When finished you will have the public key generated. It is recommended that you provide a passphrase so that you would have a more secure private key. After that save your public and private keys using the 2 save buttons near the bottom of the window. But these are not all that you need to save! The public key format that GitHub and some other applications require you to provide is not the one that this program has saved for you. The topmost field which is labelled “Public key for passing into OpenSSH authorized_keys file” is the one that GitHub needs. It should be in one line (i.e., with no line-breaks), therefore we would refer to it later as the one-line-public-key. Please save the contents of this field and the next “key fingerprint” field somewhere for future references.</p>
 
 <p><img src="/images/posts/puttygenfields.png" alt="Puttygen fields" /></p>
 
 <p><strong>Registering SSH Keys in GitHub.</strong> Browse to GitHub, and go to your Account Seetings, and select SSH Keystherein. Press the Add SSH key button on the right. Provide a name for the key (I chose TortoiseGit), and paste the one-line-public-key in the Key field. Press Add Key. You may be prompted for your GitHub account password next. When finished, GitHub adds this key to its list of keys and provides a fingerprint. Make sure this fingerprint matches the key fingerprint that Puttygen created for you.</p>
 
-<p><strong>Creating a Repository in GitHub.</strong> Browse to the GitHub page and press the &ldquo;Create a New Repo&rdquo; button at the top of the page.</p>
+<p><strong>Creating a Repository in GitHub.</strong> Browse to the GitHub page and press the “Create a New Repo” button at the top of the page.</p>
 
 <p><img src="/images/posts/githubnewrepo.png" alt="GitHub Create New Repo" /></p>
 
-<p>In the new form that appears, enter desired values for your project&rsquo;s name and description. Currently there&rsquo;s an option to add a README file or an appropriate <code>.gitignore</code> file to the repository. While making use of these options are recommended, in this tutorial I intend to start from a completely empty repository; therefore I unchecked those options. When finished press the &ldquo;Create repository&rdquo; button. With these steps I created a project called &ldquo;PdfRenamer&rdquo;.</p>
+<p>In the new form that appears, enter desired values for your project’s name and description. Currently there’s an option to add a README file or an appropriate <code>.gitignore</code> file to the repository. While making use of these options are recommended, in this tutorial I intend to start from a completely empty repository; therefore I unchecked those options. When finished press the “Create repository” button. With these steps I created a project called “PdfRenamer”.</p>
 
-<p><strong>Setting up TortoiseGit for the new project.</strong> After creating the repository, GitHub introduces some helpful basic commands to start working with the repository. We don&rsquo;t intend to use the command-line, however this page contains useful information such as user-name and email with which GitHub recognizes you, and the git repository address, as highlighted below:</p>
+<p><strong>Setting up TortoiseGit for the new project.</strong> After creating the repository, GitHub introduces some helpful basic commands to start working with the repository. We don’t intend to use the command-line, however this page contains useful information such as user-name and email with which GitHub recognizes you, and the git repository address, as highlighted below:</p>
 
 <p><img src="/images/posts/githubnewprojectaddressandusername1.png" alt="GitHub New Project Address And User-Name" /></p>
 
 <p>We need to do the following steps next:</p>
 
 <ol>
-  <li>Right click somewhere in the Windows explorer window, and from the context-menu go to: TortoiseGit &gt; Settings�� Git branch; and fill the user-name and email fields with the ones suggested by GitHub, and press OK.</li>
+  <li>Right click somewhere in the Windows explorer window, and from the context-menu go to: TortoiseGit &gt; Settings » Git branch; and fill the user-name and email fields with the ones suggested by GitHub, and press OK.</li>
   <li>Create a folder preferably with the same name as your project (in my case PdfRenamer), and browse into it with Windows explorer.</li>
-  <li>Right click somewhere in the folder and from the context menu select &ldquo;Git Create repository here&hellip;&rdquo;. A window pops-up. Make sure that &ldquo;Make it Bare&rdquo; is not checked; and press OK.</li>
-  <li>Right click somewhere in the folder and from the context menu go to: TortoiseGit &gt; Settings�� Git branch�� Remote sub-branch. In the &ldquo;Remote&rdquo; field enter &ldquo;origin&rdquo;, in the URL field enter the git repository address which was highlighted above and is in the form of <code>git@github.com:[username]/[projectname].git</code>; and finally in front of &ldquo;putty key&rdquo; provide the address to the SSH private key which we saved earlier in this tutorial, and has the <code>.ppk</code> extension. When finished press the &ldquo;Add New/Save&rdquo; button. After that origin should be added to the list of Remotes.</li>
+  <li>Right click somewhere in the folder and from the context menu select “Git Create repository here…”. A window pops-up. Make sure that “Make it Bare” is not checked; and press OK.</li>
+  <li>Right click somewhere in the folder and from the context menu go to: TortoiseGit &gt; Settings » Git branch » Remote sub-branch. In the “Remote” field enter “origin”, in the URL field enter the git repository address which was highlighted above and is in the form of <code>git@github.com:[username]/[projectname].git</code>; and finally in front of “putty key” provide the address to the SSH private key which we saved earlier in this tutorial, and has the <code>.ppk</code> extension. When finished press the “Add New/Save” button. After that origin should be added to the list of Remotes.</li>
 </ol>
 
 <p><img src="/images/posts/tortoisegitremotesetting.png" alt="TortoiseGit Remote Setting" /></p>
 
 <p><strong>Add files to the project structure.</strong> With git, adding a file to a project structure and having it reflected in the remote repository requires 3 operations: add, commit, and push. The first 2 operations are required for adding the file to the local repository, and the third one reflects the changes to the remote repository. This last operation can be postponed to a later time when you want to push a bundle of changes all at once.</p>
 
-<p>To start, create a <code>Readme.txt</code> file in the root folder. Right click on the newly added file, from the context menu select: TortoiseGit &gt; add; check the files to be added, and press OK. This was the first operation: add. In the new window press &ldquo;commit &hellip;&rdquo;, provide a meaningful commit message in the new window, and press OK when finished. This was the second operation: commit which reflects the changes to your local repository, the one in your hard-drive. You can push the changes in the next window if you want, however it&rsquo;s not a good idea to push every local commit to the remote repository (that&rsquo;s why we are using a DVCS after all).</p>
+<p>To start, create a <code>Readme.txt</code> file in the root folder. Right click on the newly added file, from the context menu select: TortoiseGit &gt; add; check the files to be added, and press OK. This was the first operation: add. In the new window press “commit …”, provide a meaningful commit message in the new window, and press OK when finished. This was the second operation: commit which reflects the changes to your local repository, the one in your hard-drive. You can push the changes in the next window if you want, however it’s not a good idea to push every local commit to the remote repository (that’s why we are using a DVCS after all).</p>
 
-<p>Before continuing to the push command, let&rsquo;s talk about some naming conventions in the Git world. With DVCSs such as git you can have different remote repositories which you may choose from to push your changes to. By convention, the default name for the remote repository is &ldquo;origin&rdquo;. In our case origin is the remote repository at the GitHub server, for which we manually added the link before. On the other hand, each project may have several branches. Conceptually a branch is another copy of the same project where other features are developed and tested. For example imagine that at a certain stage of development you may decide to add a new feature to your project. You may create a new branch called &ldquo;test&rdquo;, develop and test the feature there, and finally merge the changes with the code at the main branch. By convention, the main branch is called &ldquo;master&rdquo;.</p>
+<p>Before continuing to the push command, let’s talk about some naming conventions in the Git world. With DVCSs such as git you can have different remote repositories which you may choose from to push your changes to. By convention, the default name for the remote repository is “origin”. In our case origin is the remote repository at the GitHub server, for which we manually added the link before. On the other hand, each project may have several branches. Conceptually a branch is another copy of the same project where other features are developed and tested. For example imagine that at a certain stage of development you may decide to add a new feature to your project. You may create a new branch called “test”, develop and test the feature there, and finally merge the changes with the code at the main branch. By convention, the main branch is called “master”.</p>
 
-<p>When it comes to push, you need to know which branch of the code you want to push to which remote repository. In our simple case we want to push the master branch to the origin repository. For this purpose, right click somewhere on the Windows explorer that shows the project root folder, and select: TortoiseGit &gt; Push&hellip;. Make sure the name of the branches for local and remote repositories and the name of the remote repository are selected correctly. More importantly make sure that the &ldquo;Autoload Putty Key&rdquo; check-box is also checked, and press OK. Next, the TortoiseGit will prompt you for the private-key passphrase. Note that this is not your GitHub account password, this is the passphrase that you chose when creating the private key with Puttygen. After finishing the push operation, check the sources in the project&rsquo;s GitHub page to make sure the changes have been reflected there. Note that after the first push, the PuTTY authentication agent (Pageant) gets run in the background, so that you won&rsquo;t need to enter the passphrase any time you want to push to GitHub.</p>
+<p>When it comes to push, you need to know which branch of the code you want to push to which remote repository. In our simple case we want to push the master branch to the origin repository. For this purpose, right click somewhere on the Windows explorer that shows the project root folder, and select: TortoiseGit &gt; Push…. Make sure the name of the branches for local and remote repositories and the name of the remote repository are selected correctly. More importantly make sure that the “Autoload Putty Key” check-box is also checked, and press OK. Next, the TortoiseGit will prompt you for the private-key passphrase. Note that this is not your GitHub account password, this is the passphrase that you chose when creating the private key with Puttygen. After finishing the push operation, check the sources in the project’s GitHub page to make sure the changes have been reflected there. Note that after the first push, the PuTTY authentication agent (Pageant) gets run in the background, so that you won’t need to enter the passphrase any time you want to push to GitHub.</p>
 
-<p><strong>Updating the local repository with the latest changes made by other team members to the remote repository.</strong> Well, there are two solutions. The one that I prefer is using git pull. You can easily find this command in the TortoiseGit&rsquo;s context menu. The pull command, preserves the history of changes made by different people and makes a final merge afterwards. The other solution is git fetch and rebase. The fetch command only receives the latest changes from the remote repository but does not apply them. The rebase command first applies the remote changes to the repository, then applies your changes. Therefore it always seems that you have made the recent changes, while it may not be true. See this <a href="http://stackoverflow.com/questions/3357122/git-pull-vs-git-fetch-git-rebase">stackoverflow question</a> for a better explanation.</p>
+<p><strong>Updating the local repository with the latest changes made by other team members to the remote repository.</strong> Well, there are two solutions. The one that I prefer is using git pull. You can easily find this command in the TortoiseGit’s context menu. The pull command, preserves the history of changes made by different people and makes a final merge afterwards. The other solution is git fetch and rebase. The fetch command only receives the latest changes from the remote repository but does not apply them. The rebase command first applies the remote changes to the repository, then applies your changes. Therefore it always seems that you have made the recent changes, while it may not be true. See this <a href="http://stackoverflow.com/questions/3357122/git-pull-vs-git-fetch-git-rebase">stackoverflow question</a> for a better explanation.</p>
 
 <p><strong>Note:</strong> At any stage, if git complains about connecting through a null proxy, then you will have to remove proxy settings from the global <code>.gitconfig</code> file. For more information see tip 7 on my earlier <a href="/blog/2012/05/01/how-to-setup-git-for-windows/">post</a></p>
 
 <p>You may also want to see my earlier <a href="/blog/2012/05/02/using-git-with-codeplex-on-windows/">post</a> that describes using git with <a href="http://www.codeplex.com/">CodePlex</a> on Windows.</p>
 
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/05/02/using-git-with-codeplex-on-windows/">Using Git With CodePlex on Windows</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-02T10:50:41+10:00" pubdate data-updated="true">May 2<span>nd</span>, 2012</time>
-        
-           | <a href="/blog/2012/05/02/using-git-with-codeplex-on-windows/#disqus_thread"
-             data-disqus-identifier="http://sinairv.github.io/blog/2012/05/02/using-git-with-codeplex-on-windows/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>If you&rsquo;re new to Git and don&rsquo;t know how to install Git on Windows, read my earlier post: <a href="/blog/2012/05/01/how-to-setup-git-for-windows/">How to Setup Git for Windows</a></p>
-
-<p>On 21 March 2012, the <a href="http://www.codeplex.com/">CodePlex</a> team <a href="http://blogs.msdn.com/b/codeplex/archive/2012/03/21/git-commit-m-codeplex-now-supports-git.aspx">announced</a> their support for Git.</p>
-
-<p>Creating a project with Git as source control is very easy in CodePlex and is done with a few clicks at no time. Suppose the project name is <code>CodePlexGitTest</code>. In order to make any changes to the project structure you need to clone the project first. This way you will have your own copy of the repository on your hard disk. To do this, the path to the git repository is needed. This can be obtained from the <em>Source Code</em> tab of the project&rsquo;s CodePlex page, by pressing the <em>Git</em> link/button under <em>&ldquo;Source Control&rdquo;</em> section on the right pane, as seen below:</p>
-
-<p><img src="/images/posts/codeplexgit.png" alt="CodePlex Git settings" /></p>
-
-<p>In order to clone the project, move to the folder that is going to host the project directory. Right click somewhere in the Windows explorer window and choose <em>Git Clone</em>. In the opened window set the <em>&ldquo;Url&rdquo;</em> field to the <em>&ldquo;Clone URL&rdquo;</em> value above, leave other options unchanged, and press OK. After prompting for your CodePlex user-name and password, it should now create the folder structure for your empty repository (<strong>Note</strong>: in case that git complains about connecting through a <em>null</em> proxy, then you will have to remove proxy settings from the global <code>.gitconfig</code> file. For more information see tip 7 on my earlier <a href="/blog/2012/05/01/how-to-setup-git-for-windows/">post</a>).</p>
-
-<p>Now that you have the currently empty project structure at your hard-drive, it&rsquo;s time to add some files to it. Using git, adding a file to a project structure and having it reflected in the remote repository requires 3 operations: <em>add</em>, <em>commit</em>, and <em>push</em>. The first 2 operations are required for adding the file to the local repository, and the third one reflects the changes to the remote repository. This last operation can be postponed to a later time when you want to push a bundle of changes all at once.</p>
-
-<p>To start, create a <code>Readme.txt</code> file in the root folder. Right click on the newly added file, from the context menu select: <em>TortoiseGit &gt; add</em>; check the files to be added, and press OK. This was the first operation: <em>add</em>. In the new window press <em>&ldquo;commit &hellip;&rdquo;</em>, provide a meaningful commit message in the new window, and press OK when finished. This was the second operation: <em>commit</em> which reflects the changes to your local repository, the one in your hard-drive. You can push the changes in the next window if you want, however it&rsquo;s not a good idea to push every local commit to the remote repository (that&rsquo;s why we are using a DVCS after all).</p>
-
-<p>Before continuing to the <em>push</em> command, let&rsquo;s talk about some naming conventions in the git world. With DVCSs such as git you can have different remote repositories which you may choose from to push your changes to. By convention, the default name for the remote repository is <em>&ldquo;origin&rdquo;</em>. In our case origin is the remote repository at the CodePlex server. On the other hand, each project may have several branches. Conceptually a branch is another copy of the same project where other features are developed and tested. For example imagine that at a certain stage of development you may decide to add a new feature to your project. You may create a new branch called <em>&ldquo;test&rdquo;</em>, develop and test the feature there, and finally merge the changes with the code at the main branch. By convention, the main branch is called <em>&ldquo;master&rdquo;</em>.</p>
-
-<p>When it comes to <em>push</em>, you need to know which branch of the code you want to push to which remote repository. In our simple case we want to push the <em>master</em> branch to the <em>origin</em> repository. For this purpose, right click somewhere on the Windows explorer that shows the project root folder, and select: <em>TortoiseGit &gt; Push&hellip;</em>. Make sure the name of the branches for local and remote repositories and the name of the remote repository are selected correctly, and press OK. Enter CodePlex user-name and passwords which are prompted. Now check the sources in the project&rsquo;s CodePlex site to make sure the changes have been reflected there.</p>
-
-<p>How to update the local repository with the latest changes made by other team members to the remote repository? Well, there are two solutions. The one that I prefer is to use git <em>pull</em>. You can easily find this command in the TortoiseGit&rsquo;s context menu. The <em>pull</em> command, preserves the history of changes made by different people and makes a final merge afterwards. The other solution is git <em>fetch</em> and <em>rebase</em>. The <em>fetch</em> command only receives the latest changes from the remote repository but does not apply them. The <em>rebase</em> command first applies the remote changes to the repository, then applies your changes. Therefore it always seems that you have made the recent changes, while it may not be true. See this <a href="http://stackoverflow.com/questions/3357122/git-pull-vs-git-fetch-git-rebase">stackoverflow question</a> for a better explanation.</p>
-
-<p>See also:  <br />
-<a href="/blog/2012/05/01/how-to-setup-git-for-windows/">How to Setup Git for Windows</a>  <br />
-<a href="/blog/2012/05/05/using-git-with-github-on-windows/">Using Git With GitHub on Windows</a></p>
 </div>
   
   
@@ -1132,6 +1234,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/05/18/powershell-the-switch-data-type/">PowerShell: The Switch Data-type</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/01/15/handy-extensions-for-inotifypropertychanged/">Handy Extensions for INotifyPropertyChanged</a>
       </li>
     
@@ -1145,10 +1251,6 @@
     
       <li class="post">
         <a href="/blog/2014/01/10/moved-my-blog-to-octopress/">Moved My Blog to Octopress</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c-number-5/">How to Make More Refactoring Friendly Data-bindings With C# 5</a>
       </li>
     
   </ul>

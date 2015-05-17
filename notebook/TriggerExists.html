@@ -133,17 +133,17 @@ IF EXISTS ( &hellip;">
 </span><span class="line">   <span class="n">PRINT</span> <span class="s1">&#39;Exists&#39;</span>
 </span><span class="line">   <span class="c1">-- DROP TRIGGER reminder</span>
 </span><span class="line"><span class="k">GO</span>
-</span><span class="line">
+</span><span class="line"> 
 </span><span class="line"><span class="c1">-- Method 2</span>
 </span><span class="line"><span class="c1">-- Use the name with or without the database owner (such as dbo, etc)</span>
 </span><span class="line"><span class="n">IF</span> <span class="n">OBJECT_ID</span> <span class="p">(</span><span class="s1">&#39;dbo.MyTrigger&#39;</span><span class="p">,</span><span class="s1">&#39;TR&#39;</span><span class="p">)</span> <span class="k">IS</span> <span class="k">NOT</span> <span class="k">NULL</span>
 </span><span class="line">   <span class="n">PRINT</span> <span class="s1">&#39;Exists&#39;</span>
-</span><span class="line">
+</span><span class="line"> 
 </span><span class="line"><span class="c1">-- or </span>
-</span><span class="line">
+</span><span class="line"> 
 </span><span class="line"><span class="n">IF</span> <span class="n">OBJECT_ID</span> <span class="p">(</span><span class="s1">&#39;MyTrigger&#39;</span><span class="p">,</span><span class="s1">&#39;TR&#39;</span><span class="p">)</span> <span class="k">IS</span> <span class="k">NOT</span> <span class="k">NULL</span>
 </span><span class="line">   <span class="n">PRINT</span> <span class="s1">&#39;Exists&#39;</span>
-</span><span class="line">
+</span><span class="line"> 
 </span><span class="line"><span class="k">GO</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
@@ -205,6 +205,10 @@ IF EXISTS ( &hellip;">
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/05/18/powershell-the-switch-data-type/">PowerShell: The Switch Data-type</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/01/15/handy-extensions-for-inotifypropertychanged/">Handy Extensions for INotifyPropertyChanged</a>
       </li>
     
@@ -218,10 +222,6 @@ IF EXISTS ( &hellip;">
     
       <li class="post">
         <a href="/blog/2014/01/10/moved-my-blog-to-octopress/">Moved My Blog to Octopress</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c-number-5/">How to Make More Refactoring Friendly Data-bindings With C# 5</a>
       </li>
     
   </ul>

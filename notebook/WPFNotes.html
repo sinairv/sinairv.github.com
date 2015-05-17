@@ -100,7 +100,7 @@
 <p><em>Target class</em>: any <code>FrameworkElement</code> (e.g., <code>TextBox</code>) <br />
 <em>Target property</em>: any dependency property (DP) (e.g., <code>TextBox.Text</code>) <br />
 <code>Binding</code> Properties: 
-* <code>Path</code>: source object&rsquo;s <em>property</em>
+* <code>Path</code>: source object’s <em>property</em>
 * <code>XPath</code> ( <strong>TODO</strong> ), 
 * <code>Source</code>: source <em>object</em>. This is required, but can be implicitly concluded
 * <code>Mode</code>: if not specified, the element chooses the default (e.g., <code>TextBlock</code> -&gt; <code>OneWay</code> whereas <code>TextBox</code> -&gt; <code>TwoWay</code>)
@@ -262,9 +262,9 @@
 </span><span class="line">    <span class="k">private</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">OnPersonNameChanged</span><span class="p">(</span>
 </span><span class="line">        <span class="n">DependencyObject</span> <span class="n">o</span><span class="p">,</span> <span class="n">DependencyPropertyChangedEventArgs</span> <span class="n">e</span><span class="p">)</span>
 </span><span class="line">    <span class="p">{</span>
-</span><span class="line">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;[{2}] Changed from {0} to {1}&quot;</span><span class="p">,</span>
-</span><span class="line">            <span class="n">e</span><span class="p">.</span><span class="n">OldValue</span> <span class="p">??</span> <span class="s">&quot;null&quot;</span><span class="p">,</span>
-</span><span class="line">            <span class="n">e</span><span class="p">.</span><span class="n">NewValue</span> <span class="p">??</span> <span class="s">&quot;null&quot;</span><span class="p">,</span>
+</span><span class="line">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;[{2}] Changed from {0} to {1}&quot;</span><span class="p">,</span> 
+</span><span class="line">            <span class="n">e</span><span class="p">.</span><span class="n">OldValue</span> <span class="p">??</span> <span class="s">&quot;null&quot;</span><span class="p">,</span> 
+</span><span class="line">            <span class="n">e</span><span class="p">.</span><span class="n">NewValue</span> <span class="p">??</span> <span class="s">&quot;null&quot;</span><span class="p">,</span> 
 </span><span class="line">            <span class="n">e</span><span class="p">.</span><span class="n">Property</span><span class="p">.</span><span class="n">Name</span><span class="p">);</span>
 </span><span class="line">    <span class="p">}</span>
 </span><span class="line">
@@ -344,6 +344,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/05/18/powershell-the-switch-data-type/">PowerShell: The Switch Data-type</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/01/15/handy-extensions-for-inotifypropertychanged/">Handy Extensions for INotifyPropertyChanged</a>
       </li>
     
@@ -357,10 +361,6 @@
     
       <li class="post">
         <a href="/blog/2014/01/10/moved-my-blog-to-octopress/">Moved My Blog to Octopress</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c-number-5/">How to Make More Refactoring Friendly Data-bindings With C# 5</a>
       </li>
     
   </ul>

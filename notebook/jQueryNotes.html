@@ -118,7 +118,7 @@ $(document).ready(function { // code here will execute after DOM is ready
 
 <p><strong><code>ready</code> vs <code>window.onload</code></strong>: The ready event occurs after the HTML document has been loaded, while the onload event occurs later, when all content (e.g. images) also has been loaded.</p>
 
-<p>The onload event is a standard event in the DOM, while the ready event is specific to jQuery. The purpose of the ready event is that it should occur as early as possible after the document has loaded, so that code that adds funcionality to the elements in the page doesn&rsquo;t have to wait for all content to load [<a href="http://stackoverflow.com/a/3698214/836432">+</a>].	</p>
+<p>The onload event is a standard event in the DOM, while the ready event is specific to jQuery. The purpose of the ready event is that it should occur as early as possible after the document has loaded, so that code that adds funcionality to the elements in the page doesn’t have to wait for all content to load [<a href="http://stackoverflow.com/a/3698214/836432">+</a>].	</p>
 
 <h3 id="attribute-selectors">Attribute selectors</h3>
 <p>Taken from [<a href="http://www.slideshare.net/apnerve/jquery-essentials-selectors">+</a>]: Selecting an <code>input</code> element which has a <code>name</code> attribute with value of <code>funny</code>:</p>
@@ -134,7 +134,7 @@ $(document).ready(function { // code here will execute after DOM is ready
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <h3 id="each">Each</h3>
-<p>jQuery&rsquo;s each method</p>
+<p>jQuery’s each method</p>
 
 <p>jQuery provides a generic each-function to iterate over properties of objects, as well as elements of arrays:</p>
 
@@ -165,7 +165,7 @@ $(document).ready(function { // code here will execute after DOM is ready
 </span><span class="line"><span class="nx">iter</span><span class="p">(</span><span class="nx">arr</span><span class="p">);</span>
 </span><span class="line">
 </span><span class="line"><span class="kd">var</span> <span class="nx">o</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="nx">value</span><span class="o">:</span> <span class="s2">&quot;Doe&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="o">:</span> <span class="mi">127</span><span class="p">,</span>
-</span><span class="line">  <span class="nx">doSth</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Sth&quot;</span><span class="p">);</span> <span class="p">}</span>
+</span><span class="line">  <span class="nx">doSth</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Sth&quot;</span><span class="p">);</span> <span class="p">}</span> 
 </span><span class="line"><span class="p">};</span>
 </span><span class="line"><span class="nx">iter</span><span class="p">(</span><span class="nx">o</span><span class="p">);</span>
 </span><span class="line">
@@ -254,7 +254,7 @@ $("prev next:last-child"); // last element of a parent,
 <pre><code>$("div:has(p)") // selects all `div`s which have `p`s inside
 </code></pre>
 
-<p>There&rsquo;s a <code>hover</code> event in jQuery which seems to be fired on both <code>mouseenter</code> and <code>mouseleave</code>, therefore one must have a same code for the handler.</p>
+<p>There’s a <code>hover</code> event in jQuery which seems to be fired on both <code>mouseenter</code> and <code>mouseleave</code>, therefore one must have a same code for the handler.</p>
 
 <p>For <code>fadeIn</code> and <code>fadeOut</code> and other animations which might happen sequentally, one can stop previous animations whith <code>.stop</code> function:</p>
 
@@ -262,7 +262,7 @@ $("prev next:last-child"); // last element of a parent,
 $("#sth).fadeOut(500);
 </code></pre>
 
-<p>One can chin stop and next functions; however they don&rsquo;t seem to lead to same results. Therefore I recommend them in separate statements as above. See this fiddler for an example: http://jsfiddle.net/sinairv/SEwfG/29/</p>
+<p>One can chin stop and next functions; however they don’t seem to lead to same results. Therefore I recommend them in separate statements as above. See this fiddler for an example: http://jsfiddle.net/sinairv/SEwfG/29/</p>
 
 <p><code>PrependTo</code> adds some text or html at the beginning of an element, and returns the thing which is being prepended [<a href="http://api.jquery.com/prependTo/">+</a>]:</p>
 
@@ -283,7 +283,7 @@ Description: Merge the contents of two or more objects together into the first o
 
 <p>Multiple handlers for a single event:</p>
 
- 	$(&ldquo;#datarows&rdquo;).on(&ldquo;click&rdquo;, &ldquo;.drow&rdquo;, function() {
+ 	$(“#datarows”).on(“click”, “.drow”, function() {
 <pre><code>    alert($(this).text());                    
 });
 
@@ -337,7 +337,7 @@ $("#datarows").on("click", ".drow", function() {
   <p>the event is handled by the ever-present body element after it bubbles to there.</p>
 </blockquote>
 
-<p>Example: Cancel a link&rsquo;s default action using the preventDefault method.</p>
+<p>Example: Cancel a link’s default action using the preventDefault method.</p>
 
 <pre><code>$("body").on("click", "a", function(event){
   event.preventDefault();
@@ -352,7 +352,7 @@ $("#datarows").on("click", ".drow", function() {
 
 <p><code>fadeout</code>: Hide the matched elements by fading them to transparent.</p>
 
-<p>Check for a check-box&rsquo;s <code>checked</code> property not its attribute 
+<p>Check for a check-box’s <code>checked</code> property not its attribute 
 [<a href="http://jsfiddle.net/johnpapa/kPL8w/light/">+</a>]:</p>
 
 <pre><code>$("#chk").prop('checked');
@@ -376,15 +376,15 @@ Tip: The <code>&lt;legend&gt;</code> tag defines a caption for the <code>&lt;fie
 
 <h4 id="name-vs-id"><code>name</code> vs <code>id</code></h4>
 <p>See here [<a href="http://stackoverflow.com/q/1397592/836432">+</a>]: 
-The name is used when sending data in a form submission. Different controls respond differently. For example, you may have several radio buttons with different ids, but the same name. When submitted, there is just the one value in the response - the radio button you selected. Of course, there&rsquo;s more to it than that, but it will definitely get you thinking in the right direction.</p>
+The name is used when sending data in a form submission. Different controls respond differently. For example, you may have several radio buttons with different ids, but the same name. When submitted, there is just the one value in the response - the radio button you selected. Of course, there’s more to it than that, but it will definitely get you thinking in the right direction.</p>
 
-<p>Use name attributes for <code>&lt;form&gt;</code> elements, as that&rsquo;s the identifier used in the POST or GET call that happens on form submission.</p>
+<p>Use name attributes for <code>&lt;form&gt;</code> elements, as that’s the identifier used in the POST or GET call that happens on form submission.</p>
 
-<p>Use id attributes whenever you need to address a particular element with CSS or JavaScript. It&rsquo;s possible to look up elements by name, too, but it&rsquo;s more efficient to look them up by ID.</p>
+<p>Use id attributes whenever you need to address a particular element with CSS or JavaScript. It’s possible to look up elements by name, too, but it’s more efficient to look them up by ID.</p>
 
-<h4 id="labels-for-attribute-httpwwww3schoolscomtagsattlabelforasp">Label&rsquo;s <code>for</code> attribute [<a href="http://www.w3schools.com/tags/att_label_for.asp">+</a>]</h4>
+<h4 id="labels-for-attribute-httpwwww3schoolscomtagsattlabelforasp">Label’s <code>for</code> attribute [<a href="http://www.w3schools.com/tags/att_label_for.asp">+</a>]</h4>
 
-<h4 id="spans-title-attribute-makes-a-tooltip-for-that-span">Span&rsquo;s <code>title</code> attribute, makes a tooltip for that span</h4>
+<h4 id="spans-title-attribute-makes-a-tooltip-for-that-span">Span’s <code>title</code> attribute, makes a tooltip for that span</h4>
 
   
     <footer>
@@ -434,6 +434,10 @@ The name is used when sending data in a form submission. Different controls resp
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/05/18/powershell-the-switch-data-type/">PowerShell: The Switch Data-type</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/01/15/handy-extensions-for-inotifypropertychanged/">Handy Extensions for INotifyPropertyChanged</a>
       </li>
     
@@ -447,10 +451,6 @@ The name is used when sending data in a form submission. Different controls resp
     
       <li class="post">
         <a href="/blog/2014/01/10/moved-my-blog-to-octopress/">Moved My Blog to Octopress</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c-number-5/">How to Make More Refactoring Friendly Data-bindings With C# 5</a>
       </li>
     
   </ul>

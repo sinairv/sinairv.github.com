@@ -142,7 +142,7 @@
 
 <h2 id="value-resources">Value Resources</h2>
 
-<p>Under project structure there&rsquo;s a folder structure <code>res/values</code> which contains XML files. The name of the XML files does not seem to matter (TODO: make sure). They must be standard XML files with root element named <code>resources</code>:</p>
+<p>Under project structure there’s a folder structure <code>res/values</code> which contains XML files. The name of the XML files does not seem to matter (TODO: make sure). They must be standard XML files with root element named <code>resources</code>:</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
@@ -154,10 +154,10 @@
 </span><span class="line"><span class="nt">&lt;/resources&gt;</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p>It seems one can have as many files in this folder as they wish, with arbitrary names. Each file can contain any mixture of resources, although it seems to be a good practice that each file contain one type of resources. IntelliJ Idea&rsquo;s code completion helps to find out possible resource types, which seem to be:
+<p>It seems one can have as many files in this folder as they wish, with arbitrary names. Each file can contain any mixture of resources, although it seems to be a good practice that each file contain one type of resources. IntelliJ Idea’s code completion helps to find out possible resource types, which seem to be:
 <code>item</code>, <code>array</code>, <code>attr</code>, <code>bool</code>, <code>color</code>, <code>declare-stylable</code>, <code>dimen</code>, <code>drawable</code>, <code>eat-comment</code>, <code>fraction</code>, <code>integer</code>, <code>interger-array</code>, <code>plurals</code>, <code>string</code>, <code>string-array</code>, and <code>style</code>.</p>
 
-<p><code>string</code> resources, must have an attribute called <code>name</code>, and a value, and that&rsquo;s it:</p>
+<p><code>string</code> resources, must have an attribute called <code>name</code>, and a value, and that’s it:</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td><td class="code"><pre><code class="xml"><span class="line"><span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">&quot;person1&quot;</span><span class="nt">&gt;</span>Tom Cruise<span class="nt">&lt;/string&gt;</span>
@@ -219,7 +219,7 @@
 </pre></td><td class="code"><pre><code class="java"><span class="line"><span class="n">String</span><span class="o">[]</span> <span class="n">people</span> <span class="o">=</span> <span class="n">getResources</span><span class="o">().</span><span class="na">getStringArray</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">array</span><span class="o">.</span><span class="na">people</span><span class="o">);</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p>These are possible identifiers after <code>R.</code>, as shown by IntelliJ Idea&rsquo;s code completion: <code>array</code>, <code>drawable</code>, <code>id</code>, <code>layout</code>, <code>string</code></p>
+<p>These are possible identifiers after <code>R.</code>, as shown by IntelliJ Idea’s code completion: <code>array</code>, <code>drawable</code>, <code>id</code>, <code>layout</code>, <code>string</code></p>
 
 <h2 id="add-a-fragment-to-an-activity">Add a fragment to an activity</h2>
 
@@ -233,13 +233,13 @@
 </span><span class="line">          <span class="na">android:id=</span><span class="s">&quot;@+id/fragment&quot;</span><span class="nt">/&gt;</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p>I had to use <code>fragment</code> with small f, for the element name while my <code>Fragment</code> class is an Android support fragment. I&rsquo;m not sure if this is true for the Android built-in fragments or not.</p>
+<p>I had to use <code>fragment</code> with small f, for the element name while my <code>Fragment</code> class is an Android support fragment. I’m not sure if this is true for the Android built-in fragments or not.</p>
 
 <p>Also in order to be able to add an instance of the fragment to the activity, I had to change the activity base class from <code>Activity</code> to <code>FragmentActivity</code> from Android support library.</p>
 
 <h2 id="how-to-add-support-libraries-to-your-project-in-intellij-idea">How to add support libraries to your project in IntelliJ Idea</h2>
 
-<p>You&rsquo;ll need to copy the jar files locally to your project structure.</p>
+<p>You’ll need to copy the jar files locally to your project structure.</p>
 
 <p>See: http://www.in-nomine.org/2012/02/26/adding-android-support-v4-to-your-android-application-in-intellij-idea/</p>
 
@@ -292,6 +292,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/05/18/powershell-the-switch-data-type/">PowerShell: The Switch Data-type</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/01/15/handy-extensions-for-inotifypropertychanged/">Handy Extensions for INotifyPropertyChanged</a>
       </li>
     
@@ -305,10 +309,6 @@
     
       <li class="post">
         <a href="/blog/2014/01/10/moved-my-blog-to-octopress/">Moved My Blog to Octopress</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c-number-5/">How to Make More Refactoring Friendly Data-bindings With C# 5</a>
       </li>
     
   </ul>

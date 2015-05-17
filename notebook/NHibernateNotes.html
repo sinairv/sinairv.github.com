@@ -131,13 +131,13 @@
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p>Notice that all properties are preceded by a <code>virtual</code> declaration. This is required in order to use the <strong>lazy loading</strong> feature of NHibernate. As you can see, NHibernate does not require inheritance from a base class or implementation of any interfaces to utilize its features. Instead, <strong>NHibernate creates a proxy of the class</strong>. In this context, <strong>an NHibernate proxy is an inherited type of the <code>SomeEntity</code> class</strong>. The <code>SomeEntity</code> class is considered the base class to NHibernate&rsquo;s proxies. <strong>At application startup</strong>, NHibernate inherits and overrides the class, adding the required logic to support <strong>lazy loading</strong>. Note that if value-types correspond to a nullable database column, must be defined as nullable in the entity class as well, otherwise an instance of <code>PropertyValueException</code> would be thrown.</p>
+<p>Notice that all properties are preceded by a <code>virtual</code> declaration. This is required in order to use the <strong>lazy loading</strong> feature of NHibernate. As you can see, NHibernate does not require inheritance from a base class or implementation of any interfaces to utilize its features. Instead, <strong>NHibernate creates a proxy of the class</strong>. In this context, <strong>an NHibernate proxy is an inherited type of the <code>SomeEntity</code> class</strong>. The <code>SomeEntity</code> class is considered the base class to NHibernate’s proxies. <strong>At application startup</strong>, NHibernate inherits and overrides the class, adding the required logic to support <strong>lazy loading</strong>. Note that if value-types correspond to a nullable database column, must be defined as nullable in the entity class as well, otherwise an instance of <code>PropertyValueException</code> would be thrown.</p>
 
 <blockquote>
   <p>All value types should be implemented as nullable or you need to ensure that the values on the database do not allow nulls.</p>
 </blockquote>
 
-<p>Use automatic properties: When using NHibernate&rsquo;s property-level accessor mappings, using
+<p>Use automatic properties: When using NHibernate’s property-level accessor mappings, using
 the underlying private field value (instead of going through the <code>{get; set;}</code>
 property) will circumvent lazy loading and produce unexpected results. Consider
 this another reason to use auto-implemented or automatic properties.</p>
@@ -206,6 +206,10 @@ some real gems in there.
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/05/18/powershell-the-switch-data-type/">PowerShell: The Switch Data-type</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/01/15/handy-extensions-for-inotifypropertychanged/">Handy Extensions for INotifyPropertyChanged</a>
       </li>
     
@@ -219,10 +223,6 @@ some real gems in there.
     
       <li class="post">
         <a href="/blog/2014/01/10/moved-my-blog-to-octopress/">Moved My Blog to Octopress</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c-number-5/">How to Make More Refactoring Friendly Data-bindings With C# 5</a>
       </li>
     
   </ul>

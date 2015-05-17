@@ -4,7 +4,7 @@
   <title><![CDATA[Category: INotifyPropertyChanged | Sina Iravanian]]></title>
   <link href="http://sinairv.github.io/blog/categories/inotifypropertychanged/atom.xml" rel="self"/>
   <link href="http://sinairv.github.io/"/>
-  <updated>2015-01-22T00:34:16+10:00</updated>
+  <updated>2015-05-18T00:57:01+10:00</updated>
   <id>http://sinairv.github.io/</id>
   <author>
     <name><![CDATA[Sina Iravanian]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Handy Extensions for INotifyPropertyChanged]]></title>
     <link href="http://sinairv.github.io/blog/2015/01/15/handy-extensions-for-inotifypropertychanged/"/>
-    <updated>2015-01-15T00:22:39+10:00</updated>
+    <updated>2015-01-15T01:22:39+11:00</updated>
     <id>http://sinairv.github.io/blog/2015/01/15/handy-extensions-for-inotifypropertychanged</id>
     <content type="html"><![CDATA[<p>I recently created a <a href="https://github.com/sinairv/INPC-Extensions">library</a> that contains some handy extensions for <code>INotifyPropertyChanged</code> interface (aka INPC). To start using the library, add the following to the top of your C# code:</p>
 
@@ -50,11 +50,11 @@ public event PropertyChangedEventHandler PropertyChanged; } ```
 <h4 id="how-to-easily-handle-listen-to-inpc-in-a-refactor-friendly-way">How to easily handle (listen to) INPC in a refactor friendly way</h4>
 
 <p>```csharp
-MyClass myObject = &hellip;;</p>
+MyClass myObject = …;</p>
 
 <p>myObject.HandleOnPropertyChanged(src =&gt; src.Number, sender =&gt;
     {
-        Console.WriteLine(&ldquo;Number changed to {0}&rdquo;, sender.Number);
+        Console.WriteLine(“Number changed to {0}”, sender.Number);
     });
 ```</p>
 

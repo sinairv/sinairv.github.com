@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: PowerShell | Sina Iravanian]]></title>
+  <link href="http://sinairv.github.io/blog/categories/powershell/atom.xml" rel="self"/>
+  <link href="http://sinairv.github.io/"/>
+  <updated>2015-05-18T00:57:01+10:00</updated>
+  <id>http://sinairv.github.io/</id>
+  <author>
+    <name><![CDATA[Sina Iravanian]]></name>
+    <email><![CDATA[sina.iravanian@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[PowerShell: The Switch Data-type]]></title>
+    <link href="http://sinairv.github.io/blog/2015/05/18/powershell-the-switch-data-type/"/>
+    <updated>2015-05-18T00:45:18+10:00</updated>
+    <id>http://sinairv.github.io/blog/2015/05/18/powershell-the-switch-data-type</id>
+    <content type="html"><![CDATA[<p>The <code>switch</code> data type is used to control whether a switch (as in arguments or options passed to a function or command) is provided for the function/command or not. Suppose that there is a function called <code>Switch-Demo</code> that can accept <code>-Force</code> and <code>-Quiet</code> switches. These switches just work as toggles. What we care about them is whether they exist or not. There are no pieces of data accompanying them. The PowerShell <code>switch</code> data-type suits this purpose:</p>
+
+<p>```powershell
+function Switch-Demo {
+    param(
+        [switch]$Force,
+        [switch]$Quiet
+    )</p>
+
+<pre><code>if($Force.IsPresent) {
+    Write-Host "Forcefully doing the task"
+} else {
+    Write-Host "Force is NOT present"
+}
+
+if($Quiet.IsPresent) {
+    Write-Host "Quietly doing the task"
+} else {
+    Write-Host "Quiet is NOT present"
+} }
+</code></pre>
+
+<h1 id="invocation">invocation:</h1>
+<p>Switch-Demo -Quiet
+```</p>
+
+<p>In the invocation of the above example, the <code>Quiet</code> switch is present while the <code>Force</code> switch is not.</p>
+
+<p>As shown above, the <code>.IsPresent</code> property of the <code>switch</code> variable can be used to check whether the particular switch has been passed to the function/command.</p>
+
+<p><strong>Default values</strong> for the parameters of type <code>switch</code> can be specified by Boolean values. To make a switch present by default the <code>[switch]::Present</code> constant can also be used, which is equivalent to <code>$true</code>. As of now I’m not aware of any <code>[switch]::</code> constants that is equivalent to <code>$false</code>. Example:</p>
+
+<p>```powershell
+function Switch-Demo {
+    param(
+        [switch]$Force=[switch]::Present,
+        [switch]$Quiet=$false,
+        [switch]$WhatIf=$true
+    )</p>
+
+<pre><code># ... } ```
+</code></pre>
+
+<p>This means that the invoker does not need to specify <code>-Force</code> switch (it is by default considered to be provided). What if the invoker doesn’t like the <code>-Force</code> switch to be present? To override that the invoker can specify Boolean constants as values for the switch:</p>
+
+<p><code>powershell
+Switch-Demo -Force:$false
+</code></p>
+
+<p>I personally don’t find this way of overriding switch values quite intuitive. I’d rather name <code>switch</code> variables in a way that their default value is <code>$false</code>, or when not possible provide another switch with a negative name compared to the other one that overrides its functionality. Example:</p>
+
+<p>```powershell
+function Switch-Demo {
+    param(
+        [switch]$Quiet=[switch]::Present,
+        [switch]$Verbose
+    )</p>
+
+<pre><code># Override the values
+if($Verbose.IsPresent){
+    $Quiet = $false;
+}
+
+# Check the values
+if($Quiet.IsPresent){
+    Write-Host "Quietly doing the job."
+} else {
+    Write-Host "Verbosely doing the job."
+} }
+</code></pre>
+
+<h1 id="invocations">invocations:</h1>
+<p>Switch-Demo -Quiet
+Switch-Demo -Verbose
+```</p>
+]]></content>
+  </entry>
+  
+</feed>

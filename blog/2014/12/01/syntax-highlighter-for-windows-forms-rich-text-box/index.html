@@ -99,7 +99,7 @@
   
 
 
-<time datetime="2014-12-01T18:18:48+10:00" pubdate data-updated="true">Dec 1<span>st</span>, 2014</time>
+<time datetime="2014-12-01T19:18:48+11:00" pubdate data-updated="true">Dec 1<span>st</span>, 2014</time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://sinairv.github.io">Comments</a>
@@ -109,7 +109,7 @@
   </header>
 
 
-<div class="entry-content"><p>Years ago I created a tool called <a href="http://code4public.codeplex.com">Code4Public</a> to convert source code into HTML called. I was using this tool to put nice code snippets in the blog I used to maintain at that time. The tool is able to get the code, apply syntax highlighting to it based on the syntax of the language selected, and then create HTML based on the theme selected (e.g., MSDN theme). I didn&rsquo;t assign more time on making the tool better and better, as better ways of doing the same task were emerging, and also other by-products of the tool were becoming more interesting at the time; e.g., <a href="https://github.com/sinairv/YAXLib">YAXLib</a> was a little by-product of Code4Public used to store settings, themes and language syntaxes in XML files.</p>
+<div class="entry-content"><p>Years ago I created a tool called <a href="http://code4public.codeplex.com">Code4Public</a> to convert source code into HTML called. I was using this tool to put nice code snippets in the blog I used to maintain at that time. The tool is able to get the code, apply syntax highlighting to it based on the syntax of the language selected, and then create HTML based on the theme selected (e.g., MSDN theme). I didn’t assign more time on making the tool better and better, as better ways of doing the same task were emerging, and also other by-products of the tool were becoming more interesting at the time; e.g., <a href="https://github.com/sinairv/YAXLib">YAXLib</a> was a little by-product of Code4Public used to store settings, themes and language syntaxes in XML files.</p>
 
 <p>This post is to introduce yet another by-product of Code4Public: <a href="https://github.com/sinairv/WinFormsSyntaxHighlighter">WinFormsSyntaxHighlighter</a>. This library enables syntax highlighting on a <code>RichTextBox</code> based on patterns that the developer defines.</p>
 
@@ -119,7 +119,7 @@
 </pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="kt">var</span> <span class="n">syntaxHighlighter</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SyntaxHighlighter</span><span class="p">(</span><span class="n">theRichTextBox</span><span class="p">);</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p>That&rsquo;s it. Now I need to define patterns and colors. For example I want to see <code>for</code>, <code>foreach</code>, <code>int</code> and <code>var</code> in blue:</p>
+<p>That’s it. Now I need to define patterns and colors. For example I want to see <code>for</code>, <code>foreach</code>, <code>int</code> and <code>var</code> in blue:</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
@@ -127,7 +127,7 @@
 <span class="line-number">4</span>
 </pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="c1">// 1st set of keywords; I&#39;d like to see them in Blue</span>
 </span><span class="line"><span class="n">syntaxHighlighter</span><span class="p">.</span><span class="n">AddPattern</span><span class="p">(</span>
-</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="s">&quot;for&quot;</span><span class="p">,</span> <span class="s">&quot;foreach&quot;</span><span class="p">,</span> <span class="s">&quot;int&quot;</span><span class="p">,</span> <span class="s">&quot;var&quot;</span><span class="p">),</span>
+</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="s">&quot;for&quot;</span><span class="p">,</span> <span class="s">&quot;foreach&quot;</span><span class="p">,</span> <span class="s">&quot;int&quot;</span><span class="p">,</span> <span class="s">&quot;var&quot;</span><span class="p">),</span> 
 </span><span class="line">    <span class="k">new</span> <span class="nf">SyntaxStyle</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="n">Blue</span><span class="p">));</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
@@ -139,7 +139,7 @@
 <span class="line-number">4</span>
 </pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="c1">// 2nd set of keywords; I&#39;d like to see them in bold Navy, and they must be case insensitive</span>
 </span><span class="line"><span class="n">syntaxHighlighter</span><span class="p">.</span><span class="n">AddPattern</span><span class="p">(</span>
-</span><span class="line">    <span class="k">new</span> <span class="nf">CaseInsensitivePatternDefinition</span><span class="p">(</span><span class="s">&quot;public&quot;</span><span class="p">,</span> <span class="s">&quot;partial&quot;</span><span class="p">,</span> <span class="s">&quot;class&quot;</span><span class="p">,</span> <span class="s">&quot;void&quot;</span><span class="p">),</span>
+</span><span class="line">    <span class="k">new</span> <span class="nf">CaseInsensitivePatternDefinition</span><span class="p">(</span><span class="s">&quot;public&quot;</span><span class="p">,</span> <span class="s">&quot;partial&quot;</span><span class="p">,</span> <span class="s">&quot;class&quot;</span><span class="p">,</span> <span class="s">&quot;void&quot;</span><span class="p">),</span> 
 </span><span class="line">    <span class="k">new</span> <span class="nf">SyntaxStyle</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="n">Navy</span><span class="p">,</span> <span class="n">bold</span><span class="p">:</span> <span class="k">true</span><span class="p">,</span> <span class="n">italic</span><span class="p">:</span> <span class="k">false</span><span class="p">));</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
@@ -151,7 +151,7 @@
 <span class="line-number">4</span>
 </pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="c1">// numbers; I&#39;d like to see them in purple</span>
 </span><span class="line"><span class="n">syntaxHighlighter</span><span class="p">.</span><span class="n">AddPattern</span><span class="p">(</span>
-</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="s">@&quot;\d+\.\d+|\d+&quot;</span><span class="p">),</span>
+</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="s">@&quot;\d+\.\d+|\d+&quot;</span><span class="p">),</span> 
 </span><span class="line">    <span class="k">new</span> <span class="nf">SyntaxStyle</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="n">Purple</span><span class="p">));</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
@@ -208,48 +208,48 @@
 </span><span class="line">
 </span><span class="line"><span class="c1">// multi-line comments; I&#39;d like to see them in dark-sea-green and italic</span>
 </span><span class="line"><span class="n">syntaxHighlighter</span><span class="p">.</span><span class="n">AddPattern</span><span class="p">(</span>
-</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="k">new</span> <span class="n">Regex</span><span class="p">(</span><span class="s">@&quot;/\*(.|[\r\n])*?\*/&quot;</span><span class="p">,</span>
-</span><span class="line">        <span class="n">RegexOptions</span><span class="p">.</span><span class="n">Multiline</span> <span class="p">|</span> <span class="n">RegexOptions</span><span class="p">.</span><span class="n">Compiled</span><span class="p">)),</span>
+</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="k">new</span> <span class="n">Regex</span><span class="p">(</span><span class="s">@&quot;/\*(.|[\r\n])*?\*/&quot;</span><span class="p">,</span> 
+</span><span class="line">        <span class="n">RegexOptions</span><span class="p">.</span><span class="n">Multiline</span> <span class="p">|</span> <span class="n">RegexOptions</span><span class="p">.</span><span class="n">Compiled</span><span class="p">)),</span> 
 </span><span class="line">    <span class="k">new</span> <span class="nf">SyntaxStyle</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="n">DarkSeaGreen</span><span class="p">,</span> <span class="n">bold</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">italic</span><span class="p">:</span> <span class="k">true</span><span class="p">));</span>
 </span><span class="line">
 </span><span class="line"><span class="c1">// singlie-line comments; I&#39;d like to see them in Green and italic</span>
 </span><span class="line"><span class="n">syntaxHighlighter</span><span class="p">.</span><span class="n">AddPattern</span><span class="p">(</span>
-</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="k">new</span> <span class="n">Regex</span><span class="p">(</span><span class="s">@&quot;//.*?$&quot;</span><span class="p">,</span>
-</span><span class="line">        <span class="n">RegexOptions</span><span class="p">.</span><span class="n">Multiline</span> <span class="p">|</span> <span class="n">RegexOptions</span><span class="p">.</span><span class="n">Compiled</span><span class="p">)),</span>
+</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="k">new</span> <span class="n">Regex</span><span class="p">(</span><span class="s">@&quot;//.*?$&quot;</span><span class="p">,</span> 
+</span><span class="line">        <span class="n">RegexOptions</span><span class="p">.</span><span class="n">Multiline</span> <span class="p">|</span> <span class="n">RegexOptions</span><span class="p">.</span><span class="n">Compiled</span><span class="p">)),</span> 
 </span><span class="line">    <span class="k">new</span> <span class="nf">SyntaxStyle</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="n">Green</span><span class="p">,</span> <span class="n">bold</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">italic</span><span class="p">:</span> <span class="k">true</span><span class="p">));</span>
 </span><span class="line">
 </span><span class="line"><span class="c1">// double quote strings; I&#39;d like to see them in Red</span>
 </span><span class="line"><span class="n">syntaxHighlighter</span><span class="p">.</span><span class="n">AddPattern</span><span class="p">(</span>
-</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="s">@&quot;\&quot;&quot;([^&quot;&quot;]|\&quot;&quot;\&quot;&quot;)+\&quot;&quot;&quot;</span><span class="p">),</span>
+</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="s">@&quot;\&quot;&quot;([^&quot;&quot;]|\&quot;&quot;\&quot;&quot;)+\&quot;&quot;&quot;</span><span class="p">),</span> 
 </span><span class="line">    <span class="k">new</span> <span class="nf">SyntaxStyle</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="n">Red</span><span class="p">));</span>
 </span><span class="line">
 </span><span class="line"><span class="c1">// single quote strings; I&#39;d like to see them in Salmon </span>
 </span><span class="line"><span class="n">syntaxHighlighter</span><span class="p">.</span><span class="n">AddPattern</span><span class="p">(</span>
-</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="s">@&quot;\&#39;([^&#39;]|\&#39;\&#39;)+\&#39;&quot;</span><span class="p">),</span>
+</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="s">@&quot;\&#39;([^&#39;]|\&#39;\&#39;)+\&#39;&quot;</span><span class="p">),</span> 
 </span><span class="line">    <span class="k">new</span> <span class="nf">SyntaxStyle</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="n">Salmon</span><span class="p">));</span>
-</span><span class="line">
+</span><span class="line">            
 </span><span class="line"><span class="c1">// 1st set of keywords; I&#39;d like to see them in Blue</span>
 </span><span class="line"><span class="n">syntaxHighlighter</span><span class="p">.</span><span class="n">AddPattern</span><span class="p">(</span>
-</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="s">&quot;for&quot;</span><span class="p">,</span> <span class="s">&quot;foreach&quot;</span><span class="p">,</span> <span class="s">&quot;int&quot;</span><span class="p">,</span> <span class="s">&quot;var&quot;</span><span class="p">),</span>
+</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="s">&quot;for&quot;</span><span class="p">,</span> <span class="s">&quot;foreach&quot;</span><span class="p">,</span> <span class="s">&quot;int&quot;</span><span class="p">,</span> <span class="s">&quot;var&quot;</span><span class="p">),</span> 
 </span><span class="line">    <span class="k">new</span> <span class="nf">SyntaxStyle</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="n">Blue</span><span class="p">));</span>
-</span><span class="line">
+</span><span class="line">            
 </span><span class="line"><span class="c1">// 2nd set of keywords; I&#39;d like to see them in bold Navy, and they must be case insensitive</span>
 </span><span class="line"><span class="n">syntaxHighlighter</span><span class="p">.</span><span class="n">AddPattern</span><span class="p">(</span>
-</span><span class="line">    <span class="k">new</span> <span class="nf">CaseInsensitivePatternDefinition</span><span class="p">(</span><span class="s">&quot;public&quot;</span><span class="p">,</span> <span class="s">&quot;partial&quot;</span><span class="p">,</span> <span class="s">&quot;class&quot;</span><span class="p">,</span> <span class="s">&quot;void&quot;</span><span class="p">),</span>
+</span><span class="line">    <span class="k">new</span> <span class="nf">CaseInsensitivePatternDefinition</span><span class="p">(</span><span class="s">&quot;public&quot;</span><span class="p">,</span> <span class="s">&quot;partial&quot;</span><span class="p">,</span> <span class="s">&quot;class&quot;</span><span class="p">,</span> <span class="s">&quot;void&quot;</span><span class="p">),</span> 
 </span><span class="line">    <span class="k">new</span> <span class="nf">SyntaxStyle</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="n">Navy</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span> <span class="k">false</span><span class="p">));</span>
 </span><span class="line">
 </span><span class="line"><span class="c1">// numbers; I&#39;d like to see them in purple</span>
 </span><span class="line"><span class="n">syntaxHighlighter</span><span class="p">.</span><span class="n">AddPattern</span><span class="p">(</span>
-</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="s">@&quot;\d+\.\d+|\d+&quot;</span><span class="p">),</span>
+</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="s">@&quot;\d+\.\d+|\d+&quot;</span><span class="p">),</span> 
 </span><span class="line">    <span class="k">new</span> <span class="nf">SyntaxStyle</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="n">Purple</span><span class="p">));</span>
 </span><span class="line">
 </span><span class="line"><span class="c1">// operators; I&#39;d like to see them in Brown</span>
 </span><span class="line"><span class="n">syntaxHighlighter</span><span class="p">.</span><span class="n">AddPattern</span><span class="p">(</span>
-</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="s">&quot;+&quot;</span><span class="p">,</span> <span class="s">&quot;-&quot;</span><span class="p">,</span> <span class="s">&quot;&gt;&quot;</span><span class="p">,</span> <span class="s">&quot;&lt;&quot;</span><span class="p">,</span> <span class="s">&quot;&amp;&quot;</span><span class="p">,</span> <span class="s">&quot;|&quot;</span><span class="p">),</span>
+</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="s">&quot;+&quot;</span><span class="p">,</span> <span class="s">&quot;-&quot;</span><span class="p">,</span> <span class="s">&quot;&gt;&quot;</span><span class="p">,</span> <span class="s">&quot;&lt;&quot;</span><span class="p">,</span> <span class="s">&quot;&amp;&quot;</span><span class="p">,</span> <span class="s">&quot;|&quot;</span><span class="p">),</span> 
 </span><span class="line">    <span class="k">new</span> <span class="nf">SyntaxStyle</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="n">Brown</span><span class="p">));</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p>Please also note that, nobody can model a whole language like C# or Java with regular expressions, because these languages are not regular. So this tool is by no means a complete and error-free way of modeling languages. Use this just for simple key-word matching or pattern matching and coloring them as you like; but don&rsquo;t expect too much.</p>
+<p>Please also note that, nobody can model a whole language like C# or Java with regular expressions, because these languages are not regular. So this tool is by no means a complete and error-free way of modeling languages. Use this just for simple key-word matching or pattern matching and coloring them as you like; but don’t expect too much.</p>
 
 <p><a href="https://github.com/sinairv/WinFormsSyntaxHighlighter">WinFormsSyntaxHighlighter</a> is hosted in GitHub and is licensed under MIT.</p>
 </div>
@@ -274,7 +274,7 @@
   
 
 
-<time datetime="2014-12-01T18:18:48+10:00" pubdate data-updated="true">Dec 1<span>st</span>, 2014</time>
+<time datetime="2014-12-01T19:18:48+11:00" pubdate data-updated="true">Dec 1<span>st</span>, 2014</time>
       
 
 <span class="categories">
@@ -337,6 +337,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/05/18/powershell-the-switch-data-type/">PowerShell: The Switch Data-type</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/01/15/handy-extensions-for-inotifypropertychanged/">Handy Extensions for INotifyPropertyChanged</a>
       </li>
     
@@ -350,10 +354,6 @@
     
       <li class="post">
         <a href="/blog/2014/01/10/moved-my-blog-to-octopress/">Moved My Blog to Octopress</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c-number-5/">How to Make More Refactoring Friendly Data-bindings With C# 5</a>
       </li>
     
   </ul>

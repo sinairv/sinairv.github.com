@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Snippets | Sina Iravanian]]></title>
   <link href="http://sinairv.github.io/blog/categories/snippets/atom.xml" rel="self"/>
   <link href="http://sinairv.github.io/"/>
-  <updated>2015-01-22T00:34:16+10:00</updated>
+  <updated>2015-05-18T00:57:01+10:00</updated>
   <id>http://sinairv.github.io/</id>
   <author>
     <name><![CDATA[Sina Iravanian]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Code Snippet for Trimming Strings of White-space and Control Characters]]></title>
     <link href="http://sinairv.github.io/blog/2011/03/02/code-snippet-for-trimming-strings-of-white-space-and-control-characters/"/>
-    <updated>2011-03-02T00:07:00+10:00</updated>
+    <updated>2011-03-02T01:07:00+11:00</updated>
     <id>http://sinairv.github.io/blog/2011/03/02/code-snippet-for-trimming-strings-of-white-space-and-control-characters</id>
     <content type="html"><![CDATA[<p>The following method trims the given string of both white-space characters and control characters, and its rather fast!</p>
 
@@ -30,7 +30,7 @@
     <link href="http://sinairv.github.io/blog/2010/08/09/code-snippet-for-determining-how-two-intervals-overlap/"/>
     <updated>2010-08-09T23:45:00+10:00</updated>
     <id>http://sinairv.github.io/blog/2010/08/09/code-snippet-for-determining-how-two-intervals-overlap</id>
-    <content type="html"><![CDATA[<p>The following pieces of code help figure out how two intervals overlap, and provides helper methods to represent them in a way that is useful for debugging purposes. This job is quite easy to accomplish, but since I&rsquo;ve written it too many times from scratch, I put them in the following gist.</p>
+    <content type="html"><![CDATA[<p>The following pieces of code help figure out how two intervals overlap, and provides helper methods to represent them in a way that is useful for debugging purposes. This job is quite easy to accomplish, but since I’ve written it too many times from scratch, I put them in the following gist.</p>
 
 <p>The <code>IntervalOverlapKinds.cs</code> file defines the <code>IntervalOverlapKinds</code> enumeration. The interval detection is carried out in the static methods of the <code>IntervalOverlap</code> class.</p>
 

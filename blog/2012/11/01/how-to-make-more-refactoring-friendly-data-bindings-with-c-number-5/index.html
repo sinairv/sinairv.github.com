@@ -9,7 +9,7 @@
   <meta name="author" content="Sina Iravanian">
 
   
-  <meta name="description" content="Imagine that we want to create a Person business object for whose properties we desire a two-way data binding. The source-to-target data-binding &hellip;">
+  <meta name="description" content="Imagine that we want to create a Person business object for whose properties we desire a two-way data binding. The source-to-target data-binding can &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -99,7 +99,7 @@
   
 
 
-<time datetime="2012-11-01T19:46:29+10:00" pubdate data-updated="true">Nov 1<span>st</span>, 2012</time>
+<time datetime="2012-11-01T20:46:29+11:00" pubdate data-updated="true">Nov 1<span>st</span>, 2012</time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://sinairv.github.io">Comments</a>
@@ -165,7 +165,7 @@
 </span><span class="line">    <span class="k">private</span> <span class="kt">string</span> <span class="n">_name</span><span class="p">;</span>
 </span><span class="line">    <span class="k">private</span> <span class="kt">double</span> <span class="n">_age</span><span class="p">;</span>
 </span><span class="line">
-</span><span class="line">    <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span>
+</span><span class="line">    <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span> 
 </span><span class="line">    <span class="p">{</span>
 </span><span class="line">        <span class="k">get</span>
 </span><span class="line">        <span class="p">{</span>
@@ -182,7 +182,7 @@
 </span><span class="line">        <span class="p">}</span>
 </span><span class="line">    <span class="p">}</span>
 </span><span class="line">
-</span><span class="line">    <span class="k">public</span> <span class="kt">double</span> <span class="n">Age</span>
+</span><span class="line">    <span class="k">public</span> <span class="kt">double</span> <span class="n">Age</span> 
 </span><span class="line">    <span class="p">{</span>
 </span><span class="line">        <span class="k">get</span>
 </span><span class="line">        <span class="p">{</span>
@@ -211,9 +211,9 @@
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p>See how the setters pass the property name in a <code>string</code>. This is not nice, because whenever we change the property name through refactoring tools, the string value remains untouched and we have to manually change them as well (if we are lucky enough to get notified before run-time). Anyway we had to tolerate them for years&hellip;</p>
+<p>See how the setters pass the property name in a <code>string</code>. This is not nice, because whenever we change the property name through refactoring tools, the string value remains untouched and we have to manually change them as well (if we are lucky enough to get notified before run-time). Anyway we had to tolerate them for years…</p>
 
-<p>C# 5 comes with a nice feature, which is addition of two attributes <code>[CallerFilePath]</code> and <code>[CallerMemberName]</code> in the <code>System.Runtime.CompilerServices</code> namespace. If you decorate an <strong>optional</strong> string parameter of a method with one of these attributes, then the value of that parameter will be replaced with the caller&rsquo;s file name or the caller&rsquo;s member name at runtime, if no explicit value is passed for the optional parameter. They come very handy in logging scenarios, but we can use the latter for making our data-binding code nicer. This is how:</p>
+<p>C# 5 comes with a nice feature, which is addition of two attributes <code>[CallerFilePath]</code> and <code>[CallerMemberName]</code> in the <code>System.Runtime.CompilerServices</code> namespace. If you decorate an <strong>optional</strong> string parameter of a method with one of these attributes, then the value of that parameter will be replaced with the caller’s file name or the caller’s member name at runtime, if no explicit value is passed for the optional parameter. They come very handy in logging scenarios, but we can use the latter for making our data-binding code nicer. This is how:</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
@@ -269,7 +269,7 @@
 </span><span class="line">    <span class="k">private</span> <span class="kt">string</span> <span class="n">_name</span><span class="p">;</span>
 </span><span class="line">    <span class="k">private</span> <span class="kt">double</span> <span class="n">_age</span><span class="p">;</span>
 </span><span class="line">
-</span><span class="line">    <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span>
+</span><span class="line">    <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span> 
 </span><span class="line">    <span class="p">{</span>
 </span><span class="line">        <span class="k">get</span>
 </span><span class="line">        <span class="p">{</span>
@@ -286,7 +286,7 @@
 </span><span class="line">        <span class="p">}</span>
 </span><span class="line">    <span class="p">}</span>
 </span><span class="line">
-</span><span class="line">    <span class="k">public</span> <span class="kt">double</span> <span class="n">Age</span>
+</span><span class="line">    <span class="k">public</span> <span class="kt">double</span> <span class="n">Age</span> 
 </span><span class="line">    <span class="p">{</span>
 </span><span class="line">        <span class="k">get</span>
 </span><span class="line">        <span class="p">{</span>
@@ -338,7 +338,7 @@
   
 
 
-<time datetime="2012-11-01T19:46:29+10:00" pubdate data-updated="true">Nov 1<span>st</span>, 2012</time>
+<time datetime="2012-11-01T20:46:29+11:00" pubdate data-updated="true">Nov 1<span>st</span>, 2012</time>
       
 
 <span class="categories">
@@ -401,6 +401,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/05/18/powershell-the-switch-data-type/">PowerShell: The Switch Data-type</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/01/15/handy-extensions-for-inotifypropertychanged/">Handy Extensions for INotifyPropertyChanged</a>
       </li>
     
@@ -414,10 +418,6 @@
     
       <li class="post">
         <a href="/blog/2014/01/10/moved-my-blog-to-octopress/">Moved My Blog to Octopress</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c-number-5/">How to Make More Refactoring Friendly Data-bindings With C# 5</a>
       </li>
     
   </ul>

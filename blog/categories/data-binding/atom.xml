@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Data Binding | Sina Iravanian]]></title>
   <link href="http://sinairv.github.io/blog/categories/data-binding/atom.xml" rel="self"/>
   <link href="http://sinairv.github.io/"/>
-  <updated>2015-01-22T00:34:16+10:00</updated>
+  <updated>2015-05-18T00:57:01+10:00</updated>
   <id>http://sinairv.github.io/</id>
   <author>
     <name><![CDATA[Sina Iravanian]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Handy Extensions for INotifyPropertyChanged]]></title>
     <link href="http://sinairv.github.io/blog/2015/01/15/handy-extensions-for-inotifypropertychanged/"/>
-    <updated>2015-01-15T00:22:39+10:00</updated>
+    <updated>2015-01-15T01:22:39+11:00</updated>
     <id>http://sinairv.github.io/blog/2015/01/15/handy-extensions-for-inotifypropertychanged</id>
     <content type="html"><![CDATA[<p>I recently created a <a href="https://github.com/sinairv/INPC-Extensions">library</a> that contains some handy extensions for <code>INotifyPropertyChanged</code> interface (aka INPC). To start using the library, add the following to the top of your C# code:</p>
 
@@ -50,11 +50,11 @@ public event PropertyChangedEventHandler PropertyChanged; } ```
 <h4 id="how-to-easily-handle-listen-to-inpc-in-a-refactor-friendly-way">How to easily handle (listen to) INPC in a refactor friendly way</h4>
 
 <p>```csharp
-MyClass myObject = &hellip;;</p>
+MyClass myObject = …;</p>
 
 <p>myObject.HandleOnPropertyChanged(src =&gt; src.Number, sender =&gt;
     {
-        Console.WriteLine(&ldquo;Number changed to {0}&rdquo;, sender.Number);
+        Console.WriteLine(“Number changed to {0}”, sender.Number);
     });
 ```</p>
 
@@ -119,7 +119,7 @@ Console.WriteLine(target.Number); // still 10
   <entry>
     <title type="html"><![CDATA[How to Make More Refactoring Friendly Data-bindings With C# 5]]></title>
     <link href="http://sinairv.github.io/blog/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c-number-5/"/>
-    <updated>2012-11-01T19:46:29+10:00</updated>
+    <updated>2012-11-01T20:46:29+11:00</updated>
     <id>http://sinairv.github.io/blog/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c-number-5</id>
     <content type="html"><![CDATA[<p>Imagine that we want to create a <code>Person</code> business object for whose properties we desire a two-way data binding. The source-to-target data-binding can be triggered by implementing <code>INotifyPropertyChanged</code> interface, like this:</p>
 
@@ -174,9 +174,9 @@ private void OnPropertyChanged(string propertyName)
 } } ```
 </code></pre>
 
-<p>See how the setters pass the property name in a <code>string</code>. This is not nice, because whenever we change the property name through refactoring tools, the string value remains untouched and we have to manually change them as well (if we are lucky enough to get notified before run-time). Anyway we had to tolerate them for years&hellip;</p>
+<p>See how the setters pass the property name in a <code>string</code>. This is not nice, because whenever we change the property name through refactoring tools, the string value remains untouched and we have to manually change them as well (if we are lucky enough to get notified before run-time). Anyway we had to tolerate them for years…</p>
 
-<p>C# 5 comes with a nice feature, which is addition of two attributes <code>[CallerFilePath]</code> and <code>[CallerMemberName]</code> in the <code>System.Runtime.CompilerServices</code> namespace. If you decorate an <strong>optional</strong> string parameter of a method with one of these attributes, then the value of that parameter will be replaced with the caller&rsquo;s file name or the caller&rsquo;s member name at runtime, if no explicit value is passed for the optional parameter. They come very handy in logging scenarios, but we can use the latter for making our data-binding code nicer. This is how:</p>
+<p>C# 5 comes with a nice feature, which is addition of two attributes <code>[CallerFilePath]</code> and <code>[CallerMemberName]</code> in the <code>System.Runtime.CompilerServices</code> namespace. If you decorate an <strong>optional</strong> string parameter of a method with one of these attributes, then the value of that parameter will be replaced with the caller’s file name or the caller’s member name at runtime, if no explicit value is passed for the optional parameter. They come very handy in logging scenarios, but we can use the latter for making our data-binding code nicer. This is how:</p>
 
 <p>```csharp
 public class Person : INotifyPropertyChanged

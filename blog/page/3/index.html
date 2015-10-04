@@ -9,7 +9,7 @@
   <meta name="author" content="Sina Iravanian">
 
   
-  <meta name="description" content="The following method trims the given string of both white-space characters and control characters, and its rather fast! ">
+  <meta name="description" content="Recently I upgraded my currently installed Synaptics touchpad driver to version 15.x, and I found that I cannot emulate the middle-click effect by &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +80,54 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/16/enabling-middle-click-in-synaptics-touchpad-drivers/">Enabling Middle Click in Synaptics Touchpad Drivers</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-16T00:25:53+10:00" pubdate data-updated="true">Apr 16<span>th</span>, 2011</time>
+        
+           | <a href="/blog/2011/04/16/enabling-middle-click-in-synaptics-touchpad-drivers/#disqus_thread"
+             data-disqus-identifier="http://sinairv.github.io/blog/2011/04/16/enabling-middle-click-in-synaptics-touchpad-drivers/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Recently I upgraded my currently installed Synaptics touchpad driver to version 15.x, and I found that I cannot emulate the middle-click effect by pressing both right and left click buttons. I found no options in the settings to enable that functionality. Finally after searching the web I found a workaround here [<a href="http://forum.notebookreview.com/hp-compaq/205207-those-synaptics-touchstyk-trackpoint-any-way-enable-middle-button-scrolling.html">+</a>]:</p>
+
+<ol>
+  <li>Run the registry editor (<code>regedit</code>)</li>
+  <li>Go to key: <code>HKEY_LOCAL_MACHINE\Software\Synaptics\SynTP\Defaults\</code></li>
+  <li>Here create a new key as a <code>DWORD</code> and name it <code>HasBothButtonFeature</code> and set the value to 1.</li>
+  <li>Log off and Log on again</li>
+</ol>
+
+<p>It worked fine for me.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -506,6 +554,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/10/04/mock-entity-framework-dbset-with-nsubstitute/">Mock Entity Framework DbSet With NSubstitute</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/05/18/powershell-the-switch-data-type/">PowerShell: The Switch Data-type</a>
       </li>
     
@@ -519,10 +571,6 @@
     
       <li class="post">
         <a href="/blog/2014/04/20/the-pains-of-upgrading-android-studio/">The Pains of Upgrading Android Studio</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/01/10/moved-my-blog-to-octopress/">Moved My Blog to Octopress</a>
       </li>
     
   </ul>

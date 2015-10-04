@@ -9,7 +9,7 @@
   <meta name="author" content="Sina Iravanian">
 
   
-  <meta name="description" content="The switch data type is used to control whether a switch (as in arguments or options passed to a function or command) is provided for the function/ &hellip;">
+  <meta name="description" content="The source code for this post is on GitHub. When it comes to mocking a DbSet to test various read and write operations things may get a little bit &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +80,291 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/10/04/mock-entity-framework-dbset-with-nsubstitute/">Mock Entity Framework DbSet With NSubstitute</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-10-04T23:33:40+11:00" pubdate data-updated="true">Oct 4<span>th</span>, 2015</time>
+        
+           | <a href="/blog/2015/10/04/mock-entity-framework-dbset-with-nsubstitute/#disqus_thread"
+             data-disqus-identifier="http://sinairv.github.io/blog/2015/10/04/mock-entity-framework-dbset-with-nsubstitute/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The source code for this post is on <a href="https://github.com/sinairv/MockEfDbSetWithNSubstitute">GitHub</a>.</p>
+
+<p>When it comes to mocking a <code>DbSet</code> to test various read and write operations things may get a little bit tricky. Mocking a <code>DbSet</code> for a write operation (<code>Add</code>, <code>Update</code>, or <code>Remove</code>) is quite straightforward. But testing a synchronous read operation requires mocking the whole <code>IQueryable</code> interface. Even more trickier than that is testing an asynchronous read operation which requires mocking an <code>IDbAsyncQueryProvider</code> interface. <a href="https://msdn.microsoft.com/en-au/data/dn314429.aspx">Here</a> is a very good article that demonstrates how to work around these difficulties using <a href="https://github.com/Moq/moq4">Moq</a>. This blog post shows how to achieve the same thing using <a href="http://nsubstitute.github.io/">NSubstitute</a>.</p>
+
+<p>Mocking a <code>DbSet</code> for a write operation is quite straightforward:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="kt">var</span> <span class="n">mockSet</span> <span class="p">=</span> <span class="n">Substitute</span><span class="p">.</span><span class="n">For</span><span class="p">&lt;</span><span class="n">DbSet</span><span class="p">&lt;</span><span class="n">Person</span><span class="p">&gt;&gt;();</span>
+</span><span class="line"><span class="kt">var</span> <span class="n">mockContext</span> <span class="p">=</span> <span class="n">Substitute</span><span class="p">.</span><span class="n">For</span><span class="p">&lt;</span><span class="n">IPeopleDbContext</span><span class="p">&gt;();</span>
+</span><span class="line"><span class="n">mockContext</span><span class="p">.</span><span class="n">People</span><span class="p">.</span><span class="n">Returns</span><span class="p">(</span><span class="n">mockSet</span><span class="p">);</span>
+</span><span class="line"><span class="kt">var</span> <span class="n">service</span> <span class="p">=</span> <span class="k">new</span> <span class="n">PeopleService</span><span class="p">(</span><span class="n">mockContext</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">// Act</span>
+</span><span class="line"><span class="n">service</span><span class="p">.</span><span class="n">AddPersonAsync</span><span class="p">(</span><span class="k">new</span> <span class="n">Person</span> <span class="p">{</span> <span class="n">FirstName</span> <span class="p">=</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="n">LastName</span> <span class="p">=</span> <span class="s">&quot;Doe&quot;</span> <span class="p">});</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">// Assert</span>
+</span><span class="line"><span class="n">mockSet</span><span class="p">.</span><span class="n">Received</span><span class="p">(</span><span class="m">1</span><span class="p">).</span><span class="n">Add</span><span class="p">(</span><span class="n">Arg</span><span class="p">.</span><span class="n">Any</span><span class="p">&lt;</span><span class="n">Person</span><span class="p">&gt;());</span>
+</span><span class="line"><span class="n">mockContext</span><span class="p">.</span><span class="n">Received</span><span class="p">(</span><span class="m">1</span><span class="p">).</span><span class="n">SaveChangesAsync</span><span class="p">();</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>As seen above mocking the <code>DbSet</code> is as easy as one single call to <code>Substitute.For&lt;DbSet&lt;T&gt;&gt;()</code>.</p>
+
+<p>However mocking a <code>DbSet</code> for a synchronous read operation needs a little bit more work. It needs to mock the whole <code>IQueryable</code> interface:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="kt">var</span> <span class="n">data</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Person</span><span class="p">&gt;</span>
+</span><span class="line"><span class="p">{</span>
+</span><span class="line">    <span class="k">new</span> <span class="n">Person</span> <span class="p">{</span> <span class="n">Id</span> <span class="p">=</span> <span class="m">1</span><span class="p">,</span> <span class="n">FirstName</span> <span class="p">=</span> <span class="s">&quot;BBB&quot;</span> <span class="p">},</span>
+</span><span class="line">    <span class="k">new</span> <span class="n">Person</span> <span class="p">{</span> <span class="n">Id</span> <span class="p">=</span> <span class="m">2</span><span class="p">,</span> <span class="n">FirstName</span> <span class="p">=</span> <span class="s">&quot;ZZZ&quot;</span> <span class="p">},</span>
+</span><span class="line">    <span class="k">new</span> <span class="n">Person</span> <span class="p">{</span> <span class="n">Id</span> <span class="p">=</span> <span class="m">3</span><span class="p">,</span> <span class="n">FirstName</span> <span class="p">=</span> <span class="s">&quot;AAA&quot;</span> <span class="p">},</span>
+</span><span class="line"><span class="p">}.</span><span class="n">AsQueryable</span><span class="p">();</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">// create a mock DbSet exposing both DbSet and IQueryable interfaces for setup</span>
+</span><span class="line"><span class="kt">var</span> <span class="n">mockSet</span> <span class="p">=</span> <span class="n">Substitute</span><span class="p">.</span><span class="n">For</span><span class="p">&lt;</span><span class="n">DbSet</span><span class="p">&lt;</span><span class="n">Person</span><span class="p">&gt;,</span> <span class="n">IQueryable</span><span class="p">&lt;</span><span class="n">Person</span><span class="p">&gt;&gt;();</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">// setup all IQueryable methods using what you have from &quot;data&quot;</span>
+</span><span class="line"><span class="p">((</span><span class="n">IQueryable</span><span class="p">&lt;</span><span class="n">Person</span><span class="p">&gt;)</span><span class="n">mockSet</span><span class="p">).</span><span class="n">Provider</span><span class="p">.</span><span class="n">Returns</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">Provider</span><span class="p">);</span>
+</span><span class="line"><span class="p">((</span><span class="n">IQueryable</span><span class="p">&lt;</span><span class="n">Person</span><span class="p">&gt;)</span><span class="n">mockSet</span><span class="p">).</span><span class="n">Expression</span><span class="p">.</span><span class="n">Returns</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">Expression</span><span class="p">);</span>
+</span><span class="line"><span class="p">((</span><span class="n">IQueryable</span><span class="p">&lt;</span><span class="n">Person</span><span class="p">&gt;)</span><span class="n">mockSet</span><span class="p">).</span><span class="n">ElementType</span><span class="p">.</span><span class="n">Returns</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">ElementType</span><span class="p">);</span>
+</span><span class="line"><span class="p">((</span><span class="n">IQueryable</span><span class="p">&lt;</span><span class="n">Person</span><span class="p">&gt;)</span><span class="n">mockSet</span><span class="p">).</span><span class="n">GetEnumerator</span><span class="p">().</span><span class="n">Returns</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">GetEnumerator</span><span class="p">());</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">// do the wiring between DbContext and DbSet</span>
+</span><span class="line"><span class="kt">var</span> <span class="n">mockContext</span> <span class="p">=</span> <span class="n">Substitute</span><span class="p">.</span><span class="n">For</span><span class="p">&lt;</span><span class="n">IPeopleDbContext</span><span class="p">&gt;();</span>
+</span><span class="line"><span class="n">mockContext</span><span class="p">.</span><span class="n">People</span><span class="p">.</span><span class="n">Returns</span><span class="p">(</span><span class="n">mockSet</span><span class="p">);</span>
+</span><span class="line"><span class="kt">var</span> <span class="n">service</span> <span class="p">=</span> <span class="k">new</span> <span class="n">PeopleService</span><span class="p">(</span><span class="n">mockContext</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">// Act</span>
+</span><span class="line"><span class="kt">var</span> <span class="n">people</span> <span class="p">=</span> <span class="n">service</span><span class="p">.</span><span class="n">GetAllPeople</span><span class="p">();</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">// Assert</span>
+</span><span class="line"><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">people</span><span class="p">.</span><span class="n">Length</span><span class="p">,</span> <span class="n">Is</span><span class="p">.</span><span class="n">EqualTo</span><span class="p">(</span><span class="m">3</span><span class="p">));</span>
+</span><span class="line"><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">people</span><span class="p">[</span><span class="m">0</span><span class="p">].</span><span class="n">FirstName</span><span class="p">,</span> <span class="n">Is</span><span class="p">.</span><span class="n">EqualTo</span><span class="p">(</span><span class="s">&quot;BBB&quot;</span><span class="p">));</span>
+</span><span class="line"><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">people</span><span class="p">[</span><span class="m">1</span><span class="p">].</span><span class="n">FirstName</span><span class="p">,</span> <span class="n">Is</span><span class="p">.</span><span class="n">EqualTo</span><span class="p">(</span><span class="s">&quot;ZZZ&quot;</span><span class="p">));</span>
+</span><span class="line"><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">people</span><span class="p">[</span><span class="m">2</span><span class="p">].</span><span class="n">FirstName</span><span class="p">,</span> <span class="n">Is</span><span class="p">.</span><span class="n">EqualTo</span><span class="p">(</span><span class="s">&quot;AAA&quot;</span><span class="p">));</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Mocking a <code>DbSet</code> for an asynchronous read operation requires much more work and a bunch of extra classes. <a href="https://msdn.microsoft.com/en-au/data/dn314429.aspx">This article</a> lists the required extra classes. To name add <a href="https://github.com/sinairv/MockEfDbSetWithNSubstitute/blob/master/MockEfDbSet.Test/TestUtils/TestDbAsyncEnumerable.cs"><code>TestDbAsyncEnumerable</code></a>, <a href="https://github.com/sinairv/MockEfDbSetWithNSubstitute/blob/master/MockEfDbSet.Test/TestUtils/TestDbAsyncEnumerator.cs"><code>TestDbAsyncEnumerator</code></a>, and <a href="https://github.com/sinairv/MockEfDbSetWithNSubstitute/blob/master/MockEfDbSet.Test/TestUtils/TestDbAsyncQueryProvider.cs"><code>TestDbAsyncQueryProvider</code></a> classes to your test project. This is how you’d be able to mock <code>DbSet</code> for asynchronous read operations:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="kt">var</span> <span class="n">data</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Person</span><span class="p">&gt;</span>
+</span><span class="line"><span class="p">{</span>
+</span><span class="line">    <span class="k">new</span> <span class="n">Person</span> <span class="p">{</span> <span class="n">Id</span> <span class="p">=</span> <span class="m">1</span><span class="p">,</span> <span class="n">FirstName</span> <span class="p">=</span> <span class="s">&quot;BBB&quot;</span> <span class="p">},</span>
+</span><span class="line">    <span class="k">new</span> <span class="n">Person</span> <span class="p">{</span> <span class="n">Id</span> <span class="p">=</span> <span class="m">2</span><span class="p">,</span> <span class="n">FirstName</span> <span class="p">=</span> <span class="s">&quot;ZZZ&quot;</span> <span class="p">},</span>
+</span><span class="line">    <span class="k">new</span> <span class="n">Person</span> <span class="p">{</span> <span class="n">Id</span> <span class="p">=</span> <span class="m">3</span><span class="p">,</span> <span class="n">FirstName</span> <span class="p">=</span> <span class="s">&quot;AAA&quot;</span> <span class="p">},</span>
+</span><span class="line"><span class="p">}.</span><span class="n">AsQueryable</span><span class="p">();</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">// create a mock DbSet exposing both DbSet, IQueryable, and IDbAsyncEnumerable interfaces for setup</span>
+</span><span class="line"><span class="kt">var</span> <span class="n">mockSet</span> <span class="p">=</span> <span class="n">Substitute</span><span class="p">.</span><span class="n">For</span><span class="p">&lt;</span><span class="n">DbSet</span><span class="p">&lt;</span><span class="n">Person</span><span class="p">&gt;,</span> <span class="n">IQueryable</span><span class="p">&lt;</span><span class="n">Person</span><span class="p">&gt;,</span> <span class="n">IDbAsyncEnumerable</span><span class="p">&lt;</span><span class="n">Person</span><span class="p">&gt;&gt;();</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">// setup all IQueryable and IDbAsyncEnumerable methods using what you have from &quot;data&quot;</span>
+</span><span class="line"><span class="c1">// the setup below is a bit different from the test above</span>
+</span><span class="line"><span class="p">((</span><span class="n">IDbAsyncEnumerable</span><span class="p">&lt;</span><span class="n">Person</span><span class="p">&gt;)</span><span class="n">mockSet</span><span class="p">).</span><span class="n">GetAsyncEnumerator</span><span class="p">()</span>
+</span><span class="line">    <span class="p">.</span><span class="n">Returns</span><span class="p">(</span><span class="k">new</span> <span class="n">TestDbAsyncEnumerator</span><span class="p">&lt;</span><span class="n">Person</span><span class="p">&gt;(</span><span class="n">data</span><span class="p">.</span><span class="n">GetEnumerator</span><span class="p">()));</span>
+</span><span class="line"><span class="p">((</span><span class="n">IQueryable</span><span class="p">&lt;</span><span class="n">Person</span><span class="p">&gt;)</span><span class="n">mockSet</span><span class="p">).</span><span class="n">Provider</span><span class="p">.</span><span class="n">Returns</span><span class="p">(</span><span class="k">new</span> <span class="n">TestDbAsyncQueryProvider</span><span class="p">&lt;</span><span class="n">Person</span><span class="p">&gt;(</span><span class="n">data</span><span class="p">.</span><span class="n">Provider</span><span class="p">));</span>
+</span><span class="line"><span class="p">((</span><span class="n">IQueryable</span><span class="p">&lt;</span><span class="n">Person</span><span class="p">&gt;)</span><span class="n">mockSet</span><span class="p">).</span><span class="n">Expression</span><span class="p">.</span><span class="n">Returns</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">Expression</span><span class="p">);</span>
+</span><span class="line"><span class="p">((</span><span class="n">IQueryable</span><span class="p">&lt;</span><span class="n">Person</span><span class="p">&gt;)</span><span class="n">mockSet</span><span class="p">).</span><span class="n">ElementType</span><span class="p">.</span><span class="n">Returns</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">ElementType</span><span class="p">);</span>
+</span><span class="line"><span class="p">((</span><span class="n">IQueryable</span><span class="p">&lt;</span><span class="n">Person</span><span class="p">&gt;)</span><span class="n">mockSet</span><span class="p">).</span><span class="n">GetEnumerator</span><span class="p">().</span><span class="n">Returns</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">GetEnumerator</span><span class="p">());</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">// do the wiring between DbContext and DbSet</span>
+</span><span class="line"><span class="kt">var</span> <span class="n">mockContext</span> <span class="p">=</span> <span class="n">Substitute</span><span class="p">.</span><span class="n">For</span><span class="p">&lt;</span><span class="n">IPeopleDbContext</span><span class="p">&gt;();</span>
+</span><span class="line"><span class="n">mockContext</span><span class="p">.</span><span class="n">People</span><span class="p">.</span><span class="n">Returns</span><span class="p">(</span><span class="n">mockSet</span><span class="p">);</span>
+</span><span class="line"><span class="kt">var</span> <span class="n">service</span> <span class="p">=</span> <span class="k">new</span> <span class="n">PeopleService</span><span class="p">(</span><span class="n">mockContext</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">// Act</span>
+</span><span class="line"><span class="kt">var</span> <span class="n">people</span> <span class="p">=</span> <span class="k">await</span> <span class="n">service</span><span class="p">.</span><span class="n">GetAllPeopleAsync</span><span class="p">();</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">// Assert</span>
+</span><span class="line"><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">people</span><span class="p">.</span><span class="n">Length</span><span class="p">,</span> <span class="n">Is</span><span class="p">.</span><span class="n">EqualTo</span><span class="p">(</span><span class="m">3</span><span class="p">));</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>The amount of code per unit test seems a little bit too much. So I created a utility method that creates the mock <code>DbSet</code>:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">NSubstituteUtils</span>
+</span><span class="line"><span class="p">{</span>
+</span><span class="line">    <span class="k">public</span> <span class="k">static</span> <span class="n">DbSet</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">CreateMockDbSet</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">data</span> <span class="p">=</span> <span class="k">null</span><span class="p">)</span>
+</span><span class="line">        <span class="k">where</span> <span class="n">T</span><span class="p">:</span> <span class="k">class</span>
+</span><span class="line">    <span class="err">{</span>
+</span><span class="line">        <span class="kt">var</span> <span class="n">mockSet</span> <span class="p">=</span> <span class="n">Substitute</span><span class="p">.</span><span class="n">For</span><span class="p">&lt;</span><span class="n">DbSet</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;,</span> <span class="n">IQueryable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;,</span> <span class="n">IDbAsyncEnumerable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;&gt;();</span>
+</span><span class="line">
+</span><span class="line">        <span class="k">if</span> <span class="p">(</span><span class="n">data</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+</span><span class="line">        <span class="p">{</span>
+</span><span class="line">            <span class="kt">var</span> <span class="n">queryable</span> <span class="p">=</span> <span class="n">data</span><span class="p">.</span><span class="n">AsQueryable</span><span class="p">();</span>
+</span><span class="line">
+</span><span class="line">            <span class="c1">// setup all IQueryable and IDbAsyncEnumerable methods using what you have from &quot;data&quot;</span>
+</span><span class="line">            <span class="c1">// the setup below is a bit different from the test above</span>
+</span><span class="line">            <span class="p">((</span><span class="n">IDbAsyncEnumerable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;)</span> <span class="n">mockSet</span><span class="p">).</span><span class="n">GetAsyncEnumerator</span><span class="p">()</span>
+</span><span class="line">                <span class="p">.</span><span class="n">Returns</span><span class="p">(</span><span class="k">new</span> <span class="n">TestDbAsyncEnumerator</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="n">queryable</span><span class="p">.</span><span class="n">GetEnumerator</span><span class="p">()));</span>
+</span><span class="line">            <span class="p">((</span><span class="n">IQueryable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;)</span> <span class="n">mockSet</span><span class="p">).</span><span class="n">Provider</span><span class="p">.</span><span class="n">Returns</span><span class="p">(</span><span class="k">new</span> <span class="n">TestDbAsyncQueryProvider</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="n">queryable</span><span class="p">.</span><span class="n">Provider</span><span class="p">));</span>
+</span><span class="line">            <span class="p">((</span><span class="n">IQueryable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;)</span> <span class="n">mockSet</span><span class="p">).</span><span class="n">Expression</span><span class="p">.</span><span class="n">Returns</span><span class="p">(</span><span class="n">queryable</span><span class="p">.</span><span class="n">Expression</span><span class="p">);</span>
+</span><span class="line">            <span class="p">((</span><span class="n">IQueryable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;)</span> <span class="n">mockSet</span><span class="p">).</span><span class="n">ElementType</span><span class="p">.</span><span class="n">Returns</span><span class="p">(</span><span class="n">queryable</span><span class="p">.</span><span class="n">ElementType</span><span class="p">);</span>
+</span><span class="line">            <span class="p">((</span><span class="n">IQueryable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;)</span> <span class="n">mockSet</span><span class="p">).</span><span class="n">GetEnumerator</span><span class="p">().</span><span class="n">Returns</span><span class="p">(</span><span class="n">queryable</span><span class="p">.</span><span class="n">GetEnumerator</span><span class="p">());</span>
+</span><span class="line">        <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">        <span class="k">return</span> <span class="n">mockSet</span><span class="p">;</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Exploiting this, the unit test code would become shorter and more readable:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+</pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="kt">var</span> <span class="n">data</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Person</span><span class="p">&gt;</span>
+</span><span class="line"><span class="p">{</span>
+</span><span class="line">    <span class="k">new</span> <span class="n">Person</span> <span class="p">{</span> <span class="n">Id</span> <span class="p">=</span> <span class="m">1</span><span class="p">,</span> <span class="n">FirstName</span> <span class="p">=</span> <span class="s">&quot;BBB&quot;</span> <span class="p">},</span>
+</span><span class="line">    <span class="k">new</span> <span class="n">Person</span> <span class="p">{</span> <span class="n">Id</span> <span class="p">=</span> <span class="m">2</span><span class="p">,</span> <span class="n">FirstName</span> <span class="p">=</span> <span class="s">&quot;ZZZ&quot;</span> <span class="p">},</span>
+</span><span class="line">    <span class="k">new</span> <span class="n">Person</span> <span class="p">{</span> <span class="n">Id</span> <span class="p">=</span> <span class="m">3</span><span class="p">,</span> <span class="n">FirstName</span> <span class="p">=</span> <span class="s">&quot;AAA&quot;</span> <span class="p">},</span>
+</span><span class="line"><span class="p">};</span>
+</span><span class="line">
+</span><span class="line"><span class="kt">var</span> <span class="n">mockSet</span> <span class="p">=</span> <span class="n">NSubstituteUtils</span><span class="p">.</span><span class="n">CreateMockDbSet</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+</span><span class="line"><span class="kt">var</span> <span class="n">mockContext</span> <span class="p">=</span> <span class="n">Substitute</span><span class="p">.</span><span class="n">For</span><span class="p">&lt;</span><span class="n">IPeopleDbContext</span><span class="p">&gt;();</span>
+</span><span class="line"><span class="n">mockContext</span><span class="p">.</span><span class="n">People</span><span class="p">.</span><span class="n">Returns</span><span class="p">(</span><span class="n">mockSet</span><span class="p">);</span>
+</span><span class="line"><span class="kt">var</span> <span class="n">service</span> <span class="p">=</span> <span class="k">new</span> <span class="n">PeopleService</span><span class="p">(</span><span class="n">mockContext</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">// Act</span>
+</span><span class="line"><span class="kt">var</span> <span class="n">secondPerson</span> <span class="p">=</span> <span class="k">await</span> <span class="n">service</span><span class="p">.</span><span class="n">GetPersonAsync</span><span class="p">(</span><span class="m">2</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">// Assert</span>
+</span><span class="line"><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">secondPerson</span><span class="p">.</span><span class="n">Id</span><span class="p">,</span> <span class="n">Is</span><span class="p">.</span><span class="n">EqualTo</span><span class="p">(</span><span class="m">2</span><span class="p">));</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>The source code for this post is accessible from <a href="https://github.com/sinairv/MockEfDbSetWithNSubstitute">here</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1120,93 +1405,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/05/05/using-git-with-github-on-windows/">Using Git With GitHub on Windows</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-05T16:25:00+10:00" pubdate data-updated="true">May 5<span>th</span>, 2012</time>
-        
-           | <a href="/blog/2012/05/05/using-git-with-github-on-windows/#disqus_thread"
-             data-disqus-identifier="http://sinairv.github.io/blog/2012/05/05/using-git-with-github-on-windows/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>If you’re new to Git and don’t know how to install Git on Windows, read my earlier post: <a href="/blog/2012/05/01/how-to-setup-git-for-windows/">How to Setup Git for Windows</a></p>
-
-<p>In an earlier <a href="/blog/2012/05/02/using-git-with-codeplex-on-windows/">post</a>, I described the preliminary steps required to work with git on CodePlex. However using git with<a href="https://github.com/">GitHub</a> requires more initial steps.</p>
-
-<p><strong>Generating SSH Keys.</strong> Before proceeding to Git operations we need to create SSH public and private keys, and register the public key on the GitHub site. In order to generate the keys we can use PuTTY Key Generator, which is already bundled with TortoiseGit fortunately. This program is called “Puttygen” and can be found in start-menu under TortoiseGit:</p>
-
-<p><img src="/images/posts/tortoisegit-puttygen.png" alt="puttygen under TortoiseGit in Windows start-menu" /></p>
-
-<p>After running Puttygen you need to press “Generate”, and make some crazy mouse movements in the spotted area to provide some random data for the program (wow, what a brilliant idea). When finished you will have the public key generated. It is recommended that you provide a passphrase so that you would have a more secure private key. After that save your public and private keys using the 2 save buttons near the bottom of the window. But these are not all that you need to save! The public key format that GitHub and some other applications require you to provide is not the one that this program has saved for you. The topmost field which is labelled “Public key for passing into OpenSSH authorized_keys file” is the one that GitHub needs. It should be in one line (i.e., with no line-breaks), therefore we would refer to it later as the one-line-public-key. Please save the contents of this field and the next “key fingerprint” field somewhere for future references.</p>
-
-<p><img src="/images/posts/puttygenfields.png" alt="Puttygen fields" /></p>
-
-<p><strong>Registering SSH Keys in GitHub.</strong> Browse to GitHub, and go to your Account Seetings, and select SSH Keystherein. Press the Add SSH key button on the right. Provide a name for the key (I chose TortoiseGit), and paste the one-line-public-key in the Key field. Press Add Key. You may be prompted for your GitHub account password next. When finished, GitHub adds this key to its list of keys and provides a fingerprint. Make sure this fingerprint matches the key fingerprint that Puttygen created for you.</p>
-
-<p><strong>Creating a Repository in GitHub.</strong> Browse to the GitHub page and press the “Create a New Repo” button at the top of the page.</p>
-
-<p><img src="/images/posts/githubnewrepo.png" alt="GitHub Create New Repo" /></p>
-
-<p>In the new form that appears, enter desired values for your project’s name and description. Currently there’s an option to add a README file or an appropriate <code>.gitignore</code> file to the repository. While making use of these options are recommended, in this tutorial I intend to start from a completely empty repository; therefore I unchecked those options. When finished press the “Create repository” button. With these steps I created a project called “PdfRenamer”.</p>
-
-<p><strong>Setting up TortoiseGit for the new project.</strong> After creating the repository, GitHub introduces some helpful basic commands to start working with the repository. We don’t intend to use the command-line, however this page contains useful information such as user-name and email with which GitHub recognizes you, and the git repository address, as highlighted below:</p>
-
-<p><img src="/images/posts/githubnewprojectaddressandusername1.png" alt="GitHub New Project Address And User-Name" /></p>
-
-<p>We need to do the following steps next:</p>
-
-<ol>
-  <li>Right click somewhere in the Windows explorer window, and from the context-menu go to: TortoiseGit &gt; Settings » Git branch; and fill the user-name and email fields with the ones suggested by GitHub, and press OK.</li>
-  <li>Create a folder preferably with the same name as your project (in my case PdfRenamer), and browse into it with Windows explorer.</li>
-  <li>Right click somewhere in the folder and from the context menu select “Git Create repository here…”. A window pops-up. Make sure that “Make it Bare” is not checked; and press OK.</li>
-  <li>Right click somewhere in the folder and from the context menu go to: TortoiseGit &gt; Settings » Git branch » Remote sub-branch. In the “Remote” field enter “origin”, in the URL field enter the git repository address which was highlighted above and is in the form of <code>git@github.com:[username]/[projectname].git</code>; and finally in front of “putty key” provide the address to the SSH private key which we saved earlier in this tutorial, and has the <code>.ppk</code> extension. When finished press the “Add New/Save” button. After that origin should be added to the list of Remotes.</li>
-</ol>
-
-<p><img src="/images/posts/tortoisegitremotesetting.png" alt="TortoiseGit Remote Setting" /></p>
-
-<p><strong>Add files to the project structure.</strong> With git, adding a file to a project structure and having it reflected in the remote repository requires 3 operations: add, commit, and push. The first 2 operations are required for adding the file to the local repository, and the third one reflects the changes to the remote repository. This last operation can be postponed to a later time when you want to push a bundle of changes all at once.</p>
-
-<p>To start, create a <code>Readme.txt</code> file in the root folder. Right click on the newly added file, from the context menu select: TortoiseGit &gt; add; check the files to be added, and press OK. This was the first operation: add. In the new window press “commit …”, provide a meaningful commit message in the new window, and press OK when finished. This was the second operation: commit which reflects the changes to your local repository, the one in your hard-drive. You can push the changes in the next window if you want, however it’s not a good idea to push every local commit to the remote repository (that’s why we are using a DVCS after all).</p>
-
-<p>Before continuing to the push command, let’s talk about some naming conventions in the Git world. With DVCSs such as git you can have different remote repositories which you may choose from to push your changes to. By convention, the default name for the remote repository is “origin”. In our case origin is the remote repository at the GitHub server, for which we manually added the link before. On the other hand, each project may have several branches. Conceptually a branch is another copy of the same project where other features are developed and tested. For example imagine that at a certain stage of development you may decide to add a new feature to your project. You may create a new branch called “test”, develop and test the feature there, and finally merge the changes with the code at the main branch. By convention, the main branch is called “master”.</p>
-
-<p>When it comes to push, you need to know which branch of the code you want to push to which remote repository. In our simple case we want to push the master branch to the origin repository. For this purpose, right click somewhere on the Windows explorer that shows the project root folder, and select: TortoiseGit &gt; Push…. Make sure the name of the branches for local and remote repositories and the name of the remote repository are selected correctly. More importantly make sure that the “Autoload Putty Key” check-box is also checked, and press OK. Next, the TortoiseGit will prompt you for the private-key passphrase. Note that this is not your GitHub account password, this is the passphrase that you chose when creating the private key with Puttygen. After finishing the push operation, check the sources in the project’s GitHub page to make sure the changes have been reflected there. Note that after the first push, the PuTTY authentication agent (Pageant) gets run in the background, so that you won’t need to enter the passphrase any time you want to push to GitHub.</p>
-
-<p><strong>Updating the local repository with the latest changes made by other team members to the remote repository.</strong> Well, there are two solutions. The one that I prefer is using git pull. You can easily find this command in the TortoiseGit’s context menu. The pull command, preserves the history of changes made by different people and makes a final merge afterwards. The other solution is git fetch and rebase. The fetch command only receives the latest changes from the remote repository but does not apply them. The rebase command first applies the remote changes to the repository, then applies your changes. Therefore it always seems that you have made the recent changes, while it may not be true. See this <a href="http://stackoverflow.com/questions/3357122/git-pull-vs-git-fetch-git-rebase">stackoverflow question</a> for a better explanation.</p>
-
-<p><strong>Note:</strong> At any stage, if git complains about connecting through a null proxy, then you will have to remove proxy settings from the global <code>.gitconfig</code> file. For more information see tip 7 on my earlier <a href="/blog/2012/05/01/how-to-setup-git-for-windows/">post</a></p>
-
-<p>You may also want to see my earlier <a href="/blog/2012/05/02/using-git-with-codeplex-on-windows/">post</a> that describes using git with <a href="http://www.codeplex.com/">CodePlex</a> on Windows.</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -1234,6 +1432,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/10/04/mock-entity-framework-dbset-with-nsubstitute/">Mock Entity Framework DbSet With NSubstitute</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/05/18/powershell-the-switch-data-type/">PowerShell: The Switch Data-type</a>
       </li>
     
@@ -1247,10 +1449,6 @@
     
       <li class="post">
         <a href="/blog/2014/04/20/the-pains-of-upgrading-android-studio/">The Pains of Upgrading Android Studio</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/01/10/moved-my-blog-to-octopress/">Moved My Blog to Octopress</a>
       </li>
     
   </ul>

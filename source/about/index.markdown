@@ -19,4 +19,4 @@ I own 2 other blogs; one in [Persian](http://sinairv.blogspot.com/) and the othe
 
 Email me:
 
-*<first-name>* **dot** *<last-name>* **at** *gmail* **dot** *com*
+*\<first-name\>* **dot** *\<last-name\>* **at** *gmail* **dot** *com*

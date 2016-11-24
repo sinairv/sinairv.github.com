@@ -149,8 +149,8 @@
 </span><span class="line">    <span class="p">.</span><span class="n">RegisterType</span><span class="p">&lt;</span><span class="n">ILogger</span><span class="p">,</span> <span class="n">ConsoleLogger</span><span class="p">&gt;()</span>
 </span><span class="line">    <span class="p">.</span><span class="n">RegisterType</span><span class="p">&lt;</span><span class="n">ILogger</span><span class="p">,</span> <span class="n">TraceSourceLogger</span><span class="p">&gt;(</span><span class="s">&quot;UI&quot;</span><span class="p">)</span>
 </span><span class="line">    <span class="p">.</span><span class="n">RegisterInstance</span><span class="p">(</span><span class="k">new</span> <span class="n">TraceSource</span><span class="p">(</span><span class="s">&quot;UI&quot;</span><span class="p">,</span> <span class="n">SourceLevels</span><span class="p">.</span><span class="n">All</span><span class="p">))</span>
-</span><span class="line">    <span class="p">.</span><span class="n">RegisterType</span><span class="p">&lt;</span><span class="n">StocksTickerPresenter</span><span class="p">&gt;(</span> 
-</span><span class="line">        <span class="k">new</span> <span class="nf">InjectionProperty</span><span class="p">(</span><span class="s">&quot;Logger&quot;</span><span class="p">,</span> 
+</span><span class="line">    <span class="p">.</span><span class="n">RegisterType</span><span class="p">&lt;</span><span class="n">StocksTickerPresenter</span><span class="p">&gt;(</span>
+</span><span class="line">        <span class="k">new</span> <span class="nf">InjectionProperty</span><span class="p">(</span><span class="s">&quot;Logger&quot;</span><span class="p">,</span>
 </span><span class="line">            <span class="k">new</span> <span class="n">ResolvedParameter</span><span class="p">&lt;</span><span class="n">ILogger</span><span class="p">&gt;(</span><span class="s">&quot;UI&quot;</span><span class="p">)));</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
@@ -394,6 +394,10 @@ http://channel9.msdn.com/blogs/mtaulty/prism–silverlight-part-2-dependency-inj
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/11/24/how-to-reduce-the-pain-of-tfs-with-git-tfs/">How to Reduce the Pain of Working With TFS Using Git TFS</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/10/04/mock-entity-framework-dbset-with-nsubstitute/">Mock Entity Framework DbSet With NSubstitute</a>
       </li>
     
@@ -407,10 +411,6 @@ http://channel9.msdn.com/blogs/mtaulty/prism–silverlight-part-2-dependency-inj
     
       <li class="post">
         <a href="/blog/2014/12/01/syntax-highlighter-for-windows-forms-rich-text-box/">Syntax Highlighter for Windows Forms Rich Text Box</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/04/20/the-pains-of-upgrading-android-studio/">The Pains of Upgrading Android Studio</a>
       </li>
     
   </ul>

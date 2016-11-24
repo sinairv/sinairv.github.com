@@ -178,12 +178,12 @@ The better solution is to use the <code>DATEDIFF</code> function, with the <code
 <span class="line-number">6</span>
 <span class="line-number">7</span>
 <span class="line-number">8</span>
-</pre></td><td class="code"><pre><code class="sql"><span class="line"><span class="k">SELECT</span> 
+</pre></td><td class="code"><pre><code class="sql"><span class="line"><span class="k">SELECT</span>
 </span><span class="line">    <span class="k">REPLACE</span><span class="p">(</span>
 </span><span class="line">        <span class="k">REPLACE</span><span class="p">(</span>
-</span><span class="line">            <span class="k">REPLACE</span><span class="p">(</span>   
-</span><span class="line">                <span class="k">REPLACE</span><span class="p">(</span><span class="o">@</span><span class="n">string</span><span class="p">,</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">13</span><span class="p">),</span> <span class="s1">&#39;&#39;</span><span class="p">),</span> 
-</span><span class="line">            <span class="nb">CHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="s1">&#39; &#39;</span><span class="p">),</span> 
+</span><span class="line">            <span class="k">REPLACE</span><span class="p">(</span>
+</span><span class="line">                <span class="k">REPLACE</span><span class="p">(</span><span class="o">@</span><span class="n">string</span><span class="p">,</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">13</span><span class="p">),</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
+</span><span class="line">            <span class="nb">CHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="s1">&#39; &#39;</span><span class="p">),</span>
 </span><span class="line">        <span class="s1">&#39;  &#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">),</span>
 </span><span class="line">    <span class="s1">&#39;  &#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
@@ -233,7 +233,7 @@ The better solution is to use the <code>DATEDIFF</code> function, with the <code
 <span class="line-number">27</span>
 <span class="line-number">28</span>
 <span class="line-number">29</span>
-</pre></td><td class="code"><pre><code class="sql"><span class="line"><span class="k">WITH</span> <span class="n">DS</span> <span class="p">(</span><span class="n">Person</span><span class="p">,</span> <span class="n">Item</span><span class="p">,</span> <span class="n">Unit</span><span class="p">)</span> <span class="k">AS</span> 
+</pre></td><td class="code"><pre><code class="sql"><span class="line"><span class="k">WITH</span> <span class="n">DS</span> <span class="p">(</span><span class="n">Person</span><span class="p">,</span> <span class="n">Item</span><span class="p">,</span> <span class="n">Unit</span><span class="p">)</span> <span class="k">AS</span>
 </span><span class="line"><span class="p">(</span>
 </span><span class="line">    <span class="k">SELECT</span> <span class="s1">&#39;P1&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mi">1</span>
 </span><span class="line">    <span class="k">UNION</span> <span class="k">ALL</span>
@@ -246,15 +246,15 @@ The better solution is to use the <code>DATEDIFF</code> function, with the <code
 </span><span class="line">    <span class="k">SELECT</span> <span class="s1">&#39;P4&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="mi">1</span>
 </span><span class="line"><span class="p">)</span>
 </span><span class="line"><span class="k">SELECT</span> <span class="n">P</span><span class="p">.</span><span class="n">Person</span> <span class="k">AS</span> <span class="n">Person</span><span class="p">,</span> <span class="n">T</span><span class="p">.</span><span class="n">Item</span><span class="p">,</span> <span class="n">COALESCE</span><span class="p">(</span><span class="n">DS</span><span class="p">.</span><span class="n">Unit</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">AS</span> <span class="n">Unit</span><span class="p">,</span> <span class="n">T</span><span class="p">.</span><span class="n">SortOrder</span>
-</span><span class="line"><span class="k">FROM</span> 
-</span><span class="line"><span class="p">(</span> 
+</span><span class="line"><span class="k">FROM</span>
+</span><span class="line"><span class="p">(</span>
 </span><span class="line">    <span class="k">SELECT</span> <span class="s1">&#39;a&#39;</span> <span class="k">AS</span> <span class="n">Item</span><span class="p">,</span> <span class="mi">1</span> <span class="k">As</span> <span class="n">SortOrder</span>
 </span><span class="line">    <span class="k">UNION</span> <span class="k">ALL</span>
 </span><span class="line">    <span class="k">SELECT</span> <span class="s1">&#39;b&#39;</span> <span class="k">AS</span> <span class="n">Item</span><span class="p">,</span> <span class="mi">2</span> <span class="k">As</span> <span class="n">SortOrder</span>
 </span><span class="line">    <span class="k">UNION</span> <span class="k">ALL</span>
 </span><span class="line">    <span class="k">SELECT</span> <span class="s1">&#39;c&#39;</span> <span class="k">AS</span> <span class="n">Item</span><span class="p">,</span> <span class="mi">3</span> <span class="k">As</span> <span class="n">SortOrder</span>
-</span><span class="line"><span class="p">)</span> <span class="n">T</span> 
-</span><span class="line"><span class="k">LEFT</span> <span class="k">JOIN</span> 
+</span><span class="line"><span class="p">)</span> <span class="n">T</span>
+</span><span class="line"><span class="k">LEFT</span> <span class="k">JOIN</span>
 </span><span class="line"><span class="p">(</span>
 </span><span class="line">    <span class="k">SELECT</span> <span class="k">DISTINCT</span> <span class="n">DS</span><span class="p">.</span><span class="n">Person</span> <span class="k">AS</span> <span class="n">Person</span>
 </span><span class="line">    <span class="k">FROM</span> <span class="n">DS</span>
@@ -292,7 +292,7 @@ The better solution is to use the <code>DATEDIFF</code> function, with the <code
 <span class="line-number">22</span>
 </pre></td><td class="code"><pre><code class="sql"><span class="line"><span class="k">DECLARE</span> <span class="o">@</span><span class="n">myVar</span> <span class="nb">varchar</span><span class="p">(</span><span class="k">MAX</span><span class="p">)</span>
 </span><span class="line">
-</span><span class="line"><span class="k">DECLARE</span> <span class="n">my_cursor</span> <span class="k">CURSOR</span> <span class="k">FOR</span> 
+</span><span class="line"><span class="k">DECLARE</span> <span class="n">my_cursor</span> <span class="k">CURSOR</span> <span class="k">FOR</span>
 </span><span class="line"><span class="k">SELECT</span> <span class="o">*</span>
 </span><span class="line"><span class="k">FROM</span> <span class="n">myTable</span>
 </span><span class="line">
@@ -305,7 +305,7 @@ The better solution is to use the <code>DATEDIFF</code> function, with the <code
 </span><span class="line"><span class="k">BEGIN</span>
 </span><span class="line">    <span class="c1">-- Do something with @myVar</span>
 </span><span class="line">
-</span><span class="line">   
+</span><span class="line">
 </span><span class="line">    <span class="k">FETCH</span> <span class="k">NEXT</span> <span class="k">FROM</span> <span class="n">my_cursor</span>
 </span><span class="line">    <span class="k">INTO</span> <span class="o">@</span><span class="n">myVar</span>
 </span><span class="line"><span class="k">END</span>
@@ -321,7 +321,7 @@ The better solution is to use the <code>DATEDIFF</code> function, with the <code
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
-</pre></td><td class="code"><pre><code class="sql"><span class="line"><span class="k">alter</span> <span class="k">database</span> <span class="n">dbName</span> <span class="k">set</span> <span class="n">single_user</span> <span class="k">with</span> <span class="k">rollback</span> <span class="k">immediate</span> 
+</pre></td><td class="code"><pre><code class="sql"><span class="line"><span class="k">alter</span> <span class="k">database</span> <span class="n">dbName</span> <span class="k">set</span> <span class="n">single_user</span> <span class="k">with</span> <span class="k">rollback</span> <span class="k">immediate</span>
 </span><span class="line">
 </span><span class="line"><span class="k">alter</span> <span class="k">database</span> <span class="n">dbName</span> <span class="k">set</span> <span class="n">multi_user</span> <span class="k">with</span> <span class="k">rollback</span> <span class="k">immediate</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
@@ -385,6 +385,10 @@ The better solution is to use the <code>DATEDIFF</code> function, with the <code
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/11/24/how-to-reduce-the-pain-of-tfs-with-git-tfs/">How to Reduce the Pain of Working With TFS Using Git TFS</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/10/04/mock-entity-framework-dbset-with-nsubstitute/">Mock Entity Framework DbSet With NSubstitute</a>
       </li>
     
@@ -398,10 +402,6 @@ The better solution is to use the <code>DATEDIFF</code> function, with the <code
     
       <li class="post">
         <a href="/blog/2014/12/01/syntax-highlighter-for-windows-forms-rich-text-box/">Syntax Highlighter for Windows Forms Rich Text Box</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/04/20/the-pains-of-upgrading-android-studio/">The Pains of Upgrading Android Studio</a>
       </li>
     
   </ul>

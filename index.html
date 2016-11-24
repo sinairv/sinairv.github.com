@@ -9,7 +9,7 @@
   <meta name="author" content="Sina Iravanian">
 
   
-  <meta name="description" content="The source code for this post is on GitHub. When it comes to mocking a DbSet to test various read and write operations things may get a little bit &hellip;">
+  <meta name="description" content="Git TFS is a program that extends git commands to talk to a TFS remote repository (instead of a git repository). It creates a real git repository and &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +79,96 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/11/24/how-to-reduce-the-pain-of-tfs-with-git-tfs/">How to Reduce the Pain of Working With TFS Using Git TFS</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2016-11-24T14:51:08+11:00" pubdate data-updated="true">Nov 24<span>th</span>, 2016</time>
+        
+           | <a href="/blog/2016/11/24/how-to-reduce-the-pain-of-tfs-with-git-tfs/#disqus_thread"
+             data-disqus-identifier="http://sinairv.github.io/blog/2016/11/24/how-to-reduce-the-pain-of-tfs-with-git-tfs/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><em>Git TFS</em> is a program that extends git commands to talk to a TFS remote repository (instead of a git repository). 
+It creates a real git repository and replays the TFS history on top of it. It can be treated as a real git repository except 
+for when it comes to cloning and syncing. In spite of that it still makes a programmer’s life much easier.</p>
+
+<p>The best starting point is the <a href="https://github.com/git-tfs/git-tfs/">project’s ReadMe file on GitHub</a>. Here’s a brief overview of basic commands I needed to use.</p>
+
+<p>To install via <a href="https://chocolatey.org/">chocolatey</a>, run:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">choco install gittfs</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Make sure to add <code>gittfs.exe</code> to path. Chocolatey installed mine in “C:\Tools\Gittfs&#8221;.</p>
+
+<p>Cloning from TFS is a bit different from that of Git:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">git tfs clone http://url-to-tfs:8080/tfs/DefaultCollection $/ProjectName</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>It will create an empty git repository and then replays the TFS repository on top preserving all the history. 
+If the TFS repository is too big there are some switches available to the <code>git tfs clone</code> command that allows you to <em>quickly clone</em> the latest or a specific 
+revision from the history. For more information, see the documentation for <a href="https://github.com/git-tfs/git-tfs/blob/master/doc/commands/quick-clone.md"><em>quick-clone</em></a>. </p>
+
+<p>After cloning, it has created a <em>real</em> git repository to which you can make as many local commits as you like. 
+To push your local commits (or <em>check-in</em> in TFS terminology) you need to run the following command:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">git tfs rcheckin</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>The <a href="https://github.com/git-tfs/git-tfs/blob/master/doc/commands/rcheckin.md"><code>rcheckin</code></a> command will 
+preserve all outstanding local commits and checks them in one by one to the remote TFS repository. Note that <code>git push</code> doesn’t work here as there’s no standard git remote being tracked.</p>
+
+<p>There are other alternatives to <code>rcheckin</code>, such as <code>git tfs checkin -m "message"</code> which squashes your local commits into one using the specified message, or 
+<code>git tfs checkintool</code> which opens up the TFS tools checkin window to perform the check-in. My preference is <code>rcheckin</code> because it keeps me mindful of my local commits, 
+and abstracts TFS away better than others.   </p>
+
+<p>To update local repository with remote changes made in TFS <code>default</code> branch, you can pull and rebase, which is my preference:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">git tfs pull --rebase</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Pretty much like git, it pulls down outstanding remote commits and then replays local commits on top of it avoiding the need for an extra merge commit. 
+Alternatively you can also pull and merge:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">git tfs pull</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>which may end up creating a merge commit on top of your local changes (unless it can fast-forward). Have a look at documentations for 
+<a href="https://github.com/git-tfs/git-tfs/blob/master/doc/commands/pull.md">git tfs pull</a> to learn more about pulling from branches other than <code>default</code>.</p>
+
+<p>As you can see when it comes to cloning and syncing, the commands are different from those of standard git. 
+However the fact that you can easily modify the files you need to modify, have a much better diff status of what has been 
+changed before every commit, and possibility of using your git client and tools that you like are what makes life easier with Git TFS.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -752,7 +842,7 @@
 <span class="line-number">4</span>
 </pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="c1">// 1st set of keywords; I&#39;d like to see them in Blue</span>
 </span><span class="line"><span class="n">syntaxHighlighter</span><span class="p">.</span><span class="n">AddPattern</span><span class="p">(</span>
-</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="s">&quot;for&quot;</span><span class="p">,</span> <span class="s">&quot;foreach&quot;</span><span class="p">,</span> <span class="s">&quot;int&quot;</span><span class="p">,</span> <span class="s">&quot;var&quot;</span><span class="p">),</span> 
+</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="s">&quot;for&quot;</span><span class="p">,</span> <span class="s">&quot;foreach&quot;</span><span class="p">,</span> <span class="s">&quot;int&quot;</span><span class="p">,</span> <span class="s">&quot;var&quot;</span><span class="p">),</span>
 </span><span class="line">    <span class="k">new</span> <span class="nf">SyntaxStyle</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="n">Blue</span><span class="p">));</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
@@ -764,7 +854,7 @@
 <span class="line-number">4</span>
 </pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="c1">// 2nd set of keywords; I&#39;d like to see them in bold Navy, and they must be case insensitive</span>
 </span><span class="line"><span class="n">syntaxHighlighter</span><span class="p">.</span><span class="n">AddPattern</span><span class="p">(</span>
-</span><span class="line">    <span class="k">new</span> <span class="nf">CaseInsensitivePatternDefinition</span><span class="p">(</span><span class="s">&quot;public&quot;</span><span class="p">,</span> <span class="s">&quot;partial&quot;</span><span class="p">,</span> <span class="s">&quot;class&quot;</span><span class="p">,</span> <span class="s">&quot;void&quot;</span><span class="p">),</span> 
+</span><span class="line">    <span class="k">new</span> <span class="nf">CaseInsensitivePatternDefinition</span><span class="p">(</span><span class="s">&quot;public&quot;</span><span class="p">,</span> <span class="s">&quot;partial&quot;</span><span class="p">,</span> <span class="s">&quot;class&quot;</span><span class="p">,</span> <span class="s">&quot;void&quot;</span><span class="p">),</span>
 </span><span class="line">    <span class="k">new</span> <span class="nf">SyntaxStyle</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="n">Navy</span><span class="p">,</span> <span class="n">bold</span><span class="p">:</span> <span class="k">true</span><span class="p">,</span> <span class="n">italic</span><span class="p">:</span> <span class="k">false</span><span class="p">));</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
@@ -776,7 +866,7 @@
 <span class="line-number">4</span>
 </pre></td><td class="code"><pre><code class="csharp"><span class="line"><span class="c1">// numbers; I&#39;d like to see them in purple</span>
 </span><span class="line"><span class="n">syntaxHighlighter</span><span class="p">.</span><span class="n">AddPattern</span><span class="p">(</span>
-</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="s">@&quot;\d+\.\d+|\d+&quot;</span><span class="p">),</span> 
+</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="s">@&quot;\d+\.\d+|\d+&quot;</span><span class="p">),</span>
 </span><span class="line">    <span class="k">new</span> <span class="nf">SyntaxStyle</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="n">Purple</span><span class="p">));</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
@@ -833,44 +923,44 @@
 </span><span class="line">
 </span><span class="line"><span class="c1">// multi-line comments; I&#39;d like to see them in dark-sea-green and italic</span>
 </span><span class="line"><span class="n">syntaxHighlighter</span><span class="p">.</span><span class="n">AddPattern</span><span class="p">(</span>
-</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="k">new</span> <span class="n">Regex</span><span class="p">(</span><span class="s">@&quot;/\*(.|[\r\n])*?\*/&quot;</span><span class="p">,</span> 
-</span><span class="line">        <span class="n">RegexOptions</span><span class="p">.</span><span class="n">Multiline</span> <span class="p">|</span> <span class="n">RegexOptions</span><span class="p">.</span><span class="n">Compiled</span><span class="p">)),</span> 
+</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="k">new</span> <span class="n">Regex</span><span class="p">(</span><span class="s">@&quot;/\*(.|[\r\n])*?\*/&quot;</span><span class="p">,</span>
+</span><span class="line">        <span class="n">RegexOptions</span><span class="p">.</span><span class="n">Multiline</span> <span class="p">|</span> <span class="n">RegexOptions</span><span class="p">.</span><span class="n">Compiled</span><span class="p">)),</span>
 </span><span class="line">    <span class="k">new</span> <span class="nf">SyntaxStyle</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="n">DarkSeaGreen</span><span class="p">,</span> <span class="n">bold</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">italic</span><span class="p">:</span> <span class="k">true</span><span class="p">));</span>
 </span><span class="line">
 </span><span class="line"><span class="c1">// singlie-line comments; I&#39;d like to see them in Green and italic</span>
 </span><span class="line"><span class="n">syntaxHighlighter</span><span class="p">.</span><span class="n">AddPattern</span><span class="p">(</span>
-</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="k">new</span> <span class="n">Regex</span><span class="p">(</span><span class="s">@&quot;//.*?$&quot;</span><span class="p">,</span> 
-</span><span class="line">        <span class="n">RegexOptions</span><span class="p">.</span><span class="n">Multiline</span> <span class="p">|</span> <span class="n">RegexOptions</span><span class="p">.</span><span class="n">Compiled</span><span class="p">)),</span> 
+</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="k">new</span> <span class="n">Regex</span><span class="p">(</span><span class="s">@&quot;//.*?$&quot;</span><span class="p">,</span>
+</span><span class="line">        <span class="n">RegexOptions</span><span class="p">.</span><span class="n">Multiline</span> <span class="p">|</span> <span class="n">RegexOptions</span><span class="p">.</span><span class="n">Compiled</span><span class="p">)),</span>
 </span><span class="line">    <span class="k">new</span> <span class="nf">SyntaxStyle</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="n">Green</span><span class="p">,</span> <span class="n">bold</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">italic</span><span class="p">:</span> <span class="k">true</span><span class="p">));</span>
 </span><span class="line">
 </span><span class="line"><span class="c1">// double quote strings; I&#39;d like to see them in Red</span>
 </span><span class="line"><span class="n">syntaxHighlighter</span><span class="p">.</span><span class="n">AddPattern</span><span class="p">(</span>
-</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="s">@&quot;\&quot;&quot;([^&quot;&quot;]|\&quot;&quot;\&quot;&quot;)+\&quot;&quot;&quot;</span><span class="p">),</span> 
+</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="s">@&quot;\&quot;&quot;([^&quot;&quot;]|\&quot;&quot;\&quot;&quot;)+\&quot;&quot;&quot;</span><span class="p">),</span>
 </span><span class="line">    <span class="k">new</span> <span class="nf">SyntaxStyle</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="n">Red</span><span class="p">));</span>
 </span><span class="line">
 </span><span class="line"><span class="c1">// single quote strings; I&#39;d like to see them in Salmon </span>
 </span><span class="line"><span class="n">syntaxHighlighter</span><span class="p">.</span><span class="n">AddPattern</span><span class="p">(</span>
-</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="s">@&quot;\&#39;([^&#39;]|\&#39;\&#39;)+\&#39;&quot;</span><span class="p">),</span> 
+</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="s">@&quot;\&#39;([^&#39;]|\&#39;\&#39;)+\&#39;&quot;</span><span class="p">),</span>
 </span><span class="line">    <span class="k">new</span> <span class="nf">SyntaxStyle</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="n">Salmon</span><span class="p">));</span>
-</span><span class="line">            
+</span><span class="line">
 </span><span class="line"><span class="c1">// 1st set of keywords; I&#39;d like to see them in Blue</span>
 </span><span class="line"><span class="n">syntaxHighlighter</span><span class="p">.</span><span class="n">AddPattern</span><span class="p">(</span>
-</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="s">&quot;for&quot;</span><span class="p">,</span> <span class="s">&quot;foreach&quot;</span><span class="p">,</span> <span class="s">&quot;int&quot;</span><span class="p">,</span> <span class="s">&quot;var&quot;</span><span class="p">),</span> 
+</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="s">&quot;for&quot;</span><span class="p">,</span> <span class="s">&quot;foreach&quot;</span><span class="p">,</span> <span class="s">&quot;int&quot;</span><span class="p">,</span> <span class="s">&quot;var&quot;</span><span class="p">),</span>
 </span><span class="line">    <span class="k">new</span> <span class="nf">SyntaxStyle</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="n">Blue</span><span class="p">));</span>
-</span><span class="line">            
+</span><span class="line">
 </span><span class="line"><span class="c1">// 2nd set of keywords; I&#39;d like to see them in bold Navy, and they must be case insensitive</span>
 </span><span class="line"><span class="n">syntaxHighlighter</span><span class="p">.</span><span class="n">AddPattern</span><span class="p">(</span>
-</span><span class="line">    <span class="k">new</span> <span class="nf">CaseInsensitivePatternDefinition</span><span class="p">(</span><span class="s">&quot;public&quot;</span><span class="p">,</span> <span class="s">&quot;partial&quot;</span><span class="p">,</span> <span class="s">&quot;class&quot;</span><span class="p">,</span> <span class="s">&quot;void&quot;</span><span class="p">),</span> 
+</span><span class="line">    <span class="k">new</span> <span class="nf">CaseInsensitivePatternDefinition</span><span class="p">(</span><span class="s">&quot;public&quot;</span><span class="p">,</span> <span class="s">&quot;partial&quot;</span><span class="p">,</span> <span class="s">&quot;class&quot;</span><span class="p">,</span> <span class="s">&quot;void&quot;</span><span class="p">),</span>
 </span><span class="line">    <span class="k">new</span> <span class="nf">SyntaxStyle</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="n">Navy</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span> <span class="k">false</span><span class="p">));</span>
 </span><span class="line">
 </span><span class="line"><span class="c1">// numbers; I&#39;d like to see them in purple</span>
 </span><span class="line"><span class="n">syntaxHighlighter</span><span class="p">.</span><span class="n">AddPattern</span><span class="p">(</span>
-</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="s">@&quot;\d+\.\d+|\d+&quot;</span><span class="p">),</span> 
+</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="s">@&quot;\d+\.\d+|\d+&quot;</span><span class="p">),</span>
 </span><span class="line">    <span class="k">new</span> <span class="nf">SyntaxStyle</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="n">Purple</span><span class="p">));</span>
 </span><span class="line">
 </span><span class="line"><span class="c1">// operators; I&#39;d like to see them in Brown</span>
 </span><span class="line"><span class="n">syntaxHighlighter</span><span class="p">.</span><span class="n">AddPattern</span><span class="p">(</span>
-</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="s">&quot;+&quot;</span><span class="p">,</span> <span class="s">&quot;-&quot;</span><span class="p">,</span> <span class="s">&quot;&gt;&quot;</span><span class="p">,</span> <span class="s">&quot;&lt;&quot;</span><span class="p">,</span> <span class="s">&quot;&amp;&quot;</span><span class="p">,</span> <span class="s">&quot;|&quot;</span><span class="p">),</span> 
+</span><span class="line">    <span class="k">new</span> <span class="nf">PatternDefinition</span><span class="p">(</span><span class="s">&quot;+&quot;</span><span class="p">,</span> <span class="s">&quot;-&quot;</span><span class="p">,</span> <span class="s">&quot;&gt;&quot;</span><span class="p">,</span> <span class="s">&quot;&lt;&quot;</span><span class="p">,</span> <span class="s">&quot;&amp;&quot;</span><span class="p">,</span> <span class="s">&quot;|&quot;</span><span class="p">),</span>
 </span><span class="line">    <span class="k">new</span> <span class="nf">SyntaxStyle</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="n">Brown</span><span class="p">));</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
@@ -1056,7 +1146,7 @@
 </span><span class="line">    <span class="k">private</span> <span class="kt">string</span> <span class="n">_name</span><span class="p">;</span>
 </span><span class="line">    <span class="k">private</span> <span class="kt">double</span> <span class="n">_age</span><span class="p">;</span>
 </span><span class="line">
-</span><span class="line">    <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span> 
+</span><span class="line">    <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span>
 </span><span class="line">    <span class="p">{</span>
 </span><span class="line">        <span class="k">get</span>
 </span><span class="line">        <span class="p">{</span>
@@ -1073,7 +1163,7 @@
 </span><span class="line">        <span class="p">}</span>
 </span><span class="line">    <span class="p">}</span>
 </span><span class="line">
-</span><span class="line">    <span class="k">public</span> <span class="kt">double</span> <span class="n">Age</span> 
+</span><span class="line">    <span class="k">public</span> <span class="kt">double</span> <span class="n">Age</span>
 </span><span class="line">    <span class="p">{</span>
 </span><span class="line">        <span class="k">get</span>
 </span><span class="line">        <span class="p">{</span>
@@ -1160,7 +1250,7 @@
 </span><span class="line">    <span class="k">private</span> <span class="kt">string</span> <span class="n">_name</span><span class="p">;</span>
 </span><span class="line">    <span class="k">private</span> <span class="kt">double</span> <span class="n">_age</span><span class="p">;</span>
 </span><span class="line">
-</span><span class="line">    <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span> 
+</span><span class="line">    <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span>
 </span><span class="line">    <span class="p">{</span>
 </span><span class="line">        <span class="k">get</span>
 </span><span class="line">        <span class="p">{</span>
@@ -1177,7 +1267,7 @@
 </span><span class="line">        <span class="p">}</span>
 </span><span class="line">    <span class="p">}</span>
 </span><span class="line">
-</span><span class="line">    <span class="k">public</span> <span class="kt">double</span> <span class="n">Age</span> 
+</span><span class="line">    <span class="k">public</span> <span class="kt">double</span> <span class="n">Age</span>
 </span><span class="line">    <span class="p">{</span>
 </span><span class="line">        <span class="k">get</span>
 </span><span class="line">        <span class="p">{</span>
@@ -1361,49 +1451,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/05/27/programming-koans-one-of-the-best-ways-to-learn-a-new-language-or-framework/">Programming Koans: One of the Best Ways to Learn a New Language or Framework</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-27T16:46:35+10:00" pubdate data-updated="true">May 27<span>th</span>, 2012</time>
-        
-           | <a href="/blog/2012/05/27/programming-koans-one-of-the-best-ways-to-learn-a-new-language-or-framework/#disqus_thread"
-             data-disqus-identifier="http://sinairv.github.io/blog/2012/05/27/programming-koans-one-of-the-best-ways-to-learn-a-new-language-or-framework/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Based on Wikipedia, originally a <a href="http://en.wikipedia.org/wiki/K%C5%8Dan">Koan in Zen-practice</a> is a paradoxical question that provokes doubt and tests a student’s progress. On the other hand, programming Koans are a set of failing unit-tests, for which the learner is required to fix the code or fill the required fields with proper values in order to make each test pass. Probably one of the earliest and most popular Koans were <a href="http://rubykoans.com/">Ruby Koans</a>. Now there are several Koans implemented for different languages and frameworks. Search the word “Koan” in <a href="https://github.com/">GitHub</a> or <a href="https://bitbucket.org/">BitBucket</a> and you will find the gems.</p>
-
-<p>My first experience of Koans was <a href="https://github.com/rally25rs/MoqKoans">MoqKoans</a>, a great set of Koans for learning <a href="http://code.google.com/p/moq/">Moq</a>, a mocking library for the .NET framework. That was really a wonderful learning experience. These days I’m trying to strengthen my web programming skills, and as one of the early steps I decided to remaster JavaScript. I found two JavaScript Koans on GitHub; both of them are great. However, I suggest that one should start with the <a href="https://github.com/liammclennan/JavaScript-Koans">JavaScript Koans by Liam McLennan</a>, which is easier to begin with. after finishing this step, I highly recommend proceeding with the<a href="https://github.com/mrdavidlaing/javascript-koans">JavaScript Koans by David Laing</a>. This one is a smaller set of Koans, but gets more advanced, and contains an introduction to <a href="http://underscorejs.org/">Underscore.js</a> as well.</p>
-
-<p>Experience the joy of learning with Koans, and having all the reds going green in the end.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -1431,6 +1478,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/11/24/how-to-reduce-the-pain-of-tfs-with-git-tfs/">How to Reduce the Pain of Working With TFS Using Git TFS</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/10/04/mock-entity-framework-dbset-with-nsubstitute/">Mock Entity Framework DbSet With NSubstitute</a>
       </li>
     
@@ -1444,10 +1495,6 @@
     
       <li class="post">
         <a href="/blog/2014/12/01/syntax-highlighter-for-windows-forms-rich-text-box/">Syntax Highlighter for Windows Forms Rich Text Box</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/04/20/the-pains-of-upgrading-android-studio/">The Pains of Upgrading Android Studio</a>
       </li>
     
   </ul>

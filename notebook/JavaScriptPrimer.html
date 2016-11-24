@@ -320,7 +320,7 @@
 </pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">myObject</span> <span class="o">=</span> <span class="p">{</span>
 </span><span class="line">    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;John Doe&quot;</span><span class="p">,</span>
 </span><span class="line">    <span class="nx">age</span><span class="o">:</span> <span class="mi">28</span>
-</span><span class="line"><span class="p">};</span> 
+</span><span class="line"><span class="p">};</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>Or properties can be added later:</p>
@@ -374,7 +374,7 @@
 <span class="line-number">5</span>
 <span class="line-number">6</span>
 <span class="line-number">7</span>
-</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">favouriteThings</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;cellar door&quot;</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="kc">true</span><span class="p">];</span> 
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">favouriteThings</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;cellar door&quot;</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="kc">true</span><span class="p">];</span>
 </span><span class="line"><span class="c1">// array elements do not have to be of the same type</span>
 </span><span class="line"><span class="c1">// elements are referenced by [] indexer</span>
 </span><span class="line"><span class="c1">// favouriteThings[1] -&gt; 42</span>
@@ -709,7 +709,7 @@
 </span><span class="line"><span class="p">};</span>
 </span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">simpleCircle</span><span class="p">.</span><span class="nx">describe</span><span class="p">());</span>
 </span><span class="line"><span class="c1">// This circle has a radius of: 10</span>
-</span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">colouredCircle</span><span class="p">.</span><span class="nx">describe</span><span class="p">());</span> 
+</span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">colouredCircle</span><span class="p">.</span><span class="nx">describe</span><span class="p">());</span>
 </span><span class="line"><span class="c1">// This circle has a radius of: 5</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
@@ -863,7 +863,7 @@
 <span class="line-number">6</span>
 <span class="line-number">7</span>
 </pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">invokee</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">message</span> <span class="p">){</span>
-</span><span class="line">    <span class="k">return</span> <span class="k">this</span> <span class="o">+</span> <span class="nx">message</span><span class="p">;</span>    
+</span><span class="line">    <span class="k">return</span> <span class="k">this</span> <span class="o">+</span> <span class="nx">message</span><span class="p">;</span>
 </span><span class="line"><span class="p">};</span>
 </span><span class="line">
 </span><span class="line"><span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">invokee</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="s2">&quot;I am this! &quot;</span><span class="p">,</span> <span class="s2">&quot;Where did it come from?&quot;</span><span class="p">);</span>
@@ -886,7 +886,7 @@
 </span><span class="line">    <span class="nx">handle</span><span class="o">:</span> <span class="s1">&#39;bob&#39;</span><span class="p">,</span>
 </span><span class="line">    <span class="nx">intro</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
 </span><span class="line">        <span class="k">return</span> <span class="s2">&quot;Hello, my name is &quot;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">handle</span><span class="p">;</span>
-</span><span class="line">    <span class="p">}</span> 
+</span><span class="line">    <span class="p">}</span>
 </span><span class="line"><span class="p">}</span>
 </span><span class="line">
 </span><span class="line"><span class="c1">// calling a function with &#39;call&#39; lets us assign &#39;this&#39; explicitly</span>
@@ -1046,7 +1046,7 @@
 </span><span class="line"><span class="k">while</span><span class="p">(</span><span class="nx">results</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
 </span><span class="line">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;index: &quot;</span> <span class="o">+</span> <span class="nx">results</span><span class="p">.</span><span class="nx">index</span> <span class="o">+</span> <span class="s2">&quot; found [&quot;</span> <span class="o">+</span> <span class="nx">results</span> <span class="o">+</span> <span class="s2">&quot;]&quot;</span><span class="p">);</span>
 </span><span class="line">    <span class="nx">results</span> <span class="o">=</span> <span class="nx">regexp</span><span class="p">.</span><span class="nx">exec</span><span class="p">(</span><span class="nx">input</span><span class="p">);</span>
-</span><span class="line"><span class="p">}</span> 
+</span><span class="line"><span class="p">}</span>
 </span><span class="line"><span class="c1">// index: 3 found [ABA,A,A]</span>
 </span><span class="line"><span class="c1">// index: 10 found [aba,a,a]</span>
 </span><span class="line"><span class="c1">// index: 17 found [aca,a,a] </span>
@@ -1198,6 +1198,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/11/24/how-to-reduce-the-pain-of-tfs-with-git-tfs/">How to Reduce the Pain of Working With TFS Using Git TFS</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/10/04/mock-entity-framework-dbset-with-nsubstitute/">Mock Entity Framework DbSet With NSubstitute</a>
       </li>
     
@@ -1211,10 +1215,6 @@
     
       <li class="post">
         <a href="/blog/2014/12/01/syntax-highlighter-for-windows-forms-rich-text-box/">Syntax Highlighter for Windows Forms Rich Text Box</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/04/20/the-pains-of-upgrading-android-studio/">The Pains of Upgrading Android Studio</a>
       </li>
     
   </ul>

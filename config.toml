@@ -10,7 +10,7 @@ paginate = 7
 canonifyurls = true
 
 [permalinks]
-  post = "/:year/:month/:day/:slug/"
+  post = "/blog/:year/:month/:day/:slug/"
 
 [taxonomies]
   tag = "tags"

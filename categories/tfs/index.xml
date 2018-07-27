@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tfs on Sina&#39;s Blog</title>
+    <link>https://sinairv.github.io/categories/tfs/</link>
+    <description>Recent content in Tfs on Sina&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 24 Nov 2016 14:51:08 +1100</lastBuildDate>
+    
+	<atom:link href="https://sinairv.github.io/categories/tfs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>How to reduce the pain of working with TFS using Git TFS</title>
+      <link>https://sinairv.github.io/2016/11/24/how-to-reduce-the-pain-of-working-with-tfs-using-git-tfs/</link>
+      <pubDate>Thu, 24 Nov 2016 14:51:08 +1100</pubDate>
+      
+      <guid>https://sinairv.github.io/2016/11/24/how-to-reduce-the-pain-of-working-with-tfs-using-git-tfs/</guid>
+      <description>Git TFS is a program that extends git commands to talk to a TFS remote repository (instead of a git repository). It creates a real git repository and replays the TFS history on top of it. It can be treated as a real git repository except for when it comes to cloning and syncing. In spite of that it still makes a programmer&amp;rsquo;s life much easier.
+The best starting point is the project&amp;rsquo;s ReadMe file on GitHub.</description>
+    </item>
+    
+  </channel>
+</rss>

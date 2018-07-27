@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Android Studio on Sina&#39;s Blog</title>
+    <link>https://sinairv.github.io/categories/android-studio/</link>
+    <description>Recent content in Android Studio on Sina&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 20 Apr 2014 20:32:23 +1000</lastBuildDate>
+    
+	<atom:link href="https://sinairv.github.io/categories/android-studio/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>The pains of upgrading Android Studio</title>
+      <link>https://sinairv.github.io/2014/04/20/the-pains-of-upgrading-android-studio/</link>
+      <pubDate>Sun, 20 Apr 2014 20:32:23 +1000</pubDate>
+      
+      <guid>https://sinairv.github.io/2014/04/20/the-pains-of-upgrading-android-studio/</guid>
+      <description>I could gracefully install and test earlier versions of Android Studio before they adopted Gradle for their build system. After doing the upgrade I could no longer build a single project with weird error messages relating to Gradle. I searched the web, and found some workarounds in stackoverflow, e.g., manually installing Gradle, updating environment variables and so and so. None of them were helpful for me, although they seemed to be solving the issue for many (who have voted for the answers).</description>
+    </item>
+    
+  </channel>
+</rss>

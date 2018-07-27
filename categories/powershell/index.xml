@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Powershell on Sina&#39;s Blog</title>
+    <link>https://sinairv.github.io/categories/powershell/</link>
+    <description>Recent content in Powershell on Sina&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 18 May 2015 00:45:18 +1000</lastBuildDate>
+    
+	<atom:link href="https://sinairv.github.io/categories/powershell/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>PowerShell: the switch data-type</title>
+      <link>https://sinairv.github.io/2015/05/18/powershell-the-switch-data-type/</link>
+      <pubDate>Mon, 18 May 2015 00:45:18 +1000</pubDate>
+      
+      <guid>https://sinairv.github.io/2015/05/18/powershell-the-switch-data-type/</guid>
+      <description>The switch data type is used to control whether a switch (as in arguments or options passed to a function or command) is provided for the function/command or not. Suppose that there is a function called Switch-Demo that can accept -Force and -Quiet switches. These switches just work as toggles. What we care about them is whether they exist or not. There are no pieces of data accompanying them. The PowerShell switch data-type suits this purpose:</description>
+    </item>
+    
+  </channel>
+</rss>

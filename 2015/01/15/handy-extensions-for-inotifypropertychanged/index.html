@@ -1,0 +1,860 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+
+  
+
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.45 with theme Tranquilpeak 0.4.3-BETA">
+    <title>Handy Extensions for INotifyPropertyChanged</title>
+    <meta name="author" content="Sina Iravanian">
+    <meta name="keywords" content=", development, dotnet, csharp, software, architecture">
+
+    <link rel="icon" href="https://sinairv.github.io/favicon.png">
+    
+
+    
+    <meta name="description" content="I recently created a library that contains some handy extensions for INotifyPropertyChanged interface (aka INPC). To start using the library, add the following to the top of your C# code:
+using NotifyPropertyChangedExtensions;  How to easily raise INPC in a refactor friendly way public class MyClass : INotifyPropertyChanged { private int _number; public int Number { get { return _number; } set { if(_number != value) { _number = value; this.">
+    <meta property="og:description" content="I recently created a library that contains some handy extensions for INotifyPropertyChanged interface (aka INPC). To start using the library, add the following to the top of your C# code:
+using NotifyPropertyChangedExtensions;  How to easily raise INPC in a refactor friendly way public class MyClass : INotifyPropertyChanged { private int _number; public int Number { get { return _number; } set { if(_number != value) { _number = value; this.">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Handy Extensions for INotifyPropertyChanged">
+    <meta property="og:url" content="/2015/01/15/handy-extensions-for-inotifypropertychanged/">
+    <meta property="og:site_name" content="Sina&#39;s Blog">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Sina&#39;s Blog">
+    <meta name="twitter:description" content="I recently created a library that contains some handy extensions for INotifyPropertyChanged interface (aka INPC). To start using the library, add the following to the top of your C# code:
+using NotifyPropertyChangedExtensions;  How to easily raise INPC in a refactor friendly way public class MyClass : INotifyPropertyChanged { private int _number; public int Number { get { return _number; } set { if(_number != value) { _number = value; this.">
+    
+      <meta name="twitter:creator" content="@sinairv">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="https://sinairv.github.io/img/sina-avatar.jpg">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://sinairv.github.io/css/style-jsjn0006wyhpyzivf6yceb31gvpjatbcs3qzjvlumobfnugccvobqwxnnaj8.min.css" />
+    
+    
+
+    
+      
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-46467071-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://sinairv.github.io/">Sina&#39;s Blog</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://sinairv.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://sinairv.github.io/img/sina-avatar.jpg" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://sinairv.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://sinairv.github.io/img/sina-avatar.jpg" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Sina Iravanian</h4>
+        
+          <h5 class="sidebar-profile-bio">Movie music junkie, insomniac, daydreamer, procrastinator, hard-determinist, introvert, and a bit into software.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://sinairv.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://sinairv.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://sinairv.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://sinairv.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://sinairv.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/sinairv" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://stackoverflow.com/users/836432/sina-iravanian" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-stack-overflow"></i>
+      
+      <span class="sidebar-button-desc">Stack Overflow</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://twitter.com/sinairv" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
+      
+      <span class="sidebar-button-desc">Twitter</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://sinairv.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Handy Extensions for INotifyPropertyChanged
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2015-01-15T00:22:39&#43;10:00">
+        
+  
+  
+  
+  
+    15 January 2015
+  
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://sinairv.github.io/categories/c">C#</a>, 
+    
+      <a class="category-link" href="https://sinairv.github.io/categories/inotifypropertychanged">INotifyPropertyChanged</a>, 
+    
+      <a class="category-link" href="https://sinairv.github.io/categories/data-binding">Data Binding</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              
+
+<p>I recently created a <a href="https://github.com/sinairv/INPC-Extensions">library</a> that contains some handy extensions for <code>INotifyPropertyChanged</code> interface (aka INPC). To start using the library, add the following to the top of your C# code:</p>
+
+<pre><code class="language-csharp">using NotifyPropertyChangedExtensions;
+</code></pre>
+
+<h4 id="how-to-easily-raise-inpc-in-a-refactor-friendly-way">How to easily raise INPC in a refactor friendly way</h4>
+
+<pre><code class="language-csharp">public class MyClass : INotifyPropertyChanged
+{
+    private int _number;
+
+    public int Number
+    {
+        get { return _number; }
+        set 
+        { 
+            if(_number != value)
+            {
+                _number = value; 
+                this.RaisePropertyChanged(() =&gt; Number); 
+            }
+        }
+    }
+
+    public event PropertyChangedEventHandler PropertyChanged;
+}
+</code></pre>
+
+<h4 id="how-to-easily-handle-listen-to-inpc-in-a-refactor-friendly-way">How to easily handle (listen to) INPC in a refactor friendly way</h4>
+
+<pre><code class="language-csharp">MyClass myObject = ...;
+
+myObject.HandleOnPropertyChanged(src =&gt; src.Number, sender =&gt;
+    {
+        Console.WriteLine(&quot;Number changed to {0}&quot;, sender.Number);
+    });
+</code></pre>
+
+<h4 id="how-to-do-one-way-binding-from-a-class-that-implements-inpc">How to do one-way binding from a class that implements INPC</h4>
+
+<pre><code class="language-csharp">var source = new MyClass();
+var target = new TargetClass();
+
+source.BindProperty(src =&gt; src.Number, target, t =&gt; t.Num);
+
+source.Number = 10;
+Console.WriteLine(target.Num); // 10
+</code></pre>
+
+<p>You can negate a boolean property while binding it. I use it a lot and find it very handy.</p>
+
+<pre><code class="language-csharp">source.BindProperty(src =&gt; src.IsActive, target, t =&gt; !t.IsDeleted);
+
+source.IsActive = false;
+Console.WriteLine(target.IsDeleted); // True
+</code></pre>
+
+<p>You can bind primitive data-types in source class to <code>Nullable</code> primitive data-types in the target class, and vice versa.</p>
+
+<pre><code class="language-csharp">source.BindProperty(src =&gt; src.Number, target, t =&gt; t.NullableNumber);
+</code></pre>
+
+<p>What happens if source is <code>null</code>, and the target is not <code>Nullable</code>?</p>
+
+<p>The default behavior is to update target with default value of that type:</p>
+
+<pre><code class="language-csharp">target.Number = 10;
+source.BindProperty(src =&gt; src.NullableNumber, target, t =&gt; t.Number);
+
+source.NullableNumber = null;
+Console.WriteLine(target.Number); // 0
+</code></pre>
+
+<p>You can also choose not to update target if source becomes <code>null</code>:</p>
+
+<pre><code class="language-csharp">target.Number = 10;
+source.BindProperty(src =&gt; src.NullableNumber, target, t =&gt; t.Number, 
+    BindPropertyOptions.DontUpdateWhenSourceIsNullAndTargetIsNotNullable);
+
+source.NullableNumber = null;
+Console.WriteLine(target.Number); // still 10
+</code></pre>
+
+<h4 id="how-to-find-more-information-about-this-library">How to find more information about this library?</h4>
+
+<p>At the moment the best way to find out how this library works is by reading the unit tests or at least their titles.</p>
+
+<p><a href="https://github.com/sinairv/INPC-Extensions">INPC-Extensions</a> is now hosted in GitHub and is licensed under MIT.</p>
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://sinairv.github.io/2014/12/01/syntax-highlighter-for-windows-forms-rich-text-box/" data-tooltip="Syntax Highlighter for Windows Forms Rich Text Box">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://sinairv.github.io/2015/05/18/powershell-the-switch-data-type/" data-tooltip="PowerShell: the switch data-type">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://sinairv.github.io/2015/01/15/handy-extensions-for-inotifypropertychanged/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://sinairv.github.io/2015/01/15/handy-extensions-for-inotifypropertychanged/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://sinairv.github.io/2015/01/15/handy-extensions-for-inotifypropertychanged/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2018 Sina Iravanian. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://sinairv.github.io/2014/12/01/syntax-highlighter-for-windows-forms-rich-text-box/" data-tooltip="Syntax Highlighter for Windows Forms Rich Text Box">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://sinairv.github.io/2015/05/18/powershell-the-switch-data-type/" data-tooltip="PowerShell: the switch data-type">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://sinairv.github.io/2015/01/15/handy-extensions-for-inotifypropertychanged/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://sinairv.github.io/2015/01/15/handy-extensions-for-inotifypropertychanged/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://sinairv.github.io/2015/01/15/handy-extensions-for-inotifypropertychanged/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsinairv.github.io%2F2015%2F01%2F15%2Fhandy-extensions-for-inotifypropertychanged%2F">
+          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fsinairv.github.io%2F2015%2F01%2F15%2Fhandy-extensions-for-inotifypropertychanged%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fsinairv.github.io%2F2015%2F01%2F15%2Fhandy-extensions-for-inotifypropertychanged%2F">
+          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://sinairv.github.io/img/sina-avatar.jpg" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Sina Iravanian</h4>
+    
+      <div id="about-card-bio">Movie music junkie, insomniac, daydreamer, procrastinator, hard-determinist, introvert, and a bit into software.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Software Developer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Melbourne, Australia
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="Search" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center">no post found</div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://sinairv.github.io/2016/11/24/how-to-reduce-the-pain-of-working-with-tfs-using-git-tfs/">
+                <h3 class="media-heading">How to reduce the pain of working with TFS using Git TFS</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Nov 11, 2016
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Git TFS is a program that extends git commands to talk to a TFS remote repository (instead of a git repository). It creates a real git repository and replays the TFS history on top of it. It can be treated as a real git repository except for when it comes to cloning and syncing. In spite of that it still makes a programmer&rsquo;s life much easier.
+The best starting point is the project&rsquo;s ReadMe file on GitHub.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://sinairv.github.io/2015/10/04/mock-entity-framework-dbset-with-nsubstitute/">
+                <h3 class="media-heading">Mock Entity Framework DbSet with NSubstitute</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Oct 10, 2015
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">The source code for this post is on GitHub.
+When it comes to mocking a DbSet to test various read and write operations things may get a little bit tricky. Mocking a DbSet for a write operation (Add, Update, or Remove) is quite straightforward. But testing a synchronous read operation requires mocking the whole IQueryable interface. Even more trickier than that is testing an asynchronous read operation which requires mocking an IDbAsyncQueryProvider interface.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://sinairv.github.io/2015/05/18/powershell-the-switch-data-type/">
+                <h3 class="media-heading">PowerShell: the switch data-type</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2015
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">The switch data type is used to control whether a switch (as in arguments or options passed to a function or command) is provided for the function/command or not. Suppose that there is a function called Switch-Demo that can accept -Force and -Quiet switches. These switches just work as toggles. What we care about them is whether they exist or not. There are no pieces of data accompanying them. The PowerShell switch data-type suits this purpose:</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://sinairv.github.io/2015/01/15/handy-extensions-for-inotifypropertychanged/">
+                <h3 class="media-heading">Handy Extensions for INotifyPropertyChanged</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2015
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">I recently created a library that contains some handy extensions for INotifyPropertyChanged interface (aka INPC). To start using the library, add the following to the top of your C# code:
+using NotifyPropertyChangedExtensions;  How to easily raise INPC in a refactor friendly way public class MyClass : INotifyPropertyChanged { private int _number; public int Number { get { return _number; } set { if(_number != value) { _number = value; this.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://sinairv.github.io/2014/12/01/syntax-highlighter-for-windows-forms-rich-text-box/">
+                <h3 class="media-heading">Syntax Highlighter for Windows Forms Rich Text Box</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2014
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Years ago I created a tool called Code4Public to convert source code into HTML called. I was using this tool to put nice code snippets in the blog I used to maintain at that time. The tool is able to get the code, apply syntax highlighting to it based on the syntax of the language selected, and then create HTML based on the theme selected (e.g., MSDN theme). I didn&rsquo;t assign more time on making the tool better and better, as better ways of doing the same task were emerging, and also other by-products of the tool were becoming more interesting at the time; e.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://sinairv.github.io/2014/04/20/the-pains-of-upgrading-android-studio/">
+                <h3 class="media-heading">The pains of upgrading Android Studio</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2014
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">I could gracefully install and test earlier versions of Android Studio before they adopted Gradle for their build system. After doing the upgrade I could no longer build a single project with weird error messages relating to Gradle. I searched the web, and found some workarounds in stackoverflow, e.g., manually installing Gradle, updating environment variables and so and so. None of them were helpful for me, although they seemed to be solving the issue for many (who have voted for the answers).</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://sinairv.github.io/2014/01/10/moved-my-blog-to-octopress/">
+                <h3 class="media-heading">Moved my blog to Octopress</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2014
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">I&rsquo;ve moved my blog from Wordpress to my homepage domain. It makes use of Octopress, which is based on Jekyll, and is a static site generator. The blog is hosted on GitHub pages, and is open source.
+The great benefit of this stack of tools is that I can easily create and edit my posts in Markdown, re-generate the blog through command line, and make use of Rake (Ruby&rsquo;s make tools) to perform various tasks ranging from post creation to deployment to GitHub pages.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://sinairv.github.io/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c#-5/">
+                <h3 class="media-heading">How to make more refactoring friendly data-bindings with C# 5</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Nov 11, 2012
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Imagine that we want to create a Person business object for whose properties we desire a two-way data binding. The source-to-target data-binding can be triggered by implementing INotifyPropertyChanged interface, like this:
+public class Person : INotifyPropertyChanged { private string _name; private double _age; public string Name { get { return _name; } set { if (value != _name) { _name = value; OnPropertyChanged(&quot;Name&quot;); } } } public double Age { get { return _age; } set { if (_age !</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://sinairv.github.io/2012/09/22/different-ways-of-generating-new-guids/">
+                <h3 class="media-heading">Different ways of generating new GUIDs</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2012
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">In C# Code var newGuid = Guid.NewGuid();  In Visual Studio Go to: Tools &gt; Create GUID
+In SQL Server Management Studio Execute either of the following queries:
+SELECT NEWID()  or
+PRINT NEWID()  None of the above Go to newguid.com, and refresh the page as many times as you want.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://sinairv.github.io/2012/07/23/an-example-for-c#-dynamic-in-action/">
+                <h3 class="media-heading">An example for C# dynamic in action</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2012
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Recently I was involved with enabling validation for a Windows Forms form containing several pages shown through a tree view. There were one user control defined for each page, therefore whenever a node in tree-view got activated, an instance of that user-control were shown. The user-controls did not have a common user-defined parent base-class or interface. The author of the existing code had defined a Save method in each control separately which performed updating data with values entered in the forms.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero="no post found"
+         data-message-one="1 post found"
+         data-message-other="{n} posts found">
+         29 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://sinairv.github.io/images/cover-v1.2.0.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://sinairv.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/sinairv.github.io\/2015\/01\/15\/handy-extensions-for-inotifypropertychanged\/';
+          
+            this.page.identifier = '\/2015\/01\/15\/handy-extensions-for-inotifypropertychanged\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'sinairv';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

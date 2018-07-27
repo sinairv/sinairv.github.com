@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Windows on Sina&#39;s Blog</title>
+    <link>https://sinairv.github.io/categories/windows/</link>
+    <description>Recent content in Windows on Sina&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 05 May 2012 16:25:00 +1000</lastBuildDate>
+    
+	<atom:link href="https://sinairv.github.io/categories/windows/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Using Git with GitHub on Windows</title>
+      <link>https://sinairv.github.io/2012/05/05/using-git-with-github-on-windows/</link>
+      <pubDate>Sat, 05 May 2012 16:25:00 +1000</pubDate>
+      
+      <guid>https://sinairv.github.io/2012/05/05/using-git-with-github-on-windows/</guid>
+      <description>If you&amp;rsquo;re new to Git and don&amp;rsquo;t know how to install Git on Windows, read my earlier post: How to Setup Git for Windows
+In an earlier post, I described the preliminary steps required to work with git on CodePlex. However using git withGitHub requires more initial steps.
+Generating SSH Keys. Before proceeding to Git operations we need to create SSH public and private keys, and register the public key on the GitHub site.</description>
+    </item>
+    
+    <item>
+      <title>Using Git with CodePlex on Windows</title>
+      <link>https://sinairv.github.io/2012/05/02/using-git-with-codeplex-on-windows/</link>
+      <pubDate>Wed, 02 May 2012 10:50:41 +1000</pubDate>
+      
+      <guid>https://sinairv.github.io/2012/05/02/using-git-with-codeplex-on-windows/</guid>
+      <description>If you&amp;rsquo;re new to Git and don&amp;rsquo;t know how to install Git on Windows, read my earlier post: How to Setup Git for Windows
+On 21 March 2012, the CodePlex team announced their support for Git.
+Creating a project with Git as source control is very easy in CodePlex and is done with a few clicks at no time. Suppose the project name is CodePlexGitTest. In order to make any changes to the project structure you need to clone the project first.</description>
+    </item>
+    
+    <item>
+      <title>How to setup Git for Windows</title>
+      <link>https://sinairv.github.io/2012/05/01/how-to-setup-git-for-windows/</link>
+      <pubDate>Tue, 01 May 2012 23:27:40 +1000</pubDate>
+      
+      <guid>https://sinairv.github.io/2012/05/01/how-to-setup-git-for-windows/</guid>
+      <description>These are some easy steps required to setup Git for Windows:
+ Download msysGit from: http://code.google.com/p/msysgit
+I prefer to use the portable version. At the time of this writing there&amp;rsquo;s no difference between 32 bit and 64 bit versions and the filename for the portable version is: PortableGit-1.7.10-preview20120409.7z. Currently it seems that the development of the project has been moved to GitHub, but the releases are still located in Google Code.</description>
+    </item>
+    
+    <item>
+      <title>How to Disable Hibernate and Free Some Disk Space in Windows 7</title>
+      <link>https://sinairv.github.io/2011/05/26/how-to-disable-hibernate-and-free-some-disk-space-in-windows-7/</link>
+      <pubDate>Thu, 26 May 2011 23:07:00 +1000</pubDate>
+      
+      <guid>https://sinairv.github.io/2011/05/26/how-to-disable-hibernate-and-free-some-disk-space-in-windows-7/</guid>
+      <description>Run a command prompt as administrator.
+Run the following command:
+powercfg.exe -h off  The disk space is freed immediately. To turn it back on run:
+powercfg.exe -h on  Reference: [+]</description>
+    </item>
+    
+  </channel>
+</rss>

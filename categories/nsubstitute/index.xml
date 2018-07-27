@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nsubstitute on Sina&#39;s Blog</title>
+    <link>https://sinairv.github.io/categories/nsubstitute/</link>
+    <description>Recent content in Nsubstitute on Sina&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 04 Oct 2015 23:33:40 +1100</lastBuildDate>
+    
+	<atom:link href="https://sinairv.github.io/categories/nsubstitute/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Mock Entity Framework DbSet with NSubstitute</title>
+      <link>https://sinairv.github.io/2015/10/04/mock-entity-framework-dbset-with-nsubstitute/</link>
+      <pubDate>Sun, 04 Oct 2015 23:33:40 +1100</pubDate>
+      
+      <guid>https://sinairv.github.io/2015/10/04/mock-entity-framework-dbset-with-nsubstitute/</guid>
+      <description>The source code for this post is on GitHub.
+When it comes to mocking a DbSet to test various read and write operations things may get a little bit tricky. Mocking a DbSet for a write operation (Add, Update, or Remove) is quite straightforward. But testing a synchronous read operation requires mocking the whole IQueryable interface. Even more trickier than that is testing an asynchronous read operation which requires mocking an IDbAsyncQueryProvider interface.</description>
+    </item>
+    
+  </channel>
+</rss>

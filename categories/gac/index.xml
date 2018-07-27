@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Gac on Sina&#39;s Blog</title>
+    <link>https://sinairv.github.io/categories/gac/</link>
+    <description>Recent content in Gac on Sina&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 15 May 2010 21:09:33 +1000</lastBuildDate>
+    
+	<atom:link href="https://sinairv.github.io/categories/gac/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>How to Explore Special Folders (like GAC) in Windows Explorer</title>
+      <link>https://sinairv.github.io/2010/05/15/how-to-explore-special-folders-like-gac-in-windows-explorer/</link>
+      <pubDate>Sat, 15 May 2010 21:09:33 +1000</pubDate>
+      
+      <guid>https://sinairv.github.io/2010/05/15/how-to-explore-special-folders-like-gac-in-windows-explorer/</guid>
+      <description>In normal situations you cannot view the content of special folders, such as Windows/assembly or Windows/fonts, and so on. The way these folders are shown are set through the desktop.ini file in each of these folders, which is normally hidden and protected. One trick that I learned from here [+] is described below. Open a command prompt and type:
+cd /d %windows%\assembly attrib -r -h -s desktop.ini ren desktop.ini desktop.bak  Using the above commands, we kill the desktop.</description>
+    </item>
+    
+  </channel>
+</rss>

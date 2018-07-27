@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Git on Sina&#39;s Blog</title>
+    <link>https://sinairv.github.io/categories/git/</link>
+    <description>Recent content in Git on Sina&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 24 Nov 2016 14:51:08 +1100</lastBuildDate>
+    
+	<atom:link href="https://sinairv.github.io/categories/git/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>How to reduce the pain of working with TFS using Git TFS</title>
+      <link>https://sinairv.github.io/2016/11/24/how-to-reduce-the-pain-of-working-with-tfs-using-git-tfs/</link>
+      <pubDate>Thu, 24 Nov 2016 14:51:08 +1100</pubDate>
+      
+      <guid>https://sinairv.github.io/2016/11/24/how-to-reduce-the-pain-of-working-with-tfs-using-git-tfs/</guid>
+      <description>Git TFS is a program that extends git commands to talk to a TFS remote repository (instead of a git repository). It creates a real git repository and replays the TFS history on top of it. It can be treated as a real git repository except for when it comes to cloning and syncing. In spite of that it still makes a programmer&amp;rsquo;s life much easier.
+The best starting point is the project&amp;rsquo;s ReadMe file on GitHub.</description>
+    </item>
+    
+    <item>
+      <title>Using Git with GitHub on Windows</title>
+      <link>https://sinairv.github.io/2012/05/05/using-git-with-github-on-windows/</link>
+      <pubDate>Sat, 05 May 2012 16:25:00 +1000</pubDate>
+      
+      <guid>https://sinairv.github.io/2012/05/05/using-git-with-github-on-windows/</guid>
+      <description>If you&amp;rsquo;re new to Git and don&amp;rsquo;t know how to install Git on Windows, read my earlier post: How to Setup Git for Windows
+In an earlier post, I described the preliminary steps required to work with git on CodePlex. However using git withGitHub requires more initial steps.
+Generating SSH Keys. Before proceeding to Git operations we need to create SSH public and private keys, and register the public key on the GitHub site.</description>
+    </item>
+    
+    <item>
+      <title>Using Git with CodePlex on Windows</title>
+      <link>https://sinairv.github.io/2012/05/02/using-git-with-codeplex-on-windows/</link>
+      <pubDate>Wed, 02 May 2012 10:50:41 +1000</pubDate>
+      
+      <guid>https://sinairv.github.io/2012/05/02/using-git-with-codeplex-on-windows/</guid>
+      <description>If you&amp;rsquo;re new to Git and don&amp;rsquo;t know how to install Git on Windows, read my earlier post: How to Setup Git for Windows
+On 21 March 2012, the CodePlex team announced their support for Git.
+Creating a project with Git as source control is very easy in CodePlex and is done with a few clicks at no time. Suppose the project name is CodePlexGitTest. In order to make any changes to the project structure you need to clone the project first.</description>
+    </item>
+    
+    <item>
+      <title>How to setup Git for Windows</title>
+      <link>https://sinairv.github.io/2012/05/01/how-to-setup-git-for-windows/</link>
+      <pubDate>Tue, 01 May 2012 23:27:40 +1000</pubDate>
+      
+      <guid>https://sinairv.github.io/2012/05/01/how-to-setup-git-for-windows/</guid>
+      <description>These are some easy steps required to setup Git for Windows:
+ Download msysGit from: http://code.google.com/p/msysgit
+I prefer to use the portable version. At the time of this writing there&amp;rsquo;s no difference between 32 bit and 64 bit versions and the filename for the portable version is: PortableGit-1.7.10-preview20120409.7z. Currently it seems that the development of the project has been moved to GitHub, but the releases are still located in Google Code.</description>
+    </item>
+    
+  </channel>
+</rss>

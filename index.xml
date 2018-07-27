@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sina&#39;s Blog</title>
+    <link>https://sinairv.github.io/</link>
+    <description>Recent content on Sina&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 24 Nov 2016 14:51:08 +1100</lastBuildDate>
+    
+	<atom:link href="https://sinairv.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>How to reduce the pain of working with TFS using Git TFS</title>
+      <link>https://sinairv.github.io/2016/11/24/how-to-reduce-the-pain-of-working-with-tfs-using-git-tfs/</link>
+      <pubDate>Thu, 24 Nov 2016 14:51:08 +1100</pubDate>
+      
+      <guid>https://sinairv.github.io/2016/11/24/how-to-reduce-the-pain-of-working-with-tfs-using-git-tfs/</guid>
+      <description>Git TFS is a program that extends git commands to talk to a TFS remote repository (instead of a git repository). It creates a real git repository and replays the TFS history on top of it. It can be treated as a real git repository except for when it comes to cloning and syncing. In spite of that it still makes a programmer&amp;rsquo;s life much easier.
+The best starting point is the project&amp;rsquo;s ReadMe file on GitHub.</description>
+    </item>
+    
+    <item>
+      <title>Mock Entity Framework DbSet with NSubstitute</title>
+      <link>https://sinairv.github.io/2015/10/04/mock-entity-framework-dbset-with-nsubstitute/</link>
+      <pubDate>Sun, 04 Oct 2015 23:33:40 +1100</pubDate>
+      
+      <guid>https://sinairv.github.io/2015/10/04/mock-entity-framework-dbset-with-nsubstitute/</guid>
+      <description>The source code for this post is on GitHub.
+When it comes to mocking a DbSet to test various read and write operations things may get a little bit tricky. Mocking a DbSet for a write operation (Add, Update, or Remove) is quite straightforward. But testing a synchronous read operation requires mocking the whole IQueryable interface. Even more trickier than that is testing an asynchronous read operation which requires mocking an IDbAsyncQueryProvider interface.</description>
+    </item>
+    
+    <item>
+      <title>PowerShell: the switch data-type</title>
+      <link>https://sinairv.github.io/2015/05/18/powershell-the-switch-data-type/</link>
+      <pubDate>Mon, 18 May 2015 00:45:18 +1000</pubDate>
+      
+      <guid>https://sinairv.github.io/2015/05/18/powershell-the-switch-data-type/</guid>
+      <description>The switch data type is used to control whether a switch (as in arguments or options passed to a function or command) is provided for the function/command or not. Suppose that there is a function called Switch-Demo that can accept -Force and -Quiet switches. These switches just work as toggles. What we care about them is whether they exist or not. There are no pieces of data accompanying them. The PowerShell switch data-type suits this purpose:</description>
+    </item>
+    
+    <item>
+      <title>Handy Extensions for INotifyPropertyChanged</title>
+      <link>https://sinairv.github.io/2015/01/15/handy-extensions-for-inotifypropertychanged/</link>
+      <pubDate>Thu, 15 Jan 2015 00:22:39 +1000</pubDate>
+      
+      <guid>https://sinairv.github.io/2015/01/15/handy-extensions-for-inotifypropertychanged/</guid>
+      <description>I recently created a library that contains some handy extensions for INotifyPropertyChanged interface (aka INPC). To start using the library, add the following to the top of your C# code:
+using NotifyPropertyChangedExtensions;  How to easily raise INPC in a refactor friendly way public class MyClass : INotifyPropertyChanged { private int _number; public int Number { get { return _number; } set { if(_number != value) { _number = value; this.</description>
+    </item>
+    
+    <item>
+      <title>Syntax Highlighter for Windows Forms Rich Text Box</title>
+      <link>https://sinairv.github.io/2014/12/01/syntax-highlighter-for-windows-forms-rich-text-box/</link>
+      <pubDate>Mon, 01 Dec 2014 18:18:48 +1000</pubDate>
+      
+      <guid>https://sinairv.github.io/2014/12/01/syntax-highlighter-for-windows-forms-rich-text-box/</guid>
+      <description>Years ago I created a tool called Code4Public to convert source code into HTML called. I was using this tool to put nice code snippets in the blog I used to maintain at that time. The tool is able to get the code, apply syntax highlighting to it based on the syntax of the language selected, and then create HTML based on the theme selected (e.g., MSDN theme). I didn&amp;rsquo;t assign more time on making the tool better and better, as better ways of doing the same task were emerging, and also other by-products of the tool were becoming more interesting at the time; e.</description>
+    </item>
+    
+    <item>
+      <title>The pains of upgrading Android Studio</title>
+      <link>https://sinairv.github.io/2014/04/20/the-pains-of-upgrading-android-studio/</link>
+      <pubDate>Sun, 20 Apr 2014 20:32:23 +1000</pubDate>
+      
+      <guid>https://sinairv.github.io/2014/04/20/the-pains-of-upgrading-android-studio/</guid>
+      <description>I could gracefully install and test earlier versions of Android Studio before they adopted Gradle for their build system. After doing the upgrade I could no longer build a single project with weird error messages relating to Gradle. I searched the web, and found some workarounds in stackoverflow, e.g., manually installing Gradle, updating environment variables and so and so. None of them were helpful for me, although they seemed to be solving the issue for many (who have voted for the answers).</description>
+    </item>
+    
+    <item>
+      <title>Moved my blog to Octopress</title>
+      <link>https://sinairv.github.io/2014/01/10/moved-my-blog-to-octopress/</link>
+      <pubDate>Fri, 10 Jan 2014 01:22:25 +1000</pubDate>
+      
+      <guid>https://sinairv.github.io/2014/01/10/moved-my-blog-to-octopress/</guid>
+      <description>I&amp;rsquo;ve moved my blog from Wordpress to my homepage domain. It makes use of Octopress, which is based on Jekyll, and is a static site generator. The blog is hosted on GitHub pages, and is open source.
+The great benefit of this stack of tools is that I can easily create and edit my posts in Markdown, re-generate the blog through command line, and make use of Rake (Ruby&amp;rsquo;s make tools) to perform various tasks ranging from post creation to deployment to GitHub pages.</description>
+    </item>
+    
+    <item>
+      <title>How to make more refactoring friendly data-bindings with C# 5</title>
+      <link>https://sinairv.github.io/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c#-5/</link>
+      <pubDate>Thu, 01 Nov 2012 19:46:29 +1000</pubDate>
+      
+      <guid>https://sinairv.github.io/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c#-5/</guid>
+      <description>Imagine that we want to create a Person business object for whose properties we desire a two-way data binding. The source-to-target data-binding can be triggered by implementing INotifyPropertyChanged interface, like this:
+public class Person : INotifyPropertyChanged { private string _name; private double _age; public string Name { get { return _name; } set { if (value != _name) { _name = value; OnPropertyChanged(&amp;quot;Name&amp;quot;); } } } public double Age { get { return _age; } set { if (_age !</description>
+    </item>
+    
+    <item>
+      <title>Different ways of generating new GUIDs</title>
+      <link>https://sinairv.github.io/2012/09/22/different-ways-of-generating-new-guids/</link>
+      <pubDate>Sat, 22 Sep 2012 17:49:59 +1000</pubDate>
+      
+      <guid>https://sinairv.github.io/2012/09/22/different-ways-of-generating-new-guids/</guid>
+      <description>In C# Code var newGuid = Guid.NewGuid();  In Visual Studio Go to: Tools &amp;gt; Create GUID
+In SQL Server Management Studio Execute either of the following queries:
+SELECT NEWID()  or
+PRINT NEWID()  None of the above Go to newguid.com, and refresh the page as many times as you want.</description>
+    </item>
+    
+    <item>
+      <title>An example for C# dynamic in action</title>
+      <link>https://sinairv.github.io/2012/07/23/an-example-for-c#-dynamic-in-action/</link>
+      <pubDate>Mon, 23 Jul 2012 17:20:53 +1000</pubDate>
+      
+      <guid>https://sinairv.github.io/2012/07/23/an-example-for-c#-dynamic-in-action/</guid>
+      <description>Recently I was involved with enabling validation for a Windows Forms form containing several pages shown through a tree view. There were one user control defined for each page, therefore whenever a node in tree-view got activated, an instance of that user-control were shown. The user-controls did not have a common user-defined parent base-class or interface. The author of the existing code had defined a Save method in each control separately which performed updating data with values entered in the forms.</description>
+    </item>
+    
+    <item>
+      <title>Programming Koans: One of the best ways to learn a new language or framework</title>
+      <link>https://sinairv.github.io/2012/05/27/programming-koans-one-of-the-best-ways-to-learn-a-new-language-or-framework/</link>
+      <pubDate>Sun, 27 May 2012 16:46:35 +1000</pubDate>
+      
+      <guid>https://sinairv.github.io/2012/05/27/programming-koans-one-of-the-best-ways-to-learn-a-new-language-or-framework/</guid>
+      <description>Based on Wikipedia, originally a Koan in Zen-practice is a paradoxical question that provokes doubt and tests a student&amp;rsquo;s progress. On the other hand, programming Koans are a set of failing unit-tests, for which the learner is required to fix the code or fill the required fields with proper values in order to make each test pass. Probably one of the earliest and most popular Koans were Ruby Koans. Now there are several Koans implemented for different languages and frameworks.</description>
+    </item>
+    
+    <item>
+      <title>Using Git with GitHub on Windows</title>
+      <link>https://sinairv.github.io/2012/05/05/using-git-with-github-on-windows/</link>
+      <pubDate>Sat, 05 May 2012 16:25:00 +1000</pubDate>
+      
+      <guid>https://sinairv.github.io/2012/05/05/using-git-with-github-on-windows/</guid>
+      <description>If you&amp;rsquo;re new to Git and don&amp;rsquo;t know how to install Git on Windows, read my earlier post: How to Setup Git for Windows
+In an earlier post, I described the preliminary steps required to work with git on CodePlex. However using git withGitHub requires more initial steps.
+Generating SSH Keys. Before proceeding to Git operations we need to create SSH public and private keys, and register the public key on the GitHub site.</description>
+    </item>
+    
+    <item>
+      <title>Using Git with CodePlex on Windows</title>
+      <link>https://sinairv.github.io/2012/05/02/using-git-with-codeplex-on-windows/</link>
+      <pubDate>Wed, 02 May 2012 10:50:41 +1000</pubDate>
+      
+      <guid>https://sinairv.github.io/2012/05/02/using-git-with-codeplex-on-windows/</guid>
+      <description>If you&amp;rsquo;re new to Git and don&amp;rsquo;t know how to install Git on Windows, read my earlier post: How to Setup Git for Windows
+On 21 March 2012, the CodePlex team announced their support for Git.
+Creating a project with Git as source control is very easy in CodePlex and is done with a few clicks at no time. Suppose the project name is CodePlexGitTest. In order to make any changes to the project structure you need to clone the project first.</description>
+    </item>
+    
+    <item>
+      <title>How to setup Git for Windows</title>
+      <link>https://sinairv.github.io/2012/05/01/how-to-setup-git-for-windows/</link>
+      <pubDate>Tue, 01 May 2012 23:27:40 +1000</pubDate>
+      
+      <guid>https://sinairv.github.io/2012/05/01/how-to-setup-git-for-windows/</guid>
+      <description>These are some easy steps required to setup Git for Windows:
+ Download msysGit from: http://code.google.com/p/msysgit
+I prefer to use the portable version. At the time of this writing there&amp;rsquo;s no difference between 32 bit and 64 bit versions and the filename for the portable version is: PortableGit-1.7.10-preview20120409.7z. Currently it seems that the development of the project has been moved to GitHub, but the releases are still located in Google Code.</description>
+    </item>
+    
+    <item>
+      <title>How I built my first Qt Application in Visual Studio 2010</title>
+      <link>https://sinairv.github.io/2011/07/04/how-i-built-my-first-qt-application-in-visual-studio-2010/</link>
+      <pubDate>Mon, 04 Jul 2011 23:10:54 +1000</pubDate>
+      
+      <guid>https://sinairv.github.io/2011/07/04/how-i-built-my-first-qt-application-in-visual-studio-2010/</guid>
+      <description>I downloaded the Qt SDK (offline installer version which was 1.7 GB) from: http://qt.nokia.com/downloads
+At the time of this writing, the Qt libraries version was 4.7.3.
+Then I downloaded the VS-Addin, using the link at the bottom of the downloads page, titled &amp;ldquo;Qt Visual Studio Add-in&amp;rdquo;.
+After installing both SDK, and the VS-Addin on my system, I started Visual Studio 2010. I tried to create a sample project by selecting: File &amp;gt; New &amp;gt; Project&amp;hellip; &amp;gt; Qt4 Projects &amp;gt; Qt Application, and specified proper values for Name and Location.</description>
+    </item>
+    
+    <item>
+      <title>How to Disable Hibernate and Free Some Disk Space in Windows 7</title>
+      <link>https://sinairv.github.io/2011/05/26/how-to-disable-hibernate-and-free-some-disk-space-in-windows-7/</link>
+      <pubDate>Thu, 26 May 2011 23:07:00 +1000</pubDate>
+      
+      <guid>https://sinairv.github.io/2011/05/26/how-to-disable-hibernate-and-free-some-disk-space-in-windows-7/</guid>
+      <description>Run a command prompt as administrator.
+Run the following command:
+powercfg.exe -h off  The disk space is freed immediately. To turn it back on run:
+powercfg.exe -h on  Reference: [+]</description>
+    </item>
+    
+    <item>
+      <title>How to Include .eps Images with pdflatex</title>
+      <link>https://sinairv.github.io/2011/05/21/how-to-include-.eps-images-with-pdflatex/</link>
+      <pubDate>Sat, 21 May 2011 23:03:15 +1000</pubDate>
+      
+      <guid>https://sinairv.github.io/2011/05/21/how-to-include-.eps-images-with-pdflatex/</guid>
+      <description>PdfLaTeX does not support eps files by default. Add the following imports in the beginning:
+\usepackage{graphicx} % already added \usepackage{epstopdf}  After that the includegraphics commands with eps arguments should produce no problems.
+Reference: [+]</description>
+    </item>
+    
+    <item>
+      <title>Code Snippet for Calculating Mean, Variance, and Standard Deviation</title>
+      <link>https://sinairv.github.io/2011/05/15/code-snippet-for-calculating-mean-variance-and-standard-deviation/</link>
+      <pubDate>Sun, 15 May 2011 22:58:36 +1000</pubDate>
+      
+      <guid>https://sinairv.github.io/2011/05/15/code-snippet-for-calculating-mean-variance-and-standard-deviation/</guid>
+      <description>Here are the methods to calculate mean, variance, and standard deviation of a vector of values. These are put here for easy reference, so that I do not need to rewrite them again (and again (and again)).
+ </description>
+    </item>
+    
+    <item>
+      <title>A Helper Method for Performing K-Fold Cross Validation</title>
+      <link>https://sinairv.github.io/2011/05/15/a-helper-method-for-performing-k-fold-cross-validation/</link>
+      <pubDate>Sun, 15 May 2011 22:41:05 +1000</pubDate>
+      
+      <guid>https://sinairv.github.io/2011/05/15/a-helper-method-for-performing-k-fold-cross-validation/</guid>
+      <description>The following method is a utility method for creating the K divisions upon which one is going to perform the K-fold cross validation operation. The input of the method is the length of the training data, and the number K. The output conveys which indices of the training-data is to be put in each division.
+ </description>
+    </item>
+    
+    <item>
+      <title>Problem with finding local resources in Intellij IDEA</title>
+      <link>https://sinairv.github.io/2011/05/10/problem-with-finding-local-resources-in-intellij-idea/</link>
+      <pubDate>Tue, 10 May 2011 22:33:07 +1000</pubDate>
+      
+      <guid>https://sinairv.github.io/2011/05/10/problem-with-finding-local-resources-in-intellij-idea/</guid>
+      <description>Some classes use external data files which are located in the same directory as the one that the .java file is located, or somewhere nearby which can be easily addressed with a relative path. This happens a lot for me, esp. when I am running open source programs developed by someone else. As an example, imagine a class called SampleClass located in a directory in which there exists a text file with the name of SomeFile.</description>
+    </item>
+    
+    <item>
+      <title>Code Snippet for Dealing with Windows Forms ListView control in details mode</title>
+      <link>https://sinairv.github.io/2011/05/09/code-snippet-for-dealing-with-windows-forms-listview-control-in-details-mode/</link>
+      <pubDate>Mon, 09 May 2011 00:39:37 +1000</pubDate>
+      
+      <guid>https://sinairv.github.io/2011/05/09/code-snippet-for-dealing-with-windows-forms-listview-control-in-details-mode/</guid>
+      <description>I needed a piece of code to manage list-view controllers. I needed to use ListView controls in the details mode, which automatically sort its contents when I click on the header, and also pastes the content in a tabular format when I press Ctrl+C or Ctrl+Insert on it. So I created the following classes. The code that carries out the sorting stuff when the header is clicked is taken from this following MSDN article.</description>
+    </item>
+    
+    <item>
+      <title>Enabling Middle Click in Synaptics Touchpad Drivers</title>
+      <link>https://sinairv.github.io/2011/04/16/enabling-middle-click-in-synaptics-touchpad-drivers/</link>
+      <pubDate>Sat, 16 Apr 2011 00:25:53 +1000</pubDate>
+      
+      <guid>https://sinairv.github.io/2011/04/16/enabling-middle-click-in-synaptics-touchpad-drivers/</guid>
+      <description>Recently I upgraded my currently installed Synaptics touchpad driver to version 15.x, and I found that I cannot emulate the middle-click effect by pressing both right and left click buttons. I found no options in the settings to enable that functionality. Finally after searching the web I found a workaround here [+]:
+ Run the registry editor (regedit) Go to key: HKEY_LOCAL_MACHINE\Software\Synaptics\SynTP\Defaults\ Here create a new key as a DWORD and name it HasBothButtonFeature and set the value to 1.</description>
+    </item>
+    
+    <item>
+      <title>Code Snippet for Trimming Strings of White-space and Control Characters</title>
+      <link>https://sinairv.github.io/2011/03/02/code-snippet-for-trimming-strings-of-white-space-and-control-characters/</link>
+      <pubDate>Wed, 02 Mar 2011 00:07:00 +1000</pubDate>
+      
+      <guid>https://sinairv.github.io/2011/03/02/code-snippet-for-trimming-strings-of-white-space-and-control-characters/</guid>
+      <description>The following method trims the given string of both white-space characters and control characters, and its rather fast!
+ </description>
+    </item>
+    
+    <item>
+      <title>Code Snippet for Determining How Two Intervals Overlap</title>
+      <link>https://sinairv.github.io/2010/08/09/code-snippet-for-determining-how-two-intervals-overlap/</link>
+      <pubDate>Mon, 09 Aug 2010 23:45:00 +1000</pubDate>
+      
+      <guid>https://sinairv.github.io/2010/08/09/code-snippet-for-determining-how-two-intervals-overlap/</guid>
+      <description>The following pieces of code help figure out how two intervals overlap, and provides helper methods to represent them in a way that is useful for debugging purposes. This job is quite easy to accomplish, but since I&amp;rsquo;ve written it too many times from scratch, I put them in the following gist.
+The IntervalOverlapKinds.cs file defines the IntervalOverlapKinds enumeration. The interval detection is carried out in the static methods of the IntervalOverlap class.</description>
+    </item>
+    
+    <item>
+      <title>Code Snippet for Representing Strings with All Their Characters Visible</title>
+      <link>https://sinairv.github.io/2010/08/08/code-snippet-for-representing-strings-with-all-their-characters-visible/</link>
+      <pubDate>Sun, 08 Aug 2010 23:55:20 +1000</pubDate>
+      
+      <guid>https://sinairv.github.io/2010/08/08/code-snippet-for-representing-strings-with-all-their-characters-visible/</guid>
+      <description>This piece of code is useful for debugging purposes or working on string processing algorithms. There are times, that you need to see all the characters of a string including invisible characters. This little method may help:
+ </description>
+    </item>
+    
+    <item>
+      <title>A Code Snippet for Searching and Highlighting a token or string in a RichTextBox</title>
+      <link>https://sinairv.github.io/2010/08/08/a-code-snippet-for-searching-and-highlighting-a-token-or-string-in-a-richtextbox/</link>
+      <pubDate>Sun, 08 Aug 2010 21:28:07 +1000</pubDate>
+      
+      <guid>https://sinairv.github.io/2010/08/08/a-code-snippet-for-searching-and-highlighting-a-token-or-string-in-a-richtextbox/</guid>
+      <description>Suppose that you intend to find a string or a token (i.e., whole word, instead of a substring) and change their color in some Windows Forms RichTextBox. The following code snippets will help. The FindStringAndSetColor method looks for instances of an arbitrary string in the contents of the RichTextBox, while the FindTokenAndSetColor method looks for whole words (tokens).
+ </description>
+    </item>
+    
+    <item>
+      <title>How to Explore Special Folders (like GAC) in Windows Explorer</title>
+      <link>https://sinairv.github.io/2010/05/15/how-to-explore-special-folders-like-gac-in-windows-explorer/</link>
+      <pubDate>Sat, 15 May 2010 21:09:33 +1000</pubDate>
+      
+      <guid>https://sinairv.github.io/2010/05/15/how-to-explore-special-folders-like-gac-in-windows-explorer/</guid>
+      <description>In normal situations you cannot view the content of special folders, such as Windows/assembly or Windows/fonts, and so on. The way these folders are shown are set through the desktop.ini file in each of these folders, which is normally hidden and protected. One trick that I learned from here [+] is described below. Open a command prompt and type:
+cd /d %windows%\assembly attrib -r -h -s desktop.ini ren desktop.ini desktop.bak  Using the above commands, we kill the desktop.</description>
+    </item>
+    
+    <item>
+      <title>One reason to prefer readonly to const in C#</title>
+      <link>https://sinairv.github.io/2010/04/21/one-reason-to-prefer-readonly-to-const-in-c/</link>
+      <pubDate>Wed, 21 Apr 2010 14:19:38 +1000</pubDate>
+      
+      <guid>https://sinairv.github.io/2010/04/21/one-reason-to-prefer-readonly-to-const-in-c/</guid>
+      <description>First off, let&amp;rsquo;s talk about what&amp;rsquo;s going on in C# compiler when you use const or readonly in your field definitions. The const qualifier can be used with primitive data types, and strings only. When used, the value assigned to a const field, is inserted directly in all its references in the generated IL code. This is true about other assemblies too. Other assemblies that refer to that const field, are compiled as if they have used directly the value itself.</description>
+    </item>
+    
+    <item>
+      <title>Assigning values to private fields using reflection</title>
+      <link>https://sinairv.github.io/2010/03/06/assigning-values-to-private-fields-using-reflection/</link>
+      <pubDate>Sat, 06 Mar 2010 14:19:38 +1000</pubDate>
+      
+      <guid>https://sinairv.github.io/2010/03/06/assigning-values-to-private-fields-using-reflection/</guid>
+      <description>Suppose that you have a class with various non-public fields, e.g., the class named ClassToTest below servers as a good example.
+public class ClassToTest { public int SomeNumber { get; set; } private int m_somePrivateProperty { get; set; } private int m_somePrivateVar; private static int s_someStaticNumber; }  And suppose that we desire to assign some value to the private variable m_somePrivateVar, and the private property m_somePrivateProperty. The approach is to iterate through the fields of the ClassToTest type to find the desired field.</description>
+    </item>
+    
+    <item>
+      <title>A List of Selected Works</title>
+      <link>https://sinairv.github.io/works/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://sinairv.github.io/works/</guid>
+      <description>YAXLib: Yet Another XML Serialization Library for the .NET Framework An XML serialization library which lets developers design the XML file structure, and select the exception handling policy. This library also supports serializing most of the collection classes such as the Dictionary generic class.
+YAXLib is hosted on GitHub and CodePlex, and is released under the MIT License.
+For more details please refer to this CodeProject article.
+Grid-Soccer Simulator Grid-Soccer Simulator is a multi-agent soccer simulator in a grid-world environment.</description>
+    </item>
+    
+    <item>
+      <title>YAXLib</title>
+      <link>https://sinairv.github.io/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://sinairv.github.io/about/</guid>
+      <description>View on GitHub
+YAXLib is a flexible XML serialization library that lets developers design freely the XML file structure, choose among private and public fields to be serialized, and serialize all known collection classes and arrays (single-dimensional, multi-dimensional, and jagged arrays) in the .NET Framework.
+YAXLib can be used as a powerful XML parser or generator, that exploits the object to XML mapping in the class definitions themselves.</description>
+    </item>
+    
+    <item>
+      <title>YAXLib</title>
+      <link>https://sinairv.github.io/yaxlib/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://sinairv.github.io/yaxlib/</guid>
+      <description>View on GitHub
+YAXLib is a flexible XML serialization library that lets developers design freely the XML file structure, choose among private and public fields to be serialized, and serialize all known collection classes and arrays (single-dimensional, multi-dimensional, and jagged arrays) in the .NET Framework.
+YAXLib can be used as a powerful XML parser or generator, that exploits the object to XML mapping in the class definitions themselves.</description>
+    </item>
+    
+  </channel>
+</rss>

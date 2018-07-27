@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Synaptic Touchpad Middle Click on Sina&#39;s Blog</title>
+    <link>https://sinairv.github.io/categories/synaptic-touchpad-middle-click/</link>
+    <description>Recent content in Synaptic Touchpad Middle Click on Sina&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 16 Apr 2011 00:25:53 +1000</lastBuildDate>
+    
+	<atom:link href="https://sinairv.github.io/categories/synaptic-touchpad-middle-click/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Enabling Middle Click in Synaptics Touchpad Drivers</title>
+      <link>https://sinairv.github.io/2011/04/16/enabling-middle-click-in-synaptics-touchpad-drivers/</link>
+      <pubDate>Sat, 16 Apr 2011 00:25:53 +1000</pubDate>
+      
+      <guid>https://sinairv.github.io/2011/04/16/enabling-middle-click-in-synaptics-touchpad-drivers/</guid>
+      <description>Recently I upgraded my currently installed Synaptics touchpad driver to version 15.x, and I found that I cannot emulate the middle-click effect by pressing both right and left click buttons. I found no options in the settings to enable that functionality. Finally after searching the web I found a workaround here [+]:
+ Run the registry editor (regedit) Go to key: HKEY_LOCAL_MACHINE\Software\Synaptics\SynTP\Defaults\ Here create a new key as a DWORD and name it HasBothButtonFeature and set the value to 1.</description>
+    </item>
+    
+  </channel>
+</rss>

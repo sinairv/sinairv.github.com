@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Inotifypropertychanged on Sina&#39;s Blog</title>
+    <link>https://sinairv.github.io/categories/inotifypropertychanged/</link>
+    <description>Recent content in Inotifypropertychanged on Sina&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 15 Jan 2015 00:22:39 +1000</lastBuildDate>
+    
+	<atom:link href="https://sinairv.github.io/categories/inotifypropertychanged/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Handy Extensions for INotifyPropertyChanged</title>
+      <link>https://sinairv.github.io/2015/01/15/handy-extensions-for-inotifypropertychanged/</link>
+      <pubDate>Thu, 15 Jan 2015 00:22:39 +1000</pubDate>
+      
+      <guid>https://sinairv.github.io/2015/01/15/handy-extensions-for-inotifypropertychanged/</guid>
+      <description>I recently created a library that contains some handy extensions for INotifyPropertyChanged interface (aka INPC). To start using the library, add the following to the top of your C# code:
+using NotifyPropertyChangedExtensions;  How to easily raise INPC in a refactor friendly way public class MyClass : INotifyPropertyChanged { private int _number; public int Number { get { return _number; } set { if(_number != value) { _number = value; this.</description>
+    </item>
+    
+  </channel>
+</rss>

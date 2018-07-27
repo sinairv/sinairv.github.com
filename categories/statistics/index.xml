@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Statistics on Sina&#39;s Blog</title>
+    <link>https://sinairv.github.io/categories/statistics/</link>
+    <description>Recent content in Statistics on Sina&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 15 May 2011 22:58:36 +1000</lastBuildDate>
+    
+	<atom:link href="https://sinairv.github.io/categories/statistics/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Code Snippet for Calculating Mean, Variance, and Standard Deviation</title>
+      <link>https://sinairv.github.io/2011/05/15/code-snippet-for-calculating-mean-variance-and-standard-deviation/</link>
+      <pubDate>Sun, 15 May 2011 22:58:36 +1000</pubDate>
+      
+      <guid>https://sinairv.github.io/2011/05/15/code-snippet-for-calculating-mean-variance-and-standard-deviation/</guid>
+      <description>Here are the methods to calculate mean, variance, and standard deviation of a vector of values. These are put here for easy reference, so that I do not need to rewrite them again (and again (and again)).
+ </description>
+    </item>
+    
+  </channel>
+</rss>

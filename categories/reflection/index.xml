@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Reflection on Sina&#39;s Blog</title>
+    <link>https://sinairv.github.io/categories/reflection/</link>
+    <description>Recent content in Reflection on Sina&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 06 Mar 2010 14:19:38 +1000</lastBuildDate>
+    
+	<atom:link href="https://sinairv.github.io/categories/reflection/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Assigning values to private fields using reflection</title>
+      <link>https://sinairv.github.io/2010/03/06/assigning-values-to-private-fields-using-reflection/</link>
+      <pubDate>Sat, 06 Mar 2010 14:19:38 +1000</pubDate>
+      
+      <guid>https://sinairv.github.io/2010/03/06/assigning-values-to-private-fields-using-reflection/</guid>
+      <description>Suppose that you have a class with various non-public fields, e.g., the class named ClassToTest below servers as a good example.
+public class ClassToTest { public int SomeNumber { get; set; } private int m_somePrivateProperty { get; set; } private int m_somePrivateVar; private static int s_someStaticNumber; }  And suppose that we desire to assign some value to the private variable m_somePrivateVar, and the private property m_somePrivateProperty. The approach is to iterate through the fields of the ClassToTest type to find the desired field.</description>
+    </item>
+    
+  </channel>
+</rss>

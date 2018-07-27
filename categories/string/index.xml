@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>String on Sina&#39;s Blog</title>
+    <link>https://sinairv.github.io/categories/string/</link>
+    <description>Recent content in String on Sina&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 02 Mar 2011 00:07:00 +1000</lastBuildDate>
+    
+	<atom:link href="https://sinairv.github.io/categories/string/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Code Snippet for Trimming Strings of White-space and Control Characters</title>
+      <link>https://sinairv.github.io/2011/03/02/code-snippet-for-trimming-strings-of-white-space-and-control-characters/</link>
+      <pubDate>Wed, 02 Mar 2011 00:07:00 +1000</pubDate>
+      
+      <guid>https://sinairv.github.io/2011/03/02/code-snippet-for-trimming-strings-of-white-space-and-control-characters/</guid>
+      <description>The following method trims the given string of both white-space characters and control characters, and its rather fast!
+ </description>
+    </item>
+    
+  </channel>
+</rss>

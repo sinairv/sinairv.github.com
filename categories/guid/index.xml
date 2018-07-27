@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Guid on Sina&#39;s Blog</title>
+    <link>https://sinairv.github.io/categories/guid/</link>
+    <description>Recent content in Guid on Sina&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 22 Sep 2012 17:49:59 +1000</lastBuildDate>
+    
+	<atom:link href="https://sinairv.github.io/categories/guid/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Different ways of generating new GUIDs</title>
+      <link>https://sinairv.github.io/2012/09/22/different-ways-of-generating-new-guids/</link>
+      <pubDate>Sat, 22 Sep 2012 17:49:59 +1000</pubDate>
+      
+      <guid>https://sinairv.github.io/2012/09/22/different-ways-of-generating-new-guids/</guid>
+      <description>In C# Code var newGuid = Guid.NewGuid();  In Visual Studio Go to: Tools &amp;gt; Create GUID
+In SQL Server Management Studio Execute either of the following queries:
+SELECT NEWID()  or
+PRINT NEWID()  None of the above Go to newguid.com, and refresh the page as many times as you want.</description>
+    </item>
+    
+  </channel>
+</rss>

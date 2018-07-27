@@ -13,10 +13,10 @@
     
     <item>
       <title>Code Snippet for Calculating Mean, Variance, and Standard Deviation</title>
-      <link>https://sinairv.github.io/2011/05/15/code-snippet-for-calculating-mean-variance-and-standard-deviation/</link>
+      <link>https://sinairv.github.io/blog/2011/05/15/code-snippet-for-calculating-mean-variance-and-standard-deviation/</link>
       <pubDate>Sun, 15 May 2011 22:58:36 +1000</pubDate>
       
-      <guid>https://sinairv.github.io/2011/05/15/code-snippet-for-calculating-mean-variance-and-standard-deviation/</guid>
+      <guid>https://sinairv.github.io/blog/2011/05/15/code-snippet-for-calculating-mean-variance-and-standard-deviation/</guid>
       <description>Here are the methods to calculate mean, variance, and standard deviation of a vector of values. These are put here for easy reference, so that I do not need to rewrite them again (and again (and again)).
  </description>
     </item>

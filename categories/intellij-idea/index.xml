@@ -13,10 +13,10 @@
     
     <item>
       <title>Problem with finding local resources in Intellij IDEA</title>
-      <link>https://sinairv.github.io/2011/05/10/problem-with-finding-local-resources-in-intellij-idea/</link>
+      <link>https://sinairv.github.io/blog/2011/05/10/problem-with-finding-local-resources-in-intellij-idea/</link>
       <pubDate>Tue, 10 May 2011 22:33:07 +1000</pubDate>
       
-      <guid>https://sinairv.github.io/2011/05/10/problem-with-finding-local-resources-in-intellij-idea/</guid>
+      <guid>https://sinairv.github.io/blog/2011/05/10/problem-with-finding-local-resources-in-intellij-idea/</guid>
       <description>Some classes use external data files which are located in the same directory as the one that the .java file is located, or somewhere nearby which can be easily addressed with a relative path. This happens a lot for me, esp. when I am running open source programs developed by someone else. As an example, imagine a class called SampleClass located in a directory in which there exists a text file with the name of SomeFile.</description>
     </item>
     

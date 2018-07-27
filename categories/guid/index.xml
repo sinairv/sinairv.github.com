@@ -13,10 +13,10 @@
     
     <item>
       <title>Different ways of generating new GUIDs</title>
-      <link>https://sinairv.github.io/2012/09/22/different-ways-of-generating-new-guids/</link>
+      <link>https://sinairv.github.io/blog/2012/09/22/different-ways-of-generating-new-guids/</link>
       <pubDate>Sat, 22 Sep 2012 17:49:59 +1000</pubDate>
       
-      <guid>https://sinairv.github.io/2012/09/22/different-ways-of-generating-new-guids/</guid>
+      <guid>https://sinairv.github.io/blog/2012/09/22/different-ways-of-generating-new-guids/</guid>
       <description>In C# Code var newGuid = Guid.NewGuid();  In Visual Studio Go to: Tools &amp;gt; Create GUID
 In SQL Server Management Studio Execute either of the following queries:
 SELECT NEWID()  or

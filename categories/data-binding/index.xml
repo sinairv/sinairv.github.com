@@ -13,20 +13,20 @@
     
     <item>
       <title>Handy Extensions for INotifyPropertyChanged</title>
-      <link>https://sinairv.github.io/2015/01/15/handy-extensions-for-inotifypropertychanged/</link>
+      <link>https://sinairv.github.io/blog/2015/01/15/handy-extensions-for-inotifypropertychanged/</link>
       <pubDate>Thu, 15 Jan 2015 00:22:39 +1000</pubDate>
       
-      <guid>https://sinairv.github.io/2015/01/15/handy-extensions-for-inotifypropertychanged/</guid>
+      <guid>https://sinairv.github.io/blog/2015/01/15/handy-extensions-for-inotifypropertychanged/</guid>
       <description>I recently created a library that contains some handy extensions for INotifyPropertyChanged interface (aka INPC). To start using the library, add the following to the top of your C# code:
 using NotifyPropertyChangedExtensions;  How to easily raise INPC in a refactor friendly way public class MyClass : INotifyPropertyChanged { private int _number; public int Number { get { return _number; } set { if(_number != value) { _number = value; this.</description>
     </item>
     
     <item>
       <title>How to make more refactoring friendly data-bindings with C# 5</title>
-      <link>https://sinairv.github.io/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c#-5/</link>
+      <link>https://sinairv.github.io/blog/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c#-5/</link>
       <pubDate>Thu, 01 Nov 2012 19:46:29 +1000</pubDate>
       
-      <guid>https://sinairv.github.io/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c#-5/</guid>
+      <guid>https://sinairv.github.io/blog/2012/11/01/how-to-make-more-refactoring-friendly-data-bindings-with-c#-5/</guid>
       <description>Imagine that we want to create a Person business object for whose properties we desire a two-way data binding. The source-to-target data-binding can be triggered by implementing INotifyPropertyChanged interface, like this:
 public class Person : INotifyPropertyChanged { private string _name; private double _age; public string Name { get { return _name; } set { if (value != _name) { _name = value; OnPropertyChanged(&amp;quot;Name&amp;quot;); } } } public double Age { get { return _age; } set { if (_age !</description>
     </item>

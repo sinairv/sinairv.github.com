@@ -13,10 +13,10 @@
     
     <item>
       <title>Programming Koans: One of the best ways to learn a new language or framework</title>
-      <link>https://sinairv.github.io/2012/05/27/programming-koans-one-of-the-best-ways-to-learn-a-new-language-or-framework/</link>
+      <link>https://sinairv.github.io/blog/2012/05/27/programming-koans-one-of-the-best-ways-to-learn-a-new-language-or-framework/</link>
       <pubDate>Sun, 27 May 2012 16:46:35 +1000</pubDate>
       
-      <guid>https://sinairv.github.io/2012/05/27/programming-koans-one-of-the-best-ways-to-learn-a-new-language-or-framework/</guid>
+      <guid>https://sinairv.github.io/blog/2012/05/27/programming-koans-one-of-the-best-ways-to-learn-a-new-language-or-framework/</guid>
       <description>Based on Wikipedia, originally a Koan in Zen-practice is a paradoxical question that provokes doubt and tests a student&amp;rsquo;s progress. On the other hand, programming Koans are a set of failing unit-tests, for which the learner is required to fix the code or fill the required fields with proper values in order to make each test pass. Probably one of the earliest and most popular Koans were Ruby Koans. Now there are several Koans implemented for different languages and frameworks.</description>
     </item>
     

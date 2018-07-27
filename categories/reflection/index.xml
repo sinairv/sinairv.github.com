@@ -13,10 +13,10 @@
     
     <item>
       <title>Assigning values to private fields using reflection</title>
-      <link>https://sinairv.github.io/2010/03/06/assigning-values-to-private-fields-using-reflection/</link>
+      <link>https://sinairv.github.io/blog/2010/03/06/assigning-values-to-private-fields-using-reflection/</link>
       <pubDate>Sat, 06 Mar 2010 14:19:38 +1000</pubDate>
       
-      <guid>https://sinairv.github.io/2010/03/06/assigning-values-to-private-fields-using-reflection/</guid>
+      <guid>https://sinairv.github.io/blog/2010/03/06/assigning-values-to-private-fields-using-reflection/</guid>
       <description>Suppose that you have a class with various non-public fields, e.g., the class named ClassToTest below servers as a good example.
 public class ClassToTest { public int SomeNumber { get; set; } private int m_somePrivateProperty { get; set; } private int m_somePrivateVar; private static int s_someStaticNumber; }  And suppose that we desire to assign some value to the private variable m_somePrivateVar, and the private property m_somePrivateProperty. The approach is to iterate through the fields of the ClassToTest type to find the desired field.</description>
     </item>

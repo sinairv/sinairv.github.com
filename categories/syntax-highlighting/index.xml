@@ -13,10 +13,10 @@
     
     <item>
       <title>Syntax Highlighter for Windows Forms Rich Text Box</title>
-      <link>https://sinairv.github.io/2014/12/01/syntax-highlighter-for-windows-forms-rich-text-box/</link>
+      <link>https://sinairv.github.io/blog/2014/12/01/syntax-highlighter-for-windows-forms-rich-text-box/</link>
       <pubDate>Mon, 01 Dec 2014 18:18:48 +1000</pubDate>
       
-      <guid>https://sinairv.github.io/2014/12/01/syntax-highlighter-for-windows-forms-rich-text-box/</guid>
+      <guid>https://sinairv.github.io/blog/2014/12/01/syntax-highlighter-for-windows-forms-rich-text-box/</guid>
       <description>Years ago I created a tool called Code4Public to convert source code into HTML called. I was using this tool to put nice code snippets in the blog I used to maintain at that time. The tool is able to get the code, apply syntax highlighting to it based on the syntax of the language selected, and then create HTML based on the theme selected (e.g., MSDN theme). I didn&amp;rsquo;t assign more time on making the tool better and better, as better ways of doing the same task were emerging, and also other by-products of the tool were becoming more interesting at the time; e.</description>
     </item>
     

@@ -13,10 +13,10 @@
     
     <item>
       <title>How to Include .eps Images with pdflatex</title>
-      <link>https://sinairv.github.io/2011/05/21/how-to-include-.eps-images-with-pdflatex/</link>
+      <link>https://sinairv.github.io/blog/2011/05/21/how-to-include-.eps-images-with-pdflatex/</link>
       <pubDate>Sat, 21 May 2011 23:03:15 +1000</pubDate>
       
-      <guid>https://sinairv.github.io/2011/05/21/how-to-include-.eps-images-with-pdflatex/</guid>
+      <guid>https://sinairv.github.io/blog/2011/05/21/how-to-include-.eps-images-with-pdflatex/</guid>
       <description>PdfLaTeX does not support eps files by default. Add the following imports in the beginning:
 \usepackage{graphicx} % already added \usepackage{epstopdf}  After that the includegraphics commands with eps arguments should produce no problems.
 Reference: [+]</description>

@@ -13,10 +13,10 @@
     
     <item>
       <title>Using Git with CodePlex on Windows</title>
-      <link>https://sinairv.github.io/2012/05/02/using-git-with-codeplex-on-windows/</link>
+      <link>https://sinairv.github.io/blog/2012/05/02/using-git-with-codeplex-on-windows/</link>
       <pubDate>Wed, 02 May 2012 10:50:41 +1000</pubDate>
       
-      <guid>https://sinairv.github.io/2012/05/02/using-git-with-codeplex-on-windows/</guid>
+      <guid>https://sinairv.github.io/blog/2012/05/02/using-git-with-codeplex-on-windows/</guid>
       <description>If you&amp;rsquo;re new to Git and don&amp;rsquo;t know how to install Git on Windows, read my earlier post: How to Setup Git for Windows
 On 21 March 2012, the CodePlex team announced their support for Git.
 Creating a project with Git as source control is very easy in CodePlex and is done with a few clicks at no time. Suppose the project name is CodePlexGitTest. In order to make any changes to the project structure you need to clone the project first.</description>

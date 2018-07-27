@@ -13,10 +13,10 @@
     
     <item>
       <title>Code Snippet for Trimming Strings of White-space and Control Characters</title>
-      <link>https://sinairv.github.io/2011/03/02/code-snippet-for-trimming-strings-of-white-space-and-control-characters/</link>
+      <link>https://sinairv.github.io/blog/2011/03/02/code-snippet-for-trimming-strings-of-white-space-and-control-characters/</link>
       <pubDate>Wed, 02 Mar 2011 00:07:00 +1000</pubDate>
       
-      <guid>https://sinairv.github.io/2011/03/02/code-snippet-for-trimming-strings-of-white-space-and-control-characters/</guid>
+      <guid>https://sinairv.github.io/blog/2011/03/02/code-snippet-for-trimming-strings-of-white-space-and-control-characters/</guid>
       <description>The following method trims the given string of both white-space characters and control characters, and its rather fast!
  </description>
     </item>

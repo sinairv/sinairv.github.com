@@ -13,10 +13,10 @@
     
     <item>
       <title>Handy Extensions for INotifyPropertyChanged</title>
-      <link>https://sinairv.github.io/2015/01/15/handy-extensions-for-inotifypropertychanged/</link>
+      <link>https://sinairv.github.io/blog/2015/01/15/handy-extensions-for-inotifypropertychanged/</link>
       <pubDate>Thu, 15 Jan 2015 00:22:39 +1000</pubDate>
       
-      <guid>https://sinairv.github.io/2015/01/15/handy-extensions-for-inotifypropertychanged/</guid>
+      <guid>https://sinairv.github.io/blog/2015/01/15/handy-extensions-for-inotifypropertychanged/</guid>
       <description>I recently created a library that contains some handy extensions for INotifyPropertyChanged interface (aka INPC). To start using the library, add the following to the top of your C# code:
 using NotifyPropertyChangedExtensions;  How to easily raise INPC in a refactor friendly way public class MyClass : INotifyPropertyChanged { private int _number; public int Number { get { return _number; } set { if(_number != value) { _number = value; this.</description>
     </item>

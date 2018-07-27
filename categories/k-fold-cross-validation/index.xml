@@ -13,10 +13,10 @@
     
     <item>
       <title>A Helper Method for Performing K-Fold Cross Validation</title>
-      <link>https://sinairv.github.io/2011/05/15/a-helper-method-for-performing-k-fold-cross-validation/</link>
+      <link>https://sinairv.github.io/blog/2011/05/15/a-helper-method-for-performing-k-fold-cross-validation/</link>
       <pubDate>Sun, 15 May 2011 22:41:05 +1000</pubDate>
       
-      <guid>https://sinairv.github.io/2011/05/15/a-helper-method-for-performing-k-fold-cross-validation/</guid>
+      <guid>https://sinairv.github.io/blog/2011/05/15/a-helper-method-for-performing-k-fold-cross-validation/</guid>
       <description>The following method is a utility method for creating the K divisions upon which one is going to perform the K-fold cross validation operation. The input of the method is the length of the training data, and the number K. The output conveys which indices of the training-data is to be put in each division.
  </description>
     </item>

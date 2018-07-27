@@ -13,10 +13,10 @@
     
     <item>
       <title>How I built my first Qt Application in Visual Studio 2010</title>
-      <link>https://sinairv.github.io/2011/07/04/how-i-built-my-first-qt-application-in-visual-studio-2010/</link>
+      <link>https://sinairv.github.io/blog/2011/07/04/how-i-built-my-first-qt-application-in-visual-studio-2010/</link>
       <pubDate>Mon, 04 Jul 2011 23:10:54 +1000</pubDate>
       
-      <guid>https://sinairv.github.io/2011/07/04/how-i-built-my-first-qt-application-in-visual-studio-2010/</guid>
+      <guid>https://sinairv.github.io/blog/2011/07/04/how-i-built-my-first-qt-application-in-visual-studio-2010/</guid>
       <description>I downloaded the Qt SDK (offline installer version which was 1.7 GB) from: http://qt.nokia.com/downloads
 At the time of this writing, the Qt libraries version was 4.7.3.
 Then I downloaded the VS-Addin, using the link at the bottom of the downloads page, titled &amp;ldquo;Qt Visual Studio Add-in&amp;rdquo;.

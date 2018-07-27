@@ -13,20 +13,20 @@
     
     <item>
       <title>Code Snippet for Representing Strings with All Their Characters Visible</title>
-      <link>https://sinairv.github.io/2010/08/08/code-snippet-for-representing-strings-with-all-their-characters-visible/</link>
+      <link>https://sinairv.github.io/blog/2010/08/08/code-snippet-for-representing-strings-with-all-their-characters-visible/</link>
       <pubDate>Sun, 08 Aug 2010 23:55:20 +1000</pubDate>
       
-      <guid>https://sinairv.github.io/2010/08/08/code-snippet-for-representing-strings-with-all-their-characters-visible/</guid>
+      <guid>https://sinairv.github.io/blog/2010/08/08/code-snippet-for-representing-strings-with-all-their-characters-visible/</guid>
       <description>This piece of code is useful for debugging purposes or working on string processing algorithms. There are times, that you need to see all the characters of a string including invisible characters. This little method may help:
  </description>
     </item>
     
     <item>
       <title>A Code Snippet for Searching and Highlighting a token or string in a RichTextBox</title>
-      <link>https://sinairv.github.io/2010/08/08/a-code-snippet-for-searching-and-highlighting-a-token-or-string-in-a-richtextbox/</link>
+      <link>https://sinairv.github.io/blog/2010/08/08/a-code-snippet-for-searching-and-highlighting-a-token-or-string-in-a-richtextbox/</link>
       <pubDate>Sun, 08 Aug 2010 21:28:07 +1000</pubDate>
       
-      <guid>https://sinairv.github.io/2010/08/08/a-code-snippet-for-searching-and-highlighting-a-token-or-string-in-a-richtextbox/</guid>
+      <guid>https://sinairv.github.io/blog/2010/08/08/a-code-snippet-for-searching-and-highlighting-a-token-or-string-in-a-richtextbox/</guid>
       <description>Suppose that you intend to find a string or a token (i.e., whole word, instead of a substring) and change their color in some Windows Forms RichTextBox. The following code snippets will help. The FindStringAndSetColor method looks for instances of an arbitrary string in the contents of the RichTextBox, while the FindTokenAndSetColor method looks for whole words (tokens).
  </description>
     </item>

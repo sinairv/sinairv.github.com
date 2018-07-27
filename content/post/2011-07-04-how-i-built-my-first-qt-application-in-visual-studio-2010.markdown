@@ -1,0 +1,27 @@
+---
+layout: post
+title: "How I built my first Qt Application in Visual Studio 2010"
+date: 2011-07-04 23:10:54 +1000
+comments: true
+categories: 
+- C++
+- Qt
+---
+I downloaded the Qt SDK (offline installer version which was 1.7 GB) from: 
+http://qt.nokia.com/downloads
+
+At the time of this writing, the Qt libraries version was 4.7.3.
+
+Then I downloaded the VS-Addin, using the link at the bottom of the downloads page, titled "Qt Visual Studio Add-in".
+
+After installing both SDK, and the VS-Addin on my system, I started Visual Studio 2010. I tried to create a sample project by selecting: File > New > Project... > Qt4 Projects > Qt Application, and specified proper values for Name and Location. After going through the Qt wizard to the end, I encountered the following error message:
+
+    unable to find Qt Build!
+    To solve this problem specify Qt Build!
+
+By going to the Qt setup directory, one sees that there are Qt SDKs available for different target platforms. For example I installed Qt in "D:\QtSDK\" and in that directory I see some folders which correspond to different target platforms such as Desktop, Madde, Symbian, and others. An appropriate platform directory should contain a bin folder inside. This is true about Madde, and Symbian, but the Desktop folder is a root for subdirectories related to different Qt versions and C++ compilers. Since I wanted to develop Qt applications with Microsoft Visual C++ for the Windows Desktop platform I went to the following directory which contains the required bin folder: 
+D:\QtSDK\Desktop\Qt\4.7.3\msvc2008
+
+For the next step, I had to introduce this directory for the Qt VS-addin. From the main menu, I selected Qt > Qt Options > Qt Versions. I pressed the Add button, and entered "Win 4.7.3" in the  "Version name" field, and entered the above path in the "Path" field, and pressed OK. The path that I specified was added to the gird. Then I made sure that in the Default Qt/Win version, the version that I have just specified (i.e., Win 4.7.3) is selected. I pressed OK, and tried once more with the Qt New Project wizard. This time everything went OK, and I succeeded to create and build my first Qt Application in the VS 2010 environment.
+
+Note: In fact the current Qt binaries are targeted for Visual Studio 2008. I was able to use the binaries (i.e., libs and dlls) because I had also Visual Studio 2008 and the corresponding C++ compiler installed on my machine. Otherwise, I presume that I would need to recompile the sources with the VS-2010 C++ compiler.

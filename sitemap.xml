@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://sinairv.github.io/blog/2019/02/10/on-sql-server-transactions/</loc>
+    <lastmod>2019-02-10T20:09:11+11:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://sinairv.github.io/blog/2016/11/24/how-to-reduce-the-pain-of-working-with-tfs-using-git-tfs/</loc>
     <lastmod>2016-11-24T14:51:08+11:00</lastmod>
   </url>
@@ -283,6 +288,12 @@
   </url>
   
   <url>
+    <loc>https://sinairv.github.io/categories/microsoft-sql-server/</loc>
+    <lastmod>2019-02-10T20:09:11+11:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://sinairv.github.io/categories/nsubstitute/</loc>
     <lastmod>2015-10-04T23:33:40+11:00</lastmod>
     <priority>0</priority>
@@ -290,7 +301,7 @@
   
   <url>
     <loc>https://sinairv.github.io/post/</loc>
-    <lastmod>2016-11-24T14:51:08+11:00</lastmod>
+    <lastmod>2019-02-10T20:09:11+11:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -320,7 +331,7 @@
   
   <url>
     <loc>https://sinairv.github.io/</loc>
-    <lastmod>2016-11-24T14:51:08+11:00</lastmod>
+    <lastmod>2019-02-10T20:09:11+11:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -333,6 +344,12 @@
   <url>
     <loc>https://sinairv.github.io/categories/snippets/</loc>
     <lastmod>2011-03-02T00:07:00+10:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://sinairv.github.io/categories/sql/</loc>
+    <lastmod>2019-02-10T20:09:11+11:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -374,6 +391,12 @@
   <url>
     <loc>https://sinairv.github.io/categories/tfs/</loc>
     <lastmod>2016-11-24T14:51:08+11:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://sinairv.github.io/categories/tsql/</loc>
+    <lastmod>2019-02-10T20:09:11+11:00</lastmod>
     <priority>0</priority>
   </url>
   

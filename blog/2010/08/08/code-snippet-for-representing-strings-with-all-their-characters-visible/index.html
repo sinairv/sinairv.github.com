@@ -19,7 +19,7 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="Hugo 0.45 with theme Tranquilpeak 0.4.3-BETA">
+    <meta name="generator" content="Hugo 0.54.0 with theme Tranquilpeak 0.4.3-BETA">
     <title>Code Snippet for Representing Strings with All Their Characters Visible</title>
     <meta name="author" content="Sina Iravanian">
     <meta name="keywords" content=", development, dotnet, csharp, software, architecture">
@@ -70,7 +70,7 @@
 
     
       
-<script>
+<script type="application/javascript">
 var doNotTrack = false;
 if (!doNotTrack) {
 	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -366,7 +366,7 @@ if (!doNotTrack) {
         </article>
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2018 Sina Iravanian. All Rights Reserved
+    &copy; 2019 Sina Iravanian. All Rights Reserved
   </span>
 </footer>
 
@@ -516,6 +516,24 @@ if (!doNotTrack) {
       <div class="no-result text-color-light text-center">no post found</div>
       <div class="results">
         
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://sinairv.github.io/blog/2019/02/10/on-sql-server-transactions/">
+                <h3 class="media-heading">On SQL Server Transactions</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">TL;DR
+ A single INSERT/UPDATE/DELETE statement is run within an implicit transaction scope regardless of how many records they modify A transaction must be explicitly rolled back upon error After a transaction is rolled back, the error should be raised so that the script runner becomes aware of the error  A single INSERT/UPDATE/DELETE statement Each individual INSERT/UPDATE/DELETE statement is run by SQL Server within an implicit transaction scope. This is regardless of the number of records affected by these statements.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
         
           <div class="media">
             
@@ -678,23 +696,6 @@ PRINT NEWID()  None of the above Go to newguid.com, and refresh the page as man
             <hr>
           </div>
         
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://sinairv.github.io/blog/2012/07/23/an-example-for-c#-dynamic-in-action/">
-                <h3 class="media-heading">An example for C# dynamic in action</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Jul 7, 2012
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather">Recently I was involved with enabling validation for a Windows Forms form containing several pages shown through a tree view. There were one user control defined for each page, therefore whenever a node in tree-view got activated, an instance of that user-control were shown. The user-controls did not have a common user-defined parent base-class or interface. The author of the existing code had defined a Save method in each control separately which performed updating data with values entered in the forms.</div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
       </div>
     </div>
     <div class="modal-footer">
@@ -702,7 +703,7 @@ PRINT NEWID()  None of the above Go to newguid.com, and refresh the page as man
          data-message-zero="no post found"
          data-message-one="1 post found"
          data-message-other="{n} posts found">
-         29 posts found
+         30 posts found
       </p>
     </div>
   </div>

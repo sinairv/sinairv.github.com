@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tsql on Sina&#39;s Blog</title>
+    <link>https://sinairv.github.io/categories/tsql/</link>
+    <description>Recent content in Tsql on Sina&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 10 Feb 2019 20:09:11 +1100</lastBuildDate>
+    
+	<atom:link href="https://sinairv.github.io/categories/tsql/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>On SQL Server Transactions</title>
+      <link>https://sinairv.github.io/blog/2019/02/10/on-sql-server-transactions/</link>
+      <pubDate>Sun, 10 Feb 2019 20:09:11 +1100</pubDate>
+      
+      <guid>https://sinairv.github.io/blog/2019/02/10/on-sql-server-transactions/</guid>
+      <description>TL;DR
+ A single INSERT/UPDATE/DELETE statement is run within an implicit transaction scope regardless of how many records they modify A transaction must be explicitly rolled back upon error After a transaction is rolled back, the error should be raised so that the script runner becomes aware of the error  A single INSERT/UPDATE/DELETE statement Each individual INSERT/UPDATE/DELETE statement is run by SQL Server within an implicit transaction scope. This is regardless of the number of records affected by these statements.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Microsoft SQL Server on Sina&#39;s Blog</title>
+    <title>Microsoft Sql Server on Sina&#39;s Blog</title>
     <link>https://sinairv.github.io/categories/microsoft-sql-server/</link>
-    <description>Recent content in Microsoft SQL Server on Sina&#39;s Blog</description>
+    <description>Recent content in Microsoft Sql Server on Sina&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 10 Feb 2019 20:09:11 +1100</lastBuildDate>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>K-fold Cross Validation on Sina&#39;s Blog</title>
+    <title>K Fold Cross Validation on Sina&#39;s Blog</title>
     <link>https://sinairv.github.io/categories/k-fold-cross-validation/</link>
-    <description>Recent content in K-fold Cross Validation on Sina&#39;s Blog</description>
+    <description>Recent content in K Fold Cross Validation on Sina&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 15 May 2011 22:41:05 +1000</lastBuildDate>

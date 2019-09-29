@@ -3,8 +3,43 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://sinairv.github.io/categories/</loc>
+    <lastmod>2019-02-10T20:09:11+11:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sinairv.github.io/categories/microsoft-sql-server/</loc>
+    <lastmod>2019-02-10T20:09:11+11:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://sinairv.github.io/blog/2019/02/10/on-sql-server-transactions/</loc>
     <lastmod>2019-02-10T20:09:11+11:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sinairv.github.io/post/</loc>
+    <lastmod>2019-02-10T20:09:11+11:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sinairv.github.io/</loc>
+    <lastmod>2019-02-10T20:09:11+11:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sinairv.github.io/categories/sql/</loc>
+    <lastmod>2019-02-10T20:09:11+11:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sinairv.github.io/categories/tsql/</loc>
+    <lastmod>2019-02-10T20:09:11+11:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sinairv.github.io/categories/git/</loc>
+    <lastmod>2016-11-24T14:51:08+11:00</lastmod>
   </url>
   
   <url>
@@ -13,8 +48,38 @@
   </url>
   
   <url>
+    <loc>https://sinairv.github.io/categories/tfs/</loc>
+    <lastmod>2016-11-24T14:51:08+11:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sinairv.github.io/categories/c#/</loc>
+    <lastmod>2015-10-04T23:33:40+11:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sinairv.github.io/categories/entity-framework/</loc>
+    <lastmod>2015-10-04T23:33:40+11:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://sinairv.github.io/blog/2015/10/04/mock-entity-framework-dbset-with-nsubstitute/</loc>
     <lastmod>2015-10-04T23:33:40+11:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sinairv.github.io/categories/nsubstitute/</loc>
+    <lastmod>2015-10-04T23:33:40+11:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sinairv.github.io/categories/unit-test/</loc>
+    <lastmod>2015-10-04T23:33:40+11:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sinairv.github.io/categories/powershell/</loc>
+    <lastmod>2015-05-18T00:45:18+10:00</lastmod>
   </url>
   
   <url>
@@ -23,13 +88,48 @@
   </url>
   
   <url>
+    <loc>https://sinairv.github.io/categories/data-binding/</loc>
+    <lastmod>2015-01-15T00:22:39+10:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://sinairv.github.io/blog/2015/01/15/handy-extensions-for-inotifypropertychanged/</loc>
     <lastmod>2015-01-15T00:22:39+10:00</lastmod>
   </url>
   
   <url>
+    <loc>https://sinairv.github.io/categories/inotifypropertychanged/</loc>
+    <lastmod>2015-01-15T00:22:39+10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sinairv.github.io/categories/richtextbox/</loc>
+    <lastmod>2014-12-01T18:18:48+10:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://sinairv.github.io/blog/2014/12/01/syntax-highlighter-for-windows-forms-rich-text-box/</loc>
     <lastmod>2014-12-01T18:18:48+10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sinairv.github.io/categories/syntax-highlighting/</loc>
+    <lastmod>2014-12-01T18:18:48+10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sinairv.github.io/categories/windows-forms/</loc>
+    <lastmod>2014-12-01T18:18:48+10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sinairv.github.io/categories/android/</loc>
+    <lastmod>2014-04-20T20:32:23+10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sinairv.github.io/categories/android-studio/</loc>
+    <lastmod>2014-04-20T20:32:23+10:00</lastmod>
   </url>
   
   <url>
@@ -53,8 +153,23 @@
   </url>
   
   <url>
+    <loc>https://sinairv.github.io/categories/guid/</loc>
+    <lastmod>2012-09-22T17:49:59+10:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://sinairv.github.io/blog/2012/07/23/an-example-for-c#-dynamic-in-action/</loc>
     <lastmod>2012-07-23T17:20:53+10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sinairv.github.io/categories/dynamic/</loc>
+    <lastmod>2012-07-23T17:20:53+10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sinairv.github.io/categories/koan/</loc>
+    <lastmod>2012-05-27T16:46:35+10:00</lastmod>
   </url>
   
   <url>
@@ -63,8 +178,23 @@
   </url>
   
   <url>
+    <loc>https://sinairv.github.io/categories/github/</loc>
+    <lastmod>2012-05-05T16:25:00+10:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://sinairv.github.io/blog/2012/05/05/using-git-with-github-on-windows/</loc>
     <lastmod>2012-05-05T16:25:00+10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sinairv.github.io/categories/windows/</loc>
+    <lastmod>2012-05-05T16:25:00+10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sinairv.github.io/categories/codeplex/</loc>
+    <lastmod>2012-05-02T10:50:41+10:00</lastmod>
   </url>
   
   <url>
@@ -78,7 +208,17 @@
   </url>
   
   <url>
+    <loc>https://sinairv.github.io/categories/c&#43;&#43;/</loc>
+    <lastmod>2011-07-04T23:10:54+10:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://sinairv.github.io/blog/2011/07/04/how-i-built-my-first-qt-application-in-visual-studio-2010/</loc>
+    <lastmod>2011-07-04T23:10:54+10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sinairv.github.io/categories/qt/</loc>
     <lastmod>2011-07-04T23:10:54+10:00</lastmod>
   </url>
   
@@ -93,13 +233,43 @@
   </url>
   
   <url>
+    <loc>https://sinairv.github.io/categories/latex/</loc>
+    <lastmod>2011-05-21T23:03:15+10:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://sinairv.github.io/blog/2011/05/15/code-snippet-for-calculating-mean-variance-and-standard-deviation/</loc>
+    <lastmod>2011-05-15T22:58:36+10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sinairv.github.io/categories/statistics/</loc>
     <lastmod>2011-05-15T22:58:36+10:00</lastmod>
   </url>
   
   <url>
     <loc>https://sinairv.github.io/blog/2011/05/15/a-helper-method-for-performing-k-fold-cross-validation/</loc>
     <lastmod>2011-05-15T22:41:05+10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sinairv.github.io/categories/k-fold-cross-validation/</loc>
+    <lastmod>2011-05-15T22:41:05+10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sinairv.github.io/categories/machine-learning/</loc>
+    <lastmod>2011-05-15T22:41:05+10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sinairv.github.io/categories/intellij-idea/</loc>
+    <lastmod>2011-05-10T22:33:07+10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sinairv.github.io/categories/java/</loc>
+    <lastmod>2011-05-10T22:33:07+10:00</lastmod>
   </url>
   
   <url>
@@ -113,12 +283,37 @@
   </url>
   
   <url>
+    <loc>https://sinairv.github.io/categories/listview/</loc>
+    <lastmod>2011-05-09T00:39:37+10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sinairv.github.io/categories/snippet/</loc>
+    <lastmod>2011-05-09T00:39:37+10:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://sinairv.github.io/blog/2011/04/16/enabling-middle-click-in-synaptics-touchpad-drivers/</loc>
     <lastmod>2011-04-16T00:25:53+10:00</lastmod>
   </url>
   
   <url>
+    <loc>https://sinairv.github.io/categories/synaptic-touchpad-middle-click/</loc>
+    <lastmod>2011-04-16T00:25:53+10:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://sinairv.github.io/blog/2011/03/02/code-snippet-for-trimming-strings-of-white-space-and-control-characters/</loc>
+    <lastmod>2011-03-02T00:07:00+10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sinairv.github.io/categories/snippets/</loc>
+    <lastmod>2011-03-02T00:07:00+10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sinairv.github.io/categories/string/</loc>
     <lastmod>2011-03-02T00:07:00+10:00</lastmod>
   </url>
   
@@ -133,8 +328,18 @@
   </url>
   
   <url>
+    <loc>https://sinairv.github.io/categories/strings/</loc>
+    <lastmod>2010-08-08T23:55:20+10:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://sinairv.github.io/blog/2010/08/08/a-code-snippet-for-searching-and-highlighting-a-token-or-string-in-a-richtextbox/</loc>
     <lastmod>2010-08-08T21:28:07+10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sinairv.github.io/categories/gac/</loc>
+    <lastmod>2010-05-15T21:09:33+10:00</lastmod>
   </url>
   
   <url>
@@ -153,269 +358,20 @@
   </url>
   
   <url>
+    <loc>https://sinairv.github.io/categories/reflection/</loc>
+    <lastmod>2010-03-06T14:19:38+10:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://sinairv.github.io/works/</loc>
   </url>
   
   <url>
-    <loc>https://sinairv.github.io/categories/android/</loc>
-    <lastmod>2014-04-20T20:32:23+10:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://sinairv.github.io/categories/android-studio/</loc>
-    <lastmod>2014-04-20T20:32:23+10:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://sinairv.github.io/archives/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://sinairv.github.io/categories/c#/</loc>
-    <lastmod>2015-10-04T23:33:40+11:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://sinairv.github.io/categories/c&#43;&#43;/</loc>
-    <lastmod>2011-07-04T23:10:54+10:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://sinairv.github.io/categories/</loc>
-    <lastmod>2014-04-20T20:32:23+10:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://sinairv.github.io/categories/codeplex/</loc>
-    <lastmod>2012-05-02T10:50:41+10:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://sinairv.github.io/categories/data-binding/</loc>
-    <lastmod>2015-01-15T00:22:39+10:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://sinairv.github.io/categories/dynamic/</loc>
-    <lastmod>2012-07-23T17:20:53+10:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://sinairv.github.io/categories/entity-framework/</loc>
-    <lastmod>2015-10-04T23:33:40+11:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://sinairv.github.io/categories/gac/</loc>
-    <lastmod>2010-05-15T21:09:33+10:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://sinairv.github.io/categories/git/</loc>
-    <lastmod>2016-11-24T14:51:08+11:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://sinairv.github.io/categories/github/</loc>
-    <lastmod>2012-05-05T16:25:00+10:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://sinairv.github.io/categories/guid/</loc>
-    <lastmod>2012-09-22T17:49:59+10:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://sinairv.github.io/categories/inotifypropertychanged/</loc>
-    <lastmod>2015-01-15T00:22:39+10:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://sinairv.github.io/categories/intellij-idea/</loc>
-    <lastmod>2011-05-10T22:33:07+10:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://sinairv.github.io/categories/java/</loc>
-    <lastmod>2011-05-10T22:33:07+10:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://sinairv.github.io/categories/k-fold-cross-validation/</loc>
-    <lastmod>2011-05-15T22:41:05+10:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://sinairv.github.io/categories/koan/</loc>
-    <lastmod>2012-05-27T16:46:35+10:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://sinairv.github.io/categories/latex/</loc>
-    <lastmod>2011-05-21T23:03:15+10:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://sinairv.github.io/categories/listview/</loc>
-    <lastmod>2011-05-09T00:39:37+10:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://sinairv.github.io/categories/machine-learning/</loc>
-    <lastmod>2011-05-15T22:41:05+10:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://sinairv.github.io/categories/microsoft-sql-server/</loc>
-    <lastmod>2019-02-10T20:09:11+11:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://sinairv.github.io/categories/nsubstitute/</loc>
-    <lastmod>2015-10-04T23:33:40+11:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://sinairv.github.io/post/</loc>
-    <lastmod>2019-02-10T20:09:11+11:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://sinairv.github.io/categories/powershell/</loc>
-    <lastmod>2015-05-18T00:45:18+10:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://sinairv.github.io/categories/qt/</loc>
-    <lastmod>2011-07-04T23:10:54+10:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://sinairv.github.io/categories/reflection/</loc>
-    <lastmod>2010-03-06T14:19:38+10:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://sinairv.github.io/categories/richtextbox/</loc>
-    <lastmod>2014-12-01T18:18:48+10:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://sinairv.github.io/</loc>
-    <lastmod>2019-02-10T20:09:11+11:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://sinairv.github.io/categories/snippet/</loc>
-    <lastmod>2011-05-09T00:39:37+10:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://sinairv.github.io/categories/snippets/</loc>
-    <lastmod>2011-03-02T00:07:00+10:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://sinairv.github.io/categories/sql/</loc>
-    <lastmod>2019-02-10T20:09:11+11:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://sinairv.github.io/categories/statistics/</loc>
-    <lastmod>2011-05-15T22:58:36+10:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://sinairv.github.io/categories/string/</loc>
-    <lastmod>2011-03-02T00:07:00+10:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://sinairv.github.io/categories/strings/</loc>
-    <lastmod>2010-08-08T23:55:20+10:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://sinairv.github.io/categories/synaptic-touchpad-middle-click/</loc>
-    <lastmod>2011-04-16T00:25:53+10:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://sinairv.github.io/categories/syntax-highlighting/</loc>
-    <lastmod>2014-12-01T18:18:48+10:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://sinairv.github.io/tags/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://sinairv.github.io/categories/tfs/</loc>
-    <lastmod>2016-11-24T14:51:08+11:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://sinairv.github.io/categories/tsql/</loc>
-    <lastmod>2019-02-10T20:09:11+11:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://sinairv.github.io/categories/unit-test/</loc>
-    <lastmod>2015-10-04T23:33:40+11:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://sinairv.github.io/categories/windows/</loc>
-    <lastmod>2012-05-05T16:25:00+10:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://sinairv.github.io/categories/windows-forms/</loc>
-    <lastmod>2014-12-01T18:18:48+10:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>

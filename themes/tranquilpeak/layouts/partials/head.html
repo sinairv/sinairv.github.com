@@ -98,8 +98,10 @@
         <link rel="stylesheet" href="{{ . | absURL }}">
       {{ end }}
     {{ end }}
-
-    {{ if .Params.ga.async }}
+    
+	<script data-ad-client="ca-pub-8216252089162997" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    
+	{{ if .Params.ga.async }}
       {{ template "_internal/google_analytics_async.html" . }}
     {{ else }}
       {{ template "_internal/google_analytics.html" . }}
